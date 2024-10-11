@@ -46,19 +46,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {}
+    "C:\\Users\\dangk\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Nam4HK1\\QuanLyNhaThuoc\\BUS\\BUS.csproj",
+      "projectUniqueName": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\BUS\\BUS.csproj",
       "projectName": "BUS",
-      "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\BUS\\BUS.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\BUS\\obj\\",
+      "projectPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\BUS\\BUS.csproj",
+      "packagesPath": "C:\\Users\\dangk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\BUS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dangk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -73,11 +73,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Nam4HK1\\QuanLyNhaThuoc\\DAO\\DAO.csproj": {
-              "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DAO\\DAO.csproj"
+            "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DAO\\DAO.csproj": {
+              "projectPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DAO\\DAO.csproj"
             },
-            "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj"
+            "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
+              "projectPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj"
             }
           }
         }

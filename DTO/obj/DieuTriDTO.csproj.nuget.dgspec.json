@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {}
+    "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DieuTriDTO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
+    "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DieuTriDTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
-        "projectName": "DTO",
-        "projectPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
+        "projectUniqueName": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DieuTriDTO.csproj",
+        "projectName": "DieuTriDTO",
+        "projectPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DieuTriDTO.csproj",
         "packagesPath": "C:\\Users\\dangk\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\obj\\",
         "projectStyle": "PackageReference",
