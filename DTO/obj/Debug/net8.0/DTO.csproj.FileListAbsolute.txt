@@ -1,0 +1,12 @@
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\bin\Debug\net8.0\DTO.deps.json
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\bin\Debug\net8.0\DTO.dll
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\bin\Debug\net8.0\DTO.pdb
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\obj\Debug\net8.0\DTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\obj\Debug\net8.0\DTO.AssemblyInfoInputs.cache
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\obj\Debug\net8.0\DTO.AssemblyInfo.cs
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\obj\Debug\net8.0\DTO.csproj.CoreCompileInputs.cache
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\obj\Debug\net8.0\DTO.sourcelink.json
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\obj\Debug\net8.0\DTO.dll
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\obj\Debug\net8.0\refint\DTO.dll
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\obj\Debug\net8.0\DTO.pdb
+C:\Nam4HK1\QuanLyNhaThuoc\DTO\obj\Debug\net8.0\ref\DTO.dll
