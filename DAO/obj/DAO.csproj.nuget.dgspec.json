@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DAO\\DAO.csproj": {}
+    "C:\\Nam4HK1\\QuanLyNhaThuoc\\DAO\\DAO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DAO\\DAO.csproj": {
+    "C:\\Nam4HK1\\QuanLyNhaThuoc\\DAO\\DAO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DAO\\DAO.csproj",
+        "projectUniqueName": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DAO\\DAO.csproj",
         "projectName": "DAO",
-        "projectPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DAO\\DAO.csproj",
-        "packagesPath": "C:\\Users\\dangk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DAO\\obj\\",
+        "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DAO\\DAO.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DAO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dangk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
-                "projectPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj"
+              "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
+                "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj"
               }
             }
           }
@@ -69,17 +69,17 @@
         }
       }
     },
-    "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
+    "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
+        "projectUniqueName": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
         "projectName": "DTO",
-        "projectPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
-        "packagesPath": "C:\\Users\\dangk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dangk\\Source\\Repos\\QuanLyNhaThuoc\\DTO\\obj\\",
+        "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dangk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
