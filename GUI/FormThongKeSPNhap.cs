@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormThongKeDoanhThu : Form
+    public partial class FormThongKeSPNhap : Form
     {
-        public FormThongKeDoanhThu()
+        public FormThongKeSPNhap()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormThongKeDoanhThu_Load(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

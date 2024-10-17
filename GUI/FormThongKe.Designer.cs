@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            panelMenu = new Panel();
             btnNhaCungCap = new Button();
             btnSanPhamBan = new Button();
             btnSanPhamNhap = new Button();
             btnDoanhThu = new Button();
             panelThongKe = new Panel();
-            panel1.SuspendLayout();
+            panelMenu.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // panelMenu
             // 
-            panel1.BackColor = Color.PaleTurquoise;
-            panel1.Controls.Add(btnNhaCungCap);
-            panel1.Controls.Add(btnSanPhamBan);
-            panel1.Controls.Add(btnSanPhamNhap);
-            panel1.Controls.Add(btnDoanhThu);
-            panel1.Dock = DockStyle.Top;
-            panel1.ForeColor = Color.Black;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(800, 50);
-            panel1.TabIndex = 1;
+            panelMenu.BackColor = Color.PaleTurquoise;
+            panelMenu.Controls.Add(btnNhaCungCap);
+            panelMenu.Controls.Add(btnSanPhamBan);
+            panelMenu.Controls.Add(btnSanPhamNhap);
+            panelMenu.Controls.Add(btnDoanhThu);
+            panelMenu.Dock = DockStyle.Top;
+            panelMenu.ForeColor = Color.Black;
+            panelMenu.Location = new Point(0, 0);
+            panelMenu.Name = "panelMenu";
+            panelMenu.Size = new Size(800, 50);
+            panelMenu.TabIndex = 1;
             // 
             // btnNhaCungCap
             // 
@@ -117,15 +117,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panelThongKe);
-            Controls.Add(panel1);
+            Controls.Add(panelMenu);
             Name = "FormThongKe";
             Text = "FormThongKe";
-            panel1.ResumeLayout(false);
+            Load += FormThongKe_Load;
+            panelMenu.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private Panel panel1;
+        private Panel panelMenu;
         private Button btnDoanhThu;
         private Button btnNhaCungCap;
         private Button btnSanPhamBan;

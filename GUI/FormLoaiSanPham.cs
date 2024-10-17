@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormThongKeDoanhThu : Form
+    public partial class FormLoaiSanPham : Form
     {
-        public FormThongKeDoanhThu()
+        public FormLoaiSanPham()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormThongKeDoanhThu_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

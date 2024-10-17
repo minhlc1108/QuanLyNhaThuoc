@@ -27,6 +27,7 @@ namespace GUI
             {
                 disableButton();
                 currentButton = (IconButton)sender;
+                currentButton.Font = new Font("Segoe UI", 11F,FontStyle.Bold);
                 currentButton.BackColor = Color.FromArgb(0, 168, 222);
             }
         }
@@ -35,6 +36,7 @@ namespace GUI
         {
             if (currentButton != null)
             {
+                currentButton.Font = new Font("Segoe UI", 11F);
                 currentButton.BackColor = Color.FromArgb(0, 153, 207);
             }
         }
@@ -67,9 +69,15 @@ namespace GUI
             openForm(new FormSanPham());
         }
 
+
+        private void btnLoaiSanPham_Click(object sender, EventArgs e)
+        {
+            activateButton(sender);
+            openForm(new FormLoaiSanPham());
+        }
         private void iconUser_Click(object sender, EventArgs e)
         {
-            if(accountForm != null)
+            if (accountForm != null)
             {
                 accountForm.Close();
             }
@@ -85,6 +93,11 @@ namespace GUI
             openForm(new FormPhieuNhap());
         }
 
+        private void btnTieuHuy_Click(object sender, EventArgs e)
+        {
+            activateButton(sender);
+            openForm(new FormTieuHuy());
+        }
         private void btnDuocSi_Click(object sender, EventArgs e)
         {
             activateButton(sender);
@@ -95,6 +108,12 @@ namespace GUI
         {
             activateButton(sender);
             openForm(new FormKhachHang());
+        }
+
+        private void btnNhaSanXuat_Click(object sender, EventArgs e)
+        {
+            activateButton(sender);
+            openForm(new FormNhaSanXuat());
         }
 
         private void btnNhaCungCap_Click(object sender, EventArgs e)
@@ -116,7 +135,7 @@ namespace GUI
                 int count = panelMenu.Controls.Count;
                 for (int i = count - 1; i >= 0; i--)
                 {
-                    if(panelMenu.Controls[i] is IconButton button && button.Visible)
+                    if (panelMenu.Controls[i] is IconButton button && button.Visible)
                     {
                         button.PerformClick();
                         break;

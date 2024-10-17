@@ -27,7 +27,7 @@ namespace GUI
             if (sender != null)
             {
                 disableButton();
-                currentButton = (Button) sender;
+                currentButton = (Button)sender;
                 bottomPanel = new Panel();
                 bottomPanel.Size = new Size(currentButton.Width, 6);
                 bottomPanel.Location = new Point(0, currentButton.Bottom - 6);
@@ -60,21 +60,41 @@ namespace GUI
         private void btnDoanhThu_Click(object sender, EventArgs e)
         {
             activateButton(sender);
+            openForm(new FormThongKeDoanhThu());
         }
 
         private void btnSanPhamNhap_Click(object sender, EventArgs e)
         {
             activateButton(sender);
+            openForm(new FormThongKeSPNhap());
         }
 
         private void btnSanPhamBan_Click(object sender, EventArgs e)
         {
             activateButton(sender);
+            openForm(new FormThongKeSPBan());
         }
 
         private void btnNhaCungCap_Click(object sender, EventArgs e)
         {
             activateButton(sender);
+            openForm(new FormThongKeNhaCC());
+        }
+
+        private void FormThongKe_Load(object sender, EventArgs e)
+        {
+            if (panelMenu.Controls.Count > 0)
+            {
+                int count = panelMenu.Controls.Count;
+                for (int i = count - 1; i >= 0; i--)
+                {
+                    if (panelMenu.Controls[i] is Button button && button.Visible)
+                    {
+                        button.PerformClick();
+                        break;
+                    }
+                }
+            }
         }
     }
 }
