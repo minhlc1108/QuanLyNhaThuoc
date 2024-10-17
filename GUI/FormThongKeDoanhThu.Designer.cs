@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class FormSanPham
+    partial class FormThongKeDoanhThu
     {
         /// <summary>
         /// Required designer variable.
@@ -34,20 +34,21 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(42, 48);
+            label1.Location = new Point(270, 9);
             label1.Name = "label1";
-            label1.Size = new Size(75, 20);
+            label1.Size = new Size(141, 20);
             label1.TabIndex = 0;
-            label1.Text = "Sản phẩm";
+            label1.Text = "Thống kê doanh thu";
+            label1.Click += label1_Click;
             // 
-            // FormSanPham
+            // FormThongKeDoanhThu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 504);
+            ClientSize = new Size(800, 450);
             Controls.Add(label1);
-            Name = "FormSanPham";
-            Text = "FormSanPham";
+            Name = "FormThongKeDoanhThu";
+            Text = "FormThongKeDoanhThu";
             ResumeLayout(false);
             PerformLayout();
         }

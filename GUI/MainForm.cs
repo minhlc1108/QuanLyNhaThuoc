@@ -21,8 +21,6 @@ namespace GUI
             InitializeComponent();
         }
 
-
-
         private void activateButton(object sender)
         {
             if (sender != null)
