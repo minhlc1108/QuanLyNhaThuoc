@@ -68,3 +68,10 @@ C:\Users\Admin\Source\Repos\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\refint\G
 C:\Users\Admin\Source\Repos\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\GUI.pdb
 C:\Users\Admin\Source\Repos\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\GUI.genruntimeconfig.cache
 C:\Users\Admin\Source\Repos\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\ref\GUI.dll
+C:\Nam4HK1\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\GUI.FormThongKeDoanhThu.resources
+C:\Nam4HK1\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\GUI.FormThongKeNhaCC.resources
+C:\Nam4HK1\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\GUI.FormThongKeSPBan.resources
+C:\Nam4HK1\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\GUI.FormThongKeSPNhap.resources
+C:\Nam4HK1\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\GUI.FormLoaiSanPham.resources
+C:\Nam4HK1\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\GUI.FormNhaSanXuat.resources
+C:\Nam4HK1\QuanLyNhaThuoc\GUI\obj\Debug\net8.0-windows\GUI.FormTieuHuy.resources

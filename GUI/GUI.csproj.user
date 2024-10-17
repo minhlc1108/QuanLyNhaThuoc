@@ -10,7 +10,13 @@
     <Compile Update="FormKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormLoaiSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormNhaSanXuat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormPhieuNhap.cs">
@@ -22,7 +28,22 @@
     <Compile Update="FormThongKe.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormThongKeDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormThongKeNhaCC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormThongKeSPBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormThongKeSPNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormThongTinTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormTieuHuy.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="MainForm.cs">

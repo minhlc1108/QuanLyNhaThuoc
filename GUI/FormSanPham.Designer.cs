@@ -44,7 +44,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(896, 504);
             Controls.Add(label1);
             Name = "FormSanPham";
             Text = "FormSanPham";

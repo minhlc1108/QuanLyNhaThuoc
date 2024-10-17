@@ -96,9 +96,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(226, 17);
+            label1.Location = new Point(258, 23);
             label1.Name = "label1";
-            label1.Size = new Size(0, 15);
+            label1.Size = new Size(0, 20);
             label1.TabIndex = 0;
             label1.Click += label1_Click;
             // 
@@ -106,9 +106,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(194, 9);
+            label2.Location = new Point(222, 12);
             label2.Name = "label2";
-            label2.Size = new Size(118, 25);
+            label2.Size = new Size(151, 32);
             label2.TabIndex = 1;
             label2.Text = "HÓA ĐƠN   ";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -118,9 +118,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(20, 56);
+            label3.Location = new Point(23, 75);
             label3.Name = "label3";
-            label3.Size = new Size(74, 17);
+            label3.Size = new Size(95, 23);
             label3.TabIndex = 2;
             label3.Text = "Người lập :";
             // 
@@ -128,9 +128,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(20, 89);
+            label4.Location = new Point(23, 119);
             label4.Name = "label4";
-            label4.Size = new Size(69, 17);
+            label4.Size = new Size(88, 23);
             label4.TabIndex = 3;
             label4.Text = "Ngày lập :";
             // 
@@ -138,9 +138,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(738, 9);
+            label5.Location = new Point(843, 12);
             label5.Name = "label5";
-            label5.Size = new Size(236, 25);
+            label5.Size = new Size(300, 32);
             label5.TabIndex = 4;
             label5.Text = "DANH SÁCH HÓA ĐƠN   ";
             label5.TextAlign = ContentAlignment.MiddleCenter;
@@ -149,40 +149,44 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(20, 125);
+            label6.Location = new Point(23, 167);
             label6.Name = "label6";
-            label6.Size = new Size(87, 17);
+            label6.Size = new Size(110, 23);
             label6.TabIndex = 5;
             label6.Text = "Khách hàng :";
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(113, 125);
+            comboBox1.Location = new Point(129, 167);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(337, 23);
+            comboBox1.Size = new Size(385, 28);
             comboBox1.TabIndex = 6;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(113, 56);
+            textBox1.Location = new Point(129, 75);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(440, 23);
+            textBox1.Size = new Size(502, 27);
             textBox1.TabIndex = 7;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(113, 89);
+            textBox2.Location = new Point(129, 119);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(440, 23);
+            textBox2.Size = new Size(502, 27);
             textBox2.TabIndex = 8;
             // 
             // btnTaoMoiKhachHang
             // 
             btnTaoMoiKhachHang.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnTaoMoiKhachHang.Location = new Point(476, 125);
+            btnTaoMoiKhachHang.Location = new Point(544, 167);
+            btnTaoMoiKhachHang.Margin = new Padding(3, 4, 3, 4);
             btnTaoMoiKhachHang.Name = "btnTaoMoiKhachHang";
-            btnTaoMoiKhachHang.Size = new Size(0, 28);
+            btnTaoMoiKhachHang.Size = new Size(0, 37);
             btnTaoMoiKhachHang.TabIndex = 9;
             btnTaoMoiKhachHang.Text = "Mới";
             btnTaoMoiKhachHang.UseVisualStyleBackColor = true;
@@ -205,26 +209,29 @@
             panelHoaDon.Controls.Add(comboBox2);
             panelHoaDon.Controls.Add(label8);
             panelHoaDon.Controls.Add(label7);
-            panelHoaDon.Location = new Point(15, 171);
+            panelHoaDon.Location = new Point(17, 228);
+            panelHoaDon.Margin = new Padding(3, 4, 3, 4);
             panelHoaDon.Name = "panelHoaDon";
-            panelHoaDon.Size = new Size(538, 472);
+            panelHoaDon.Size = new Size(615, 629);
             panelHoaDon.TabIndex = 10;
             panelHoaDon.Paint += panelHoaDon_Paint;
             // 
             // button4
             // 
-            button4.Location = new Point(314, 398);
+            button4.Location = new Point(359, 531);
+            button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
-            button4.Size = new Size(94, 30);
+            button4.Size = new Size(107, 40);
             button4.TabIndex = 23;
             button4.Text = "Xuất PDF";
             button4.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            button5.Location = new Point(134, 398);
+            button5.Location = new Point(153, 531);
+            button5.Margin = new Padding(3, 4, 3, 4);
             button5.Name = "button5";
-            button5.Size = new Size(94, 30);
+            button5.Size = new Size(107, 40);
             button5.TabIndex = 22;
             button5.Text = "Lập hóa đơn";
             button5.UseVisualStyleBackColor = true;
@@ -234,9 +241,10 @@
             lsvThemHoaDon.Columns.AddRange(new ColumnHeader[] { clMaSP, clKhachHang, clTenSP, clGiaTien, clSoLuong });
             lsvThemHoaDon.FullRowSelect = true;
             lsvThemHoaDon.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
-            lsvThemHoaDon.Location = new Point(17, 150);
+            lsvThemHoaDon.Location = new Point(19, 200);
+            lsvThemHoaDon.Margin = new Padding(3, 4, 3, 4);
             lsvThemHoaDon.Name = "lsvThemHoaDon";
-            lsvThemHoaDon.Size = new Size(500, 233);
+            lsvThemHoaDon.Size = new Size(571, 309);
             lsvThemHoaDon.TabIndex = 20;
             lsvThemHoaDon.UseCompatibleStateImageBehavior = false;
             lsvThemHoaDon.View = View.Details;
@@ -269,89 +277,96 @@
             // 
             // button3
             // 
-            button3.Location = new Point(340, 98);
+            button3.Location = new Point(389, 131);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(94, 30);
+            button3.Size = new Size(107, 40);
             button3.TabIndex = 19;
             button3.Text = "Hủy hóa đơn";
             button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            button2.Location = new Point(210, 98);
+            button2.Location = new Point(240, 131);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(94, 30);
+            button2.Size = new Size(107, 40);
             button2.TabIndex = 18;
             button2.Text = "Xóa";
             button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.Location = new Point(73, 98);
+            button1.Location = new Point(83, 131);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(94, 30);
+            button1.Size = new Size(107, 40);
             button1.TabIndex = 17;
             button1.Text = "Thêm";
             button1.UseVisualStyleBackColor = true;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(433, 58);
+            textBox4.Location = new Point(495, 77);
+            textBox4.Margin = new Padding(3, 4, 3, 4);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(83, 23);
+            textBox4.Size = new Size(94, 27);
             textBox4.TabIndex = 16;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(365, 59);
+            label10.Location = new Point(417, 79);
             label10.Name = "label10";
-            label10.Size = new Size(69, 17);
+            label10.Size = new Size(88, 23);
             label10.TabIndex = 15;
             label10.Text = "Số lượng :";
             label10.Click += label10_Click;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(273, 57);
+            textBox3.Location = new Point(312, 76);
+            textBox3.Margin = new Padding(3, 4, 3, 4);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(83, 23);
+            textBox3.Size = new Size(94, 27);
             textBox3.TabIndex = 11;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(205, 59);
+            label9.Location = new Point(234, 79);
             label9.Name = "label9";
-            label9.Size = new Size(62, 17);
+            label9.Size = new Size(79, 23);
             label9.TabIndex = 14;
             label9.Text = "Đơn giá :";
             // 
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(99, 57);
+            comboBox3.Location = new Point(113, 76);
+            comboBox3.Margin = new Padding(3, 4, 3, 4);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(100, 23);
+            comboBox3.Size = new Size(114, 28);
             comboBox3.TabIndex = 13;
             // 
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(99, 26);
+            comboBox2.Location = new Point(113, 35);
+            comboBox2.Margin = new Padding(3, 4, 3, 4);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(417, 23);
+            comboBox2.Size = new Size(476, 28);
             comboBox2.TabIndex = 11;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(8, 57);
+            label8.Location = new Point(9, 76);
             label8.Name = "label8";
-            label8.Size = new Size(85, 17);
+            label8.Size = new Size(107, 23);
             label8.TabIndex = 12;
             label8.Text = "Lô sản xuất :";
             // 
@@ -359,9 +374,9 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(17, 26);
+            label7.Location = new Point(19, 35);
             label7.Name = "label7";
-            label7.Size = new Size(76, 17);
+            label7.Size = new Size(96, 23);
             label7.TabIndex = 11;
             label7.Text = "Sản phẩm :";
             // 
@@ -369,17 +384,18 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(578, 58);
+            label11.Location = new Point(661, 77);
             label11.Name = "label11";
-            label11.Size = new Size(70, 17);
+            label11.Size = new Size(89, 23);
             label11.TabIndex = 11;
             label11.Text = "Tìm kiếm :";
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(654, 57);
+            textBox5.Location = new Point(747, 76);
+            textBox5.Margin = new Padding(3, 4, 3, 4);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(409, 23);
+            textBox5.Size = new Size(467, 27);
             textBox5.TabIndex = 12;
             // 
             // listView1
@@ -387,9 +403,10 @@
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
             listView1.FullRowSelect = true;
             listView1.Items.AddRange(new ListViewItem[] { listViewItem4, listViewItem5, listViewItem6 });
-            listView1.Location = new Point(578, 90);
+            listView1.Location = new Point(661, 120);
+            listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(500, 199);
+            listView1.Size = new Size(571, 264);
             listView1.TabIndex = 24;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -423,9 +440,9 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(738, 295);
+            label12.Location = new Point(843, 393);
             label12.Name = "label12";
-            label12.Size = new Size(199, 25);
+            label12.Size = new Size(255, 32);
             label12.TabIndex = 25;
             label12.Text = "CHI TIẾT HÓA ĐƠN   ";
             label12.TextAlign = ContentAlignment.MiddleCenter;
@@ -434,9 +451,9 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(590, 336);
+            label13.Location = new Point(674, 448);
             label13.Name = "label13";
-            label13.Size = new Size(89, 17);
+            label13.Size = new Size(113, 23);
             label13.TabIndex = 26;
             label13.Text = "Mã hóa đơn :";
             // 
@@ -444,9 +461,9 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(828, 336);
+            label14.Location = new Point(946, 448);
             label14.Name = "label14";
-            label14.Size = new Size(77, 17);
+            label14.Size = new Size(99, 23);
             label14.TabIndex = 27;
             label14.Text = "Người Lập :";
             label14.Click += label14_Click;
@@ -455,9 +472,9 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(828, 369);
+            label15.Location = new Point(946, 492);
             label15.Name = "label15";
-            label15.Size = new Size(72, 17);
+            label15.Size = new Size(92, 23);
             label15.TabIndex = 28;
             label15.Text = "Ngày Lập :";
             // 
@@ -465,38 +482,42 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.Location = new Point(590, 369);
+            label16.Location = new Point(674, 492);
             label16.Name = "label16";
-            label16.Size = new Size(89, 17);
+            label16.Size = new Size(113, 23);
             label16.TabIndex = 29;
             label16.Text = "Khách Hàng :";
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(685, 336);
+            textBox6.Location = new Point(783, 448);
+            textBox6.Margin = new Padding(3, 4, 3, 4);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(116, 23);
+            textBox6.Size = new Size(132, 27);
             textBox6.TabIndex = 30;
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(685, 368);
+            textBox7.Location = new Point(783, 491);
+            textBox7.Margin = new Padding(3, 4, 3, 4);
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(116, 23);
+            textBox7.Size = new Size(132, 27);
             textBox7.TabIndex = 31;
             // 
             // textBox8
             // 
-            textBox8.Location = new Point(911, 336);
+            textBox8.Location = new Point(1041, 448);
+            textBox8.Margin = new Padding(3, 4, 3, 4);
             textBox8.Name = "textBox8";
-            textBox8.Size = new Size(116, 23);
+            textBox8.Size = new Size(132, 27);
             textBox8.TabIndex = 32;
             // 
             // textBox9
             // 
-            textBox9.Location = new Point(911, 369);
+            textBox9.Location = new Point(1041, 492);
+            textBox9.Margin = new Padding(3, 4, 3, 4);
             textBox9.Name = "textBox9";
-            textBox9.Size = new Size(116, 23);
+            textBox9.Size = new Size(132, 27);
             textBox9.TabIndex = 33;
             // 
             // listView2
@@ -504,9 +525,10 @@
             listView2.Columns.AddRange(new ColumnHeader[] { columnHeader6, columnHeader7, columnHeader8, columnHeader9, columnHeader10 });
             listView2.FullRowSelect = true;
             listView2.Items.AddRange(new ListViewItem[] { listViewItem7, listViewItem8, listViewItem9 });
-            listView2.Location = new Point(578, 408);
+            listView2.Location = new Point(661, 544);
+            listView2.Margin = new Padding(3, 4, 3, 4);
             listView2.Name = "listView2";
-            listView2.Size = new Size(500, 235);
+            listView2.Size = new Size(571, 312);
             listView2.TabIndex = 34;
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
@@ -538,10 +560,10 @@
             // 
             // FormHoaDon
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PaleTurquoise;
-            ClientSize = new Size(1102, 675);
+            ClientSize = new Size(1259, 900);
             Controls.Add(listView2);
             Controls.Add(textBox9);
             Controls.Add(textBox8);
@@ -566,7 +588,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FormHoaDon";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormHoaDon";

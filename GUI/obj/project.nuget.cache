@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "27cNOX/Nj6g=",
+  "dgSpecHash": "LiEj2le5Exw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Source\\Repos\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
+  "projectFilePath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Admin\\.nuget\\packages\\fontawesome.sharp\\6.6.0\\fontawesome.sharp.6.6.0.nupkg.sha512"
+    "C:\\Users\\PC\\.nuget\\packages\\fontawesome.sharp\\6.6.0\\fontawesome.sharp.6.6.0.nupkg.sha512"
   ],
   "logs": []
 }
