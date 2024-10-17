@@ -69,7 +69,7 @@
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(220, 853);
+            panelMenu.Size = new Size(219, 853);
             panelMenu.TabIndex = 0;
             // 
             // btnDangXuat
@@ -86,7 +86,7 @@
             btnDangXuat.Location = new Point(0, 793);
             btnDangXuat.Name = "btnDangXuat";
             btnDangXuat.Padding = new Padding(10, 0, 0, 0);
-            btnDangXuat.Size = new Size(220, 60);
+            btnDangXuat.Size = new Size(219, 60);
             btnDangXuat.TabIndex = 11;
             btnDangXuat.Text = "Đăng xuất";
             btnDangXuat.TextAlign = ContentAlignment.MiddleLeft;
@@ -107,7 +107,7 @@
             btnThongKe.Location = new Point(0, 485);
             btnThongKe.Name = "btnThongKe";
             btnThongKe.Padding = new Padding(10, 0, 0, 0);
-            btnThongKe.Size = new Size(220, 60);
+            btnThongKe.Size = new Size(219, 60);
             btnThongKe.TabIndex = 10;
             btnThongKe.Text = "Thống kê";
             btnThongKe.TextAlign = ContentAlignment.MiddleLeft;
@@ -129,7 +129,7 @@
             btnNhaCungCap.Location = new Point(0, 425);
             btnNhaCungCap.Name = "btnNhaCungCap";
             btnNhaCungCap.Padding = new Padding(10, 0, 0, 0);
-            btnNhaCungCap.Size = new Size(220, 60);
+            btnNhaCungCap.Size = new Size(219, 60);
             btnNhaCungCap.TabIndex = 9;
             btnNhaCungCap.Text = "Nhà cung cấp";
             btnNhaCungCap.TextAlign = ContentAlignment.MiddleLeft;
@@ -151,7 +151,7 @@
             btnKhachHang.Location = new Point(0, 365);
             btnKhachHang.Name = "btnKhachHang";
             btnKhachHang.Padding = new Padding(10, 0, 0, 0);
-            btnKhachHang.Size = new Size(220, 60);
+            btnKhachHang.Size = new Size(219, 60);
             btnKhachHang.TabIndex = 7;
             btnKhachHang.Text = "Khách hàng";
             btnKhachHang.TextAlign = ContentAlignment.MiddleLeft;
@@ -173,7 +173,7 @@
             btnDuocSi.Location = new Point(0, 305);
             btnDuocSi.Name = "btnDuocSi";
             btnDuocSi.Padding = new Padding(10, 0, 0, 0);
-            btnDuocSi.Size = new Size(220, 60);
+            btnDuocSi.Size = new Size(219, 60);
             btnDuocSi.TabIndex = 6;
             btnDuocSi.Text = "Dược sĩ";
             btnDuocSi.TextAlign = ContentAlignment.MiddleLeft;
@@ -195,7 +195,7 @@
             btnPhieuNhap.Location = new Point(0, 245);
             btnPhieuNhap.Name = "btnPhieuNhap";
             btnPhieuNhap.Padding = new Padding(10, 0, 0, 0);
-            btnPhieuNhap.Size = new Size(220, 60);
+            btnPhieuNhap.Size = new Size(219, 60);
             btnPhieuNhap.TabIndex = 5;
             btnPhieuNhap.Text = "Phiếu nhập";
             btnPhieuNhap.TextAlign = ContentAlignment.MiddleLeft;
@@ -217,7 +217,7 @@
             btnHoaDon.Location = new Point(0, 185);
             btnHoaDon.Name = "btnHoaDon";
             btnHoaDon.Padding = new Padding(10, 0, 0, 0);
-            btnHoaDon.Size = new Size(220, 60);
+            btnHoaDon.Size = new Size(219, 60);
             btnHoaDon.TabIndex = 4;
             btnHoaDon.Text = "Hóa đơn";
             btnHoaDon.TextAlign = ContentAlignment.MiddleLeft;
@@ -240,7 +240,7 @@
             btnSanPham.Location = new Point(0, 125);
             btnSanPham.Name = "btnSanPham";
             btnSanPham.Padding = new Padding(10, 0, 0, 0);
-            btnSanPham.Size = new Size(220, 60);
+            btnSanPham.Size = new Size(219, 60);
             btnSanPham.TabIndex = 3;
             btnSanPham.Text = "Sản phẩm";
             btnSanPham.TextAlign = ContentAlignment.MiddleLeft;
@@ -256,7 +256,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(220, 125);
+            panel2.Size = new Size(219, 125);
             panel2.TabIndex = 2;
             // 
             // label1
@@ -264,7 +264,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label1.ForeColor = Color.Gainsboro;
-            label1.Location = new Point(4, 79);
+            label1.Location = new Point(5, 79);
             label1.Name = "label1";
             label1.Size = new Size(213, 25);
             label1.TabIndex = 1;
@@ -285,7 +285,7 @@
             pictureBox1.InitialImage = null;
             pictureBox1.Location = new Point(2, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(220, 120);
+            pictureBox1.Size = new Size(219, 120);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -295,9 +295,9 @@
             panel3.Controls.Add(iconUser);
             panel3.Controls.Add(labelTenDS);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(220, 0);
+            panel3.Location = new Point(219, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1162, 44);
+            panel3.Size = new Size(1163, 44);
             panel3.TabIndex = 1;
             // 
             // iconUser
@@ -309,7 +309,7 @@
             iconUser.IconColor = Color.Gainsboro;
             iconUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconUser.IconSize = 40;
-            iconUser.Location = new Point(1002, 0);
+            iconUser.Location = new Point(1003, 0);
             iconUser.Name = "iconUser";
             iconUser.Size = new Size(40, 44);
             iconUser.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -323,7 +323,7 @@
             labelTenDS.Dock = DockStyle.Right;
             labelTenDS.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTenDS.ForeColor = Color.Gainsboro;
-            labelTenDS.Location = new Point(1042, 0);
+            labelTenDS.Location = new Point(1043, 0);
             labelTenDS.Name = "labelTenDS";
             labelTenDS.Padding = new Padding(0, 5, 0, 5);
             labelTenDS.Size = new Size(120, 38);
@@ -333,9 +333,9 @@
             // panelDesktop
             // 
             panelDesktop.Dock = DockStyle.Fill;
-            panelDesktop.Location = new Point(220, 44);
+            panelDesktop.Location = new Point(219, 44);
             panelDesktop.Name = "panelDesktop";
-            panelDesktop.Size = new Size(1162, 809);
+            panelDesktop.Size = new Size(1163, 809);
             panelDesktop.TabIndex = 2;
             // 
             // MainForm
