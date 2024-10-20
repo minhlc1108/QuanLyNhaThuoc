@@ -1,4 +1,5 @@
-﻿using FontAwesome.Sharp;
+﻿using BUS;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -130,6 +131,8 @@ namespace GUI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // test db
+            MessageBox.Show(SanPhamBUS.Instance.GetAllProducts().ToArray().Length.ToString());
             if (panelMenu.Controls.Count > 0)
             {
                 int count = panelMenu.Controls.Count;

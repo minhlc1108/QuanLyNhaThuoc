@@ -186,7 +186,7 @@
             btnTaoMoiKhachHang.Location = new Point(544, 167);
             btnTaoMoiKhachHang.Margin = new Padding(3, 4, 3, 4);
             btnTaoMoiKhachHang.Name = "btnTaoMoiKhachHang";
-            btnTaoMoiKhachHang.Size = new Size(0, 37);
+            btnTaoMoiKhachHang.Size = new Size(0, 0);
             btnTaoMoiKhachHang.TabIndex = 9;
             btnTaoMoiKhachHang.Text = "Mới";
             btnTaoMoiKhachHang.UseVisualStyleBackColor = true;
@@ -563,7 +563,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PaleTurquoise;
-            ClientSize = new Size(1259, 900);
+            ClientSize = new Size(1232, 858);
             Controls.Add(listView2);
             Controls.Add(textBox9);
             Controls.Add(textBox8);
