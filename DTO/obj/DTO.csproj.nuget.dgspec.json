@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DoAn\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {}
+    "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {}
   },
   "projects": {
-    "D:\\DoAn\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
+    "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DoAn\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
+        "projectUniqueName": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
         "projectName": "DTO",
-        "projectPath": "D:\\DoAn\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\DoAn\\QuanLyNhaThuoc\\DTO\\obj\\",
+        "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
