@@ -75,7 +75,7 @@
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(220, 853);
+            panelMenu.Size = new Size(220, 903);
             panelMenu.TabIndex = 0;
             // 
             // btnDangXuat
@@ -89,7 +89,7 @@
             btnDangXuat.IconColor = Color.Gainsboro;
             btnDangXuat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDangXuat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDangXuat.Location = new Point(0, 793);
+            btnDangXuat.Location = new Point(0, 843);
             btnDangXuat.Name = "btnDangXuat";
             btnDangXuat.Padding = new Padding(10, 0, 0, 0);
             btnDangXuat.Size = new Size(220, 60);
@@ -369,7 +369,7 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(220, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1162, 44);
+            panel3.Size = new Size(1262, 44);
             panel3.TabIndex = 1;
             // 
             // iconUser
@@ -381,7 +381,7 @@
             iconUser.IconColor = Color.Gainsboro;
             iconUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconUser.IconSize = 40;
-            iconUser.Location = new Point(1002, 0);
+            iconUser.Location = new Point(1102, 0);
             iconUser.Name = "iconUser";
             iconUser.Size = new Size(40, 44);
             iconUser.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -395,7 +395,7 @@
             labelTenDS.Dock = DockStyle.Right;
             labelTenDS.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTenDS.ForeColor = Color.Gainsboro;
-            labelTenDS.Location = new Point(1042, 0);
+            labelTenDS.Location = new Point(1142, 0);
             labelTenDS.Name = "labelTenDS";
             labelTenDS.Padding = new Padding(0, 5, 0, 5);
             labelTenDS.Size = new Size(120, 38);
@@ -407,14 +407,14 @@
             panelDesktop.Dock = DockStyle.Fill;
             panelDesktop.Location = new Point(220, 44);
             panelDesktop.Name = "panelDesktop";
-            panelDesktop.Size = new Size(1162, 809);
+            panelDesktop.Size = new Size(1262, 859);
             panelDesktop.TabIndex = 2;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1382, 853);
+            ClientSize = new Size(1482, 903);
             Controls.Add(panelDesktop);
             Controls.Add(panel3);
             Controls.Add(panelMenu);

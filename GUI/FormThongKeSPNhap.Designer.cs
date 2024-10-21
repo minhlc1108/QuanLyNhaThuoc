@@ -186,9 +186,9 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(listView1);
-            groupBox2.Location = new Point(589, 270);
+            groupBox2.Location = new Point(638, 303);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(522, 480);
+            groupBox2.Size = new Size(544, 500);
             groupBox2.TabIndex = 16;
             groupBox2.TabStop = false;
             groupBox2.Text = "Bảng thông tin";
@@ -215,9 +215,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Location = new Point(34, 270);
+            groupBox1.Location = new Point(32, 303);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(522, 480);
+            groupBox1.Size = new Size(544, 500);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "Biểu đồ";
@@ -237,7 +237,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1145, 762);
+            ClientSize = new Size(1232, 858);
             Controls.Add(button1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
