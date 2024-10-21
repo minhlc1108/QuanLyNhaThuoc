@@ -16,5 +16,25 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void FormPhieuNhap_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

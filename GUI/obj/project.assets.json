@@ -95,19 +95,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Nam4HK1\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
+      "projectUniqueName": "D:\\DoAn\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
       "projectName": "GUI",
-      "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\GUI\\obj\\",
+      "projectPath": "D:\\DoAn\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "D:\\DoAn\\QuanLyNhaThuoc\\GUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -115,18 +115,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Nam4HK1\\QuanLyNhaThuoc\\BUS\\BUS.csproj": {
-              "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\BUS\\BUS.csproj"
+            "D:\\DoAn\\QuanLyNhaThuoc\\BUS\\BUS.csproj": {
+              "projectPath": "D:\\DoAn\\QuanLyNhaThuoc\\BUS\\BUS.csproj"
             },
-            "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj"
+            "D:\\DoAn\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
+              "projectPath": "D:\\DoAn\\QuanLyNhaThuoc\\DTO\\DTO.csproj"
             }
           }
         }

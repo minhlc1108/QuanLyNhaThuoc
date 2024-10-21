@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormNhaCungCap : Form
+    public partial class FormChiTietHoaDon : Form
     {
-        public FormNhaCungCap()
+        public FormChiTietHoaDon()
         {
             InitializeComponent();
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
