@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label2 = new Label();
-            label1 = new Label();
             button1 = new Button();
             textBox1 = new TextBox();
             label3 = new Label();
@@ -59,6 +58,10 @@
             clXuatXu = new ColumnHeader();
             clTrangThai = new ColumnHeader();
             button5 = new Button();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            button6 = new Button();
+            button7 = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // label2
@@ -72,38 +75,28 @@
             label2.Text = "QUẢN LÝ SẢN PHẨM";
             label2.Click += label2_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(205, 56);
-            label1.Name = "label1";
-            label1.Size = new Size(132, 20);
-            label1.TabIndex = 0;
-            label1.Text = "THÊM SẢN PHẨM";
-            label1.Click += label1_Click;
-            // 
             // button1
             // 
-            button1.Location = new Point(1086, 100);
+            button1.Location = new Point(1078, 100);
             button1.Name = "button1";
-            button1.Size = new Size(91, 26);
+            button1.Size = new Size(128, 26);
             button1.TabIndex = 3;
             button1.Text = "TÌM";
             button1.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(686, 103);
+            textBox1.Location = new Point(566, 101);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(382, 23);
+            textBox1.Size = new Size(491, 23);
             textBox1.TabIndex = 4;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(881, 56);
+            label3.Location = new Point(846, 56);
             label3.Name = "label3";
             label3.Size = new Size(74, 20);
             label3.TabIndex = 5;
@@ -143,11 +136,12 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(15, 266);
+            label7.Location = new Point(12, 277);
             label7.Name = "label7";
             label7.Size = new Size(73, 21);
             label7.TabIndex = 9;
             label7.Text = "Xuất xứ :";
+            label7.Click += label7_Click;
             // 
             // label8
             // 
@@ -202,7 +196,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(149, 266);
+            textBox5.Location = new Point(149, 275);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(373, 23);
             textBox5.TabIndex = 16;
@@ -262,7 +256,7 @@
             listView1.Columns.AddRange(new ColumnHeader[] { clMaSP, clTenSP, clLoaiSP, clNhaSX, clQuyCach, clXuatXu, clTrangThai });
             listView1.Location = new Point(566, 150);
             listView1.Name = "listView1";
-            listView1.Size = new Size(640, 540);
+            listView1.Size = new Size(640, 405);
             listView1.TabIndex = 23;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -311,11 +305,42 @@
             button5.Text = "KHÓA";
             button5.UseVisualStyleBackColor = true;
             // 
+            // button6
+            // 
+            button6.Location = new Point(683, 591);
+            button6.Name = "button6";
+            button6.Size = new Size(180, 26);
+            button6.TabIndex = 25;
+            button6.Text = "XUẤT DANH SÁCH";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(953, 591);
+            button7.Name = "button7";
+            button7.Size = new Size(121, 26);
+            button7.TabIndex = 26;
+            button7.Text = "LÀM MỚI";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(218, 56);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 20);
+            label1.TabIndex = 0;
+            label1.Text = "SẢN PHẨM";
+            label1.Click += label1_Click;
+            // 
             // FormSanPham
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1206, 694);
+            Controls.Add(button7);
+            Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(listView1);
             Controls.Add(button4);
@@ -349,7 +374,6 @@
 
         #endregion
         private Label label2;
-        private Label label1;
         private Button button1;
         private TextBox textBox1;
         private Label label3;
@@ -379,5 +403,9 @@
         private ColumnHeader clXuatXu;
         private ColumnHeader clTrangThai;
         private Button button5;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button button6;
+        private Button button7;
+        private Label label1;
     }
 }
