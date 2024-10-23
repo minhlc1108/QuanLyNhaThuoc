@@ -29,6 +29,7 @@ namespace GUI
                 disableButton();
                 currentButton = (IconButton)sender;
                 currentButton.Font = new Font("Segoe UI", 11F,FontStyle.Bold);
+                currentButton.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
                 currentButton.BackColor = Color.FromArgb(0, 168, 222);
             }
         }
@@ -132,7 +133,7 @@ namespace GUI
         private void MainForm_Load(object sender, EventArgs e)
         {
             // test db
-            MessageBox.Show(SanPhamBUS.Instance.GetAllProducts().ToArray().Length.ToString());
+            //MessageBox.Show(SanPhamBUS.Instance.GetAllProducts().ToArray().Length.ToString());
             if (panelMenu.Controls.Count > 0)
             {
                 int count = panelMenu.Controls.Count;
@@ -144,6 +145,18 @@ namespace GUI
                         break;
                     }
                 }
+            }
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn đăng xuất?", "Xác nhận đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                FormDangNhap formDN = new FormDangNhap();
+                formDN.Show();
+                this.Close();
             }
         }
     }

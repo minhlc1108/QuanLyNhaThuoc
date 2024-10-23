@@ -92,7 +92,7 @@
             lv_HoaDon.Location = new Point(14, 200);
             lv_HoaDon.Margin = new Padding(3, 4, 3, 4);
             lv_HoaDon.Name = "lv_HoaDon";
-            lv_HoaDon.Size = new Size(563, 267);
+            lv_HoaDon.Size = new Size(563, 273);
             lv_HoaDon.TabIndex = 21;
             lv_HoaDon.UseCompatibleStateImageBehavior = false;
             lv_HoaDon.View = View.Details;
@@ -195,10 +195,10 @@
             // tb_find
             // 
             tb_find.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tb_find.Location = new Point(736, 59);
+            tb_find.Location = new Point(784, 59);
             tb_find.Margin = new Padding(3, 4, 3, 4);
             tb_find.Name = "tb_find";
-            tb_find.Size = new Size(292, 30);
+            tb_find.Size = new Size(348, 30);
             tb_find.TabIndex = 7;
             // 
             // label6
@@ -244,7 +244,7 @@
             // 
             // btn_find
             // 
-            btn_find.Location = new Point(1045, 55);
+            btn_find.Location = new Point(1145, 57);
             btn_find.Margin = new Padding(3, 4, 3, 4);
             btn_find.Name = "btn_find";
             btn_find.Size = new Size(87, 34);
@@ -291,7 +291,7 @@
             lv_DSHoaDon.Location = new Point(620, 156);
             lv_DSHoaDon.Margin = new Padding(3, 4, 3, 4);
             lv_DSHoaDon.Name = "lv_DSHoaDon";
-            lv_DSHoaDon.Size = new Size(512, 588);
+            lv_DSHoaDon.Size = new Size(612, 619);
             lv_DSHoaDon.TabIndex = 34;
             lv_DSHoaDon.UseCompatibleStateImageBehavior = false;
             lv_DSHoaDon.View = View.Details;
@@ -361,7 +361,7 @@
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(9, 224);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(591, 474);
+            groupBox1.Size = new Size(591, 483);
             groupBox1.TabIndex = 37;
             groupBox1.TabStop = false;
             groupBox1.Text = "Sản phẩm";
@@ -401,7 +401,7 @@
             // btn_cancel
             // 
             btn_cancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_cancel.Location = new Point(128, 752);
+            btn_cancel.Location = new Point(118, 793);
             btn_cancel.Margin = new Padding(3, 4, 3, 4);
             btn_cancel.Name = "btn_cancel";
             btn_cancel.Size = new Size(100, 40);
@@ -412,7 +412,7 @@
             // btn_addHD
             // 
             btn_addHD.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_addHD.Location = new Point(12, 752);
+            btn_addHD.Location = new Point(12, 791);
             btn_addHD.Margin = new Padding(3, 4, 3, 4);
             btn_addHD.Name = "btn_addHD";
             btn_addHD.Size = new Size(89, 42);
@@ -424,7 +424,7 @@
             // 
             lb_tong.AutoSize = true;
             lb_tong.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_tong.Location = new Point(495, 702);
+            lb_tong.Location = new Point(511, 719);
             lb_tong.Name = "lb_tong";
             lb_tong.Size = new Size(89, 28);
             lb_tong.TabIndex = 42;
@@ -434,7 +434,7 @@
             // btn_export
             // 
             btn_export.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_export.Location = new Point(1045, 752);
+            btn_export.Location = new Point(1145, 793);
             btn_export.Margin = new Padding(3, 4, 3, 4);
             btn_export.Name = "btn_export";
             btn_export.Size = new Size(87, 42);
@@ -445,7 +445,7 @@
             // btn_show
             // 
             btn_show.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_show.Location = new Point(832, 752);
+            btn_show.Location = new Point(886, 793);
             btn_show.Margin = new Padding(3, 4, 3, 4);
             btn_show.Name = "btn_show";
             btn_show.Size = new Size(88, 42);
@@ -458,7 +458,7 @@
             // 
             cb_SDdiem.AutoSize = true;
             cb_SDdiem.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cb_SDdiem.Location = new Point(9, 701);
+            cb_SDdiem.Location = new Point(23, 721);
             cb_SDdiem.Name = "cb_SDdiem";
             cb_SDdiem.Size = new Size(147, 29);
             cb_SDdiem.TabIndex = 56;
@@ -469,7 +469,7 @@
             // 
             lb_diemTichLuy.AutoSize = true;
             lb_diemTichLuy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_diemTichLuy.Location = new Point(424, 736);
+            lb_diemTichLuy.Location = new Point(440, 747);
             lb_diemTichLuy.Name = "lb_diemTichLuy";
             lb_diemTichLuy.Size = new Size(160, 28);
             lb_diemTichLuy.TabIndex = 57;
@@ -483,7 +483,7 @@
             cbb_find.Location = new Point(620, 59);
             cbb_find.Margin = new Padding(3, 4, 3, 4);
             cbb_find.Name = "cbb_find";
-            cbb_find.Size = new Size(100, 31);
+            cbb_find.Size = new Size(132, 31);
             cbb_find.TabIndex = 58;
             // 
             // date_find1
@@ -525,7 +525,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1144, 807);
+            ClientSize = new Size(1244, 864);
             Controls.Add(tb_ngayLap);
             Controls.Add(label2);
             Controls.Add(date_find2);

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem13 = new ListViewItem(new string[] { "1", "", "", "", "" }, -1);
-            ListViewItem listViewItem14 = new ListViewItem("2");
-            ListViewItem listViewItem15 = new ListViewItem("3");
-            ListViewItem listViewItem16 = new ListViewItem("4");
-            ListViewItem listViewItem17 = new ListViewItem("5");
-            ListViewItem listViewItem18 = new ListViewItem("6");
+            ListViewItem listViewItem1 = new ListViewItem(new string[] { "1", "", "", "", "" }, -1);
+            ListViewItem listViewItem2 = new ListViewItem("2");
+            ListViewItem listViewItem3 = new ListViewItem("3");
+            ListViewItem listViewItem4 = new ListViewItem("4");
+            ListViewItem listViewItem5 = new ListViewItem("5");
+            ListViewItem listViewItem6 = new ListViewItem("6");
             groupBox1 = new GroupBox();
             cb_nu = new CheckBox();
             cb_nam = new CheckBox();
@@ -90,9 +90,9 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(tb_makh);
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(12, 92);
+            groupBox1.Location = new Point(14, 112);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(374, 382);
+            groupBox1.Size = new Size(457, 382);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thêm khách hàng";
@@ -123,28 +123,28 @@
             // 
             date_kh.Location = new Point(121, 146);
             date_kh.Name = "date_kh";
-            date_kh.Size = new Size(234, 34);
+            date_kh.Size = new Size(317, 34);
             date_kh.TabIndex = 21;
             // 
             // tb_diem
             // 
             tb_diem.Location = new Point(121, 329);
             tb_diem.Name = "tb_diem";
-            tb_diem.Size = new Size(234, 34);
+            tb_diem.Size = new Size(317, 34);
             tb_diem.TabIndex = 20;
             // 
             // tb_hoten
             // 
             tb_hoten.Location = new Point(121, 93);
             tb_hoten.Name = "tb_hoten";
-            tb_hoten.Size = new Size(234, 34);
+            tb_hoten.Size = new Size(317, 34);
             tb_hoten.TabIndex = 19;
             // 
             // tb_sdt
             // 
             tb_sdt.Location = new Point(121, 272);
             tb_sdt.Name = "tb_sdt";
-            tb_sdt.Size = new Size(234, 34);
+            tb_sdt.Size = new Size(317, 34);
             tb_sdt.TabIndex = 17;
             // 
             // label6
@@ -211,7 +211,7 @@
             // 
             tb_makh.Location = new Point(121, 42);
             tb_makh.Name = "tb_makh";
-            tb_makh.Size = new Size(234, 34);
+            tb_makh.Size = new Size(317, 34);
             tb_makh.TabIndex = 9;
             // 
             // label11
@@ -234,18 +234,18 @@
             groupBox2.Controls.Add(btn_edit);
             groupBox2.Controls.Add(btn_add);
             groupBox2.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(14, 489);
+            groupBox2.Location = new Point(14, 511);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(372, 177);
+            groupBox2.Size = new Size(457, 177);
             groupBox2.TabIndex = 33;
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
             // 
             // btn_xuat
             // 
-            btn_xuat.Location = new Point(157, 118);
+            btn_xuat.Location = new Point(175, 118);
             btn_xuat.Name = "btn_xuat";
-            btn_xuat.Size = new Size(87, 40);
+            btn_xuat.Size = new Size(120, 40);
             btn_xuat.TabIndex = 7;
             btn_xuat.Text = "Xuất";
             btn_xuat.UseVisualStyleBackColor = true;
@@ -261,16 +261,16 @@
             // 
             // btn_del
             // 
-            btn_del.Location = new Point(262, 118);
+            btn_del.Location = new Point(332, 118);
             btn_del.Name = "btn_del";
-            btn_del.Size = new Size(91, 40);
+            btn_del.Size = new Size(106, 40);
             btn_del.TabIndex = 5;
             btn_del.Text = "Xoá";
             btn_del.UseVisualStyleBackColor = true;
             // 
             // btn_clear
             // 
-            btn_clear.Location = new Point(247, 53);
+            btn_clear.Location = new Point(332, 53);
             btn_clear.Name = "btn_clear";
             btn_clear.Size = new Size(106, 40);
             btn_clear.TabIndex = 2;
@@ -279,9 +279,9 @@
             // 
             // btn_edit
             // 
-            btn_edit.Location = new Point(135, 53);
+            btn_edit.Location = new Point(175, 53);
             btn_edit.Name = "btn_edit";
-            btn_edit.Size = new Size(97, 40);
+            btn_edit.Size = new Size(120, 40);
             btn_edit.TabIndex = 1;
             btn_edit.Text = "Sửa";
             btn_edit.UseVisualStyleBackColor = true;
@@ -290,7 +290,7 @@
             // 
             btn_add.Location = new Point(20, 53);
             btn_add.Name = "btn_add";
-            btn_add.Size = new Size(97, 40);
+            btn_add.Size = new Size(119, 40);
             btn_add.TabIndex = 0;
             btn_add.Text = "Thêm";
             btn_add.UseVisualStyleBackColor = true;
@@ -300,23 +300,24 @@
             cbb_find.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbb_find.FormattingEnabled = true;
             cbb_find.Items.AddRange(new object[] { "Mã KH", "Họ tên", "Ngày sinh", "Giới tính", "SĐT", "Điểm" });
-            cbb_find.Location = new Point(440, 71);
+            cbb_find.Location = new Point(491, 71);
             cbb_find.Name = "cbb_find";
             cbb_find.Size = new Size(149, 33);
             cbb_find.TabIndex = 34;
+            cbb_find.SelectedIndexChanged += cbb_find_SelectedIndexChanged;
             // 
             // tb_find
             // 
             tb_find.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tb_find.Location = new Point(614, 71);
+            tb_find.Location = new Point(704, 71);
             tb_find.Name = "tb_find";
-            tb_find.Size = new Size(418, 34);
+            tb_find.Size = new Size(428, 34);
             tb_find.TabIndex = 35;
             // 
             // btn_find
             // 
             btn_find.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_find.Location = new Point(1038, 71);
+            btn_find.Location = new Point(1138, 71);
             btn_find.Name = "btn_find";
             btn_find.Size = new Size(94, 34);
             btn_find.TabIndex = 36;
@@ -326,38 +327,39 @@
             // date_find1
             // 
             date_find1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            date_find1.Location = new Point(440, 131);
+            date_find1.Location = new Point(491, 124);
             date_find1.Name = "date_find1";
-            date_find1.Size = new Size(279, 34);
+            date_find1.Size = new Size(296, 34);
             date_find1.TabIndex = 22;
             // 
             // date_find2
             // 
             date_find2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            date_find2.Location = new Point(748, 131);
+            date_find2.Location = new Point(827, 124);
             date_find2.Name = "date_find2";
-            date_find2.Size = new Size(284, 34);
+            date_find2.Size = new Size(305, 34);
             date_find2.TabIndex = 37;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(725, 134);
+            label7.Location = new Point(793, 134);
             label7.Name = "label7";
             label7.Size = new Size(17, 23);
             label7.TabIndex = 22;
             label7.Text = "-";
+            label7.Click += label7_Click;
             // 
             // lv_qlkhachhang
             // 
             lv_qlkhachhang.Activation = ItemActivation.TwoClick;
             lv_qlkhachhang.Columns.AddRange(new ColumnHeader[] { stt, clMaKh, clhoten, clNgaySinh, clGioiTinh, clSdt, clDiem });
             lv_qlkhachhang.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lv_qlkhachhang.Items.AddRange(new ListViewItem[] { listViewItem13, listViewItem14, listViewItem15, listViewItem16, listViewItem17, listViewItem18 });
-            lv_qlkhachhang.Location = new Point(440, 185);
+            lv_qlkhachhang.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4, listViewItem5, listViewItem6 });
+            lv_qlkhachhang.Location = new Point(491, 185);
             lv_qlkhachhang.Name = "lv_qlkhachhang";
-            lv_qlkhachhang.Size = new Size(692, 602);
+            lv_qlkhachhang.Size = new Size(741, 651);
             lv_qlkhachhang.TabIndex = 38;
             lv_qlkhachhang.UseCompatibleStateImageBehavior = false;
             lv_qlkhachhang.View = View.Details;
@@ -400,7 +402,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1144, 807);
+            ClientSize = new Size(1244, 864);
             Controls.Add(lv_qlkhachhang);
             Controls.Add(label7);
             Controls.Add(date_find2);
