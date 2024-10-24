@@ -386,6 +386,9 @@ namespace GUI
             }
         }
 
+        private void lv_qlduocsi_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace GUI
     {
         public FormSanPham()
         {
-             InitializeComponent();
+            InitializeComponent();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace GUI
         {
         }
 
-            private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -37,6 +37,21 @@ namespace GUI
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormSanPham_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
         {
 
         }

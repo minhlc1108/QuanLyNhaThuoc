@@ -73,7 +73,7 @@
             label1.Location = new Point(475, 9);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(212, 31);
+            label1.Size = new Size(177, 25);
             label1.TabIndex = 2;
             label1.Text = "QUẢN LÝ DƯỢC SĨ";
             // 
@@ -105,7 +105,7 @@
             erorr_email.ForeColor = Color.Red;
             erorr_email.Location = new Point(96, 300);
             erorr_email.Name = "erorr_email";
-            erorr_email.Size = new Size(0, 20);
+            erorr_email.Size = new Size(0, 15);
             erorr_email.TabIndex = 34;
             // 
             // erorr_sdt
@@ -115,7 +115,7 @@
             erorr_sdt.ForeColor = Color.Red;
             erorr_sdt.Location = new Point(96, 226);
             erorr_sdt.Name = "erorr_sdt";
-            erorr_sdt.Size = new Size(0, 20);
+            erorr_sdt.Size = new Size(0, 15);
             erorr_sdt.TabIndex = 33;
             // 
             // erorr_hoTen
@@ -125,7 +125,7 @@
             erorr_hoTen.ForeColor = Color.Red;
             erorr_hoTen.Location = new Point(96, 152);
             erorr_hoTen.Name = "erorr_hoTen";
-            erorr_hoTen.Size = new Size(0, 20);
+            erorr_hoTen.Size = new Size(0, 15);
             erorr_hoTen.TabIndex = 32;
             // 
             // label8
@@ -134,7 +134,7 @@
             label8.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.Location = new Point(6, 198);
             label8.Name = "label8";
-            label8.Size = new Size(49, 23);
+            label8.Size = new Size(38, 17);
             label8.TabIndex = 30;
             label8.Text = "SĐT :";
             // 
@@ -144,7 +144,7 @@
             label7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.Location = new Point(6, 124);
             label7.Name = "label7";
-            label7.Size = new Size(72, 23);
+            label7.Size = new Size(57, 17);
             label7.TabIndex = 29;
             label7.Text = "Họ tên :";
             // 
@@ -154,7 +154,7 @@
             label9.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.Location = new Point(6, 272);
             label9.Name = "label9";
-            label9.Size = new Size(60, 23);
+            label9.Size = new Size(47, 17);
             label9.TabIndex = 31;
             label9.Text = "Email :";
             // 
@@ -164,7 +164,7 @@
             label14.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.Location = new Point(6, 48);
             label14.Name = "label14";
-            label14.Size = new Size(70, 23);
+            label14.Size = new Size(54, 17);
             label14.TabIndex = 28;
             label14.Text = "Mã DS :";
             // 
@@ -172,7 +172,7 @@
             // 
             tb_email.Location = new Point(96, 263);
             tb_email.Name = "tb_email";
-            tb_email.Size = new Size(275, 34);
+            tb_email.Size = new Size(275, 29);
             tb_email.TabIndex = 11;
             // 
             // tb_ma
@@ -180,21 +180,21 @@
             tb_ma.Enabled = false;
             tb_ma.Location = new Point(96, 39);
             tb_ma.Name = "tb_ma";
-            tb_ma.Size = new Size(275, 34);
+            tb_ma.Size = new Size(275, 29);
             tb_ma.TabIndex = 8;
             // 
             // tb_sdt
             // 
             tb_sdt.Location = new Point(96, 189);
             tb_sdt.Name = "tb_sdt";
-            tb_sdt.Size = new Size(275, 34);
+            tb_sdt.Size = new Size(275, 29);
             tb_sdt.TabIndex = 10;
             // 
             // tb_hoten
             // 
             tb_hoten.Location = new Point(96, 115);
             tb_hoten.Name = "tb_hoten";
-            tb_hoten.Size = new Size(275, 34);
+            tb_hoten.Size = new Size(275, 29);
             tb_hoten.TabIndex = 9;
             // 
             // groupBox2
@@ -304,10 +304,9 @@
             cbb_find.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbb_find.FormattingEnabled = true;
             cbb_find.Items.AddRange(new object[] { "Mã DS", "Họ tên", "SĐT", "Email" });
-            cbb_find.SelectedIndex = 0;
             cbb_find.Location = new Point(784, 73);
             cbb_find.Name = "cbb_find";
-            cbb_find.Size = new Size(126, 33);
+            cbb_find.Size = new Size(126, 27);
             cbb_find.TabIndex = 15;
             cbb_find.SelectedIndexChanged += cbb_find_SelectedIndexChanged;
             // 
@@ -316,7 +315,7 @@
             tb_find.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tb_find.Location = new Point(916, 73);
             tb_find.Name = "tb_find";
-            tb_find.Size = new Size(316, 34);
+            tb_find.Size = new Size(316, 29);
             tb_find.TabIndex = 12;
             tb_find.TextChanged += tb_find_TextChanged;
             // 
@@ -326,7 +325,7 @@
             label6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.Location = new Point(415, 79);
             label6.Name = "label6";
-            label6.Size = new Size(96, 23);
+            label6.Size = new Size(76, 17);
             label6.TabIndex = 36;
             label6.Text = "Trạng thái :";
             // 
@@ -335,10 +334,9 @@
             cbb_findTT.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbb_findTT.FormattingEnabled = true;
             cbb_findTT.Items.AddRange(new object[] { "Tất cả", "Còn làm", "Nghỉ làm" });
-            cbb_findTT.SelectedIndex = 0;
             cbb_findTT.Location = new Point(517, 73);
             cbb_findTT.Name = "cbb_findTT";
-            cbb_findTT.Size = new Size(125, 33);
+            cbb_findTT.Size = new Size(125, 27);
             cbb_findTT.TabIndex = 37;
             cbb_findTT.SelectedIndexChanged += cbb_findTT_SelectedIndexChanged;
             // 
@@ -355,6 +353,7 @@
             lv_qlduocsi.UseCompatibleStateImageBehavior = false;
             lv_qlduocsi.View = View.Details;
             lv_qlduocsi.ItemSelectionChanged += lv_qlduocsi_ItemSelectionChanged;
+            lv_qlduocsi.SelectedIndexChanged += lv_qlduocsi_SelectedIndexChanged;
             // 
             // clMaSP
             // 
@@ -397,16 +396,16 @@
             label2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(689, 79);
             label2.Name = "label2";
-            label2.Size = new Size(89, 23);
+            label2.Size = new Size(70, 17);
             label2.TabIndex = 49;
             label2.Text = "Tìm kiếm :";
             // 
             // FormDuocSi
             // 
-            AutoScaleDimensions = new SizeF(14F, 31F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1244, 864);
+            ClientSize = new Size(1244, 749);
             Controls.Add(label2);
             Controls.Add(lv_qlduocsi);
             Controls.Add(cbb_findTT);

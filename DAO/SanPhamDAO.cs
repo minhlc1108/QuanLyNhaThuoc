@@ -1,4 +1,5 @@
 ﻿using DTO;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -61,6 +62,34 @@ namespace DAO
                 xuatxu, 
                 canketoa,
                 trangthai
+            };
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+            return result > 0;
+        }
+        public bool UpdateTrangThaiSanPham(string masp,bool trangthai)
+        {
+            string query = "UPDATE sanpham SET trangthai = @TrangThai WHERE masp = @MaSP ";
+            object[] parameters =
+            {
+                masp,
+                trangthai
+            };
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+
+            return result > 0;
+        }
+        public bool UpdateSanPham(string masp, string tensp, string loaisp, string nhasanxuat, string quycach, string xuatxu, bool canketoa)
+        {
+            string query = "UPDATE sanpham SET tensp = @TenSP , loaisp = @LoaiSP , nhasanxuat = @NhaSanXuat , quycach = @QuyCach , xuatxu = @XuatXu , canketoa = @CanKeToa WHERE masp = @MaSP ";
+            object[] parameters =
+            {
+                masp,
+                tensp,
+                loaisp,
+                nhasanxuat,
+                quycach,
+                xuatxu,
+                canketoa
             };
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;
