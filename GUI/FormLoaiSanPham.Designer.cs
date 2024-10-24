@@ -1,4 +1,5 @@
-﻿namespace GUI
+﻿
+namespace GUI
 {
     partial class FormLoaiSanPham
     {
@@ -29,24 +30,25 @@
         private void InitializeComponent()
         {
             label3 = new Label();
-            textBox2 = new TextBox();
+            txtLoaiSanPham = new TextBox();
             label5 = new Label();
             label4 = new Label();
             label1 = new Label();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button7 = new Button();
-            button6 = new Button();
-            listView1 = new ListView();
+            btnXoaLSP = new Button();
+            btnUpdateLSP = new Button();
+            btnResetLSP = new Button();
+            btnThemLSP = new Button();
+            btnLamMoiBang = new Button();
+            btnXuatLSP = new Button();
+            lsvLoaiSanPham = new ListView();
+            clSTT = new ColumnHeader();
             clMaLoaiSP = new ColumnHeader();
             clTenLoaiSP = new ColumnHeader();
             clTrangThai = new ColumnHeader();
             label2 = new Label();
-            textBox1 = new TextBox();
-            button1 = new Button();
-            textBox3 = new TextBox();
+            txtTimKiem = new TextBox();
+            btnTimKiem = new Button();
+            txtMaLoaiSP = new TextBox();
             label6 = new Label();
             SuspendLayout();
             // 
@@ -60,12 +62,12 @@
             label3.TabIndex = 2;
             label3.Text = "QUẢN LÝ LOẠI SẢN PHẨM";
             // 
-            // textBox2
+            // txtLoaiSanPham
             // 
-            textBox2.Location = new Point(166, 239);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(283, 23);
-            textBox2.TabIndex = 22;
+            txtLoaiSanPham.Location = new Point(166, 239);
+            txtLoaiSanPham.Name = "txtLoaiSanPham";
+            txtLoaiSanPham.Size = new Size(283, 23);
+            txtLoaiSanPham.TabIndex = 22;
             // 
             // label5
             // 
@@ -96,74 +98,86 @@
             label1.TabIndex = 19;
             label1.Text = "LOẠI SẢN PHẨM";
             // 
-            // button5
+            // btnXoaLSP
             // 
-            button5.Location = new Point(54, 380);
-            button5.Name = "button5";
-            button5.Size = new Size(110, 26);
-            button5.TabIndex = 28;
-            button5.Text = "KHÓA";
-            button5.UseVisualStyleBackColor = true;
+            btnXoaLSP.Location = new Point(54, 380);
+            btnXoaLSP.Name = "btnXoaLSP";
+            btnXoaLSP.Size = new Size(110, 26);
+            btnXoaLSP.TabIndex = 28;
+            btnXoaLSP.Text = "XÓA";
+            btnXoaLSP.UseVisualStyleBackColor = true;
+            btnXoaLSP.Click += btnXoaLSP_Click;
             // 
-            // button4
+            // btnUpdateLSP
             // 
-            button4.Location = new Point(240, 380);
-            button4.Name = "button4";
-            button4.Size = new Size(133, 26);
-            button4.TabIndex = 27;
-            button4.Text = "LƯU CHỈNH SỬA";
-            button4.UseVisualStyleBackColor = true;
+            btnUpdateLSP.Location = new Point(240, 380);
+            btnUpdateLSP.Name = "btnUpdateLSP";
+            btnUpdateLSP.Size = new Size(133, 26);
+            btnUpdateLSP.TabIndex = 27;
+            btnUpdateLSP.Text = "LƯU CHỈNH SỬA";
+            btnUpdateLSP.UseVisualStyleBackColor = true;
+            btnUpdateLSP.Click += btnUpdateLSP_Click;
             // 
-            // button3
+            // btnResetLSP
             // 
-            button3.Location = new Point(240, 321);
-            button3.Name = "button3";
-            button3.Size = new Size(133, 26);
-            button3.TabIndex = 26;
-            button3.Text = "LÀM MỚI";
-            button3.UseVisualStyleBackColor = true;
+            btnResetLSP.Location = new Point(240, 321);
+            btnResetLSP.Name = "btnResetLSP";
+            btnResetLSP.Size = new Size(133, 26);
+            btnResetLSP.TabIndex = 26;
+            btnResetLSP.Text = "LÀM MỚI";
+            btnResetLSP.UseVisualStyleBackColor = true;
+            btnResetLSP.Click += btnResetLSP_Click;
             // 
-            // button2
+            // btnThemLSP
             // 
-            button2.Location = new Point(54, 321);
-            button2.Name = "button2";
-            button2.Size = new Size(110, 26);
-            button2.TabIndex = 25;
-            button2.Text = "THÊM";
-            button2.UseVisualStyleBackColor = true;
+            btnThemLSP.Location = new Point(54, 321);
+            btnThemLSP.Name = "btnThemLSP";
+            btnThemLSP.Size = new Size(110, 26);
+            btnThemLSP.TabIndex = 25;
+            btnThemLSP.Text = "THÊM";
+            btnThemLSP.UseVisualStyleBackColor = true;
+            btnThemLSP.Click += btnThemLSP_Click;
             // 
-            // button7
+            // btnLamMoiBang
             // 
-            button7.Location = new Point(880, 631);
-            button7.Name = "button7";
-            button7.Size = new Size(121, 26);
-            button7.TabIndex = 34;
-            button7.Text = "LÀM MỚI";
-            button7.UseVisualStyleBackColor = true;
+            btnLamMoiBang.Location = new Point(880, 631);
+            btnLamMoiBang.Name = "btnLamMoiBang";
+            btnLamMoiBang.Size = new Size(121, 26);
+            btnLamMoiBang.TabIndex = 34;
+            btnLamMoiBang.Text = "LÀM MỚI";
+            btnLamMoiBang.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnXuatLSP
             // 
-            button6.Location = new Point(610, 631);
-            button6.Name = "button6";
-            button6.Size = new Size(180, 26);
-            button6.TabIndex = 33;
-            button6.Text = "XUẤT DANH SÁCH";
-            button6.UseVisualStyleBackColor = true;
+            btnXuatLSP.Location = new Point(610, 631);
+            btnXuatLSP.Name = "btnXuatLSP";
+            btnXuatLSP.Size = new Size(180, 26);
+            btnXuatLSP.TabIndex = 33;
+            btnXuatLSP.Text = "XUẤT DANH SÁCH";
+            btnXuatLSP.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // lsvLoaiSanPham
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { clMaLoaiSP, clTenLoaiSP, clTrangThai });
-            listView1.Location = new Point(493, 190);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(640, 405);
-            listView1.TabIndex = 32;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            lsvLoaiSanPham.Columns.AddRange(new ColumnHeader[] { clSTT, clMaLoaiSP, clTenLoaiSP, clTrangThai });
+            lsvLoaiSanPham.FullRowSelect = true;
+            lsvLoaiSanPham.Location = new Point(455, 173);
+            lsvLoaiSanPham.Name = "lsvLoaiSanPham";
+            lsvLoaiSanPham.Size = new Size(640, 405);
+            lsvLoaiSanPham.TabIndex = 32;
+            lsvLoaiSanPham.UseCompatibleStateImageBehavior = false;
+            lsvLoaiSanPham.View = View.Details;
+            lsvLoaiSanPham.ItemSelectionChanged += lsvLoaiSanPham_ItemSelectionChanged;
+            lsvLoaiSanPham.SelectedIndexChanged += lsvLoaiSanPham_SelectedIndexChanged;
+            // 
+            // clSTT
+            // 
+            clSTT.Text = "STT";
+            clSTT.Width = 50;
             // 
             // clMaLoaiSP
             // 
             clMaLoaiSP.Text = "Mã Loại Sản Phẩm";
-            clMaLoaiSP.Width = 200;
+            clMaLoaiSP.Width = 150;
             // 
             // clTenLoaiSP
             // 
@@ -179,34 +193,34 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(775, 94);
+            label2.Location = new Point(737, 77);
             label2.Name = "label2";
             label2.Size = new Size(74, 20);
             label2.TabIndex = 31;
             label2.Text = "TÌM KIẾM";
             // 
-            // textBox1
+            // txtTimKiem
             // 
-            textBox1.Location = new Point(493, 141);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(491, 23);
-            textBox1.TabIndex = 30;
+            txtTimKiem.Location = new Point(455, 124);
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(491, 23);
+            txtTimKiem.TabIndex = 30;
             // 
-            // button1
+            // btnTimKiem
             // 
-            button1.Location = new Point(1005, 140);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 26);
-            button1.TabIndex = 29;
-            button1.Text = "TÌM";
-            button1.UseVisualStyleBackColor = true;
+            btnTimKiem.Location = new Point(967, 123);
+            btnTimKiem.Name = "btnTimKiem";
+            btnTimKiem.Size = new Size(128, 26);
+            btnTimKiem.TabIndex = 29;
+            btnTimKiem.Text = "TÌM";
+            btnTimKiem.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // txtMaLoaiSP
             // 
-            textBox3.Location = new Point(166, 173);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(283, 23);
-            textBox3.TabIndex = 36;
+            txtMaLoaiSP.Location = new Point(166, 173);
+            txtMaLoaiSP.Name = "txtMaLoaiSP";
+            txtMaLoaiSP.Size = new Size(283, 23);
+            txtMaLoaiSP.TabIndex = 36;
             // 
             // label6
             // 
@@ -223,19 +237,19 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1134, 679);
-            Controls.Add(textBox3);
+            Controls.Add(txtMaLoaiSP);
             Controls.Add(label6);
-            Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(listView1);
+            Controls.Add(btnLamMoiBang);
+            Controls.Add(btnXuatLSP);
+            Controls.Add(lsvLoaiSanPham);
             Controls.Add(label2);
-            Controls.Add(textBox1);
-            Controls.Add(button1);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(textBox2);
+            Controls.Add(txtTimKiem);
+            Controls.Add(btnTimKiem);
+            Controls.Add(btnXoaLSP);
+            Controls.Add(btnUpdateLSP);
+            Controls.Add(btnResetLSP);
+            Controls.Add(btnThemLSP);
+            Controls.Add(txtLoaiSanPham);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label1);
@@ -247,19 +261,24 @@
             PerformLayout();
         }
 
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
         private Label label3;
-        private TextBox textBox2;
+        private TextBox txtLoaiSanPham;
         private Label label5;
         private Label label4;
         private Label label1;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button7;
-        private Button button6;
-        private ListView listView1;
+        private Button btnXoaLSP;
+        private Button btnUpdateLSP;
+        private Button btnResetLSP;
+        private Button btnThemLSP;
+        private Button btnLamMoiBang;
+        private Button btnXuatLSP;
+        private ListView lsvLoaiSanPham;
         private ColumnHeader clMaLoaiSP;
         private ColumnHeader clMaSP;
         private ColumnHeader clTenSP;
@@ -269,9 +288,10 @@
         private ColumnHeader clTenLoaiSP;
         private ColumnHeader clTrangThai;
         private Label label2;
-        private TextBox textBox1;
-        private Button button1;
-        private TextBox textBox3;
+        private TextBox txtTimKiem;
+        private Button btnTimKiem;
+        private TextBox txtMaLoaiSP;
         private Label label6;
+        private ColumnHeader clSTT;
     }
 }
