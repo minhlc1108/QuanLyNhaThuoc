@@ -34,7 +34,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(42, 48);
+            label1.Location = new Point(181, 58);
             label1.Name = "label1";
             label1.Size = new Size(75, 20);
             label1.TabIndex = 0;
@@ -44,10 +44,10 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 504);
+            ClientSize = new Size(956, 664);
             Controls.Add(label1);
             Name = "FormSanPham";
-            Text = "FormSanPham";
+            Text = "z`";
             ResumeLayout(false);
             PerformLayout();
         }

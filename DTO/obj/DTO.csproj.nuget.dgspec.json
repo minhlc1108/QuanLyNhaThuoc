@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {}
+    "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {}
   },
   "projects": {
-    "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
+    "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
+        "projectUniqueName": "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
         "projectName": "DTO",
-        "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\obj\\",
+        "projectPath": "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\DTO\\DTO.csproj",
+        "packagesPath": "C:\\Users\\dangk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dangk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -45,6 +45,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Guna.UI2.WinForms": {
+              "target": "Package",
+              "version": "[2.0.4.6, )"
+            },
+            "Kimtoo.NavigationMenu": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

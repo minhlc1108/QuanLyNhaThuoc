@@ -14,12 +14,107 @@
           "Microsoft.WindowsDesktop.App"
         ]
       },
+      "GumroadLicensing/1.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/net40/GumroadLicensing.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GumroadLicensing.dll": {}
+        }
+      },
+      "Guna.UI2.WinForms/2.0.4.6": {
+        "type": "package",
+        "dependencies": {
+          "System.Management": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows7.0/Guna.UI2.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows7.0/Guna.UI2.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "Kimtoo.NavigationMenu/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "GumroadLicensing": "1.0.3"
+        },
+        "compile": {
+          "lib/net40/NavigationMenu.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NavigationMenu.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.CodeDom/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/System.CodeDom.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.CodeDom.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Management/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.CodeDom": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net7.0/System.Management.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "BUS/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "DAO": "1.0.0",
-          "DTO": "1.0.0"
+          "DTO": "1.0.0",
+          "Guna.UI2.WinForms": "2.0.4.6",
+          "Kimtoo.NavigationMenu": "1.0.2"
         },
         "compile": {
           "bin/placeholder/BUS.dll": {}
@@ -32,7 +127,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "DTO": "1.0.0"
+          "DTO": "1.0.0",
+          "Guna.UI2.WinForms": "2.0.4.6",
+          "Kimtoo.NavigationMenu": "1.0.2"
         },
         "compile": {
           "bin/placeholder/DAO.dll": {}
@@ -44,6 +141,10 @@
       "DTO/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Guna.UI2.WinForms": "2.0.4.6",
+          "Kimtoo.NavigationMenu": "1.0.2"
+        },
         "compile": {
           "bin/placeholder/DTO.dll": {}
         },
@@ -71,6 +172,137 @@
         "lib/netcoreapp3.1/FontAwesome.Sharp.dll"
       ]
     },
+    "GumroadLicensing/1.0.3": {
+      "sha512": "FZuR2d4kVhWe0ODfXZ6m3QRo3EeMEAdHCGWgWwg1euM2RYytkzBsR0EfwgInnxfj9Hir3kAyuOnHNpymmUl2ZA==",
+      "type": "package",
+      "path": "gumroadlicensing/1.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gumroadlicensing.1.0.3.nupkg.sha512",
+        "gumroadlicensing.nuspec",
+        "lib/Assets/icon.png",
+        "lib/net40/GumroadLicensing.dll"
+      ]
+    },
+    "Guna.UI2.WinForms/2.0.4.6": {
+      "sha512": "NYzSJp7e47Cz3NgGCHvzadash8ycmxxUnpLg4Rr/MSYG9WDw0HOoTI4SkbDW+HbACrf6tsWYCuzWkgvjuM/O6w==",
+      "type": "package",
+      "path": "guna.ui2.winforms/2.0.4.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "guna.ui2.winforms.2.0.4.6.nupkg.sha512",
+        "guna.ui2.winforms.nuspec",
+        "icon.png",
+        "lib/net40/Guna.UI2.dll",
+        "lib/net45/Guna.UI2.dll",
+        "lib/net461/Guna.UI2.dll",
+        "lib/net472/Guna.UI2.dll",
+        "lib/net48/Guna.UI2.dll",
+        "lib/net6.0-windows7.0/Guna.UI2.dll",
+        "lib/net7.0-windows7.0/Guna.UI2.dll",
+        "lib/netcoreapp3.1/Guna.UI2.dll"
+      ]
+    },
+    "Kimtoo.NavigationMenu/1.0.2": {
+      "sha512": "luvxAQNPEjO7Phu2mrbb09cXypj6op2aAQgimodysLT/OUgyP7RHSz4d/NN+F66FVO1rM8rIVy7pM44GDSfcTg==",
+      "type": "package",
+      "path": "kimtoo.navigationmenu/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "kimtoo.navigationmenu.1.0.2.nupkg.sha512",
+        "kimtoo.navigationmenu.nuspec",
+        "lib/Assets/README.md",
+        "lib/Assets/logo.png",
+        "lib/net40/NavigationMenu.dll"
+      ]
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "System.CodeDom/7.0.0": {
+      "sha512": "GLltyqEsE5/3IE+zYRP5sNa1l44qKl9v+bfdMcwg+M9qnQf47wK3H0SUR/T+3N4JEQXF3vV4CSuuo0rsg+nq2A==",
+      "type": "package",
+      "path": "system.codedom/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.CodeDom.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.CodeDom.targets",
+        "lib/net462/System.CodeDom.dll",
+        "lib/net462/System.CodeDom.xml",
+        "lib/net6.0/System.CodeDom.dll",
+        "lib/net6.0/System.CodeDom.xml",
+        "lib/net7.0/System.CodeDom.dll",
+        "lib/net7.0/System.CodeDom.xml",
+        "lib/netstandard2.0/System.CodeDom.dll",
+        "lib/netstandard2.0/System.CodeDom.xml",
+        "system.codedom.7.0.0.nupkg.sha512",
+        "system.codedom.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Management/7.0.0": {
+      "sha512": "A4jed4QUviDOm7fJNKAJObEAEkEUXmkGL/w0iyCYTzrl1rezTj8LGFHfsVst4Vb9JwFcTpboiDrvdST48avBpw==",
+      "type": "package",
+      "path": "system.management/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Management.targets",
+        "lib/net462/_._",
+        "lib/net6.0/System.Management.dll",
+        "lib/net6.0/System.Management.xml",
+        "lib/net7.0/System.Management.dll",
+        "lib/net7.0/System.Management.xml",
+        "lib/netstandard2.0/System.Management.dll",
+        "lib/netstandard2.0/System.Management.xml",
+        "runtimes/win/lib/net6.0/System.Management.dll",
+        "runtimes/win/lib/net6.0/System.Management.xml",
+        "runtimes/win/lib/net7.0/System.Management.dll",
+        "runtimes/win/lib/net7.0/System.Management.xml",
+        "system.management.7.0.0.nupkg.sha512",
+        "system.management.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "BUS/1.0.0": {
       "type": "project",
       "path": "../BUS/BUS.csproj",
@@ -91,23 +323,25 @@
     "net8.0-windows7.0": [
       "BUS >= 1.0.0",
       "DTO >= 1.0.0",
-      "FontAwesome.Sharp >= 6.6.0"
+      "FontAwesome.Sharp >= 6.6.0",
+      "Guna.UI2.WinForms >= 2.0.4.6",
+      "Kimtoo.NavigationMenu >= 1.0.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {}
+    "C:\\Users\\dangk\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Nam4HK1\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
+      "projectUniqueName": "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
       "projectName": "GUI",
-      "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\GUI\\obj\\",
+      "projectPath": "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\GUI\\GUI.csproj",
+      "packagesPath": "C:\\Users\\dangk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\GUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dangk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -122,11 +356,11 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Nam4HK1\\QuanLyNhaThuoc\\BUS\\BUS.csproj": {
-              "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\BUS\\BUS.csproj"
+            "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\BUS\\BUS.csproj": {
+              "projectPath": "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\BUS\\BUS.csproj"
             },
-            "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Nam4HK1\\QuanLyNhaThuoc\\DTO\\DTO.csproj"
+            "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\DTO\\DTO.csproj": {
+              "projectPath": "C:\\Users\\dangk\\OneDrive\\Documents\\GitHub\\QuanLyNhaThuoc\\DTO\\DTO.csproj"
             }
           }
         }
@@ -149,6 +383,14 @@
           "FontAwesome.Sharp": {
             "target": "Package",
             "version": "[6.6.0, )"
+          },
+          "Guna.UI2.WinForms": {
+            "target": "Package",
+            "version": "[2.0.4.6, )"
+          },
+          "Kimtoo.NavigationMenu": {
+            "target": "Package",
+            "version": "[1.0.2, )"
           }
         },
         "imports": [
@@ -170,8 +412,30 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'GumroadLicensing 1.0.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "GumroadLicensing",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Kimtoo.NavigationMenu 1.0.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Kimtoo.NavigationMenu",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }
