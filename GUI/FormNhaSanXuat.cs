@@ -16,5 +16,10 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void lv_qlncc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
