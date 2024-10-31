@@ -69,15 +69,19 @@ namespace DAO
                 {
                     if (parameters != null)
                     {
-                        string[] listParams = query.Split(' ');
-                        int i = 0;
-                        foreach (string param in listParams)
+                        var listParams = query.Split(' ').Where(p => p.StartsWith("@")).ToList();
+
+                        // Kiểm tra số lượng tham số
+                        if (listParams.Count != parameters.Length)
                         {
-                            if (param.Contains("@"))
-                            {
-                                command.Parameters.AddWithValue(param, parameters[i]);
-                                i++;
-                            }
+                            Console.WriteLine($"Số lượng tham số trong truy vấn: {listParams.Count}");
+                            Console.WriteLine($"Số lượng giá trị trong mảng parameters: {parameters.Length}");
+                            throw new ArgumentException("Số lượng tham số trong câu truy vấn không khớp với mảng parameters.");
+                        }
+
+                        for (int i = 0; i < listParams.Count; i++)
+                        {
+                            command.Parameters.AddWithValue(listParams[i], parameters[i]);
                         }
                     }
                     data = command.ExecuteNonQuery();
@@ -85,6 +89,29 @@ namespace DAO
                 connection.Close();
             }
             return data;
+        }
+
+        public DataTable GetChiTietSanPham()
+        {
+            string query = "SELECT DISTINCT chitietsanpham.loSX, chitietsanpham.mact, sanpham.tensp " +
+                "FROM chitietsanpham " +
+                "JOIN sanpham ON chitietsanpham.masp = sanpham.masp " +
+                "WHERE chitietsanpham.loSX IS NOT NULL AND chitietsanpham.masp IS NOT NULL";
+
+            return ExecuteQuery(query);
+        }
+        public DataTable GetDanhSachDuocSi()
+        {
+            string query = "SELECT mads, hoten FROM duocsi WHERE trangthai = 1"; // Chỉ lấy dược sĩ đang hoạt động
+            return ExecuteQuery(query);
+        }
+        public DataTable GetListTieuHuy()
+        {
+            string query = "SELECT tieuHuy.masp, chitietsanpham.loSX, tieuHuy.ngaytieuhuy, duocsi.hoten AS nguoilap, tieuHuy.lydo " +
+                           "FROM TieuHuy " +
+                           "JOIN chitietsanpham ON tieuHuy.mact = chitietsanpham.mact " +
+                           "JOIN duocsi ON tieuHuy.nguoilap = duocsi.mads";
+            return ExecuteQuery(query);
         }
 
         //dùng cho các lệnh SELECT COUNT(*), MAX, SUM
