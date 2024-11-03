@@ -116,6 +116,16 @@ namespace DAO
                            "JOIN duocsi ON tieuHuy.nguoilap = duocsi.mads";
             return ExecuteQuery(query);
         }
+        public decimal CalculateThietHai(int maCT)
+        {
+            string query = "SELECT ct.gianhap * sp.soLuong AS ThietHai " +
+                           "FROM chitietphieunhap AS ct " +
+                           "JOIN chitietsanpham AS sp ON ct.mact = sp.mact " +
+                           "WHERE ct.mact = @maCT";
+            object result = ExecuteScalar(query, new object[] { maCT });
+            return result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+        }
+
 
         //dùng cho các lệnh SELECT COUNT(*), MAX, SUM
         public object ExecuteScalar(string query, object[] parameters = null)

@@ -47,5 +47,17 @@ namespace DAO
             string query = "SELECT * FROM TieuHuy";
             return DataProvider.Instance.ExecuteQuery(query);
         }
+        public DataTable GetTieuHuyByDateRange(DateTime startDate, DateTime endDate)
+        {
+            string query = "SELECT tieuHuy.masp, chitietsanpham.loSX, tieuHuy.ngaytieuhuy, duocsi.hoten AS nguoilap, tieuHuy.lydo, tieuHuy.thiethai " +
+                           "FROM TieuHuy " +
+                           "JOIN chitietsanpham ON tieuHuy.mact = chitietsanpham.mact " +
+                           "JOIN duocsi ON tieuHuy.nguoilap = duocsi.mads " +
+                           "WHERE tieuHuy.ngaytieuhuy BETWEEN @startDate AND @endDate";
+
+            object[] parameters = { startDate, endDate };
+            return DataProvider.Instance.ExecuteQuery(query, parameters);
+        }
+
     }
 }

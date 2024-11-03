@@ -73,7 +73,12 @@ namespace GUI
 
         private void comboBoxSanPham_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (comboBoxSanPham.SelectedItem is DataRowView selectedRow)
+            {
+                int maCT = Convert.ToInt32(selectedRow["mact"]);
+                decimal thietHai = DataProvider.Instance.CalculateThietHai(maCT);
+                textBox1.Text = thietHai.ToString("N2");
+            }
         }
         private void LoadListTieuHuy()
         {
@@ -178,6 +183,29 @@ namespace GUI
                 textBox1.Text = selectedItem.SubItems[4].Text; // Thiệt hại
             }
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Lấy giá trị ngày bắt đầu và ngày kết thúc từ DateTimePicker
+            DateTime startDate = dateTimePicker1.Value.Date;
+            DateTime endDate = dateTimePicker2.Value.Date;
+
+            // Gọi hàm tìm kiếm trong BUS với khoảng ngày
+            DataTable filteredData = TieuHuyBUS.Instance.SearchTieuHuyByDateRange(startDate, endDate);
+
+            // Hiển thị dữ liệu đã lọc trong ListView
+            lv_DSHoaDon.Items.Clear();
+            foreach (DataRow row in filteredData.Rows)
+            {
+                ListViewItem item = new ListViewItem(row["mact"].ToString());
+                item.SubItems.Add(Convert.ToDateTime(row["ngaytieuhuy"]).ToString("dd/MM/yyyy"));
+                item.SubItems.Add(row["nguoilap"].ToString());
+                item.SubItems.Add(row["lydo"].ToString());
+                item.SubItems.Add(row["thiethai"].ToString());
+
+                lv_DSHoaDon.Items.Add(item);
+            }
+        }
+
 
     }
 }

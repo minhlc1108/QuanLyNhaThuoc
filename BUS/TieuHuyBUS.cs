@@ -35,5 +35,10 @@ namespace BUS
         {
             return TieuHuyDAO.Instance.DeleteTieuHuy(maCT);
         }
+        public DataTable SearchTieuHuyByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return TieuHuyDAO.Instance.GetTieuHuyByDateRange(startDate, endDate);
+        }
+
     }
 }
