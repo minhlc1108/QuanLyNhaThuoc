@@ -19,7 +19,7 @@ namespace DAO
 
         public bool InsertTieuHuy(TieuHuyDTO tieuHuy)
         {
-            string query = "INSERT INTO TieuHuy (mact, ngaytieuhuy, nguoilap, lydo, thiethai) VALUES (@maCT , @ngayTieuHuy , @nguoiLap , @lyDo , @thietHai)";
+            string query = "INSERT INTO TieuHuy (mact, ngaytieuhuy, nguoilap, lydo, thiethai) VALUES (@maCT , @ngayTieuHuy , @nguoiLap , @lyDo , @thietHai ) ";
             object[] parameters = { tieuHuy.MaCT, tieuHuy.NgayTieuHuy, tieuHuy.NguoiLap, tieuHuy.LyDo, tieuHuy.ThietHai };
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;

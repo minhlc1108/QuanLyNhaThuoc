@@ -45,16 +45,13 @@ namespace DAO
         // Thêm nhà sản xuất
         public bool InsertNhaSanXuat(string maNSX, string tenNSX, bool trangThai)
         {
-            // Câu truy vấn với các tham số được định nghĩa đúng
             string query = "INSERT INTO nhasanxuat (mansx, tennsx, trangthai) VALUES (@MaNSX, @TenNSX, @TrangThai)";
-
-            // Mảng tham số với thứ tự chính xác
             object[] parameters = { maNSX, tenNSX, trangThai };
-
-            // Gọi phương thức ExecuteNonQuery và truyền các tham số
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+
             return result > 0;
         }
+
         public string GenerateMaNhaSanXuat()
         {
             string query = "SELECT MAX(mansx) FROM nhasanxuat";
@@ -97,6 +94,7 @@ namespace DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;
         }
+
 
         // Xóa nhà sản xuất
         public bool DeleteNhaSanXuat(string maNSX)

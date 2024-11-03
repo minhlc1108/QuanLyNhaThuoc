@@ -69,21 +69,23 @@ namespace DAO
                 {
                     if (parameters != null)
                     {
-                        var listParams = query.Split(' ').Where(p => p.StartsWith("@")).ToList();
+                        // Sử dụng Regex để tìm tất cả các tham số bắt đầu bằng '@' trong query
+                        var paramNames = System.Text.RegularExpressions.Regex.Matches(query, @"@\w+")
+                                              .Cast<System.Text.RegularExpressions.Match>()
+                                              .Select(m => m.Value)
+                                              .ToArray();
 
-                        // Kiểm tra số lượng tham số
-                        if (listParams.Count != parameters.Length)
+                        if (paramNames.Length != parameters.Length)
                         {
-                            Console.WriteLine($"Số lượng tham số trong truy vấn: {listParams.Count}");
-                            Console.WriteLine($"Số lượng giá trị trong mảng parameters: {parameters.Length}");
-                            throw new ArgumentException("Số lượng tham số trong câu truy vấn không khớp với mảng parameters.");
+                            throw new ArgumentException("Số lượng tham số không khớp với mảng parameters.");
                         }
 
-                        for (int i = 0; i < listParams.Count; i++)
+                        for (int i = 0; i < paramNames.Length; i++)
                         {
-                            command.Parameters.AddWithValue(listParams[i], parameters[i]);
+                            command.Parameters.AddWithValue(paramNames[i], parameters[i]);
                         }
                     }
+
                     data = command.ExecuteNonQuery();
                 }
                 connection.Close();
@@ -91,11 +93,12 @@ namespace DAO
             return data;
         }
 
+
         public DataTable GetChiTietSanPham()
         {
             string query = "SELECT DISTINCT chitietsanpham.loSX, chitietsanpham.mact, sanpham.tensp " +
                 "FROM chitietsanpham " +
-                "JOIN sanpham ON chitietsanpham.masp = sanpham.masp " +
+                "JOIN sanpham ON   chitietsanpham.masp = sanpham.masp " +
                 "WHERE chitietsanpham.loSX IS NOT NULL AND chitietsanpham.masp IS NOT NULL";
 
             return ExecuteQuery(query);

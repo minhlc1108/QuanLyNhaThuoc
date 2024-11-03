@@ -31,6 +31,11 @@ namespace BUS
         {
             return NhaSanXuatDAO.Instance.InsertNhaSanXuat(maNSX, tenNSX, trangThai);
         }
+        public bool InsertNewNhaSanXuat(string tenNSX, bool trangThai)
+        {
+            string newMaNSX = GenerateMaNhaSanXuat();
+            return InsertNhaSanXuat(newMaNSX, tenNSX, trangThai);
+        }
 
         // Cập nhật tên nhà sản xuất
         public bool UpdateTenNhaSanXuat(string maNSX, string tenNSX)

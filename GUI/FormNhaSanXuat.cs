@@ -14,6 +14,8 @@ namespace GUI
         {
             InitializeComponent();
             LoadData();
+            // Chỉ tạo mã khi form load lần đầu
+            textBoxMANSX.Text = NhaSanXuatBUS.Instance.GenerateMaNhaSanXuat();
         }
 
         // Load dữ liệu lên ListView
@@ -34,14 +36,15 @@ namespace GUI
         // Thêm nhà sản xuất mới
         private void AddNhaSanXuat()
         {
-            string maNSX = textBoxMANSX.Text;
             string tenNSX = textBoxtennsx.Text;
             bool trangThai = Yesbtn.Checked;
 
-            if (NhaSanXuatBUS.Instance.InsertNhaSanXuat(maNSX, tenNSX, trangThai))
+            if (NhaSanXuatBUS.Instance.InsertNewNhaSanXuat(tenNSX, trangThai))
             {
                 MessageBox.Show("Thêm nhà sản xuất thành công!");
                 LoadData();
+                // Sau khi thêm, tạo mã mới để chuẩn bị cho lần thêm kế tiếp
+                textBoxMANSX.Text = NhaSanXuatBUS.Instance.GenerateMaNhaSanXuat();
             }
             else
             {
@@ -54,17 +57,31 @@ namespace GUI
         {
             string maNSX = textBoxMANSX.Text;
             string tenNSX = textBoxtennsx.Text;
+            bool trangThai = Yesbtn.Checked;
 
+            // Cập nhật tên nhà sản xuất
             if (NhaSanXuatBUS.Instance.UpdateTenNhaSanXuat(maNSX, tenNSX))
             {
                 MessageBox.Show("Cập nhật tên nhà sản xuất thành công!");
-                LoadData();
             }
             else
             {
-                MessageBox.Show("Cập nhật thất bại!");
+                MessageBox.Show("Cập nhật tên nhà sản xuất thất bại!");
             }
+
+            // Cập nhật trạng thái nhà sản xuất
+            if (NhaSanXuatBUS.Instance.UpdateTrangThaiNhaSanXuat(maNSX, trangThai))
+            {
+                MessageBox.Show("Cập nhật trạng thái nhà sản xuất thành công!");
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật trạng thái nhà sản xuất thất bại!");
+            }
+
+            LoadData(); // Tải lại dữ liệu sau khi cập nhật
         }
+
 
         // Xóa nhà sản xuất
         private void DeleteNhaSanXuat()
@@ -97,12 +114,8 @@ namespace GUI
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            // Gán mã tự động sinh vào ô mã nhà sản xuất
-            textBoxMANSX.Text = NhaSanXuatBUS.Instance.GenerateMaNhaSanXuat();
-
-            // Tiếp tục xử lý thêm nhà sản xuất
+            // Gọi trực tiếp hàm AddNhaSanXuat
             AddNhaSanXuat();
-
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -113,9 +126,6 @@ namespace GUI
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             DeleteNhaSanXuat();
-
         }
-      
-
     }
 }

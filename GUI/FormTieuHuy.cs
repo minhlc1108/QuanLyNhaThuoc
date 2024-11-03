@@ -29,12 +29,13 @@ namespace GUI
         {
 
         }
-       
+
 
         private void FormTieuHuy_Load_1(object sender, EventArgs e)
         {
             DataTable chiTietSanPham = DataProvider.Instance.GetChiTietSanPham();
             DataTable danhSachDuocSi = DataProvider.Instance.GetDanhSachDuocSi();
+            lv_DSHoaDon.SelectedIndexChanged += lv_DSHoaDon_SelectedIndexChanged;
 
             // Đẩy dữ liệu vào ComboBox cho lô sản xuất
             comboBoxLoSX.DataSource = chiTietSanPham;
@@ -60,7 +61,7 @@ namespace GUI
             foreach (DataRow row in data.Rows)
             {
                 ListViewItem item = new ListViewItem(row["mact"].ToString());
-              //  item.SubItems.Add(row["loSX"].ToString());
+                //  item.SubItems.Add(row["loSX"].ToString());
                 item.SubItems.Add(Convert.ToDateTime(row["ngaytieuhuy"]).ToString("dd/MM/yyyy"));
                 item.SubItems.Add(row["nguoilap"].ToString());
                 item.SubItems.Add(row["lydo"].ToString());
@@ -124,6 +125,10 @@ namespace GUI
                     ThietHai = string.IsNullOrEmpty(textBox1.Text) ? (decimal?)null : decimal.Parse(textBox1.Text)
                 };
 
+
+
+
+                // Gọi phương thức cập nhật
                 if (TieuHuyBUS.Instance.UpdateTieuHuy(tieuHuy))
                 {
                     MessageBox.Show("Cập nhật thành công");
@@ -134,7 +139,12 @@ namespace GUI
                     MessageBox.Show("Cập nhật thất bại");
                 }
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mục để cập nhật.");
+            }
         }
+
 
         private void buttondelete_Click(object sender, EventArgs e)
         {
@@ -152,5 +162,22 @@ namespace GUI
                 }
             }
         }
+
+        private void lv_DSHoaDon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lv_DSHoaDon.SelectedItems.Count > 0)
+            {
+                // Lấy mục được chọn đầu tiên
+                ListViewItem selectedItem = lv_DSHoaDon.SelectedItems[0];
+
+                // Gán giá trị từ các cột của ListView vào các điều khiển nhập liệu
+                comboBoxSanPham.SelectedValue = int.Parse(selectedItem.SubItems[0].Text); // Mã chi tiết
+                dateTimePicker3.Value = DateTime.Parse(selectedItem.SubItems[1].Text); // Ngày tiêu hủy
+                comboBoxNguoiLap.SelectedValue = selectedItem.SubItems[2].Text; // Người lập
+                richTextBox1.Text = selectedItem.SubItems[3].Text; // Lý do
+                textBox1.Text = selectedItem.SubItems[4].Text; // Thiệt hại
+            }
+        }
+
     }
 }
