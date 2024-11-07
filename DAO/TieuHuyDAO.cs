@@ -41,6 +41,25 @@ namespace DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;
         }
+        public bool UpdateSoLuongToZero(int maCT)
+        {
+            string query = "UPDATE chitietsanpham SET soluong = 0 WHERE mact = @maCT";
+            object[] parameters = { maCT };
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+            return result > 0;
+        }
+        public int GetSoLuong(int maCT)
+        {
+            string query = "SELECT soluong FROM chitietsanpham WHERE mact = @maCT";
+            object[] parameters = { maCT };
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, parameters);
+
+            if (result.Rows.Count > 0)
+            {
+                return Convert.ToInt32(result.Rows[0]["soluong"]);
+            }
+            return -1; // Return -1 if not found or error
+        }
 
         public DataTable GetListTieuHuy()
         {
@@ -49,11 +68,13 @@ namespace DAO
         }
         public DataTable GetTieuHuyByDateRange(DateTime startDate, DateTime endDate)
         {
-            string query = "SELECT tieuHuy.masp, chitietsanpham.loSX, tieuHuy.ngaytieuhuy, duocsi.hoten AS nguoilap, tieuHuy.lydo, tieuHuy.thiethai " +
-                           "FROM TieuHuy " +
-                           "JOIN chitietsanpham ON tieuHuy.mact = chitietsanpham.mact " +
-                           "JOIN duocsi ON tieuHuy.nguoilap = duocsi.mads " +
-                           "WHERE tieuHuy.ngaytieuhuy BETWEEN @startDate AND @endDate";
+            string query = "SELECT tieuhuy.mact, chitietsanpham.masp, chitietsanpham.loSX, tieuhuy.ngaytieuhuy, duocsi.hoten AS nguoilap, tieuhuy.lydo, tieuhuy.thiethai " +
+                     "FROM tieuhuy " +
+                     "JOIN chitietsanpham ON tieuhuy.mact = chitietsanpham.mact " +
+                     "JOIN duocsi ON tieuhuy.nguoilap = duocsi.mads " +
+                     "WHERE tieuhuy.ngaytieuhuy BETWEEN @startDate AND @endDate";
+
+
 
             object[] parameters = { startDate, endDate };
             return DataProvider.Instance.ExecuteQuery(query, parameters);

@@ -23,7 +23,12 @@ namespace BUS
 
         public bool AddTieuHuy(TieuHuyDTO tieuHuy)
         {
-            return TieuHuyDAO.Instance.InsertTieuHuy(tieuHuy);
+            bool isInserted = TieuHuyDAO.Instance.InsertTieuHuy(tieuHuy);
+            if (isInserted)
+            {
+                return TieuHuyDAO.Instance.UpdateSoLuongToZero(tieuHuy.MaCT);
+            }
+            return false;
         }
 
         public bool UpdateTieuHuy(TieuHuyDTO tieuHuy)

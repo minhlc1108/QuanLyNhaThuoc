@@ -147,6 +147,7 @@
             button1.TabIndex = 10;
             button1.Text = "Tìm kiếm";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // dateTimePicker1
             // 
@@ -290,6 +291,7 @@
             // 
             // comboBoxLoSX
             // 
+            comboBoxLoSX.Enabled = false;
             comboBoxLoSX.FormattingEnabled = true;
             comboBoxLoSX.Location = new Point(142, 72);
             comboBoxLoSX.Name = "comboBoxLoSX";

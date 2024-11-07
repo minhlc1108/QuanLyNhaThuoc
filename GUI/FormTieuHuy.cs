@@ -76,6 +76,19 @@ namespace GUI
             if (comboBoxSanPham.SelectedItem is DataRowView selectedRow)
             {
                 int maCT = Convert.ToInt32(selectedRow["mact"]);
+                int currentQuantity = TieuHuyDAO.Instance.GetSoLuong(maCT);
+
+                if (currentQuantity == 0)
+                {
+                    buttonadd.Enabled = false; // Disable the "Lưu" button
+                    MessageBox.Show("Sản phẩm này đã hết số lượng và không thể tiêu hủy.");
+                }
+                else
+                {
+                    buttonadd.Enabled = true; // Enable the "Lưu" button
+                }
+
+                // Optionally, you can also update the Thiệt Hại text box or other fields as needed
                 decimal thietHai = DataProvider.Instance.CalculateThietHai(maCT);
                 textBox1.Text = thietHai.ToString("N2");
             }
@@ -96,9 +109,18 @@ namespace GUI
         }
         private void buttonadd_Click(object sender, EventArgs e)
         {
+            int maCT = int.Parse(comboBoxSanPham.SelectedValue.ToString());
+            int currentQuantity = TieuHuyDAO.Instance.GetSoLuong(maCT);
+
+            if (currentQuantity == 0)
+            {
+                MessageBox.Show("Sản phẩm này đã hết số lượng và không thể tiêu hủy.");
+                return; // Stop the save operation
+            }
+
             TieuHuyDTO tieuHuy = new TieuHuyDTO()
             {
-                MaCT = int.Parse(comboBoxSanPham.SelectedValue.ToString()),
+                MaCT = maCT,
                 NgayTieuHuy = dateTimePicker3.Value,
                 NguoiLap = comboBoxNguoiLap.SelectedValue.ToString(),
                 LyDo = richTextBox1.Text,
@@ -107,14 +129,15 @@ namespace GUI
 
             if (TieuHuyBUS.Instance.AddTieuHuy(tieuHuy))
             {
-                MessageBox.Show("Thêm thành công");
+                MessageBox.Show("Thêm và cập nhật số lượng thành công");
                 LoadListTieuHuy();
             }
             else
             {
-                MessageBox.Show("Thêm thất bại");
+                MessageBox.Show("Thêm hoặc cập nhật số lượng thất bại");
             }
         }
+
 
         private void buttonedit_Click(object sender, EventArgs e)
         {
@@ -185,6 +208,11 @@ namespace GUI
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
             // Lấy giá trị ngày bắt đầu và ngày kết thúc từ DateTimePicker
             DateTime startDate = dateTimePicker1.Value.Date;
             DateTime endDate = dateTimePicker2.Value.Date;
@@ -205,7 +233,5 @@ namespace GUI
                 lv_DSHoaDon.Items.Add(item);
             }
         }
-
-
     }
 }
