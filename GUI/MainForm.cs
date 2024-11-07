@@ -1,4 +1,5 @@
 ﻿using BUS;
+using DTO;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,21 @@ namespace GUI
 {
     public partial class MainForm : Form
     {
+        string madsDangNhap = "";
         private IconButton currentButton;
         private Form currentForm;
         private Form accountForm;
-        public MainForm()
+        public MainForm(string mads)
         {
             InitializeComponent();
+            madsDangNhap = mads;
+            loadDataDangNhap();
+        }
+
+        private void loadDataDangNhap()
+        {
+            string tenDS = DuocSiBUS.Instance.getHoTenDuocSi(madsDangNhap);
+            labelTenDS.Text = tenDS;
         }
 
         private void activateButton(object sender)
@@ -61,7 +71,7 @@ namespace GUI
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
             activateButton(sender);
-            openForm(new FormHoaDon());
+            openForm(new FormHoaDon(madsDangNhap));
         }
 
         private void btnSanPham_Click(object sender, EventArgs e)
@@ -91,7 +101,7 @@ namespace GUI
         private void btnPhieuNhap_Click(object sender, EventArgs e)
         {
             activateButton(sender);
-            openForm(new FormPhieuNhap());
+            openForm(new FormPhieuNhap(madsDangNhap));
         }
 
         private void btnTieuHuy_Click(object sender, EventArgs e)

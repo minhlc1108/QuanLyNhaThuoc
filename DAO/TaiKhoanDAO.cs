@@ -59,14 +59,5 @@ namespace DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;
         }
-        public bool DeleteTaiKhoan(string matk)
-        {
-            string query = "DELETE FROM taikhoan WHERE matk = @MaTK ";
-            object[] parameters = { matk };
-
-            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
-            return result > 0;
-        }
-
     }
 }

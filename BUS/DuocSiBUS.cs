@@ -44,6 +44,21 @@ namespace BUS
             return DuocSiDAO.Instance.GetLastMaDS();
         }
 
+        public bool getTrangThaiDuocSi(string mads)
+        {
+            return DuocSiDAO.Instance.getTrangThaiDuocSi(mads);
+        }
+
+        public string getHoTenDuocSi(string value)
+        {
+            return DuocSiDAO.Instance.getHoTenDuocSi(value);
+        }
+
+        public bool DuocSiDaTonTai(DuocSiDTO ds)
+        {
+            return DuocSiDAO.Instance.DuocSiDaTonTai(ds);
+        }
+
         public bool InsertDuocSi(string mads, string hoTen, string sdt, string email, bool trangThai)
         {
             return DuocSiDAO.Instance.InsertDuocSi(mads, hoTen, sdt, email, trangThai);
@@ -57,11 +72,6 @@ namespace BUS
         public bool UpdateTrangThaiDuocSi(string mads, bool trangThai)
         {
             return DuocSiDAO.Instance.UpdateTrangThaiDuocSi(mads, trangThai);
-        }
-
-        public bool DeleteDuocSi(string mads)
-        {
-            return DuocSiDAO.Instance.DeleteDuocSi(mads);
         }
     }
 
