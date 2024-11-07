@@ -231,7 +231,7 @@ namespace GUI
             string loSX = cbb_lsx.Text;
 
             string strNumber = tb_donGia.Text;
-            strNumber = strNumber.Replace(".", "");
+            strNumber = strNumber.Replace(",", "");
             int donGia = int.Parse(strNumber);
 
             string itemCbbMaKH = cbb_khach.Text;
