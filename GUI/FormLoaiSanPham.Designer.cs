@@ -221,6 +221,7 @@ namespace GUI
             txtMaLoaiSP.Name = "txtMaLoaiSP";
             txtMaLoaiSP.Size = new Size(283, 23);
             txtMaLoaiSP.TabIndex = 36;
+            txtMaLoaiSP.TextChanged += txtMaLoaiSP_TextChanged;
             // 
             // label6
             // 

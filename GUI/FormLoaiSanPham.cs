@@ -204,5 +204,10 @@ namespace GUI
                 }
             }
         }
+
+        private void txtMaLoaiSP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

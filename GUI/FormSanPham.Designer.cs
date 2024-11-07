@@ -56,13 +56,16 @@
             clNhaSX = new ColumnHeader();
             clQuyCach = new ColumnHeader();
             clXuatXu = new ColumnHeader();
+            clKeToa = new ColumnHeader();
             clTrangThai = new ColumnHeader();
             btnKhoaSanPham = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             btnXuatDanhSach = new Button();
-            btnLamMoiFull = new Button();
             label1 = new Label();
-            btnXemChiTiet = new Button();
+            label11 = new Label();
+            cbbKeToa = new ComboBox();
+            txtMaSanPham = new TextBox();
+            label12 = new Label();
             SuspendLayout();
             // 
             // label2
@@ -78,7 +81,7 @@
             // 
             // btnTimKiem
             // 
-            btnTimKiem.Location = new Point(1078, 100);
+            btnTimKiem.Location = new Point(984, 90);
             btnTimKiem.Name = "btnTimKiem";
             btnTimKiem.Size = new Size(128, 26);
             btnTimKiem.TabIndex = 3;
@@ -87,7 +90,7 @@
             // 
             // txtTimKiem
             // 
-            txtTimKiem.Location = new Point(566, 101);
+            txtTimKiem.Location = new Point(472, 87);
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new Size(491, 23);
             txtTimKiem.TabIndex = 4;
@@ -97,7 +100,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(846, 56);
+            label3.Location = new Point(752, 39);
             label3.Name = "label3";
             label3.Size = new Size(74, 20);
             label3.TabIndex = 5;
@@ -107,7 +110,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(15, 101);
+            label4.Location = new Point(15, 134);
             label4.Name = "label4";
             label4.Size = new Size(116, 21);
             label4.TabIndex = 6;
@@ -117,7 +120,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(15, 158);
+            label5.Location = new Point(15, 178);
             label5.Name = "label5";
             label5.Size = new Size(121, 21);
             label5.TabIndex = 7;
@@ -127,7 +130,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(15, 216);
+            label6.Location = new Point(14, 228);
             label6.Name = "label6";
             label6.Size = new Size(110, 21);
             label6.TabIndex = 8;
@@ -158,7 +161,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(12, 383);
+            label9.Location = new Point(12, 431);
             label9.Name = "label9";
             label9.Size = new Size(102, 21);
             label9.TabIndex = 11;
@@ -168,7 +171,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(12, 441);
+            label10.Location = new Point(12, 485);
             label10.Name = "label10";
             label10.Size = new Size(112, 21);
             label10.TabIndex = 12;
@@ -176,60 +179,60 @@
             // 
             // txtTenSanPham
             // 
-            txtTenSanPham.Location = new Point(149, 103);
+            txtTenSanPham.Location = new Point(149, 132);
             txtTenSanPham.Name = "txtTenSanPham";
-            txtTenSanPham.Size = new Size(373, 23);
+            txtTenSanPham.Size = new Size(295, 23);
             txtTenSanPham.TabIndex = 13;
             // 
             // txtDieuTriBenh
             // 
-            txtDieuTriBenh.Location = new Point(149, 443);
+            txtDieuTriBenh.Location = new Point(149, 487);
             txtDieuTriBenh.Name = "txtDieuTriBenh";
-            txtDieuTriBenh.Size = new Size(373, 23);
+            txtDieuTriBenh.Size = new Size(295, 23);
             txtDieuTriBenh.TabIndex = 14;
             // 
             // txtThanhPhan
             // 
-            txtThanhPhan.Location = new Point(149, 385);
+            txtThanhPhan.Location = new Point(149, 433);
             txtThanhPhan.Name = "txtThanhPhan";
-            txtThanhPhan.Size = new Size(373, 23);
+            txtThanhPhan.Size = new Size(295, 23);
             txtThanhPhan.TabIndex = 15;
             // 
             // txtXuatXu
             // 
             txtXuatXu.Location = new Point(149, 275);
             txtXuatXu.Name = "txtXuatXu";
-            txtXuatXu.Size = new Size(373, 23);
+            txtXuatXu.Size = new Size(295, 23);
             txtXuatXu.TabIndex = 16;
             // 
             // txtQuyCach
             // 
             txtQuyCach.Location = new Point(149, 330);
             txtQuyCach.Name = "txtQuyCach";
-            txtQuyCach.Size = new Size(373, 23);
+            txtQuyCach.Size = new Size(295, 23);
             txtQuyCach.TabIndex = 17;
             // 
             // cbbLoaiSanPham
             // 
             cbbLoaiSanPham.FormattingEnabled = true;
-            cbbLoaiSanPham.Location = new Point(149, 158);
+            cbbLoaiSanPham.Location = new Point(149, 180);
             cbbLoaiSanPham.Name = "cbbLoaiSanPham";
-            cbbLoaiSanPham.Size = new Size(373, 23);
+            cbbLoaiSanPham.Size = new Size(295, 23);
             cbbLoaiSanPham.TabIndex = 18;
             // 
             // cbbNhaSX
             // 
             cbbNhaSX.FormattingEnabled = true;
-            cbbNhaSX.Location = new Point(149, 214);
+            cbbNhaSX.Location = new Point(148, 226);
             cbbNhaSX.Name = "cbbNhaSX";
-            cbbNhaSX.Size = new Size(373, 23);
+            cbbNhaSX.Size = new Size(296, 23);
             cbbNhaSX.TabIndex = 19;
             // 
             // btnThemSanPham
             // 
-            btnThemSanPham.Location = new Point(4, 529);
+            btnThemSanPham.Location = new Point(52, 544);
             btnThemSanPham.Name = "btnThemSanPham";
-            btnThemSanPham.Size = new Size(110, 26);
+            btnThemSanPham.Size = new Size(133, 26);
             btnThemSanPham.TabIndex = 20;
             btnThemSanPham.Text = "THÊM";
             btnThemSanPham.UseVisualStyleBackColor = true;
@@ -237,32 +240,36 @@
             // 
             // btnResetSanPham
             // 
-            btnResetSanPham.Location = new Point(132, 529);
+            btnResetSanPham.Location = new Point(251, 544);
             btnResetSanPham.Name = "btnResetSanPham";
             btnResetSanPham.Size = new Size(121, 26);
             btnResetSanPham.TabIndex = 21;
             btnResetSanPham.Text = "LÀM MỚI";
             btnResetSanPham.UseVisualStyleBackColor = true;
+            btnResetSanPham.Click += btnResetSanPham_Click;
             // 
             // btnUpdateSanPham
             // 
-            btnUpdateSanPham.Location = new Point(273, 529);
+            btnUpdateSanPham.Location = new Point(52, 591);
             btnUpdateSanPham.Name = "btnUpdateSanPham";
             btnUpdateSanPham.Size = new Size(133, 26);
             btnUpdateSanPham.TabIndex = 22;
             btnUpdateSanPham.Text = "LƯU CHỈNH SỬA";
             btnUpdateSanPham.UseVisualStyleBackColor = true;
+            btnUpdateSanPham.Click += btnUpdateSanPham_Click;
             // 
             // lsvSanPham
             // 
-            lsvSanPham.Columns.AddRange(new ColumnHeader[] { clMaSP, clTenSP, clLoaiSP, clNhaSX, clQuyCach, clXuatXu, clTrangThai });
+            lsvSanPham.Columns.AddRange(new ColumnHeader[] { clMaSP, clTenSP, clLoaiSP, clNhaSX, clQuyCach, clXuatXu, clKeToa, clTrangThai });
             lsvSanPham.FullRowSelect = true;
-            lsvSanPham.Location = new Point(566, 150);
+            lsvSanPham.Location = new Point(472, 137);
             lsvSanPham.Name = "lsvSanPham";
-            lsvSanPham.Size = new Size(640, 405);
+            lsvSanPham.Size = new Size(661, 433);
             lsvSanPham.TabIndex = 23;
             lsvSanPham.UseCompatibleStateImageBehavior = false;
             lsvSanPham.View = View.Details;
+            lsvSanPham.ItemSelectionChanged += lsvSanPham_ItemSelectionChanged;
+            lsvSanPham.SelectedIndexChanged += lsvSanPham_SelectedIndexChanged;
             // 
             // clMaSP
             // 
@@ -272,7 +279,7 @@
             // clTenSP
             // 
             clTenSP.Text = "Tên SP";
-            clTenSP.Width = 150;
+            clTenSP.Width = 80;
             // 
             // clLoaiSP
             // 
@@ -287,12 +294,17 @@
             // clQuyCach
             // 
             clQuyCach.Text = "Quy Cách";
-            clQuyCach.Width = 100;
+            clQuyCach.Width = 120;
             // 
             // clXuatXu
             // 
             clXuatXu.Text = "Xuất xứ";
             clXuatXu.Width = 70;
+            // 
+            // clKeToa
+            // 
+            clKeToa.Text = "Kê Toa";
+            clKeToa.Width = 80;
             // 
             // clTrangThai
             // 
@@ -301,59 +313,79 @@
             // 
             // btnKhoaSanPham
             // 
-            btnKhoaSanPham.Location = new Point(429, 529);
+            btnKhoaSanPham.Location = new Point(251, 591);
             btnKhoaSanPham.Name = "btnKhoaSanPham";
-            btnKhoaSanPham.Size = new Size(93, 26);
+            btnKhoaSanPham.Size = new Size(121, 26);
             btnKhoaSanPham.TabIndex = 24;
             btnKhoaSanPham.Text = "KHÓA";
             btnKhoaSanPham.UseVisualStyleBackColor = true;
+            btnKhoaSanPham.Click += btnKhoaSanPham_Click;
             // 
             // btnXuatDanhSach
             // 
-            btnXuatDanhSach.Location = new Point(603, 591);
+            btnXuatDanhSach.Location = new Point(732, 591);
             btnXuatDanhSach.Name = "btnXuatDanhSach";
-            btnXuatDanhSach.Size = new Size(180, 26);
+            btnXuatDanhSach.Size = new Size(151, 26);
             btnXuatDanhSach.TabIndex = 25;
             btnXuatDanhSach.Text = "XUẤT DANH SÁCH";
             btnXuatDanhSach.UseVisualStyleBackColor = true;
-            // 
-            // btnLamMoiFull
-            // 
-            btnLamMoiFull.Location = new Point(861, 591);
-            btnLamMoiFull.Name = "btnLamMoiFull";
-            btnLamMoiFull.Size = new Size(121, 26);
-            btnLamMoiFull.TabIndex = 26;
-            btnLamMoiFull.Text = "LÀM MỚI";
-            btnLamMoiFull.UseVisualStyleBackColor = true;
-            btnLamMoiFull.Click += button7_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(218, 56);
+            label1.Location = new Point(218, 36);
             label1.Name = "label1";
             label1.Size = new Size(87, 20);
             label1.TabIndex = 0;
             label1.Text = "SẢN PHẨM";
             label1.Click += label1_Click;
             // 
-            // btnXemChiTiet
+            // label11
             // 
-            btnXemChiTiet.Location = new Point(1045, 591);
-            btnXemChiTiet.Name = "btnXemChiTiet";
-            btnXemChiTiet.Size = new Size(121, 26);
-            btnXemChiTiet.TabIndex = 27;
-            btnXemChiTiet.Text = "XEM CHI TIẾT";
-            btnXemChiTiet.UseVisualStyleBackColor = true;
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(12, 381);
+            label11.Name = "label11";
+            label11.Size = new Size(66, 21);
+            label11.TabIndex = 28;
+            label11.Text = "Kê Toa :";
+            // 
+            // cbbKeToa
+            // 
+            cbbKeToa.FormattingEnabled = true;
+            cbbKeToa.Items.AddRange(new object[] { "Cần Kê Toa", "Không Cần Kê Toa" });
+            cbbKeToa.Location = new Point(149, 383);
+            cbbKeToa.Name = "cbbKeToa";
+            cbbKeToa.Size = new Size(295, 23);
+            cbbKeToa.TabIndex = 29;
+            // 
+            // txtMaSanPham
+            // 
+            txtMaSanPham.Location = new Point(149, 87);
+            txtMaSanPham.Name = "txtMaSanPham";
+            txtMaSanPham.Size = new Size(295, 23);
+            txtMaSanPham.TabIndex = 31;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.Location = new Point(15, 85);
+            label12.Name = "label12";
+            label12.Size = new Size(115, 21);
+            label12.TabIndex = 30;
+            label12.Text = "Mã Sản Phẩm :";
             // 
             // FormSanPham
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1206, 694);
-            Controls.Add(btnXemChiTiet);
-            Controls.Add(btnLamMoiFull);
+            ClientSize = new Size(1134, 694);
+            Controls.Add(txtMaSanPham);
+            Controls.Add(label12);
+            Controls.Add(cbbKeToa);
+            Controls.Add(label11);
             Controls.Add(btnXuatDanhSach);
             Controls.Add(btnKhoaSanPham);
             Controls.Add(lsvSanPham);
@@ -420,8 +452,11 @@
         private Button btnKhoaSanPham;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button btnXuatDanhSach;
-        private Button btnLamMoiFull;
         private Label label1;
-        private Button btnXemChiTiet;
+        private Label label11;
+        private ComboBox cbbKeToa;
+        private ColumnHeader clKeToa;
+        private TextBox txtMaSanPham;
+        private Label label12;
     }
 }
