@@ -50,7 +50,6 @@
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
             label4 = new Label();
             label11 = new Label();
             textBox1 = new TextBox();
@@ -178,7 +177,7 @@
             // 
             // lv_DSHoaDon
             // 
-            lv_DSHoaDon.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
+            lv_DSHoaDon.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
             lv_DSHoaDon.FullRowSelect = true;
             lv_DSHoaDon.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
             lv_DSHoaDon.Location = new Point(400, 111);
@@ -197,27 +196,23 @@
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Lô SX";
+            columnHeader2.Text = "Ngày lập";
             columnHeader2.Width = 100;
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Ngày Lập";
+            columnHeader3.Text = "Người Lập";
             columnHeader3.Width = 100;
             // 
             // columnHeader4
             // 
-            columnHeader4.Text = "Người lập";
+            columnHeader4.Text = "Lý do";
             columnHeader4.Width = 100;
             // 
             // columnHeader5
             // 
-            columnHeader5.Text = "Lý do";
+            columnHeader5.Text = "Thiệt hại";
             columnHeader5.Width = 100;
-            // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Thiệt hại";
             // 
             // label4
             // 
@@ -380,7 +375,6 @@
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
         private GroupBox groupBox1;
         private DateTimePicker dateTimePicker3;
         private Button buttonedit;
