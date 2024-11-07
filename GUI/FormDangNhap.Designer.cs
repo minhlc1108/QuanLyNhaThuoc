@@ -110,9 +110,9 @@
             // btn_dangNhap
             // 
             btn_dangNhap.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_dangNhap.Location = new Point(83, 273);
+            btn_dangNhap.Location = new Point(140, 273);
             btn_dangNhap.Name = "btn_dangNhap";
-            btn_dangNhap.Size = new Size(142, 40);
+            btn_dangNhap.Size = new Size(145, 40);
             btn_dangNhap.TabIndex = 67;
             btn_dangNhap.Text = "Đăng nhập";
             btn_dangNhap.UseVisualStyleBackColor = true;
@@ -121,9 +121,9 @@
             // btn_exit
             // 
             btn_exit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_exit.Location = new Point(262, 273);
+            btn_exit.Location = new Point(317, 273);
             btn_exit.Name = "btn_exit";
-            btn_exit.Size = new Size(142, 40);
+            btn_exit.Size = new Size(111, 40);
             btn_exit.TabIndex = 68;
             btn_exit.Text = "Thoát";
             btn_exit.UseVisualStyleBackColor = true;
@@ -133,9 +133,9 @@
             // 
             pic_show.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pic_show.Image = (Image)resources.GetObject("pic_show.Image");
-            pic_show.Location = new Point(390, 200);
+            pic_show.Location = new Point(395, 198);
             pic_show.Name = "pic_show";
-            pic_show.Size = new Size(33, 37);
+            pic_show.Size = new Size(30, 26);
             pic_show.SizeMode = PictureBoxSizeMode.CenterImage;
             pic_show.TabIndex = 69;
             pic_show.TabStop = false;
@@ -146,9 +146,9 @@
             // 
             pic_unShow.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pic_unShow.Image = (Image)resources.GetObject("pic_unShow.Image");
-            pic_unShow.Location = new Point(390, 200);
+            pic_unShow.Location = new Point(395, 198);
             pic_unShow.Name = "pic_unShow";
-            pic_unShow.Size = new Size(33, 37);
+            pic_unShow.Size = new Size(30, 26);
             pic_unShow.SizeMode = PictureBoxSizeMode.CenterImage;
             pic_unShow.TabIndex = 70;
             pic_unShow.TabStop = false;
