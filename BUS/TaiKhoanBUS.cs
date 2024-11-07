@@ -33,10 +33,5 @@ namespace BUS
         {
             return TaiKhoanDAO.Instance.InsertTaiKhoan(matk, username, password, quyen);
         }
-
-        public bool DeleteTaiKhoan(string matk)
-        {
-            return TaiKhoanDAO.Instance.DeleteTaiKhoan(matk);
-        }
     }
 }

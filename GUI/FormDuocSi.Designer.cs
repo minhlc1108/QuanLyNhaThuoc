@@ -44,7 +44,6 @@
             groupBox2 = new GroupBox();
             btn_xuat = new Button();
             btn_nhapExcel = new Button();
-            btn_del = new Button();
             btn_opLock = new Button();
             btn_lock = new Button();
             btn_clear = new Button();
@@ -201,7 +200,6 @@
             // 
             groupBox2.Controls.Add(btn_xuat);
             groupBox2.Controls.Add(btn_nhapExcel);
-            groupBox2.Controls.Add(btn_del);
             groupBox2.Controls.Add(btn_opLock);
             groupBox2.Controls.Add(btn_lock);
             groupBox2.Controls.Add(btn_clear);
@@ -217,9 +215,9 @@
             // 
             // btn_xuat
             // 
-            btn_xuat.Location = new Point(209, 196);
+            btn_xuat.Location = new Point(224, 196);
             btn_xuat.Name = "btn_xuat";
-            btn_xuat.Size = new Size(135, 40);
+            btn_xuat.Size = new Size(120, 40);
             btn_xuat.TabIndex = 7;
             btn_xuat.Text = "Xuất";
             btn_xuat.UseVisualStyleBackColor = true;
@@ -227,31 +225,20 @@
             // 
             // btn_nhapExcel
             // 
-            btn_nhapExcel.Location = new Point(50, 196);
+            btn_nhapExcel.Location = new Point(45, 196);
             btn_nhapExcel.Name = "btn_nhapExcel";
-            btn_nhapExcel.Size = new Size(142, 40);
+            btn_nhapExcel.Size = new Size(132, 40);
             btn_nhapExcel.TabIndex = 6;
             btn_nhapExcel.Text = "Nhập Excel";
             btn_nhapExcel.UseVisualStyleBackColor = true;
             btn_nhapExcel.Click += btn_nhapExcel_Click;
             // 
-            // btn_del
-            // 
-            btn_del.Enabled = false;
-            btn_del.Location = new Point(270, 127);
-            btn_del.Name = "btn_del";
-            btn_del.Size = new Size(101, 40);
-            btn_del.TabIndex = 5;
-            btn_del.Text = "Xoá";
-            btn_del.UseVisualStyleBackColor = true;
-            btn_del.Click += btn_del_Click;
-            // 
             // btn_opLock
             // 
             btn_opLock.Enabled = false;
-            btn_opLock.Location = new Point(149, 127);
+            btn_opLock.Location = new Point(224, 127);
             btn_opLock.Name = "btn_opLock";
-            btn_opLock.Size = new Size(94, 40);
+            btn_opLock.Size = new Size(120, 40);
             btn_opLock.TabIndex = 4;
             btn_opLock.Text = "Mở khoá";
             btn_opLock.UseVisualStyleBackColor = true;
@@ -260,9 +247,9 @@
             // btn_lock
             // 
             btn_lock.Enabled = false;
-            btn_lock.Location = new Point(20, 127);
+            btn_lock.Location = new Point(45, 127);
             btn_lock.Name = "btn_lock";
-            btn_lock.Size = new Size(100, 40);
+            btn_lock.Size = new Size(132, 40);
             btn_lock.TabIndex = 3;
             btn_lock.Text = "Khoá";
             btn_lock.UseVisualStyleBackColor = true;
@@ -304,7 +291,6 @@
             cbb_find.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbb_find.FormattingEnabled = true;
             cbb_find.Items.AddRange(new object[] { "Mã DS", "Họ tên", "SĐT", "Email" });
-            cbb_find.SelectedIndex = 0;
             cbb_find.Location = new Point(784, 73);
             cbb_find.Name = "cbb_find";
             cbb_find.Size = new Size(126, 33);
@@ -335,7 +321,6 @@
             cbb_findTT.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbb_findTT.FormattingEnabled = true;
             cbb_findTT.Items.AddRange(new object[] { "Tất cả", "Còn làm", "Nghỉ làm" });
-            cbb_findTT.SelectedIndex = 0;
             cbb_findTT.Location = new Point(517, 73);
             cbb_findTT.Name = "cbb_findTT";
             cbb_findTT.Size = new Size(125, 33);
@@ -436,7 +421,6 @@
         private TextBox tb_sdt;
         private TextBox tb_hoten;
         private GroupBox groupBox2;
-        private Button btn_del;
         private Button btn_opLock;
         private Button btn_lock;
         private Button btn_clear;

@@ -47,7 +47,59 @@ namespace DAO
             }
             return products;
         }
-        
+
+        public bool IsProductExists(string maSP)
+        {
+            string query = "SELECT COUNT(1) FROM sanpham WHERE masp = @masp AND trangthai = 1";
+            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { maSP });
+            int count = result != null ? Convert.ToInt32(result) : 0;
+
+            return count > 0;
+        }
+
+
+        public List<SanPhamDTO> GetProductsByTrangThai()
+        {
+            List<SanPhamDTO> products = new List<SanPhamDTO>();
+            string query = "SELECT * FROM sanpham WHERE trangthai = true";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow row in data.Rows)
+            {
+                SanPhamDTO product = new SanPhamDTO
+                {
+                    MaSP = row["masp"].ToString(),
+                    TenSP = row["tensp"].ToString(),
+                    LoaiSP = row["loaisp"].ToString(),
+                    NhaSanXuat = row["nhasanxuat"].ToString(),
+                    QuyCach = row["quycach"].ToString(),
+                    XuatXu = row["xuatxu"].ToString(),
+                    CanKeToa = Convert.ToBoolean(row["canketoa"].ToString()),
+                    TrangThai = Convert.ToBoolean(row["trangthai"].ToString())
+                };
+
+                products.Add(product);
+            }
+            return products;
+        }
+        public string GetTenSPByMaSP(string maSP)
+        {
+            string tenSP = string.Empty;
+            string query = "SELECT tensp FROM sanpham WHERE masp = @MaSP ";
+
+            object[] parameters = { maSP };
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+
+            if (data.Rows.Count > 0)
+            {
+                tenSP = data.Rows[0]["tensp"].ToString();
+            }
+
+            return tenSP; 
+        }
+
+
+
         public bool InsertProduct(string masp, string tensp, string loaisp, string nhasanxuat, string quycach, string xuatxu, bool canketoa, bool trangthai)
         {
             string query = "INSERT INTO sanpham(masp,tensp,loaisp,nhasanxuat,quycach,xuatxu,canketoa,trangthai) VALUES (@MaSP,@TenSP,@LoaiSP,@NhaSanXuat,@QuyCach,@XuatXu,@CanKeToa,@TrangThai)";
