@@ -258,6 +258,7 @@
             buttondelete.TabIndex = 40;
             buttondelete.Text = "Xóa";
             buttondelete.UseVisualStyleBackColor = true;
+            buttondelete.Visible = false;
             buttondelete.Click += buttondelete_Click;
             // 
             // groupBox1
@@ -322,6 +323,7 @@
             buttonedit.TabIndex = 42;
             buttonedit.Text = "Sửa";
             buttonedit.UseVisualStyleBackColor = true;
+            buttonedit.Visible = false;
             buttonedit.Click += buttonedit_Click;
             // 
             // FormTieuHuy

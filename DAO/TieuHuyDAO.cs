@@ -48,6 +48,7 @@ namespace DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;
         }
+
         public int GetSoLuong(int maCT)
         {
             string query = "SELECT soluong FROM chitietsanpham WHERE mact = @maCT";
