@@ -21,23 +21,32 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void pic_show_MouseUp(object sender, EventArgs e)
-        {
-            pic_unShow.Visible = false;
-            pic_show.Visible = true;
-            tb_pass.UseSystemPasswordChar = true;
-        }
+        //private void pic_show_MouseUp(object sender, EventArgs e)
+        //{
+        //    pic_unShow.Visible = false;
+        //    pic_show.Visible = true;
+        //    tb_pass.UseSystemPasswordChar = true;
+        //}
 
-        private void pic_show_MouseDown(object sender, EventArgs e)
-        {
-            pic_unShow.Visible = true;
-            pic_show.Visible = false;
-            tb_pass.UseSystemPasswordChar = false;
-        }
+        //private void pic_show_MouseDown(object sender, EventArgs e)
+        //{
+        //    pic_unShow.Visible = true;
+        //    pic_show.Visible = false;
+        //    tb_pass.UseSystemPasswordChar = false;
+        //}
 
         private void btn_dangNhap_Click(object sender, EventArgs e)
         {
 
+
+        }
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_dangNhap_Click_1(object sender, EventArgs e)
+        {
             List<TaiKhoanDTO> list = TaiKhoanBUS.Instance.GetAllTaiKhoan();
 
             string username = tb_user.Text;
@@ -52,7 +61,7 @@ namespace GUI
                     break;
                 }
             }
-            if(check)
+            if (check)
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MainForm mainForm = new MainForm();
@@ -65,9 +74,19 @@ namespace GUI
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btn_exit_Click(object sender, EventArgs e)
+
+        private void iconShowPassword_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+                tb_pass.Password = !tb_pass.Password;
+            if(iconShowPassword.IconChar == FontAwesome.Sharp.IconChar.EyeSlash)
+            {
+                iconShowPassword.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            }
+            else
+            {
+                iconShowPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+
+            }
         }
     }
 }

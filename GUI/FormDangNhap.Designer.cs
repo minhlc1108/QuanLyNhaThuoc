@@ -29,79 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDangNhap));
-            label17 = new Label();
-            label1 = new Label();
-            tb_user = new TextBox();
-            tb_pass = new TextBox();
-            label11 = new Label();
             pictureBox1 = new PictureBox();
-            btn_dangNhap = new Button();
-            btn_exit = new Button();
-            pic_show = new PictureBox();
-            pic_unShow = new PictureBox();
-            erorr_user = new Label();
-            erorr_pass = new Label();
+            btn_dangNhap = new MaterialSkin.Controls.MaterialButton();
+            btn_exit = new MaterialSkin.Controls.MaterialButton();
+            tb_user = new MaterialSkin.Controls.MaterialTextBox();
+            tb_pass = new MaterialSkin.Controls.MaterialTextBox();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            iconShowPassword = new FontAwesome.Sharp.IconPictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pic_show).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pic_unShow).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconShowPassword).BeginInit();
             SuspendLayout();
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label17.Location = new Point(12, 200);
-            label17.Name = "label17";
-            label17.Size = new Size(102, 28);
-            label17.TabIndex = 54;
-            label17.Text = "Password :";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 133);
-            label1.Name = "label1";
-            label1.Size = new Size(108, 28);
-            label1.TabIndex = 55;
-            label1.Text = "Username :";
-            // 
-            // tb_user
-            // 
-            tb_user.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tb_user.Location = new Point(140, 130);
-            tb_user.Margin = new Padding(3, 4, 3, 4);
-            tb_user.Name = "tb_user";
-            tb_user.Size = new Size(288, 34);
-            tb_user.TabIndex = 63;
-            tb_user.Text = "Admin";
-            // 
-            // tb_pass
-            // 
-            tb_pass.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tb_pass.Location = new Point(140, 194);
-            tb_pass.Margin = new Padding(3, 4, 3, 4);
-            tb_pass.Name = "tb_pass";
-            tb_pass.Size = new Size(288, 34);
-            tb_pass.TabIndex = 64;
-            tb_pass.Text = "123456";
-            tb_pass.UseSystemPasswordChar = true;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(166, 89);
-            label11.Name = "label11";
-            label11.Size = new Size(161, 32);
-            label11.TabIndex = 65;
-            label11.Text = "ĐĂNG NHẬP";
-            label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(209, 12);
+            pictureBox1.Location = new Point(235, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(69, 62);
             pictureBox1.TabIndex = 66;
@@ -109,92 +53,149 @@
             // 
             // btn_dangNhap
             // 
-            btn_dangNhap.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_dangNhap.Location = new Point(83, 273);
+            btn_dangNhap.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btn_dangNhap.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btn_dangNhap.Depth = 0;
+            btn_dangNhap.HighEmphasis = true;
+            btn_dangNhap.Icon = null;
+            btn_dangNhap.Location = new Point(163, 301);
+            btn_dangNhap.Margin = new Padding(4, 6, 4, 6);
+            btn_dangNhap.MouseState = MaterialSkin.MouseState.HOVER;
             btn_dangNhap.Name = "btn_dangNhap";
-            btn_dangNhap.Size = new Size(142, 40);
-            btn_dangNhap.TabIndex = 67;
+            btn_dangNhap.NoAccentTextColor = Color.Empty;
+            btn_dangNhap.Size = new Size(105, 36);
+            btn_dangNhap.TabIndex = 73;
             btn_dangNhap.Text = "Đăng nhập";
+            btn_dangNhap.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btn_dangNhap.UseAccentColor = false;
             btn_dangNhap.UseVisualStyleBackColor = true;
-            btn_dangNhap.Click += btn_dangNhap_Click;
+            btn_dangNhap.Click += btn_dangNhap_Click_1;
             // 
             // btn_exit
             // 
-            btn_exit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_exit.Location = new Point(262, 273);
+            btn_exit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btn_exit.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btn_exit.Depth = 0;
+            btn_exit.HighEmphasis = true;
+            btn_exit.Icon = null;
+            btn_exit.Location = new Point(326, 301);
+            btn_exit.Margin = new Padding(4, 6, 4, 6);
+            btn_exit.MouseState = MaterialSkin.MouseState.HOVER;
             btn_exit.Name = "btn_exit";
-            btn_exit.Size = new Size(142, 40);
-            btn_exit.TabIndex = 68;
+            btn_exit.NoAccentTextColor = Color.Empty;
+            btn_exit.Size = new Size(69, 36);
+            btn_exit.TabIndex = 74;
             btn_exit.Text = "Thoát";
+            btn_exit.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btn_exit.UseAccentColor = false;
             btn_exit.UseVisualStyleBackColor = true;
             btn_exit.Click += btn_exit_Click;
             // 
-            // pic_show
+            // tb_user
             // 
-            pic_show.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pic_show.Image = (Image)resources.GetObject("pic_show.Image");
-            pic_show.Location = new Point(390, 200);
-            pic_show.Name = "pic_show";
-            pic_show.Size = new Size(33, 37);
-            pic_show.SizeMode = PictureBoxSizeMode.CenterImage;
-            pic_show.TabIndex = 69;
-            pic_show.TabStop = false;
-            pic_show.MouseDown += pic_show_MouseDown;
-            pic_show.MouseUp += pic_show_MouseUp;
+            tb_user.AnimateReadOnly = false;
+            tb_user.BorderStyle = BorderStyle.None;
+            tb_user.Depth = 0;
+            tb_user.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tb_user.LeadingIcon = null;
+            tb_user.Location = new Point(129, 139);
+            tb_user.MaxLength = 50;
+            tb_user.MouseState = MaterialSkin.MouseState.OUT;
+            tb_user.Multiline = false;
+            tb_user.Name = "tb_user";
+            tb_user.Size = new Size(330, 50);
+            tb_user.TabIndex = 75;
+            tb_user.Text = "";
+            tb_user.TrailingIcon = null;
             // 
-            // pic_unShow
+            // tb_pass
             // 
-            pic_unShow.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pic_unShow.Image = (Image)resources.GetObject("pic_unShow.Image");
-            pic_unShow.Location = new Point(390, 200);
-            pic_unShow.Name = "pic_unShow";
-            pic_unShow.Size = new Size(33, 37);
-            pic_unShow.SizeMode = PictureBoxSizeMode.CenterImage;
-            pic_unShow.TabIndex = 70;
-            pic_unShow.TabStop = false;
-            pic_unShow.Visible = false;
+            tb_pass.AnimateReadOnly = false;
+            tb_pass.BorderStyle = BorderStyle.None;
+            tb_pass.Depth = 0;
+            tb_pass.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tb_pass.LeadingIcon = null;
+            tb_pass.Location = new Point(129, 215);
+            tb_pass.MaxLength = 50;
+            tb_pass.MouseState = MaterialSkin.MouseState.OUT;
+            tb_pass.Multiline = false;
+            tb_pass.Name = "tb_pass";
+            tb_pass.Password = true;
+            tb_pass.Size = new Size(330, 50);
+            tb_pass.TabIndex = 76;
+            tb_pass.Text = "";
+            tb_pass.TrailingIcon = null;
             // 
-            // erorr_user
+            // materialLabel1
             // 
-            erorr_user.AutoSize = true;
-            erorr_user.ForeColor = Color.Red;
-            erorr_user.Location = new Point(140, 168);
-            erorr_user.Name = "erorr_user";
-            erorr_user.Size = new Size(0, 20);
-            erorr_user.TabIndex = 71;
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(15, 158);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(76, 19);
+            materialLabel1.TabIndex = 77;
+            materialLabel1.Text = "Username:";
             // 
-            // erorr_pass
+            // materialLabel2
             // 
-            erorr_pass.AutoSize = true;
-            erorr_pass.ForeColor = Color.Red;
-            erorr_pass.Location = new Point(140, 232);
-            erorr_pass.Name = "erorr_pass";
-            erorr_pass.Size = new Size(0, 20);
-            erorr_pass.TabIndex = 72;
+            materialLabel2.AutoSize = true;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel2.Location = new Point(15, 235);
+            materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(75, 19);
+            materialLabel2.TabIndex = 78;
+            materialLabel2.Text = "Password:";
+            // 
+            // materialLabel3
+            // 
+            materialLabel3.AutoSize = true;
+            materialLabel3.Depth = 0;
+            materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel3.Location = new Point(223, 100);
+            materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel3.Name = "materialLabel3";
+            materialLabel3.Size = new Size(90, 19);
+            materialLabel3.TabIndex = 79;
+            materialLabel3.Text = "ĐĂNG NHẬP";
+            // 
+            // iconShowPassword
+            // 
+            iconShowPassword.BackColor = SystemColors.Control;
+            iconShowPassword.ForeColor = SystemColors.ControlText;
+            iconShowPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            iconShowPassword.IconColor = SystemColors.ControlText;
+            iconShowPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconShowPassword.IconSize = 46;
+            iconShowPassword.Location = new Point(454, 215);
+            iconShowPassword.Name = "iconShowPassword";
+            iconShowPassword.Size = new Size(46, 50);
+            iconShowPassword.TabIndex = 80;
+            iconShowPassword.TabStop = false;
+            iconShowPassword.Click += iconShowPassword_Click;
             // 
             // FormDangNhap
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(446, 334);
-            Controls.Add(erorr_pass);
-            Controls.Add(erorr_user);
-            Controls.Add(pic_unShow);
-            Controls.Add(pic_show);
+            ClientSize = new Size(512, 393);
+            Controls.Add(iconShowPassword);
+            Controls.Add(materialLabel3);
+            Controls.Add(materialLabel2);
+            Controls.Add(materialLabel1);
+            Controls.Add(tb_pass);
+            Controls.Add(tb_user);
             Controls.Add(btn_exit);
             Controls.Add(btn_dangNhap);
             Controls.Add(pictureBox1);
-            Controls.Add(label11);
-            Controls.Add(tb_pass);
-            Controls.Add(tb_user);
-            Controls.Add(label1);
-            Controls.Add(label17);
             Name = "FormDangNhap";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormDangNhap";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pic_show).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pic_unShow).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconShowPassword).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -203,15 +204,16 @@
 
         private Label label17;
         private Label label1;
-        private TextBox tb_user;
-        private TextBox tb_pass;
-        private Label label11;
         private PictureBox pictureBox1;
-        private Button btn_dangNhap;
-        private Button btn_exit;
-        private PictureBox pic_show;
-        private PictureBox pic_unShow;
         private Label erorr_user;
         private Label erorr_pass;
+        private MaterialSkin.Controls.MaterialButton btn_dangNhap;
+        private MaterialSkin.Controls.MaterialButton btn_exit;
+        private MaterialSkin.Controls.MaterialTextBox tb_user;
+        private MaterialSkin.Controls.MaterialTextBox tb_pass;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private FontAwesome.Sharp.IconPictureBox iconShowPassword;
     }
 }
