@@ -21,19 +21,19 @@ namespace GUI
             InitializeComponent();
         }
 
-        //private void pic_show_MouseUp(object sender, EventArgs e)
-        //{
-        //    pic_unShow.Visible = false;
-        //    pic_show.Visible = true;
-        //    tb_pass.UseSystemPasswordChar = true;
-        //}
+        private void pic_show_MouseUp(object sender, EventArgs e)
+        {
+            pic_unShow.Visible = false;
+            pic_show.Visible = true;
+            tb_pass.UseSystemPasswordChar = true;
+        }
 
-        //private void pic_show_MouseDown(object sender, EventArgs e)
-        //{
-        //    pic_unShow.Visible = true;
-        //    pic_show.Visible = false;
-        //    tb_pass.UseSystemPasswordChar = false;
-        //}
+        private void pic_show_MouseDown(object sender, EventArgs e)
+        {
+            pic_unShow.Visible = true;
+            pic_show.Visible = false;
+            tb_pass.UseSystemPasswordChar = false;
+        }
 
         private void btn_dangNhap_Click(object sender, EventArgs e)
         {
@@ -78,19 +78,9 @@ namespace GUI
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void iconShowPassword_Click(object sender, EventArgs e)
+        private void btn_exit_Click(object sender, EventArgs e)
         {
-                tb_pass.Password = !tb_pass.Password;
-            if(iconShowPassword.IconChar == FontAwesome.Sharp.IconChar.EyeSlash)
-            {
-                iconShowPassword.IconChar = FontAwesome.Sharp.IconChar.Eye;
-            }
-            else
-            {
-                iconShowPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
-
-            }
+            Application.Exit();
         }
     }
 }
