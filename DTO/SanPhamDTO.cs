@@ -20,7 +20,7 @@ namespace DTO
         public string XuatXu { get; set; }
         public bool CanKeToa { get; set; }
         public bool TrangThai { get; set; }
-
+        public LoaiSanPhamDTO LoaiSanPhamDTO { get; set; }
         public SanPhamDTO(string maSP, string loaiSP, string nhaSanXuat, string tenSP, string quyCach, string xuatXu, bool canKeToa, bool trangThai)
         {
             MaSP = maSP;
