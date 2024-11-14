@@ -340,7 +340,6 @@
             lv_qlduocsi.UseCompatibleStateImageBehavior = false;
             lv_qlduocsi.View = View.Details;
             lv_qlduocsi.ItemSelectionChanged += lv_qlduocsi_ItemSelectionChanged;
-            lv_qlduocsi.SelectedIndexChanged += lv_qlduocsi_SelectedIndexChanged;
             // 
             // clMaSP
             // 
