@@ -49,5 +49,13 @@ namespace BUS
         {
             return SanPhamDAO.Instance.InsertProduct(masp, tensp, loaisp, nhasanxuat, quycach, xuatxu, canketoa, trangthai);
         }
+        public bool UpdateTrangThaiSanPham(string masp, bool trangthai)
+        {
+            return SanPhamDAO.Instance.UpdateTrangThaiSanPham(masp, trangthai);
+        }
+        public bool UpdateSanPham(string masp, string tensp, string loaisp, string nhasanxuat, string quycach, string xuatxu, bool canketoa)
+        {
+            return SanPhamDAO.Instance.UpdateSanPham(masp, tensp, loaisp, nhasanxuat, quycach, xuatxu, canketoa);
+        }
     }
 }

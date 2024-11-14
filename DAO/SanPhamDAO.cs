@@ -1,4 +1,5 @@
 ﻿using DTO;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -102,7 +103,7 @@ namespace DAO
 
         public bool InsertProduct(string masp, string tensp, string loaisp, string nhasanxuat, string quycach, string xuatxu, bool canketoa, bool trangthai)
         {
-            string query = "INSERT INTO sanpham(masp,tensp,loaisp,nhasanxuat,quycach,xuatxu,canketoa,trangthai) VALUES (@MaSP,@TenSP,@LoaiSP,@NhaSanXuat,@QuyCach,@XuatXu,@CanKeToa,@TrangThai)";
+            string query = "INSERT INTO sanpham(masp ,tensp, loaisp, nhasanxuat, quycach, xuatxu, canketoa, trangthai) VALUES ( @MaSP , @TenSP , @LoaiSP , @NhaSanXuat , @QuyCach , @XuatXu , @CanKeToa , @TrangThai )";
             object[] parameters =
             {
                 masp,
@@ -114,6 +115,37 @@ namespace DAO
                 canketoa,
                 trangthai
             };
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+            return result > 0;
+        }
+       
+        public bool UpdateSanPham(string masp, string tensp, string loaisp, string nhasanxuat, string quycach, string xuatxu, bool canketoa)
+        {
+            string query = "UPDATE sanpham SET tensp = @TenSP , loaisp = @LoaiSP , nhasanxuat = @NhaSanXuat , quycach = @QuyCach , xuatxu = @XuatXu , canketoa = @CanKeToa WHERE masp = @MaSP ";
+            object[] parameters =
+            {
+                tensp,
+                loaisp,
+                nhasanxuat,
+                quycach,
+                xuatxu,
+                canketoa,
+                masp
+
+            };
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+            return result > 0;
+        }
+        public bool UpdateTrangThaiSanPham(string MaSP, bool TrangThai)
+        {
+            string query = "UPDATE sanpham SET trangthai = @TrangThai WHERE masp = @MaSP ";
+
+            object[] parameters =
+            {
+                TrangThai,
+                MaSP
+            };
+
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;
         }
