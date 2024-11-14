@@ -141,6 +141,7 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
             radioButton1.Location = new Point(220, 180);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(125, 24);
@@ -156,7 +157,6 @@
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(125, 24);
             radioButton2.TabIndex = 11;
-            radioButton2.TabStop = true;
             radioButton2.Text = "Theo giá nhập";
             radioButton2.UseVisualStyleBackColor = true;
             // 

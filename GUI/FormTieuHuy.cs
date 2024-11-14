@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BUS;
+using DAO;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +20,218 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            // aa
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void FormTieuHuy_Load_1(object sender, EventArgs e)
+        {
+            DataTable chiTietSanPham = DataProvider.Instance.GetChiTietSanPham();
+            DataTable danhSachDuocSi = DataProvider.Instance.GetDanhSachDuocSi();
+            lv_DSHoaDon.SelectedIndexChanged += lv_DSHoaDon_SelectedIndexChanged;
+
+            // Đẩy dữ liệu vào ComboBox cho lô sản xuất
+            comboBoxLoSX.DataSource = chiTietSanPham;
+            comboBoxLoSX.DisplayMember = "loSX";
+            comboBoxLoSX.ValueMember = "mact"; // Sử dụng "mact" để lưu trữ
+
+            // Đẩy dữ liệu vào ComboBox cho sản phẩm (hiển thị tên sản phẩm)
+            comboBoxSanPham.DataSource = chiTietSanPham;
+            comboBoxSanPham.DisplayMember = "tensp"; // Hiển thị tên sản phẩm
+            comboBoxSanPham.ValueMember = "mact"; // Lưu giá trị là mã chi tiết
+
+            // Đẩy dữ liệu vào ComboBox cho người lập
+            comboBoxNguoiLap.DataSource = danhSachDuocSi;
+            comboBoxNguoiLap.DisplayMember = "hoten";  // Hiển thị tên dược sĩ
+            comboBoxNguoiLap.ValueMember = "mads";
+            LoadTieuHuyData();
+        }
+        private void LoadTieuHuyData()
+        {
+            DataTable data = TieuHuyBUS.Instance.GetListTieuHuy();
+            lv_DSHoaDon.Items.Clear();
+
+            foreach (DataRow row in data.Rows)
+            {
+                ListViewItem item = new ListViewItem(row["mact"].ToString());
+                //  item.SubItems.Add(row["loSX"].ToString());
+                item.SubItems.Add(Convert.ToDateTime(row["ngaytieuhuy"]).ToString("dd/MM/yyyy"));
+                item.SubItems.Add(row["nguoilap"].ToString());
+                item.SubItems.Add(row["lydo"].ToString());
+                item.SubItems.Add(row["thiethai"].ToString());
+
+                lv_DSHoaDon.Items.Add(item);
+            }
+        }
+
+        private void comboBoxSanPham_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxSanPham.SelectedItem is DataRowView selectedRow)
+            {
+                int maCT = Convert.ToInt32(selectedRow["mact"]);
+                int currentQuantity = TieuHuyDAO.Instance.GetSoLuong(maCT);
+
+                if (currentQuantity == 0)
+                {
+                    buttonadd.Enabled = false; // Disable the "Lưu" button
+                    MessageBox.Show("Sản phẩm này đã hết số lượng và không thể tiêu hủy.");
+                }
+                else
+                {
+                    buttonadd.Enabled = true; // Enable the "Lưu" button
+                }
+
+                // Optionally, you can also update the Thiệt Hại text box or other fields as needed
+                decimal thietHai = DataProvider.Instance.CalculateThietHai(maCT);
+                textBox1.Text = thietHai.ToString("N2");
+            }
+        }
+        private void LoadListTieuHuy()
+        {
+            lv_DSHoaDon.Items.Clear();
+            DataTable data = TieuHuyBUS.Instance.GetListTieuHuy();
+            foreach (DataRow row in data.Rows)
+            {
+                ListViewItem item = new ListViewItem(row["mact"].ToString());
+                item.SubItems.Add(row["ngaytieuhuy"].ToString());
+                item.SubItems.Add(row["nguoilap"].ToString());
+                item.SubItems.Add(row["lydo"].ToString());
+                item.SubItems.Add(row["thiethai"].ToString());
+                lv_DSHoaDon.Items.Add(item);
+            }
+        }
+        private void buttonadd_Click(object sender, EventArgs e)
+        {
+            int maCT = int.Parse(comboBoxSanPham.SelectedValue.ToString());
+            int currentQuantity = TieuHuyDAO.Instance.GetSoLuong(maCT);
+
+            if (currentQuantity == 0)
+            {
+                MessageBox.Show("Sản phẩm này đã hết số lượng và không thể tiêu hủy.");
+                return; // Stop the save operation
+            }
+
+            TieuHuyDTO tieuHuy = new TieuHuyDTO()
+            {
+                MaCT = maCT,
+                NgayTieuHuy = dateTimePicker3.Value,
+                NguoiLap = comboBoxNguoiLap.SelectedValue.ToString(),
+                LyDo = richTextBox1.Text,
+                ThietHai = string.IsNullOrEmpty(textBox1.Text) ? (decimal?)null : decimal.Parse(textBox1.Text)
+            };
+
+            if (TieuHuyBUS.Instance.AddTieuHuy(tieuHuy))
+            {
+                MessageBox.Show("Thêm và cập nhật số lượng thành công");
+                LoadListTieuHuy();
+            }
+            else
+            {
+                MessageBox.Show("Thêm hoặc cập nhật số lượng thất bại");
+            }
+        }
+
+
+        private void buttonedit_Click(object sender, EventArgs e)
+        {
+            if (lv_DSHoaDon.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = lv_DSHoaDon.SelectedItems[0];
+                TieuHuyDTO tieuHuy = new TieuHuyDTO()
+                {
+                    MaCT = int.Parse(selectedItem.Text),
+                    NgayTieuHuy = dateTimePicker3.Value,
+                    NguoiLap = comboBoxNguoiLap.SelectedValue.ToString(),
+                    LyDo = richTextBox1.Text,
+                    ThietHai = string.IsNullOrEmpty(textBox1.Text) ? (decimal?)null : decimal.Parse(textBox1.Text)
+                };
+
+
+
+
+                // Gọi phương thức cập nhật
+                if (TieuHuyBUS.Instance.UpdateTieuHuy(tieuHuy))
+                {
+                    MessageBox.Show("Cập nhật thành công");
+                    LoadListTieuHuy();
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mục để cập nhật.");
+            }
+        }
+
+
+        private void buttondelete_Click(object sender, EventArgs e)
+        {
+            if (lv_DSHoaDon.SelectedItems.Count > 0)
+            {
+                int maCT = int.Parse(lv_DSHoaDon.SelectedItems[0].Text);
+                if (TieuHuyBUS.Instance.DeleteTieuHuy(maCT))
+                {
+                    MessageBox.Show("Xóa thành công");
+                    LoadListTieuHuy();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thất bại");
+                }
+            }
+        }
+
+        private void lv_DSHoaDon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lv_DSHoaDon.SelectedItems.Count > 0)
+            {
+                // Lấy mục được chọn đầu tiên
+                ListViewItem selectedItem = lv_DSHoaDon.SelectedItems[0];
+
+                // Gán giá trị từ các cột của ListView vào các điều khiển nhập liệu
+                comboBoxSanPham.SelectedValue = int.Parse(selectedItem.SubItems[0].Text); // Mã chi tiết
+                dateTimePicker3.Value = DateTime.Parse(selectedItem.SubItems[1].Text); // Ngày tiêu hủy
+                comboBoxNguoiLap.SelectedValue = selectedItem.SubItems[2].Text; // Người lập
+                richTextBox1.Text = selectedItem.SubItems[3].Text; // Lý do
+                textBox1.Text = selectedItem.SubItems[4].Text; // Thiệt hại
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            // Lấy giá trị ngày bắt đầu và ngày kết thúc từ DateTimePicker
+            DateTime startDate = dateTimePicker1.Value.Date;
+            DateTime endDate = dateTimePicker2.Value.Date;
+
+            // Gọi hàm tìm kiếm trong BUS với khoảng ngày
+            DataTable filteredData = TieuHuyBUS.Instance.SearchTieuHuyByDateRange(startDate, endDate);
+
+            // Hiển thị dữ liệu đã lọc trong ListView
+            lv_DSHoaDon.Items.Clear();
+            foreach (DataRow row in filteredData.Rows)
+            {
+                ListViewItem item = new ListViewItem(row["mact"].ToString());
+                item.SubItems.Add(Convert.ToDateTime(row["ngaytieuhuy"]).ToString("dd/MM/yyyy"));
+                item.SubItems.Add(row["nguoilap"].ToString());
+                item.SubItems.Add(row["lydo"].ToString());
+                item.SubItems.Add(row["thiethai"].ToString());
+
+                lv_DSHoaDon.Items.Add(item);
+            }
         }
     }
 }

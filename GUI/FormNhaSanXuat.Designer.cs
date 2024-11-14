@@ -1,24 +1,25 @@
-﻿namespace GUI
-{
-    partial class FormNhaSanXuat
+﻿
+    namespace GUI
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        partial class FormNhaSanXuat
         {
-            if (disposing && (components != null))
+            /// <summary>
+            /// Required designer variable.
+            /// </summary>
+            private System.ComponentModel.IContainer components = null;
+
+            /// <summary>
+            /// Clean up any resources being used.
+            /// </summary>
+            /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+            protected override void Dispose(bool disposing)
             {
-                components.Dispose();
+                if (disposing && (components != null))
+                {
+                    components.Dispose();
+                }
+                base.Dispose(disposing);
             }
-            base.Dispose(disposing);
-        }
 
         #region Windows Form Designer generated code
 
@@ -28,192 +29,244 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem("2");
-            ListViewItem listViewItem2 = new ListViewItem("3");
-            ListViewItem listViewItem3 = new ListViewItem("1");
+            ListViewItem listViewItem1 = new ListViewItem("1");
+            ListViewItem listViewItem2 = new ListViewItem("2");
+            ListViewItem listViewItem3 = new ListViewItem("3");
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            comboBox1 = new ComboBox();
-            panel1 = new Panel();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            lsvThemHoaDon = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            panel1.SuspendLayout();
+            lv_qlncc = new ListView();
+            clMaNSX = new ColumnHeader();
+            clTenNSX = new ColumnHeader();
+            nsxTrangThai = new ColumnHeader();
+            Yesbtn = new RadioButton();
+            Nobtn = new RadioButton();
+            textBoxMANSX = new TextBox();
+            textBoxtennsx = new TextBox();
+            buttonAdd = new Button();
+            buttonEdit = new Button();
+            buttonDelete = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(332, 18);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(531, 9);
             label1.Name = "label1";
-            label1.Size = new Size(247, 50);
+            label1.Size = new Size(195, 32);
             label1.TabIndex = 0;
-            label1.Text = "Nhà sản xuất";
+            label1.Text = "NHÀ SẢN XUẤT";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(28, 26);
+            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(188, 76);
             label2.Name = "label2";
-            label2.Size = new Size(116, 20);
+            label2.Size = new Size(160, 25);
             label2.TabIndex = 1;
-            label2.Text = "Mã nhà sản xuất";
+            label2.Text = "Mã nhà sản xuất :";
+            label2.Click += label2_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(28, 80);
+            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(188, 157);
             label3.Name = "label3";
-            label3.Size = new Size(90, 20);
+            label3.Size = new Size(105, 25);
             label3.TabIndex = 2;
-            label3.Text = "Tên sản xuất";
+            label3.Text = "Trạng thái :";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(28, 141);
+            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(188, 119);
             label4.Name = "label4";
-            label4.Size = new Size(75, 20);
+            label4.Size = new Size(162, 25);
             label4.TabIndex = 3;
-            label4.Text = "Trạng thái";
+            label4.Text = "Tên nhà sản xuất :";
             // 
-            // textBox1
+            // lv_qlncc
             // 
-            textBox1.Location = new Point(194, 26);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(326, 27);
-            textBox1.TabIndex = 4;
+            lv_qlncc.Columns.AddRange(new ColumnHeader[] { clMaNSX, clTenNSX, nsxTrangThai });
+            lv_qlncc.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lv_qlncc.FullRowSelect = true;
+            lv_qlncc.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
+            lv_qlncc.Location = new Point(157, 202);
+            lv_qlncc.Name = "lv_qlncc";
+            lv_qlncc.Size = new Size(824, 175);
+            lv_qlncc.TabIndex = 44;
+            lv_qlncc.UseCompatibleStateImageBehavior = false;
+            lv_qlncc.View = View.Details;
+            lv_qlncc.SelectedIndexChanged += lv_qlncc_SelectedIndexChanged;
             // 
-            // textBox2
+            // clMaNSX
             // 
-            textBox2.Location = new Point(194, 77);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(326, 27);
-            textBox2.TabIndex = 5;
+            clMaNSX.Text = "Mã NSX";
+            clMaNSX.Width = 140;
             // 
-            // comboBox1
+            // clTenNSX
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(194, 138);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 6;
+            clTenNSX.Text = "Tên NSX";
+            clTenNSX.Width = 330;
             // 
-            // panel1
+            // nsxTrangThai
             // 
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(comboBox1);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label4);
-            panel1.Location = new Point(46, 71);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(821, 231);
-            panel1.TabIndex = 7;
+            nsxTrangThai.Text = "Trạng thái";
+            nsxTrangThai.Width = 340;
             // 
-            // button1
+            // Yesbtn
             // 
-            button1.Location = new Point(624, 16);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(107, 40);
-            button1.TabIndex = 18;
-            button1.Text = "Thêm";
-            button1.UseVisualStyleBackColor = true;
+            Yesbtn.AutoSize = true;
+            Yesbtn.Location = new Point(469, 163);
+            Yesbtn.Margin = new Padding(3, 2, 3, 2);
+            Yesbtn.Name = "Yesbtn";
+            Yesbtn.Size = new Size(42, 19);
+            Yesbtn.TabIndex = 45;
+            Yesbtn.TabStop = true;
+            Yesbtn.Text = "Yes";
+            Yesbtn.UseVisualStyleBackColor = true;
+            Yesbtn.CheckedChanged += Yes_CheckedChanged;
             // 
-            // button2
+            // Nobtn
             // 
-            button2.Location = new Point(624, 141);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(107, 40);
-            button2.TabIndex = 19;
-            button2.Text = "Xóa";
-            button2.UseVisualStyleBackColor = true;
+            Nobtn.AutoSize = true;
+            Nobtn.Location = new Point(594, 163);
+            Nobtn.Margin = new Padding(3, 2, 3, 2);
+            Nobtn.Name = "Nobtn";
+            Nobtn.Size = new Size(41, 19);
+            Nobtn.TabIndex = 46;
+            Nobtn.TabStop = true;
+            Nobtn.Text = "No";
+            Nobtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // textBoxMANSX
             // 
-            button3.Location = new Point(624, 80);
-            button3.Margin = new Padding(3, 4, 3, 4);
-            button3.Name = "button3";
-            button3.Size = new Size(107, 40);
-            button3.TabIndex = 20;
-            button3.Text = "Sửa";
-            button3.UseVisualStyleBackColor = true;
+            textBoxMANSX.Location = new Point(469, 76);
+            textBoxMANSX.Margin = new Padding(3, 2, 3, 2);
+            textBoxMANSX.Name = "textBoxMANSX";
+            textBoxMANSX.ReadOnly = true;
+            textBoxMANSX.Size = new Size(248, 23);
+            textBoxMANSX.TabIndex = 47;
+            textBoxMANSX.TextChanged += textBox1_TextChanged;
             // 
-            // lsvThemHoaDon
+            // textBoxtennsx
             // 
-            lsvThemHoaDon.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            lsvThemHoaDon.FullRowSelect = true;
-            lsvThemHoaDon.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
-            lsvThemHoaDon.Location = new Point(46, 327);
-            lsvThemHoaDon.Margin = new Padding(3, 4, 3, 4);
-            lsvThemHoaDon.Name = "lsvThemHoaDon";
-            lsvThemHoaDon.Size = new Size(821, 253);
-            lsvThemHoaDon.TabIndex = 21;
-            lsvThemHoaDon.UseCompatibleStateImageBehavior = false;
-            lsvThemHoaDon.View = View.Details;
+            textBoxtennsx.Location = new Point(469, 119);
+            textBoxtennsx.Margin = new Padding(3, 2, 3, 2);
+            textBoxtennsx.Name = "textBoxtennsx";
+            textBoxtennsx.Size = new Size(248, 23);
+            textBoxtennsx.TabIndex = 48;
             // 
-            // columnHeader1
+            // buttonAdd
             // 
-            columnHeader1.Text = "Mã nhà sản xuất";
-            columnHeader1.Width = 100;
+            buttonAdd.Location = new Point(684, 427);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(75, 23);
+            buttonAdd.TabIndex = 49;
+            buttonAdd.Text = "Thêm";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
-            // columnHeader2
+            // buttonEdit
             // 
-            columnHeader2.Text = "Tên nhà sản xuất";
-            columnHeader2.Width = 400;
+            buttonEdit.Location = new Point(791, 427);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(75, 23);
+            buttonEdit.TabIndex = 50;
+            buttonEdit.Text = "Sửa";
+            buttonEdit.UseVisualStyleBackColor = true;
+            buttonEdit.Click += buttonEdit_Click;
             // 
-            // columnHeader3
+            // buttonDelete
             // 
-            columnHeader3.Text = "Trạng thái";
-            columnHeader3.Width = 310;
+            buttonDelete.Location = new Point(906, 427);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(75, 23);
+            buttonDelete.TabIndex = 51;
+            buttonDelete.Text = "Xóa";
+            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
             // 
             // FormNhaSanXuat
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(907, 593);
-            Controls.Add(lsvThemHoaDon);
-            Controls.Add(panel1);
+            ClientSize = new Size(1154, 535);
+            Controls.Add(buttonDelete);
+            Controls.Add(buttonEdit);
+            Controls.Add(buttonAdd);
+            Controls.Add(textBoxtennsx);
+            Controls.Add(textBoxMANSX);
+            Controls.Add(Nobtn);
+            Controls.Add(Yesbtn);
+            Controls.Add(lv_qlncc);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormNhaSanXuat";
             Text = " n";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            //panel1.ResumeLayout(false);
+            //panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
-        #endregion
+        private void Yes_CheckedChanged(object sender, EventArgs e)
+            {
+                // Kiểm tra nếu Yesbtn đang được chọn
+                if (Yesbtn.Checked)
+                {
+                    // Nếu Yes được chọn, đặt No thành không được chọn
+                    Nobtn.Checked = false;
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private ComboBox comboBox1;
-        private Panel panel1;
-        private Button button1;
-        private Button button3;
-        private Button button2;
-        private ListView lsvThemHoaDon;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
+                    // Bạn có thể thực hiện các thao tác khác nếu cần, ví dụ:
+                    // MessageBox.Show("Trạng thái: Yes được chọn");
+
+                    // Cập nhật biến TrangThai nếu cần
+                    // bool trangThai = true; // nếu cần lưu trạng thái
+                }
+            }
+
+            private void textBox1_TextChanged(object sender, EventArgs e)
+            {
+                // Kiểm tra nếu textBoxMANSX có giá trị hay không
+                if (string.IsNullOrWhiteSpace(textBoxMANSX.Text))
+                {
+                    // Nếu trống, vô hiệu hóa các nút Sửa và Xóa
+                    buttonEdit.Enabled = false;
+                    buttonDelete.Enabled = false;
+                }
+                else
+                {
+                    // Nếu có giá trị, kích hoạt các nút Sửa và Xóa
+                    buttonEdit.Enabled = true;
+                    buttonDelete.Enabled = true;
+                }
+            }
+
+            #endregion
+
+            private Label label1;
+            private Label label2;
+            private Label label3;
+            private Label label4;
+            private ListView lv_qlncc;
+            private ColumnHeader clMaNSX;
+            private ColumnHeader clTenNSX;
+            private ColumnHeader nsxTrangThai;
+            private RadioButton Yesbtn;
+            private RadioButton Nobtn;
+            private TextBox textBoxMANSX;
+            private TextBox textBoxtennsx;
+            private Button buttonAdd;
+            private Button buttonEdit;
+            private Button buttonDelete;
+        }
     }
-}

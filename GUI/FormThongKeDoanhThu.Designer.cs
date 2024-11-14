@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            dateBatDau = new DateTimePicker();
             label2 = new Label();
             label3 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            button1 = new Button();
+            dateKetThuc = new DateTimePicker();
+            btnThongKe = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            listView1 = new ListView();
+            tblThongTin = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
@@ -56,14 +56,14 @@
             label1.TextAlign = ContentAlignment.MiddleCenter;
             label1.Click += label1_Click;
             // 
-            // dateTimePicker1
+            // dateBatDau
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 12F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(355, 95);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(149, 34);
-            dateTimePicker1.TabIndex = 1;
+            dateBatDau.Font = new Font("Segoe UI", 12F);
+            dateBatDau.Format = DateTimePickerFormat.Short;
+            dateBatDau.Location = new Point(355, 95);
+            dateBatDau.Name = "dateBatDau";
+            dateBatDau.Size = new Size(149, 34);
+            dateBatDau.TabIndex = 1;
             // 
             // label2
             // 
@@ -87,24 +87,25 @@
             label3.TabIndex = 4;
             label3.Text = "Ngày kết thúc:";
             // 
-            // dateTimePicker2
+            // dateKetThuc
             // 
-            dateTimePicker2.Font = new Font("Segoe UI", 12F);
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(783, 95);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(149, 34);
-            dateTimePicker2.TabIndex = 3;
+            dateKetThuc.Font = new Font("Segoe UI", 12F);
+            dateKetThuc.Format = DateTimePickerFormat.Short;
+            dateKetThuc.Location = new Point(783, 95);
+            dateKetThuc.Name = "dateKetThuc";
+            dateKetThuc.Size = new Size(149, 34);
+            dateKetThuc.TabIndex = 3;
             // 
-            // button1
+            // btnThongKe
             // 
-            button1.Font = new Font("Segoe UI", 12F);
-            button1.Location = new Point(512, 164);
-            button1.Name = "button1";
-            button1.Size = new Size(129, 55);
-            button1.TabIndex = 5;
-            button1.Text = "Thống kê";
-            button1.UseVisualStyleBackColor = true;
+            btnThongKe.Font = new Font("Segoe UI", 12F);
+            btnThongKe.Location = new Point(512, 164);
+            btnThongKe.Name = "btnThongKe";
+            btnThongKe.Size = new Size(129, 55);
+            btnThongKe.TabIndex = 5;
+            btnThongKe.Text = "Thống kê";
+            btnThongKe.UseVisualStyleBackColor = true;
+            btnThongKe.Click += btnThongKe_Click;
             // 
             // groupBox1
             // 
@@ -117,7 +118,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(listView1);
+            groupBox2.Controls.Add(tblThongTin);
             groupBox2.Location = new Point(586, 270);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(522, 480);
@@ -125,15 +126,16 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Bảng thông tin";
             // 
-            // listView1
+            // tblThongTin
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
-            listView1.Location = new Point(25, 38);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(477, 420);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            tblThongTin.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            tblThongTin.Location = new Point(25, 38);
+            tblThongTin.Name = "tblThongTin";
+            tblThongTin.Size = new Size(477, 420);
+            tblThongTin.TabIndex = 0;
+            tblThongTin.UseCompatibleStateImageBehavior = false;
+            tblThongTin.View = View.Details;
+            tblThongTin.SelectedIndexChanged += tblThongTin_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
@@ -162,11 +164,11 @@
             ClientSize = new Size(1145, 762);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(button1);
+            Controls.Add(btnThongKe);
             Controls.Add(label3);
-            Controls.Add(dateTimePicker2);
+            Controls.Add(dateKetThuc);
             Controls.Add(label2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dateBatDau);
             Controls.Add(label1);
             Name = "FormThongKeDoanhThu";
             Text = "FormThongKeDoanhThu";
@@ -191,5 +193,9 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
+        private DateTimePicker dateBatDau;
+        private DateTimePicker dateKetThuc;
+        private Button btnThongKe;
+        private ListView tblThongTin;
     }
 }
