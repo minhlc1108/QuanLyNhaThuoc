@@ -37,28 +37,41 @@ namespace GUI
 
         private void btn_dangNhap_Click(object sender, EventArgs e)
         {
-
             List<TaiKhoanDTO> list = TaiKhoanBUS.Instance.GetAllTaiKhoan();
 
             string username = tb_user.Text;
             string password = tb_pass.Text;
 
+            string mads = "";
             bool check = false;
+            bool checkTrangThai = false;
             foreach (TaiKhoanDTO taiKhoan in list)
             {
                 if (username == taiKhoan.Username && password == taiKhoan.Password)
                 {
+                    mads = taiKhoan.MaTK;
+                    if (DuocSiBUS.Instance.getTrangThaiDuocSi(mads) == true)
+                    {
+                        checkTrangThai = true;
+                    }
                     check = true;
                     break;
                 }
+                
             }
             if(check)
             {
-                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MainForm mainForm = new MainForm();
-                mainForm.Show();
-
-                this.Hide();
+                if(checkTrangThai)
+                {
+                    MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MainForm mainForm = new MainForm(mads);
+                    mainForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Dược sĩ này đã nghỉ làm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {

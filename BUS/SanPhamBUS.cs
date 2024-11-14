@@ -29,6 +29,22 @@ namespace BUS
            return SanPhamDAO.Instance.GetAllProducts();
         }
 
+        public bool IsProductExists(string masp)
+        {
+            return SanPhamDAO.Instance.IsProductExists(masp);
+        }
+
+
+        public string GetTenSPByMaSP(string masp)
+        {
+            return SanPhamDAO.Instance.GetTenSPByMaSP(masp);
+        }
+
+        public List<SanPhamDTO> GetProductsByTrangThai()
+        {
+            return SanPhamDAO.Instance.GetProductsByTrangThai();
+        }
+
         public bool InsertProduct(string masp, string tensp, string loaisp, string nhasanxuat, string quycach, string xuatxu, bool canketoa, bool trangthai)
         {
             return SanPhamDAO.Instance.InsertProduct(masp, tensp, loaisp, nhasanxuat, quycach, xuatxu, canketoa, trangthai);

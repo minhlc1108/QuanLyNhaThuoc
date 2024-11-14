@@ -26,5 +26,15 @@ namespace GUI
         {
 
         }
+
+        private void tblThongTin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(dateBatDau.Text + " - " + dateKetThuc.Text);
+        }
     }
 }

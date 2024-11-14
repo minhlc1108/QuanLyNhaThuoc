@@ -1,10 +1,6 @@
 ﻿using DTO;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAO
 {
@@ -24,6 +20,7 @@ namespace DAO
             }
         }
 
+        // Lấy danh sách tất cả nhà sản xuất
         public List<NhaSanXuatDTO> GetAllNhaSanXuat()
         {
             List<NhaSanXuatDTO> nhaSanXuatList = new List<NhaSanXuatDTO>();
@@ -32,20 +29,80 @@ namespace DAO
 
             foreach (DataRow row in data.Rows)
             {
-                NhaSanXuatDTO nhaSanXuat = new NhaSanXuatDTO
+                NhaSanXuatDTO nsx = new NhaSanXuatDTO
                 {
                     MaNSX = row["mansx"].ToString(),
                     TenNSX = row["tennsx"].ToString(),
                     TrangThai = Convert.ToBoolean(row["trangthai"])
                 };
 
-                nhaSanXuatList.Add(nhaSanXuat);
+                nhaSanXuatList.Add(nsx);
             }
 
             return nhaSanXuatList;
         }
 
-       
-    }
+        // Thêm nhà sản xuất
+        public bool InsertNhaSanXuat(string maNSX, string tenNSX, bool trangThai)
+        {
+            string query = "INSERT INTO nhasanxuat (mansx, tennsx, trangthai) VALUES (@MaNSX, @TenNSX, @TrangThai)";
+            object[] parameters = { maNSX, tenNSX, trangThai };
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
 
+            return result > 0;
+        }
+
+        public string GenerateMaNhaSanXuat()
+        {
+            string query = "SELECT MAX(mansx) FROM nhasanxuat";
+            object result = DataProvider.Instance.ExecuteScalar(query);
+
+            if (result != null && result != DBNull.Value)
+            {
+                // Mã hiện có, ví dụ: NSX002
+                string maxMaNSX = result.ToString();
+
+                // Lấy phần số và tăng lên 1
+                int number = int.Parse(maxMaNSX.Substring(3)) + 1;
+
+                // Tạo mã mới với định dạng NSXxxx (với số có 3 chữ số)
+                return "NSX" + number.ToString("D3");
+            }
+            else
+            {
+                // Nếu chưa có mã nào thì bắt đầu từ NSX001
+                return "NSX001";
+            }
+        }
+
+
+
+        // Cập nhật tên nhà sản xuất
+        public bool UpdateTenNhaSanXuat(string maNSX, string tenNSX)
+        {
+            string query = "UPDATE nhasanxuat SET tennsx = @TenNSX WHERE mansx = @MaNSX";
+            object[] parameters = { tenNSX, maNSX };
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+            return result > 0;
+        }
+
+        // Cập nhật trạng thái nhà sản xuất
+        public bool UpdateTrangThaiNhaSanXuat(string maNSX, bool trangThai)
+        {
+            string query = "UPDATE nhasanxuat SET trangthai = @TrangThai WHERE mansx = @MaNSX";
+            object[] parameters = { trangThai, maNSX };
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+            return result > 0;
+        }
+
+
+        // Xóa nhà sản xuất
+        public bool DeleteNhaSanXuat(string maNSX)
+        {
+            string query = "DELETE FROM nhasanxuat WHERE mansx = @MaNSX";
+            object[] parameters = { maNSX };
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+            return result > 0;
+        }
+    }
 }

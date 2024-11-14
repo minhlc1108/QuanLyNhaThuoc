@@ -10,7 +10,12 @@ using System.Windows.Forms;
 using BUS;
 using DTO;
 using Mysqlx.Session;
+using System.IO;
+using ExcelDataReader;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Windows.Media;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
 
 namespace GUI
 {
@@ -51,7 +56,6 @@ namespace GUI
                 {
                     btn_lock.Enabled = true;
                     btn_opLock.Enabled = false;
-                    btn_del.Enabled = true;
                 }
                 else
                 {
@@ -60,7 +64,6 @@ namespace GUI
                 }
                 // xử lý label & button
                 btn_add.Enabled = false;
-                btn_del.Enabled = true;
                 btn_edit.Enabled = true;
             }
         }
@@ -74,7 +77,7 @@ namespace GUI
 
             if (ValidateInputs(hoTen, sodt, email))
             {
-                DialogResult result = MessageBox.Show("Bạn muốn thêm dược sĩ này?", "Xác nhận thêm dược sĩ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Bạn muốn thêm dược sĩ này?", "Xác nhận thêm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -105,7 +108,7 @@ namespace GUI
 
             if (ValidateInputs(hoTen, sodt, email))
             {
-                DialogResult result = MessageBox.Show("Bạn muốn cập nhật dược sĩ này?", "Xác nhận cập nhật dược sĩ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Bạn muốn cập nhật dược sĩ này?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -117,7 +120,7 @@ namespace GUI
                     }
                     else
                     {
-                        MessageBox.Show("Thêm dược sĩ thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Cập nhật dược sĩ thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -155,36 +158,204 @@ namespace GUI
             }
         }
 
-        private void btn_del_Click(object sender, EventArgs e)
+        private void btn_nhapExcel_Click(object sender, EventArgs e)
         {
-            string mads = tb_ma.Text;
-
-            DialogResult result = MessageBox.Show($"Bạn muốn xóa dược sĩ có MaDS = {mads}?", "Xác nhận xoá dược sĩ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                bool successDelTaiKhoan = TaiKhoanBUS.Instance.DeleteTaiKhoan(mads);
-                if (successDelTaiKhoan)
+                Filter = "Excel Files|*.xls;*.xlsx",
+                Title = "Select an Excel File"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+
+                DialogResult result1 = MessageBox.Show($"Bạn chắc chắn muốn nhập File: '{Path.GetFileName(filePath)}'?", "Xác nhận",
+                                                                                                            MessageBoxButtons.YesNo,
+                                                                                                            MessageBoxIcon.Question);
+                if (result1 == DialogResult.Yes)
                 {
-                    bool successDelDuocSi = DuocSiBUS.Instance.DeleteDuocSi(mads);
-                    if (successDelDuocSi)
+                    // Đọc dữ liệu từ tệp Excel
+                    using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
                     {
-                        MessageBox.Show("Xoá dược sĩ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        reset();
+                        // Đặt cấu hình cho ExcelDataReader
+                        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                        using (var reader = ExcelReaderFactory.CreateReader(stream))
+                        {
+                            // Đọc dữ liệu thành DataSet
+                            var result = reader.AsDataSet();
+
+                            // Giả sử dữ liệu nằm trong bảng đầu tiên (Sheet1)
+                            DataTable dataTable = result.Tables[0];
+
+                            bool isHeaderValid = true;
+                            int num = 0;
+
+                            foreach (DataRow row in dataTable.Rows)
+                            {
+                                string hoTen = row[0].ToString();
+                                string soDT = row[1].ToString();
+                                string email = row[2].ToString();
+
+                                if (row == dataTable.Rows[0])
+                                {
+                                    if (hoTen != "Họ tên" || soDT != "Số điện thoại" || email != "Email")
+                                    {
+                                        isHeaderValid = false;
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (isHeaderValid)
+                                    {
+                                        DuocSiDTO ds = new DuocSiDTO("00", hoTen, soDT, email, "true");
+                                        bool check = DuocSiBUS.Instance.DuocSiDaTonTai(ds);
+                                        if (check)
+                                        {
+                                            continue;
+                                        }else
+                                        {
+                                            string lastMaDS = DuocSiBUS.Instance.GetLastMaDS();
+                                            string prefix = lastMaDS.Substring(0, 2);
+                                            string numberPart = lastMaDS.Substring(2);
+
+                                            int nextNumber = int.Parse(numberPart) + 1;
+
+                                            string newMaDS = prefix + nextNumber.ToString("D4");
+
+                                            if(DuocSiBUS.Instance.InsertDuocSi(newMaDS, hoTen, soDT, email, true))
+                                            {
+                                                if (TaiKhoanBUS.Instance.InsertTaiKhoan(newMaDS, newMaDS, "123456", 0))
+                                                {
+                                                    num++;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if (isHeaderValid == false)
+                            {
+                                MessageBox.Show("File excel không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }else
+                            {
+                                if(num == 0)
+                                {
+                                    MessageBox.Show($"Đã nhập File {Path.GetFileName(filePath)} này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    LoadDuocSiData();
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Thêm thành công {num} dược sĩ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    LoadDuocSiData();
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
 
-        private void btn_nhapExcel_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_xuat_Click(object sender, EventArgs e)
         {
+            DialogResult result1 = MessageBox.Show("Bạn chắc chắn muốn xuất File PDF", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                // Đường dẫn cơ bản cho file PDF
+                string baseFilePath = @"D:\dataCSharp\FilePdfDS\XuatDsPdf.pdf";
+                string filePath = baseFilePath;
 
+                // Kiểm tra và tạo tên file mới nếu đã tồn tại
+                int counter = 1;
+                while (File.Exists(filePath))
+                {
+                    filePath = Path.Combine(
+                        Path.GetDirectoryName(baseFilePath),
+                        $"{Path.GetFileNameWithoutExtension(baseFilePath)}_{counter}.pdf"
+                    );
+                    counter++;
+                }
+
+                // Tạo tài liệu PDF
+                PdfDocument document = new PdfDocument();
+                document.Info.Title = "Created with PDFsharp";
+
+                // Tạo trang đầu tiên
+                PdfPage page = document.AddPage();
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                double rowHeight = 30;      // Chiều cao mỗi dòng
+                double pageHeight = page.Height.Point;  // Chiều cao tối đa của trang PDF
+
+                // Vẽ tiêu đề trang và tiêu đề bảng trên trang đầu tiên
+                XFont titleFont = new XFont("Verdana", 22);
+                gfx.DrawString("Danh sách Dược Sĩ", titleFont, XBrushes.Black, new XPoint(200, 30));
+
+                XFont headerFont = new XFont("Verdana", 12);
+                gfx.DrawString("STT", headerFont, XBrushes.Black, new XPoint(5, 65));
+                gfx.DrawRectangle(XPens.Black, 0, 44, 40, rowHeight);
+                gfx.DrawString("Mã DS", headerFont, XBrushes.Black, new XPoint(45, 65));
+                gfx.DrawRectangle(XPens.Black, 40, 44, 60, rowHeight);
+                gfx.DrawString("Họ tên", headerFont, XBrushes.Black, new XPoint(112, 65));
+                gfx.DrawRectangle(XPens.Black, 100, 44, 175, rowHeight);
+                gfx.DrawString("Số ĐT", headerFont, XBrushes.Black, new XPoint(295, 65));
+                gfx.DrawRectangle(XPens.Black, 275, 44, 95, rowHeight);
+                gfx.DrawString("Email", headerFont, XBrushes.Black, new XPoint(375, 65));
+                gfx.DrawRectangle(XPens.Black, 370, 44, 155, rowHeight);
+                gfx.DrawString("TT", headerFont, XBrushes.Black, new XPoint(545, 65));
+                gfx.DrawRectangle(XPens.Black, 525, 44, 65, rowHeight);
+
+                // Vị trí bắt đầu vẽ các dòng dữ liệu
+                int yPosition = 92;
+                int khoangCachDOng = 18;
+                List<DuocSiDTO> listDSXuatFile = DuocSiBUS.Instance.GetAllDuocSi();
+                int stt = 1;
+
+                foreach (var item in listDSXuatFile)
+                {
+                    // Nếu vị trí y vượt quá chiều cao trang, thêm trang mới mà không vẽ lại tiêu đề
+                    if (yPosition > pageHeight - rowHeight)
+                    {
+                        page = document.AddPage();
+                        gfx = XGraphics.FromPdfPage(page);
+                        yPosition = 30;  // Đặt lại vị trí y trên trang mới
+                    }
+                    // Vẽ dữ liệu của mỗi dòng
+                    gfx.DrawString(stt.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(10, yPosition));
+                    gfx.DrawRectangle(XPens.Black, 0, yPosition - khoangCachDOng, 40, rowHeight);
+                    gfx.DrawString(item.MaDS, new XFont("Verdana", 12), XBrushes.Black, new XPoint(45, yPosition));
+                    gfx.DrawRectangle(XPens.Black, 40, yPosition - khoangCachDOng, 60, rowHeight);
+                    gfx.DrawString(item.HoTen, new XFont("Verdana", 12), XBrushes.Black, new XPoint(112, yPosition));
+                    gfx.DrawRectangle(XPens.Black, 100, yPosition - khoangCachDOng, 175, rowHeight);
+                    gfx.DrawString(item.SDT, new XFont("Verdana", 12), XBrushes.Black, new XPoint(280, yPosition));
+                    gfx.DrawRectangle(XPens.Black, 275, yPosition - khoangCachDOng, 95, rowHeight);
+                    gfx.DrawString(item.Email, new XFont("Verdana", 12), XBrushes.Black, new XPoint(375, yPosition));
+                    gfx.DrawRectangle(XPens.Black, 370, yPosition - khoangCachDOng, 155, rowHeight);
+
+                    string trangThai = item.TrangThai == "True" ? "Còn làm" : "Nghỉ làm";
+                    gfx.DrawString(trangThai, new XFont("Verdana", 12), XBrushes.Black, new XPoint(530, yPosition));
+                    gfx.DrawRectangle(XPens.Black, 525, yPosition - khoangCachDOng, 65, rowHeight);
+
+                    yPosition += 30;  // Di chuyển xuống dòng tiếp theo
+                    stt++;
+                }
+                // Lưu tài liệu
+                document.Save(filePath);
+                if (File.Exists(filePath))
+                {
+                    MessageBox.Show($"Xuất File {filePath} thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Xuất file thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
+
+
+
 
         private void tb_find_TextChanged(object sender, EventArgs e)
         {
@@ -222,10 +393,12 @@ namespace GUI
             tb_hoten.Text = "";
             tb_sdt.Text = "";
             tb_email.Text = "";
+            tb_find.Text = "";
+            cbb_find.SelectedIndex = 0;
+            cbb_findTT.SelectedIndex = 0;
             btn_add.Enabled = true;
             btn_opLock.Enabled = false;
             btn_lock.Enabled = false;
-            btn_del.Enabled = false;
             btn_edit.Enabled = false;
             LoadDuLieu();
             LoadDuocSiData();
@@ -241,6 +414,9 @@ namespace GUI
 
             string newMaDS = prefix + nextNumber.ToString("D4");
             tb_ma.Text = newMaDS;
+
+            cbb_findTT.SelectedIndex = 0;
+            cbb_find.SelectedIndex = 0;
         }
 
         public bool ValidateInputs(string hoTen, string sodt, string email)
@@ -308,41 +484,7 @@ namespace GUI
 
             List<TaiKhoanDTO> taiKhoanList = TaiKhoanBUS.Instance.GetAllTaiKhoan();
 
-            lv_qlduocsi.Items.Clear();
-
-            int stt = 1;
-
-            foreach (DuocSiDTO duocSi in duocSiListFind)
-            {
-                ListViewItem item = new ListViewItem(stt.ToString());
-                item.SubItems.Add(duocSi.MaDS);
-                item.SubItems.Add(duocSi.HoTen);
-                item.SubItems.Add(duocSi.SDT);
-                item.SubItems.Add(duocSi.Email);
-
-                var taiKhoan = taiKhoanList.FirstOrDefault(tk => tk.MaTK == duocSi.MaDS);
-
-                if (taiKhoan != null)
-                {
-                    item.SubItems.Add(taiKhoan.Username);
-                }
-                else
-                {
-                    item.SubItems.Add("N/A");
-                }
-                if (duocSi.TrangThai == "True")
-                {
-                    item.SubItems.Add("Còn làm");
-                }
-                else
-                {
-                    item.SubItems.Add("Nghỉ làm");
-                }
-                lv_qlduocsi.Items.Add(item);
-
-                stt++;
-            }
-
+            handleDataView(duocSiListFind, taiKhoanList);
         }
 
         private void LoadDuocSiData()
@@ -350,11 +492,16 @@ namespace GUI
             List<DuocSiDTO> duocSiList = DuocSiBUS.Instance.GetAllDuocSi();
             List<TaiKhoanDTO> taiKhoanList = TaiKhoanBUS.Instance.GetAllTaiKhoan();
 
+            handleDataView(duocSiList, taiKhoanList);
+        }
+
+        private void handleDataView(List<DuocSiDTO> arrDS, List<TaiKhoanDTO> arrTK)
+        {
             lv_qlduocsi.Items.Clear();
 
             int stt = 1;
 
-            foreach (DuocSiDTO duocSi in duocSiList)
+            foreach (DuocSiDTO duocSi in arrDS)
             {
                 ListViewItem item = new ListViewItem(stt.ToString());
                 item.SubItems.Add(duocSi.MaDS);
@@ -362,7 +509,7 @@ namespace GUI
                 item.SubItems.Add(duocSi.SDT);
                 item.SubItems.Add(duocSi.Email);
 
-                var taiKhoan = taiKhoanList.FirstOrDefault(tk => tk.MaTK == duocSi.MaDS);
+                var taiKhoan = arrTK.FirstOrDefault(tk => tk.MaTK == duocSi.MaDS);
 
                 if (taiKhoan != null)
                 {
@@ -384,11 +531,6 @@ namespace GUI
 
                 stt++;
             }
-        }
-
-        private void lv_qlduocsi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

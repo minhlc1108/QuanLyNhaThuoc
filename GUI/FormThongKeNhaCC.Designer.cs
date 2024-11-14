@@ -74,7 +74,7 @@
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
             listView1.Location = new Point(25, 38);
             listView1.Name = "listView1";
-            listView1.Size = new Size(477, 420);
+            listView1.Size = new Size(477, 436);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -128,19 +128,20 @@
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(125, 24);
             radioButton2.TabIndex = 30;
-            radioButton2.TabStop = true;
             radioButton2.Text = "Theo giá nhập";
             radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
             radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
             radioButton1.Location = new Point(232, 187);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(125, 24);
             radioButton1.TabIndex = 29;
             radioButton1.TabStop = true;
             radioButton1.Text = "Theo số lượng";
+            radioButton1.UseMnemonic = false;
             radioButton1.UseVisualStyleBackColor = true;
             // 
             // label4

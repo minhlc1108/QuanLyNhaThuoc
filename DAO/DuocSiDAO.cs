@@ -74,6 +74,43 @@ namespace DAO
             return duocSiList;
         }
 
+        public string getHoTenDuocSi( string value)
+        {
+            string query = "SELECT hoten FROM duocsi WHERE mads = @Value ";
+
+            object[] parameters = {value};
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+
+            string hoTen = "";
+
+            if (data.Rows.Count > 0)
+            {
+                hoTen = data.Rows[0]["hoten"].ToString();
+            }
+
+            return hoTen;
+        }
+
+        public bool getTrangThaiDuocSi(string value)
+        {
+            string query = "SELECT trangthai FROM duocsi WHERE mads = @Value ";
+
+            object[] parameters = { value };
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+
+            bool trangThai = false;
+
+            if (data.Rows.Count > 0)
+            {
+                trangThai = Convert.ToBoolean(data.Rows[0]["trangthai"]);
+            }
+
+            return trangThai;
+        }
+
+
 
         public List<DuocSiDTO> GetDuocSiByTrangThai(bool trangthai)
         {
@@ -118,6 +155,26 @@ namespace DAO
 
             return lastMaDS;
         }
+
+        public bool DuocSiDaTonTai(DuocSiDTO duocsi)
+        {
+            string query = "SELECT COUNT(*) FROM duocsi WHERE hoten = @HoTen AND sodt = @SDT AND email = @Email ";
+
+            // Tham số hóa câu truy vấn để tránh SQL Injection
+            object[] parameters = new object[]
+            {
+                duocsi.HoTen,
+                duocsi.SDT,
+                duocsi.Email
+            };
+
+            // Thực hiện câu truy vấn và lấy kết quả
+            long result = (long)DataProvider.Instance.ExecuteScalar(query, parameters);
+
+            // Nếu có ít nhất 1 bản ghi, tức là dược sĩ đã tồn tại
+            return result > 0;
+        }
+
 
         public bool InsertDuocSi(string mads, string hoten, string sodt, string email, bool trangthai)
         {
@@ -166,22 +223,5 @@ namespace DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;
         }
-
-
-        public bool DeleteDuocSi(string mads)
-        {
-            string query = "DELETE FROM duocsi WHERE mads = @MaDS ";
-
-            object[] parameters =
-            {
-                mads
-            };
-
-            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
-            return result > 0;
-        }
-
-
     }
-
 }

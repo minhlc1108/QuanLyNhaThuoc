@@ -1,4 +1,3 @@
-﻿
 using DTO;
 using DAO;
 using System;
@@ -25,7 +24,10 @@ namespace BUS
             }
         }
 
-        
+        public List<NhaCungCapDTO> GetAllNhaCungCap()
+        {
+            return NhaCungCapDAO.Instance.GetAllNhaCungCap();
+        }
 
         public List<NhaCungCapDTO> GetNhaCungCapByTrangThai()
         {
@@ -47,7 +49,7 @@ namespace BUS
             return NhaCungCapDAO.Instance.GetNhaCungCapByTrangThai(trangthai);
         }
 
-        public List<NhaCungCapDTO> FindNhaCungCap(string param, string value)
+        public List<NhaCungCapDTO> FindNhaCungCap(string param,string value)
         {
             return NhaCungCapDAO.Instance.FindNhaCungCap(param, value);
         }

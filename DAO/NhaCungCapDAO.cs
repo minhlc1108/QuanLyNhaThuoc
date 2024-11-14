@@ -24,7 +24,7 @@ namespace DAO
             }
         }
 
-        public List<NhaCungCapDTO> GetAllNhaSanXuat()
+        public List<NhaCungCapDTO> GetAllNhaCungCap()
         {
             List<NhaCungCapDTO> nhaCungCapList = new List<NhaCungCapDTO>();
             string query = "SELECT * FROM nhacungcap";
