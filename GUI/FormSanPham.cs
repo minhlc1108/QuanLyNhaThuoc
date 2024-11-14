@@ -1,5 +1,7 @@
 ﻿using BUS;
 using DTO;
+using BUS;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +19,7 @@ namespace GUI
         public FormSanPham()
         {
             InitializeComponent();
+            LoadSPData();
             LoadSPData();
         }
 
