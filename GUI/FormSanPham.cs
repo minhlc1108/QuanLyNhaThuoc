@@ -16,11 +16,16 @@ namespace GUI
 {
     public partial class FormSanPham : Form
     {
+        private string thanhPhanValue; // Biến lưu giá trị ban đầu thành phần
+        private string dieutriValue; // Biến lưu giá trị ban đầu thành phần
+
         public FormSanPham()
         {
             InitializeComponent();
             LoadSPData();
             LoadSPData();
+            thanhPhanValue=txtThanhPhan.Text;
+            dieutriValue=txtDieuTriBenh.Text;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -63,21 +68,26 @@ namespace GUI
             {
                 keToa = false;
             }
-            bool themSanPham = SanPhamBUS.Instance.InsertProduct(txtMaSanPham.Text, txtTenSanPham.Text, cbbLoaiSanPham.Text.Split(" - ")[0].Trim(), cbbNhaSX.Text.Split(" - ")[0].Trim(), txtQuyCach.Text, txtXuatXu.Text, keToa, true);
-            string[] thanhPhanList = txtThanhPhan.Text.Split(',');
-            foreach (string thanhPhan in thanhPhanList)
+            if (ValidateInputs(txtMaSanPham.Text, txtTenSanPham.Text, txtQuyCach.Text, txtXuatXu.Text, txtThanhPhan.Text, txtDieuTriBenh.Text))
             {
-                bool themThanhPhan = ThanhPhanBUS.Instance.themThanhPhan(txtMaSanPham.Text.Trim(), thanhPhan.Trim());
+                bool themSanPham = SanPhamBUS.Instance.InsertProduct(txtMaSanPham.Text, txtTenSanPham.Text, cbbLoaiSanPham.Text.Split(" - ")[0].Trim(), cbbNhaSX.Text.Split(" - ")[0].Trim(), txtQuyCach.Text, txtXuatXu.Text, keToa, true);
+                string[] thanhPhanList = txtThanhPhan.Text.Split(',');
+                foreach (string thanhPhan in thanhPhanList)
+                {
+                    bool themThanhPhan = ThanhPhanBUS.Instance.themThanhPhan(txtMaSanPham.Text.Trim(), thanhPhan.Trim());
+                }
+                string[] dieuTriList = txtDieuTriBenh.Text.Split(',');
+                foreach (string dieutri in dieuTriList)
+                {
+                    bool themDieuTri = DieuTriBUS.Instance.themDieuTri(txtMaSanPham.Text.Trim(), dieutri.Trim());
+                }
+                LoadSPData();
+                btnResetSanPham_Click(sender, e);
             }
-            string[] dieuTriList = txtDieuTriBenh.Text.Split(',');
-            foreach (string dieutri in dieuTriList)
-            {
-                bool themDieuTri = DieuTriBUS.Instance.themDieuTri(txtMaSanPham.Text.Trim(), dieutri.Trim());
-            }
-            LoadSPData();
         }
         private void LoadSPData()
         {
+            cbbKeToa.SelectedIndex = 0;
             loadCbbNhaSanXuat();
             loadCbbLoaiSP();
             List<SanPhamDTO> sanPhamList = SanPhamBUS.Instance.GetAllProducts();
@@ -105,6 +115,8 @@ namespace GUI
                     item.SubItems.Add("Không Kê Toa");
 
                 }
+                int soLuong = SanPhamBUS.Instance.getSoLuongByMaSP(SP.MaSP);
+                item.SubItems.Add(soLuong.ToString());
 
                 if (Convert.ToString(SP.TrangThai) == "True")
                 {
@@ -118,6 +130,7 @@ namespace GUI
                 }
 
                 lsvSanPham.Items.Add(item);
+
                 stt++;
                 btnKhoaSanPham.Enabled = false;
                 btnUpdateSanPham.Enabled = false;
@@ -185,7 +198,7 @@ namespace GUI
                 txtDieuTriBenh.Text = dieuTriString;
                 btnThemSanPham.Enabled = false;
                 btnUpdateSanPham.Enabled = true;
-                if (item.SubItems[7].Text.Trim() == "Nghỉ Bán")
+                if (item.SubItems[8].Text.Trim() == "Nghỉ Bán")
                 {
                     btnKhoaSanPham.Enabled = false;
                 }
@@ -193,6 +206,8 @@ namespace GUI
                 {
                     btnKhoaSanPham.Enabled = true;
                 }
+                cbbLoaiSanPham.Enabled = false;
+                cbbNhaSX.Enabled = false;
             }
         }
         public void loadCbbLoaiSP()
@@ -215,7 +230,7 @@ namespace GUI
         }
         public void loadCbbNhaSanXuat()
         {
-            cbbKeToa.Items.Clear(); 
+            cbbKeToa.Items.Clear();
             cbbKeToa.Items.Add("Cần Kê Toa");
             cbbKeToa.Items.Add("Không Kê Toa");
             cbbNhaSX.Items.Clear();
@@ -238,10 +253,36 @@ namespace GUI
         private void btnKhoaSanPham_Click(object sender, EventArgs e)
         {
             string maSP = txtMaSanPham.Text;
-
+            bool keToa;
+            if (cbbKeToa.Text == "Cần Kê Toa")
+            {
+                keToa = true;
+            }
+            else
+            {
+                keToa = false;
+            }
             DialogResult result = MessageBox.Show("Bạn muốn thay đổi khóa sản phẩm này", "Xác nhận thay đổi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            SanPhamDTO sp = SanPhamBUS.Instance.GetSPByMaSP(txtMaSanPham.Text);
+            // get thành phần by mã
+            List<ThanhPhanDTO> listThanhPhanByMa = ThanhPhanBUS.Instance.GetALLThanhPhanByMa(txtMaSanPham.Text.Trim());
+            string thanhPhanString = string.Join(", ", listThanhPhanByMa.ConvertAll(tp => tp.TenThanhPhan));
+            txtThanhPhan.Text = thanhPhanString;
+            string[] thanhPhanList = txtThanhPhan.Text.Split(',');
+            //get điều tri by mã
+            List<DieuTriDTO> listDieuTriByMa = DieuTriBUS.Instance.GetALLDieuTriByMa(txtMaSanPham.Text.Trim());
+            string dieuTriString = string.Join(", ", listDieuTriByMa.ConvertAll(tp => tp.BenhDieuTri));
+            txtDieuTriBenh.Text = dieuTriString;
 
-            if (result == DialogResult.Yes)
+            bool check = true;
+            if (sp.TenSP.Trim() != txtTenSanPham.Text || sp.QuyCach.Trim() != txtQuyCach.Text || sp.XuatXu.Trim() != txtXuatXu.Text || sp.CanKeToa != keToa || txtThanhPhan.Text != thanhPhanString || txtDieuTriBenh.Text != dieuTriString)
+            {
+
+                MessageBox.Show("Không được chỉnh sửa sản phẩm khi khóa .", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                check = false;
+
+            }
+            if (result == DialogResult.Yes && check)
             {
                 bool successUpTT = SanPhamBUS.Instance.UpdateTrangThaiSanPham(maSP, false);
                 if (successUpTT)
@@ -250,6 +291,7 @@ namespace GUI
                     LoadSPData();
                 }
             }
+            btnResetSanPham_Click(sender, e);
         }
 
         private void btnResetSanPham_Click(object sender, EventArgs e)
@@ -260,16 +302,22 @@ namespace GUI
             txtTenSanPham.Text = "";
             txtQuyCach.Text = "";
             txtXuatXu.Text = "";
+            txtThanhPhan.Text = "";
+            txtTimKiem.Text = "";
             cbbKeToa.SelectedIndex = 0;
             cbbLoaiSanPham.SelectedIndex = 0;
             cbbNhaSX.SelectedIndex = 0;
             btnThemSanPham.Enabled = true;
-            btnKhoaSanPham.Enabled = true;
             btnKhoaSanPham.Enabled = false;
+            btnUpdateSanPham.Enabled = false;
+            txtMaSanPham.Enabled = true;
+            cbbLoaiSanPham.Enabled = true;
+            cbbNhaSX.Enabled = true;
         }
 
         private void btnUpdateSanPham_Click(object sender, EventArgs e)
         {
+
             bool keToa;
             if (cbbKeToa.Text == "Cần Kê Toa")
             {
@@ -279,20 +327,40 @@ namespace GUI
             {
                 keToa = false;
             }
-            bool updateSanPham = SanPhamBUS.Instance.UpdateSanPham(txtMaSanPham.Text,txtTenSanPham.Text, cbbLoaiSanPham.Text.Split(" - ")[0].Trim(), cbbNhaSX.Text.Split(" - ")[0].Trim(),txtQuyCach.Text,txtXuatXu.Text,keToa);
-            bool xoaThanhPhanByMaSP = ThanhPhanBUS.Instance.deleteThanhPhan(txtMaSanPham.Text.Trim());
-            bool xoaDieuTriByMaSP = DieuTriBUS.Instance.deleteDieuTri(txtMaSanPham.Text.Trim());
-            string[] thanhPhanList = txtThanhPhan.Text.Split(',');
-            foreach (string thanhPhan in thanhPhanList)
+
+            if (ValidateInputs(txtMaSanPham.Text, txtTenSanPham.Text, txtQuyCach.Text, txtXuatXu.Text, txtThanhPhan.Text, txtDieuTriBenh.Text))
             {
-                bool themThanhPhan = ThanhPhanBUS.Instance.themThanhPhan(txtMaSanPham.Text.Trim(), thanhPhan.Trim());
+                bool updateSanPham = SanPhamBUS.Instance.UpdateSanPham(txtMaSanPham.Text, txtTenSanPham.Text, cbbLoaiSanPham.Text.Split(" - ")[0].Trim(), cbbNhaSX.Text.Split(" - ")[0].Trim(), txtQuyCach.Text, txtXuatXu.Text, keToa);
+                bool xoaThanhPhanByMaSP = ThanhPhanBUS.Instance.deleteThanhPhan(txtMaSanPham.Text.Trim());
+                bool xoaDieuTriByMaSP = DieuTriBUS.Instance.deleteDieuTri(txtMaSanPham.Text.Trim());
+                string[] thanhPhanList = txtThanhPhan.Text.Split(',');
+                foreach (string thanhPhan in thanhPhanList)
+                {
+                    bool themThanhPhan = ThanhPhanBUS.Instance.themThanhPhan(txtMaSanPham.Text.Trim(), thanhPhan.Trim());
+                }
+                string[] dieuTriList = txtDieuTriBenh.Text.Split(',');
+                foreach (string dieutri in dieuTriList)
+                {
+                    bool themDieuTri = DieuTriBUS.Instance.themDieuTri(txtMaSanPham.Text.Trim(), dieutri.Trim());
+                }
+                LoadSPData();
+                btnResetSanPham_Click(sender, e);
             }
-            string[] dieuTriList = txtDieuTriBenh.Text.Split(',');
-            foreach (string dieutri in dieuTriList)
+
+        }
+        public bool ValidateInputs(string maSP, string tenSP, string xuatxu, string quycach, string thanhphan, string dieutribenh)
+        {
+            bool ktra = true;
+            if (string.IsNullOrWhiteSpace(maSP) || string.IsNullOrWhiteSpace(tenSP) || string.IsNullOrWhiteSpace(xuatxu) || string.IsNullOrWhiteSpace(quycach) || string.IsNullOrWhiteSpace(thanhphan) || string.IsNullOrWhiteSpace(dieutribenh))
             {
-                bool themDieuTri = DieuTriBUS.Instance.themDieuTri(txtMaSanPham.Text.Trim(), dieutri.Trim());
+                MessageBox.Show("Không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ktra = false;
             }
-            LoadSPData();
+            return ktra;
+        }
+
+        private void txtThanhPhan_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

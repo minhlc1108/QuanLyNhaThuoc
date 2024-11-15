@@ -26,7 +26,7 @@ namespace BUS
 
         public List<SanPhamDTO> GetAllProducts()
         {
-           return SanPhamDAO.Instance.GetAllProducts();
+            return SanPhamDAO.Instance.GetAllProducts();
         }
 
         public bool IsProductExists(string masp)
@@ -57,5 +57,13 @@ namespace BUS
         {
             return SanPhamDAO.Instance.UpdateSanPham(masp, tensp, loaisp, nhasanxuat, quycach, xuatxu, canketoa);
         }
-    }
+        public SanPhamDTO GetSPByMaSP(string maSP)
+        {
+            return SanPhamDAO.Instance.GetSPByMaSP(maSP);
+        }
+        public int getSoLuongByMaSP(string MaSP)
+        { 
+            return SanPhamDAO.Instance.getSoLuongByMaSP(MaSP);
+        }
+        }
 }

@@ -93,28 +93,6 @@ namespace GUI
                 MessageBox.Show("Không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ktra = false;
             }
-            //else
-            //{
-            //    if (!System.Text.RegularExpressions.Regex.IsMatch(sodt, @"^0\d{9}$"))
-            //    {
-            //        erorr_sdt.Text = "Số điện thoại không hợp lệ!";
-            //        ktra = false;
-            //    }
-            //    else
-            //    {
-            //        erorr_sdt.Text = "";
-            //    }
-
-            //    if (!email.EndsWith("@gmail.com"))
-            //    {
-            //        erorr_email.Text = "Email không hợp lệ!";
-            //        ktra = false;
-            //    }
-            //    else
-            //    {
-            //        erorr_email.Text = "";
-            //    }
-            //}
             return ktra;
         }
 
@@ -122,20 +100,20 @@ namespace GUI
         {
             string maLoaiSP = txtMaLoaiSP.Text;
             string tenLoaiSP = txtLoaiSanPham.Text;
-            DialogResult result = MessageBox.Show($"Bạn muốn xóa loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận xoá dược sĩ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show($"Bạn muốn khóa  loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận khóa loại sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 int checkSP = LoaiSanPhamBUS.Instance.checkSanPham(maLoaiSP);
                 if (checkSP > 0)
                 {
-                    MessageBox.Show("Xoá loại sản phẩm thất bại,vui lòng xóa các sản phẩm lên quan trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Khóa loại sản phẩm thất bại,vui lòng khóa các sản phẩm lên quan trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reset();
                 }
                 else
                 {
-                    bool successDelDuocSi = LoaiSanPhamBUS.Instance.DeleteLoaiSanPham(maLoaiSP);
-                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP,false);
+                    MessageBox.Show("Khóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reset();
                 }
 
