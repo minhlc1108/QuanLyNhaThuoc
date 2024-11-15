@@ -122,20 +122,20 @@ namespace GUI
         {
             string maLoaiSP = txtMaLoaiSP.Text;
             string tenLoaiSP = txtLoaiSanPham.Text;
-            DialogResult result = MessageBox.Show($"Bạn muốn xóa loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận xoá dược sĩ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show($"Bạn muốn khóa  loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận khóa loại sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 int checkSP = LoaiSanPhamBUS.Instance.checkSanPham(maLoaiSP);
                 if (checkSP > 0)
                 {
-                    MessageBox.Show("Xoá loại sản phẩm thất bại,vui lòng xóa các sản phẩm lên quan trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Khóa loại sản phẩm thất bại,vui lòng khóa các sản phẩm lên quan trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reset();
                 }
                 else
                 {
-                    bool successDelDuocSi = LoaiSanPhamBUS.Instance.DeleteLoaiSanPham(maLoaiSP);
-                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP,false);
+                    MessageBox.Show("Khóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reset();
                 }
 

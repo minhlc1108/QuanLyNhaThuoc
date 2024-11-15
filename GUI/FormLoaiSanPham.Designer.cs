@@ -104,7 +104,7 @@ namespace GUI
             btnXoaLSP.Name = "btnXoaLSP";
             btnXoaLSP.Size = new Size(110, 26);
             btnXoaLSP.TabIndex = 28;
-            btnXoaLSP.Text = "XÓA";
+            btnXoaLSP.Text = "KHÓA ";
             btnXoaLSP.UseVisualStyleBackColor = true;
             btnXoaLSP.Click += btnXoaLSP_Click;
             // 

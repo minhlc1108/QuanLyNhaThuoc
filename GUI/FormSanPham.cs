@@ -75,9 +75,11 @@ namespace GUI
                 bool themDieuTri = DieuTriBUS.Instance.themDieuTri(txtMaSanPham.Text.Trim(), dieutri.Trim());
             }
             LoadSPData();
+            btnResetSanPham_Click(sender,e);
         }
         private void LoadSPData()
         {
+            cbbKeToa.SelectedIndex = 0;
             loadCbbNhaSanXuat();
             loadCbbLoaiSP();
             List<SanPhamDTO> sanPhamList = SanPhamBUS.Instance.GetAllProducts();
@@ -193,6 +195,8 @@ namespace GUI
                 {
                     btnKhoaSanPham.Enabled = true;
                 }
+                cbbLoaiSanPham.Enabled=false;
+                cbbNhaSX.Enabled=false;
             }
         }
         public void loadCbbLoaiSP()
@@ -260,12 +264,17 @@ namespace GUI
             txtTenSanPham.Text = "";
             txtQuyCach.Text = "";
             txtXuatXu.Text = "";
+            txtThanhPhan.Text = "";
+            txtTimKiem.Text = "";
             cbbKeToa.SelectedIndex = 0;
             cbbLoaiSanPham.SelectedIndex = 0;
             cbbNhaSX.SelectedIndex = 0;
             btnThemSanPham.Enabled = true;
-            btnKhoaSanPham.Enabled = true;
             btnKhoaSanPham.Enabled = false;
+            btnUpdateSanPham.Enabled = false;
+            txtMaSanPham.Enabled = true;
+            cbbLoaiSanPham.Enabled = true;
+            cbbNhaSX.Enabled = true;
         }
 
         private void btnUpdateSanPham_Click(object sender, EventArgs e)
@@ -293,6 +302,7 @@ namespace GUI
                 bool themDieuTri = DieuTriBUS.Instance.themDieuTri(txtMaSanPham.Text.Trim(), dieutri.Trim());
             }
             LoadSPData();
+            btnResetSanPham_Click(sender, e);
 
         }
     }
