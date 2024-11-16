@@ -11,7 +11,6 @@ namespace DAO
 {
     public class SanPhamDAO
     {
-
         private static SanPhamDAO instance;
 
         public static SanPhamDAO Instance
@@ -99,7 +98,33 @@ namespace DAO
             return tenSP; 
         }
 
+        public SanPhamDTO GetSPByMaSP(string maSP)
+        {
+            string tenSP = string.Empty;
+            string query = "SELECT * FROM sanpham WHERE masp = @MaSP ";
 
+            object[] parameters = { maSP };
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+            SanPhamDTO dataSP = new SanPhamDTO();
+
+            foreach (DataRow row in data.Rows)
+            {
+                SanPhamDTO product = new SanPhamDTO
+                {
+                    MaSP = row["masp"].ToString(),
+                    TenSP = row["tensp"].ToString(),
+                    LoaiSP = row["loaisp"].ToString(),
+                    NhaSanXuat = row["nhasanxuat"].ToString(),
+                    QuyCach = row["quycach"].ToString(),
+                    XuatXu = row["xuatxu"].ToString(),
+                    CanKeToa = Convert.ToBoolean(row["canketoa"].ToString()),
+                    TrangThai = Convert.ToBoolean(row["trangthai"].ToString())
+                };
+                dataSP = product;
+            }
+            return dataSP;
+        }
 
         public bool InsertProduct(string masp, string tensp, string loaisp, string nhasanxuat, string quycach, string xuatxu, bool canketoa, bool trangthai)
         {
@@ -148,6 +173,21 @@ namespace DAO
 
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;
+        }
+        public int getSoLuongByMaSP(string MaSP)
+        {
+            int soLuong=0;
+            string query = "SELECT SUM(soLuong) AS soLuong FROM chitietsanpham WHERE masp = @MaSP GROUP BY masp;";
+            object[] parameters = { MaSP };
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+
+            if (data.Rows.Count > 0)
+            {
+                soLuong=Convert.ToInt16(data.Rows[0]["soLuong"].ToString());
+            }
+
+            return soLuong;
         }
     }
 }

@@ -130,6 +130,7 @@ namespace DAO
         }
         public int checkSanPham(string maloai)
         {
+            List<SanPhamDTO>listSPbyMaLoai=new List<SanPhamDTO>();
             int dem = 0;
             string query = "SELECT * FROM sanpham WHERE loaisp = @LoaiSP ";
             object[] parameters =
@@ -141,7 +142,15 @@ namespace DAO
 
             foreach (DataRow row in data.Rows)
             {
-                dem++;
+                SanPhamDTO sanpham = new SanPhamDTO
+                {
+                    
+                    TrangThai = Convert.ToBoolean(row["trangthai"].ToString())
+                };
+                if (sanpham.TrangThai)
+                {
+                    dem++;
+                }
             }
             return dem;
         }
