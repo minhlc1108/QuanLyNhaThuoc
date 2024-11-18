@@ -24,8 +24,8 @@ namespace GUI
             InitializeComponent();
             LoadSPData();
             LoadSPData();
-            thanhPhanValue=txtThanhPhan.Text;
-            dieutriValue=txtDieuTriBenh.Text;
+            thanhPhanValue = txtThanhPhan.Text;
+            dieutriValue = txtDieuTriBenh.Text;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace GUI
             {
                 keToa = false;
             }
-            if (ValidateInputs(txtMaSanPham.Text, txtTenSanPham.Text, txtQuyCach.Text, txtXuatXu.Text, txtThanhPhan.Text, txtDieuTriBenh.Text))
+            if (ValidateInputs(txtMaSanPham.Text, txtTenSanPham.Text, txtQuyCach.Text, txtXuatXu.Text, txtThanhPhan.Text, txtDieuTriBenh.Text) && checkMaSP())
             {
                 bool themSanPham = SanPhamBUS.Instance.InsertProduct(txtMaSanPham.Text, txtTenSanPham.Text, cbbLoaiSanPham.Text.Split(" - ")[0].Trim(), cbbNhaSX.Text.Split(" - ")[0].Trim(), txtQuyCach.Text, txtXuatXu.Text, keToa, true);
                 string[] thanhPhanList = txtThanhPhan.Text.Split(',');
@@ -84,6 +84,19 @@ namespace GUI
                 LoadSPData();
                 btnResetSanPham_Click(sender, e);
             }
+        }
+        private bool checkMaSP()
+        {
+            List<SanPhamDTO> list = SanPhamBUS.Instance.GetAllProducts();
+            foreach (SanPhamDTO sanpham in list)
+            {
+                if (sanpham.MaSP.Trim() == txtMaSanPham.Text.Trim())
+                {
+                    MessageBox.Show("Mã sản phẩm đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return true;
         }
         private void LoadSPData()
         {
@@ -361,6 +374,40 @@ namespace GUI
 
         private void txtThanhPhan_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private List<ListViewItem> listTimKiem = new List<ListViewItem>();
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text.Trim() == "")
+            {
+                btnResetSanPham_Click(sender, e);
+            }
+            else
+            {
+                foreach (ListViewItem item in lsvSanPham.Items)
+                {
+                    bool isMatch = false;
+                    foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+                    {
+                        if (subItem.Text.ToLower().Contains(txtTimKiem.Text.Trim().ToLower()))
+                        {
+                            isMatch = true;
+                            break;
+                        }
+                    }
+
+                    if (isMatch)
+                        listTimKiem.Add((ListViewItem)item.Clone()); // Lưu item khớp vào danh sách tạm
+                }
+
+                lsvSanPham.Items.Clear();
+                lsvSanPham.Items.AddRange(listTimKiem.ToArray());
+                listTimKiem.Clear();
+
+            }
 
         }
     }

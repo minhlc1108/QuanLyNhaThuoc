@@ -38,7 +38,6 @@ namespace GUI
             btnUpdateLSP = new Button();
             btnResetLSP = new Button();
             btnThemLSP = new Button();
-            btnLamMoiBang = new Button();
             btnXuatLSP = new Button();
             lsvLoaiSanPham = new ListView();
             clSTT = new ColumnHeader();
@@ -138,18 +137,9 @@ namespace GUI
             btnThemLSP.UseVisualStyleBackColor = true;
             btnThemLSP.Click += btnThemLSP_Click;
             // 
-            // btnLamMoiBang
-            // 
-            btnLamMoiBang.Location = new Point(880, 631);
-            btnLamMoiBang.Name = "btnLamMoiBang";
-            btnLamMoiBang.Size = new Size(121, 26);
-            btnLamMoiBang.TabIndex = 34;
-            btnLamMoiBang.Text = "LÀM MỚI";
-            btnLamMoiBang.UseVisualStyleBackColor = true;
-            // 
             // btnXuatLSP
             // 
-            btnXuatLSP.Location = new Point(610, 631);
+            btnXuatLSP.Location = new Point(716, 612);
             btnXuatLSP.Name = "btnXuatLSP";
             btnXuatLSP.Size = new Size(180, 26);
             btnXuatLSP.TabIndex = 33;
@@ -214,6 +204,7 @@ namespace GUI
             btnTimKiem.TabIndex = 29;
             btnTimKiem.Text = "TÌM";
             btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // txtMaLoaiSP
             // 
@@ -240,7 +231,6 @@ namespace GUI
             ClientSize = new Size(1134, 679);
             Controls.Add(txtMaLoaiSP);
             Controls.Add(label6);
-            Controls.Add(btnLamMoiBang);
             Controls.Add(btnXuatLSP);
             Controls.Add(lsvLoaiSanPham);
             Controls.Add(label2);
@@ -277,7 +267,6 @@ namespace GUI
         private Button btnUpdateLSP;
         private Button btnResetLSP;
         private Button btnThemLSP;
-        private Button btnLamMoiBang;
         private Button btnXuatLSP;
         private ListView lsvLoaiSanPham;
         private ColumnHeader clMaLoaiSP;

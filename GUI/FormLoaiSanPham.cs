@@ -66,9 +66,9 @@ namespace GUI
 
             if (ValidateInputs(maLoai, tenLoai))
             {
-                DialogResult result = MessageBox.Show("Bạn muốn thêm dược sĩ này?", "Xác nhận thêm dược sĩ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Bạn muốn thêm loại sản phẩm  này?", "Xác nhận thêm loại sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
+                if (result == DialogResult.Yes && checkMaSP())
                 {
                     bool successAddLoaiSanPham = LoaiSanPhamBUS.Instance.InsertLoaiSanPham(maLoai, tenLoai, true);
                     if (successAddLoaiSanPham)
@@ -84,6 +84,20 @@ namespace GUI
                     }
                 }
             }
+            btnResetLSP_Click(sender, e);
+        }
+        private bool checkMaSP()
+        {
+            List<LoaiSanPhamDTO> list = LoaiSanPhamBUS.Instance.GetAllLoaiSanPham();
+            foreach (LoaiSanPhamDTO loaiSP in list)
+            {
+                if (loaiSP.MaLoai.Trim() == txtMaLoaiSP.Text.Trim())
+                {
+                    MessageBox.Show("Mã sản phẩm đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return true;
         }
         public bool ValidateInputs(string tenloai, string maloai)
         {
@@ -112,7 +126,7 @@ namespace GUI
                 }
                 else
                 {
-                    bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP,false);
+                    bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP, false);
                     MessageBox.Show("Khóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reset();
                 }
@@ -181,10 +195,45 @@ namespace GUI
                     }
                 }
             }
+            btnResetLSP_Click(sender, e);
         }
 
         private void txtMaLoaiSP_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private List<ListViewItem> listTimKiem = new List<ListViewItem>();
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text.Trim() == "")
+            {
+                btnResetLSP_Click(sender, e);
+            }
+            else
+            {
+                foreach (ListViewItem item in lsvLoaiSanPham.Items)
+                {
+                    bool isMatch = false;
+                    foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+                    {
+                        if (subItem.Text.ToLower().Contains(txtTimKiem.Text.Trim().ToLower()))
+                        {
+                            isMatch = true;
+                            break;
+                        }
+                    }
+
+                    if (isMatch)
+                        listTimKiem.Add((ListViewItem)item.Clone()); // Lưu item khớp vào danh sách tạm
+                }
+
+                lsvLoaiSanPham.Items.Clear();
+                lsvLoaiSanPham.Items.AddRange(listTimKiem.ToArray());
+                listTimKiem.Clear();
+
+            }
 
         }
     }

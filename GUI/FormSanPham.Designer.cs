@@ -88,6 +88,7 @@
             btnTimKiem.TabIndex = 3;
             btnTimKiem.Text = "TÌM";
             btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // txtTimKiem
             // 
