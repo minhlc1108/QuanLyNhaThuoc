@@ -73,7 +73,7 @@
             label1.Location = new Point(475, 9);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(212, 31);
+            label1.Size = new Size(177, 25);
             label1.TabIndex = 2;
             label1.Text = "QUẢN LÝ DƯỢC SĨ";
             // 
@@ -105,7 +105,7 @@
             erorr_email.ForeColor = Color.Red;
             erorr_email.Location = new Point(96, 300);
             erorr_email.Name = "erorr_email";
-            erorr_email.Size = new Size(0, 20);
+            erorr_email.Size = new Size(0, 15);
             erorr_email.TabIndex = 34;
             // 
             // erorr_sdt
