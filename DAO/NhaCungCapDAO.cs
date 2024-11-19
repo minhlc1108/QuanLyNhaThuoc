@@ -131,16 +131,21 @@ namespace DAO
             return nhaCungCapList;
         }
 
-        public List<NhaCungCapDTO> FindNhaCungCap(string param, string value)
+        public List<NhaCungCapDTO> FindNhaCungCap(string param, string value, bool? trangthai)
         {
             List<NhaCungCapDTO> nhaCungCapList = new List<NhaCungCapDTO>();
 
-            string query = "SELECT * FROM nhacungcap WHERE " + param + " LIKE @Value ";
+            string query = "SELECT * FROM nhacungcap WHERE " + param + " LIKE @Value";
 
-            // Tham số cần được truyền dưới dạng pattern cho LIKE
-            object[] parameters = { "%" + value + "%" };
+            List<object> parameters = new List<object> { "%" + value + "%" };
 
-            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+            if (trangthai.HasValue)
+            {
+                query += " AND trangthai = @TrangThai ";
+                parameters.Add(trangthai.Value);
+            }
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters.ToArray());
 
             foreach (DataRow row in data.Rows)
             {
@@ -159,6 +164,7 @@ namespace DAO
 
             return nhaCungCapList;
         }
+
 
         // thêm sửa xoá
         public bool InsertNhaCungCap(string maNCC, string tenNCC, string diaChi, string soDT, string email, bool trangThai)

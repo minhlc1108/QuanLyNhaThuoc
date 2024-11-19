@@ -337,6 +337,7 @@
             cbb_ttFind.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbb_ttFind.FormattingEnabled = true;
             cbb_ttFind.Items.AddRange(new object[] { "Tất cả", "Còn hợp tác", "Hết hợp tác" });
+            cbb_ttFind.SelectedIndex = 0;
             cbb_ttFind.Location = new Point(108, 33);
             cbb_ttFind.Margin = new Padding(3, 4, 3, 4);
             cbb_ttFind.Name = "cbb_ttFind";
@@ -359,6 +360,7 @@
             cbb_find.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbb_find.FormattingEnabled = true;
             cbb_find.Items.AddRange(new object[] { "Mã NCC", "Tên NCC", "Địa chỉ", "SĐT", "Email" });
+            cbb_find.SelectedIndex = 0;
             cbb_find.Location = new Point(666, 29);
             cbb_find.Margin = new Padding(3, 4, 3, 4);
             cbb_find.Name = "cbb_find";

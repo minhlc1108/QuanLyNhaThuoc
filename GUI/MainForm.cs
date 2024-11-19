@@ -38,6 +38,7 @@ namespace GUI
             {
                 disableButton();
                 currentButton = (IconButton)sender;
+                currentButton.Font = new Font("Segoe UI", 11F,FontStyle.Bold);
                 currentButton.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
                 currentButton.BackColor = Color.FromArgb(0, 168, 222);
             }

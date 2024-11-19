@@ -84,6 +84,7 @@ namespace GUI
 
             string newMaNCC = prefix + nextNumber.ToString("D4");
             tb_maNcc.Text = newMaNCC;
+
         }
 
         private void upTrangThai(bool trangthai)
@@ -272,7 +273,22 @@ namespace GUI
                 {
                     param = "email";
                 }
-                nhaCungCapListFind = NhaCungCapBUS.Instance.FindNhaCungCap(param, dataFind);
+
+                bool? trangthai = null;
+
+                if (cbb_ttFind.Text == "Còn hợp tác")
+                {
+                    trangthai = true;
+                }
+                else if (cbb_ttFind.Text == "Hết hợp tác")
+                {
+                    trangthai = false;
+                }
+                else if (cbb_ttFind.Text == "Tất cả")
+                {
+                    trangthai = null;
+                }
+                nhaCungCapListFind = NhaCungCapBUS.Instance.FindNhaCungCap(param, dataFind, trangthai);
             }
             handleDataView(nhaCungCapListFind);
         }

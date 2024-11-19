@@ -98,7 +98,6 @@
             btnDangXuat.TextAlign = ContentAlignment.MiddleLeft;
             btnDangXuat.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnDangXuat.UseVisualStyleBackColor = true;
-            btnDangXuat.Click += btnDangXuat_Click;
             // 
             // btnThongKe
             // 

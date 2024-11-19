@@ -48,14 +48,21 @@ namespace DAO
             return duocSiList;
         }
 
-        public List<DuocSiDTO> FindDuocSi(string param, string value)
+        public List<DuocSiDTO> FindDuocSi(string param, string value, bool? trangthai)
         {
             List<DuocSiDTO> duocSiList = new List<DuocSiDTO>();
-            string query = "SELECT * FROM duocsi WHERE " + param + " LIKE @Value ";
 
-            object[] parameters = { "%" + value + "%" };
+            string query = "SELECT * FROM duocsi WHERE " + param + " LIKE @Value";
 
-            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+            List<object> parameters = new List<object> { "%" + value + "%" };
+
+            if (trangthai.HasValue)
+            {
+                query += " AND trangthai = @TrangThai ";
+                parameters.Add(trangthai.Value);
+            }
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters.ToArray());
 
             foreach (DataRow row in data.Rows)
             {
@@ -73,6 +80,7 @@ namespace DAO
 
             return duocSiList;
         }
+
 
         public string getHoTenDuocSi( string value)
         {
