@@ -83,6 +83,7 @@
             panel_ngayLap = new Panel();
             cbb_findNguoiLap = new ComboBox();
             cbb_findKh = new ComboBox();
+            btn_xuatExcel = new Button();
             groupBox1.SuspendLayout();
             panel_ngayLap.SuspendLayout();
             SuspendLayout();
@@ -502,13 +503,14 @@
             // 
             // btn_export
             // 
+            btn_export.AllowDrop = true;
             btn_export.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_export.Location = new Point(1145, 793);
+            btn_export.Location = new Point(1113, 793);
             btn_export.Margin = new Padding(3, 4, 3, 4);
             btn_export.Name = "btn_export";
-            btn_export.Size = new Size(87, 42);
+            btn_export.Size = new Size(119, 42);
             btn_export.TabIndex = 44;
-            btn_export.Text = "Xuất ";
+            btn_export.Text = "Xuất PDF";
             btn_export.UseVisualStyleBackColor = true;
             btn_export.Click += btn_export_Click;
             // 
@@ -623,11 +625,25 @@
             cbb_findKh.Visible = false;
             cbb_findKh.SelectedIndexChanged += Cbb_findKh_SelectedIndexChanged;
             // 
+            // btn_xuatExcel
+            // 
+            btn_xuatExcel.AllowDrop = true;
+            btn_xuatExcel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_xuatExcel.Location = new Point(956, 793);
+            btn_xuatExcel.Margin = new Padding(3, 4, 3, 4);
+            btn_xuatExcel.Name = "btn_xuatExcel";
+            btn_xuatExcel.Size = new Size(130, 42);
+            btn_xuatExcel.TabIndex = 65;
+            btn_xuatExcel.Text = "Xuất Excel";
+            btn_xuatExcel.UseVisualStyleBackColor = true;
+            btn_xuatExcel.Click += btn_xuatExcel_Click;
+            // 
             // FormHoaDon
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1244, 864);
+            Controls.Add(btn_xuatExcel);
             Controls.Add(panel_ngayLap);
             Controls.Add(cbb_findNguoiLap);
             Controls.Add(cbb_findKh);
@@ -719,5 +735,6 @@
         private Panel panel_ngayLap;
         private ComboBox cbb_findKh;
         private ComboBox cbb_findNguoiLap;
+        private Button btn_xuatExcel;
     }
 }

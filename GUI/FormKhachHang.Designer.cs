@@ -44,6 +44,7 @@
             label1 = new Label();
             label11 = new Label();
             groupBox2 = new GroupBox();
+            btn_xuatExcel = new Button();
             btn_xuat = new Button();
             btn_nhapExcel = new Button();
             btn_clear = new Button();
@@ -228,6 +229,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btn_xuatExcel);
             groupBox2.Controls.Add(btn_xuat);
             groupBox2.Controls.Add(btn_nhapExcel);
             groupBox2.Controls.Add(btn_clear);
@@ -241,21 +243,31 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
             // 
+            // btn_xuatExcel
+            // 
+            btn_xuatExcel.Location = new Point(175, 118);
+            btn_xuatExcel.Name = "btn_xuatExcel";
+            btn_xuatExcel.Size = new Size(120, 40);
+            btn_xuatExcel.TabIndex = 8;
+            btn_xuatExcel.Text = "Xuất Excel";
+            btn_xuatExcel.UseVisualStyleBackColor = true;
+            btn_xuatExcel.Click += button1_Click;
+            // 
             // btn_xuat
             // 
-            btn_xuat.Location = new Point(259, 118);
+            btn_xuat.Location = new Point(324, 118);
             btn_xuat.Name = "btn_xuat";
-            btn_xuat.Size = new Size(149, 40);
+            btn_xuat.Size = new Size(114, 40);
             btn_xuat.TabIndex = 7;
-            btn_xuat.Text = "Xuất";
+            btn_xuat.Text = "Xuất PDF";
             btn_xuat.UseVisualStyleBackColor = true;
             btn_xuat.Click += btn_xuat_Click;
             // 
             // btn_nhapExcel
             // 
-            btn_nhapExcel.Location = new Point(63, 118);
+            btn_nhapExcel.Location = new Point(20, 118);
             btn_nhapExcel.Name = "btn_nhapExcel";
-            btn_nhapExcel.Size = new Size(149, 40);
+            btn_nhapExcel.Size = new Size(119, 40);
             btn_nhapExcel.TabIndex = 6;
             btn_nhapExcel.Text = "Nhập Excel";
             btn_nhapExcel.UseVisualStyleBackColor = true;
@@ -263,9 +275,9 @@
             // 
             // btn_clear
             // 
-            btn_clear.Location = new Point(332, 53);
+            btn_clear.Location = new Point(324, 53);
             btn_clear.Name = "btn_clear";
-            btn_clear.Size = new Size(106, 40);
+            btn_clear.Size = new Size(114, 40);
             btn_clear.TabIndex = 2;
             btn_clear.Text = "Làm mới";
             btn_clear.UseVisualStyleBackColor = true;
@@ -453,5 +465,6 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
+        private Button btn_xuatExcel;
     }
 }
