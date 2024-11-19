@@ -411,13 +411,36 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    searchBinhThuong();
                 }
             }
 
 
         }
+        private void searchBinhThuong()
+        {
+            foreach (ListViewItem item in lsvSanPham.Items)
+            {
+                bool isMatch = false;
+                foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+                {
+                    if (subItem.Text.ToLower().Contains(txtTimKiem.Text.Trim().ToLower()))
+                    {
+                        isMatch = true;
+                        break;
+                    }
+                }
 
+                if (isMatch)
+                    listTimKiem.Add((ListViewItem)item.Clone()); // Lưu item khớp vào danh sách tạm
+            }
+
+            lsvSanPham.Items.Clear();
+            lsvSanPham.Items.AddRange(listTimKiem.ToArray());
+            listTimKiem.Clear();
+
+
+        }
         private void PerformOrSearch(string[] keywords)
         {
             foreach (ListViewItem item in lsvSanPham.Items)
