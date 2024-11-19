@@ -24,7 +24,7 @@ namespace GUI
     public partial class FormDuocSi : Form
     {
         private string paramCbbFind;
-
+        private List<ListViewItem> listTimKiem = new List<ListViewItem>();
         public FormDuocSi()
         {
             InitializeComponent();
@@ -482,7 +482,23 @@ namespace GUI
                 {
                     param = "hoten";
                 }
-                duocSiListFind = DuocSiBUS.Instance.FindDuocSi(param, dataFind);
+
+                bool? trangthai = null;
+
+                if (cbb_findTT.Text == "Còn làm")
+                {
+                    trangthai = true;
+                }
+                else if (cbb_findTT.Text == "Nghỉ làm")
+                {
+                    trangthai = false;
+                }
+                else if (cbb_findTT.Text == "Tất cả")
+                {
+                    trangthai = null;  
+                }
+                
+                duocSiListFind = DuocSiBUS.Instance.FindDuocSi(param, dataFind, trangthai);
             }
 
 
@@ -592,10 +608,11 @@ namespace GUI
                         worksheet.Cells[rowIndex, 5].Value = ds.Email;
 
                         string trangthai = "";
-                        if(ds.TrangThai == "True")
+                        if (ds.TrangThai == "True")
                         {
                             trangthai = "Còn làm";
-                        }else
+                        }
+                        else
                         {
                             trangthai = "Nghỉ làm";
                         }

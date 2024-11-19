@@ -42,6 +42,7 @@
             tb_sdt = new TextBox();
             tb_hoten = new TextBox();
             groupBox2 = new GroupBox();
+            btn_xuatExcel = new Button();
             btn_xuatPDF = new Button();
             btn_nhapExcel = new Button();
             btn_opLock = new Button();
@@ -62,7 +63,6 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             label2 = new Label();
-            btn_xuatExcel = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -214,6 +214,16 @@
             groupBox2.TabIndex = 13;
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
+            // 
+            // btn_xuatExcel
+            // 
+            btn_xuatExcel.Location = new Point(20, 197);
+            btn_xuatExcel.Name = "btn_xuatExcel";
+            btn_xuatExcel.Size = new Size(155, 40);
+            btn_xuatExcel.TabIndex = 8;
+            btn_xuatExcel.Text = "Xuất Excel";
+            btn_xuatExcel.UseVisualStyleBackColor = true;
+            btn_xuatExcel.Click += btn_xuatExcel_Click;
             // 
             // btn_xuatPDF
             // 
@@ -388,16 +398,6 @@
             label2.TabIndex = 49;
             label2.Text = "Tìm kiếm :";
             // 
-            // btn_xuatExcel
-            // 
-            btn_xuatExcel.Location = new Point(20, 197);
-            btn_xuatExcel.Name = "btn_xuatExcel";
-            btn_xuatExcel.Size = new Size(155, 40);
-            btn_xuatExcel.TabIndex = 8;
-            btn_xuatExcel.Text = "Xuất Excel";
-            btn_xuatExcel.UseVisualStyleBackColor = true;
-            btn_xuatExcel.Click += btn_xuatExcel_Click;
-            // 
             // FormDuocSi
             // 
             AutoScaleDimensions = new SizeF(14F, 31F);
@@ -461,5 +461,6 @@
         private Label erorr_hoTen;
         private Label label2;
         private Button btn_xuatExcel;
+        private Label label3;
     }
 }

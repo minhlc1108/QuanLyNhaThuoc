@@ -1,4 +1,5 @@
-﻿using BUS;
+﻿
+using BUS;
 using DTO;
 using ExcelDataReader;
 using OfficeOpenXml;
@@ -13,7 +14,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -956,7 +956,7 @@ namespace GUI
                             XFont titleFont = new XFont("Verdana", 22);
                             XFont titleFont1 = new XFont("Verdana", 10);
                             gfx.DrawString("CHI TIẾT PHIẾU NHẬP", titleFont, XBrushes.Black, new XPoint(165, 30));
-                            string formattedDate = "Ngày " + DateTime.ParseExact(tb_ngayLap.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("dd 'tháng' MM 'năm' yyyy");
+                            string formattedDate = "Ngày " + DateTime.Parse(tb_ngayLap.Text).ToString("dd 'tháng' MM 'năm' yyyy");
                             gfx.DrawString(formattedDate, titleFont1, XBrushes.Black, new XPoint(215, 50));
                             gfx.DrawString(tb_maPhieu.Text, new XFont("Verdana", 8), XBrushes.Black, new XPoint(275, 65));
 
