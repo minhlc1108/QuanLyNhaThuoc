@@ -385,29 +385,144 @@ namespace GUI
             {
                 btnResetSanPham_Click(sender, e);
             }
+            string searchText = txtTimKiem.Text.Trim().ToLower();
+
+            // Xác định loại tìm kiếm dựa trên ký tự phân tách
+            bool isOrSearch = searchText.Contains(",");
+            bool isAndSearch = searchText.Contains("+");
+
+            if (isOrSearch && isAndSearch)
+            {
+                MessageBox.Show("Cú pháp tìm kiếm không hợp lệ. Vui lòng chỉ sử dụng ',' hoặc '+'.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
             else
             {
-                foreach (ListViewItem item in lsvSanPham.Items)
+                // Tách từ khóa dựa trên loại tìm kiếm
+                if (isOrSearch)
                 {
-                    bool isMatch = false;
+                    string[] keywords = txtTimKiem.Text.Trim().ToLower().Split(',');
+                    PerformOrSearch(keywords);
+                }
+                else if (isAndSearch)
+                {
+                    string[] keywords = txtTimKiem.Text.Trim().ToLower().Split('+');
+                    PerformAndSearch(keywords);
+                }
+                else
+                {
+                    searchBinhThuong();
+                }
+            }
+
+
+        }
+        private void searchBinhThuong()
+        {
+            foreach (ListViewItem item in lsvSanPham.Items)
+            {
+                bool isMatch = false;
+                foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+                {
+                    if (subItem.Text.ToLower().Contains(txtTimKiem.Text.Trim().ToLower()))
+                    {
+                        isMatch = true;
+                        break;
+                    }
+                }
+
+                if (isMatch)
+                    listTimKiem.Add((ListViewItem)item.Clone()); // Lưu item khớp vào danh sách tạm
+            }
+
+            lsvSanPham.Items.Clear();
+            lsvSanPham.Items.AddRange(listTimKiem.ToArray());
+            listTimKiem.Clear();
+
+
+        }
+        private void PerformOrSearch(string[] keywords)
+        {
+            foreach (ListViewItem item in lsvSanPham.Items)
+            {
+                bool anyKeywordMatch = false;
+
+                foreach (string keyword in keywords)
+                {
                     foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
                     {
-                        if (subItem.Text.ToLower().Contains(txtTimKiem.Text.Trim().ToLower()))
+                        if (subItem.Text.ToLower().Contains(keyword.Trim()))
                         {
-                            isMatch = true;
+                            anyKeywordMatch = true;
                             break;
                         }
                     }
 
-                    if (isMatch)
-                        listTimKiem.Add((ListViewItem)item.Clone()); // Lưu item khớp vào danh sách tạm
+                    if (anyKeywordMatch) break;
                 }
 
-                lsvSanPham.Items.Clear();
-                lsvSanPham.Items.AddRange(listTimKiem.ToArray());
-                listTimKiem.Clear();
-
+                if (anyKeywordMatch)
+                {
+                    listTimKiem.Add((ListViewItem)item.Clone());
+                }
             }
+
+            // Hiển thị kết quả
+            lsvSanPham.Items.Clear();
+            lsvSanPham.Items.AddRange(listTimKiem.ToArray());
+            listTimKiem.Clear();
+        }
+
+        private void PerformAndSearch(string[] keywords)
+        {
+            foreach (ListViewItem item in lsvSanPham.Items)
+            {
+                bool allKeywordsMatch = true;
+
+                foreach (string keyword in keywords)
+                {
+                    bool keywordFound = false;
+
+                    foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+                    {
+                        if (subItem.Text.ToLower().Contains(keyword.Trim()))
+                        {
+                            keywordFound = true;
+                            break;
+                        }
+                    }
+
+                    if (!keywordFound)
+                    {
+                        allKeywordsMatch = false;
+                        break;
+                    }
+                }
+
+                if (allKeywordsMatch)
+                {
+                    listTimKiem.Add((ListViewItem)item.Clone());
+                }
+            }
+
+            // Hiển thị kết quả
+            lsvSanPham.Items.Clear();
+            lsvSanPham.Items.AddRange(listTimKiem.ToArray());
+            listTimKiem.Clear();
+        }
+
+        private void groupBox1_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXuatDanhSach_Click(object sender, EventArgs e)
+        {
 
         }
     }
