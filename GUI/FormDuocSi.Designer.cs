@@ -42,7 +42,7 @@
             tb_sdt = new TextBox();
             tb_hoten = new TextBox();
             groupBox2 = new GroupBox();
-            btn_xuat = new Button();
+            btn_xuatPDF = new Button();
             btn_nhapExcel = new Button();
             btn_opLock = new Button();
             btn_lock = new Button();
@@ -62,6 +62,7 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             label2 = new Label();
+            btn_xuatExcel = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -198,7 +199,8 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btn_xuat);
+            groupBox2.Controls.Add(btn_xuatExcel);
+            groupBox2.Controls.Add(btn_xuatPDF);
             groupBox2.Controls.Add(btn_nhapExcel);
             groupBox2.Controls.Add(btn_opLock);
             groupBox2.Controls.Add(btn_lock);
@@ -213,21 +215,21 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
             // 
-            // btn_xuat
+            // btn_xuatPDF
             // 
-            btn_xuat.Location = new Point(224, 196);
-            btn_xuat.Name = "btn_xuat";
-            btn_xuat.Size = new Size(120, 40);
-            btn_xuat.TabIndex = 7;
-            btn_xuat.Text = "Xuất";
-            btn_xuat.UseVisualStyleBackColor = true;
-            btn_xuat.Click += btn_xuat_Click;
+            btn_xuatPDF.Location = new Point(228, 197);
+            btn_xuatPDF.Name = "btn_xuatPDF";
+            btn_xuatPDF.Size = new Size(143, 40);
+            btn_xuatPDF.TabIndex = 7;
+            btn_xuatPDF.Text = "Xuất PDF";
+            btn_xuatPDF.UseVisualStyleBackColor = true;
+            btn_xuatPDF.Click += btn_xuat_Click;
             // 
             // btn_nhapExcel
             // 
-            btn_nhapExcel.Location = new Point(45, 196);
+            btn_nhapExcel.Location = new Point(20, 127);
             btn_nhapExcel.Name = "btn_nhapExcel";
-            btn_nhapExcel.Size = new Size(132, 40);
+            btn_nhapExcel.Size = new Size(123, 40);
             btn_nhapExcel.TabIndex = 6;
             btn_nhapExcel.Text = "Nhập Excel";
             btn_nhapExcel.UseVisualStyleBackColor = true;
@@ -236,9 +238,9 @@
             // btn_opLock
             // 
             btn_opLock.Enabled = false;
-            btn_opLock.Location = new Point(224, 127);
+            btn_opLock.Location = new Point(270, 127);
             btn_opLock.Name = "btn_opLock";
-            btn_opLock.Size = new Size(120, 40);
+            btn_opLock.Size = new Size(101, 40);
             btn_opLock.TabIndex = 4;
             btn_opLock.Text = "Mở khoá";
             btn_opLock.UseVisualStyleBackColor = true;
@@ -247,9 +249,9 @@
             // btn_lock
             // 
             btn_lock.Enabled = false;
-            btn_lock.Location = new Point(45, 127);
+            btn_lock.Location = new Point(167, 127);
             btn_lock.Name = "btn_lock";
-            btn_lock.Size = new Size(132, 40);
+            btn_lock.Size = new Size(76, 40);
             btn_lock.TabIndex = 3;
             btn_lock.Text = "Khoá";
             btn_lock.UseVisualStyleBackColor = true;
@@ -386,6 +388,16 @@
             label2.TabIndex = 49;
             label2.Text = "Tìm kiếm :";
             // 
+            // btn_xuatExcel
+            // 
+            btn_xuatExcel.Location = new Point(20, 197);
+            btn_xuatExcel.Name = "btn_xuatExcel";
+            btn_xuatExcel.Size = new Size(155, 40);
+            btn_xuatExcel.TabIndex = 8;
+            btn_xuatExcel.Text = "Xuất Excel";
+            btn_xuatExcel.UseVisualStyleBackColor = true;
+            btn_xuatExcel.Click += btn_xuatExcel_Click;
+            // 
             // FormDuocSi
             // 
             AutoScaleDimensions = new SizeF(14F, 31F);
@@ -426,7 +438,7 @@
         private Button btn_clear;
         private Button btn_edit;
         private Button btn_add;
-        private Button btn_xuat;
+        private Button btn_xuatPDF;
         private Button btn_nhapExcel;
         private ComboBox cbb_find;
         private TextBox tb_find;
@@ -448,5 +460,6 @@
         private Label erorr_sdt;
         private Label erorr_hoTen;
         private Label label2;
+        private Button btn_xuatExcel;
     }
 }

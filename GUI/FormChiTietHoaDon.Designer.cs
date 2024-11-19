@@ -406,7 +406,7 @@
             btn_export.Name = "btn_export";
             btn_export.Size = new Size(117, 40);
             btn_export.TabIndex = 48;
-            btn_export.Text = "Xuất";
+            btn_export.Text = "Xuất PDF";
             btn_export.UseVisualStyleBackColor = true;
             btn_export.Click += btn_export_Click;
             // 

@@ -1,6 +1,8 @@
 ﻿using BUS;
 using DTO;
 using ExcelDataReader;
+using OfficeOpenXml.Style;
+using OfficeOpenXml;
 using Org.BouncyCastle.Asn1.Pkcs;
 using PdfSharp;
 using PdfSharp.Drawing;
@@ -454,146 +456,237 @@ namespace GUI
             if (result1 == DialogResult.Yes)
             {
                 // Đường dẫn cơ bản cho file PDF
-                string baseFilePath = @"D:\dataCSharp\FilePdfNCC\XuatNCCPdf.pdf";
-                string filePath = baseFilePath;
-
-                // Kiểm tra và tạo tên file mới nếu đã tồn tại
-                int counter = 1;
-                while (File.Exists(filePath))
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    filePath = Path.Combine(
-                        Path.GetDirectoryName(baseFilePath),
-                        $"{Path.GetFileNameWithoutExtension(baseFilePath)}_{counter}.pdf"
-                    );
-                    counter++;
-                }
+                    saveFileDialog.Title = "Lưu file PDF";
+                    saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                    saveFileDialog.FileName = "XuatNCCPdf.pdf";
 
-                // Tạo tài liệu PDF
-                PdfDocument document = new PdfDocument();
-                document.Info.Title = "Created with PDFsharp";
-
-            // Tạo trang đầu tiên
-                PdfPage page = document.AddPage();
-                page.Width = XUnit.FromMillimeter(377); // Chiều rộng tùy chỉnh (Ví dụ: 420 mm tương đương với A3)
-                page.Height = XUnit.FromMillimeter(297); // Chiều cao tùy chỉnh (297 mm)
-                XGraphics gfx = XGraphics.FromPdfPage(page);
-
-                int rowHeight = 30;      // Chiều cao mỗi dòng
-                double pageHeight = page.Height.Point;  // Chiều cao tối đa của trang PDF
-
-                int rongStt = 35;
-                int rongMakh = 65;
-                int rongHoTen = 300;
-                int rongNgaySinh = 280;
-                int rongGt = 210;
-                int rongSdt = 90;
-                int rongDiem = 86;
-
-                int vtSTT = 0;
-                int vtMakh = vtSTT + rongStt;
-                int vtHoTen = vtMakh + rongMakh;
-                int vtNgaySinh = vtHoTen + rongHoTen;
-                int vtGioiTinh = vtNgaySinh + rongNgaySinh;
-                int vtSDT = vtGioiTinh + rongGt;
-                int vtDiem = vtSDT + rongSdt;
-
-                // Vẽ tiêu đề trang và tiêu đề bảng trên trang đầu tiên
-                XFont titleFont = new XFont("Verdana", 22);
-                gfx.DrawString("Danh sách nhà cung cấp", titleFont, XBrushes.Black, new XPoint(400, 30));
-
-                XFont headerFont = new XFont("Verdana", 12);
-                gfx.DrawString("STT", headerFont, XBrushes.Black, new XPoint(5, 65));
-                gfx.DrawRectangle(XPens.Black, vtSTT, 44, rongStt, rowHeight);
-                gfx.DrawString("MaNCC", headerFont, XBrushes.Black, new XPoint(48, 65));
-                gfx.DrawRectangle(XPens.Black, vtMakh, 44, rongMakh, rowHeight);
-                gfx.DrawString("Tên nhà cung cấp", headerFont, XBrushes.Black, new XPoint(107, 65));
-                gfx.DrawRectangle(XPens.Black, vtHoTen, 44, rongHoTen, rowHeight);
-                gfx.DrawString("Địa chỉ", headerFont, XBrushes.Black, new XPoint(405, 65));
-                gfx.DrawRectangle(XPens.Black, vtNgaySinh, 44, rongNgaySinh, rowHeight);
-                gfx.DrawString("Email", headerFont, XBrushes.Black, new XPoint(690, 65));
-                gfx.DrawRectangle(XPens.Black, vtGioiTinh, 44, rongGt, rowHeight);
-                gfx.DrawString("SĐT", headerFont, XBrushes.Black, new XPoint(895, 65));
-                gfx.DrawRectangle(XPens.Black, vtSDT, 44, rongSdt, rowHeight);
-                gfx.DrawString("TT", headerFont, XBrushes.Black, new XPoint(1010, 65));
-                gfx.DrawRectangle(XPens.Black, vtDiem, 44, rongDiem, rowHeight);
-
-                // Vị trí bắt đầu vẽ các dòng dữ liệu
-                double yPosition = 92;
-                int khoangCachDOng = 18;
-                List<NhaCungCapDTO> listKNCCXuatFile = NhaCungCapBUS.Instance.GetAllNhaCungCap();
-                int stt = 1;
-
-                foreach (var item in listKNCCXuatFile)
-                {
-                    // Nếu vị trí y vượt quá chiều cao trang, thêm trang mới mà không vẽ lại tiêu đề
-                    if (yPosition > pageHeight - rowHeight)
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                         page = document.AddPage();
-                        page.Width = XUnit.FromMillimeter(377);
+                        string filePath = saveFileDialog.FileName;
+
+                        // Tạo tài liệu PDF
+                        PdfDocument document = new PdfDocument();
+                        document.Info.Title = "Created with PDFsharp";
+
+                        // Tạo trang đầu tiên
+                        PdfPage page = document.AddPage();
+                        page.Width = XUnit.FromMillimeter(377); // Chiều rộng tùy chỉnh (Ví dụ: 420 mm tương đương với A3)
                         page.Height = XUnit.FromMillimeter(297); // Chiều cao tùy chỉnh (297 mm)
-                         gfx = XGraphics.FromPdfPage(page);
-                        yPosition = 30;  // Đặt lại vị trí y trên trang mới
+                        XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                        int rowHeight = 30;      // Chiều cao mỗi dòng
+                        double pageHeight = page.Height.Point;  // Chiều cao tối đa của trang PDF
+
+                        int rongStt = 35;
+                        int rongMakh = 65;
+                        int rongHoTen = 300;
+                        int rongNgaySinh = 280;
+                        int rongGt = 210;
+                        int rongSdt = 90;
+                        int rongDiem = 86;
+
+                        int vtSTT = 0;
+                        int vtMakh = vtSTT + rongStt;
+                        int vtHoTen = vtMakh + rongMakh;
+                        int vtNgaySinh = vtHoTen + rongHoTen;
+                        int vtGioiTinh = vtNgaySinh + rongNgaySinh;
+                        int vtSDT = vtGioiTinh + rongGt;
+                        int vtDiem = vtSDT + rongSdt;
+
+                        // Vẽ tiêu đề trang và tiêu đề bảng trên trang đầu tiên
+                        XFont titleFont = new XFont("Verdana", 22);
+                        gfx.DrawString("Danh sách nhà cung cấp", titleFont, XBrushes.Black, new XPoint(400, 30));
+
+                        XFont headerFont = new XFont("Verdana", 12);
+                        gfx.DrawString("STT", headerFont, XBrushes.Black, new XPoint(5, 65));
+                        gfx.DrawRectangle(XPens.Black, vtSTT, 44, rongStt, rowHeight);
+                        gfx.DrawString("MaNCC", headerFont, XBrushes.Black, new XPoint(48, 65));
+                        gfx.DrawRectangle(XPens.Black, vtMakh, 44, rongMakh, rowHeight);
+                        gfx.DrawString("Tên nhà cung cấp", headerFont, XBrushes.Black, new XPoint(107, 65));
+                        gfx.DrawRectangle(XPens.Black, vtHoTen, 44, rongHoTen, rowHeight);
+                        gfx.DrawString("Địa chỉ", headerFont, XBrushes.Black, new XPoint(405, 65));
+                        gfx.DrawRectangle(XPens.Black, vtNgaySinh, 44, rongNgaySinh, rowHeight);
+                        gfx.DrawString("Email", headerFont, XBrushes.Black, new XPoint(690, 65));
+                        gfx.DrawRectangle(XPens.Black, vtGioiTinh, 44, rongGt, rowHeight);
+                        gfx.DrawString("SĐT", headerFont, XBrushes.Black, new XPoint(895, 65));
+                        gfx.DrawRectangle(XPens.Black, vtSDT, 44, rongSdt, rowHeight);
+                        gfx.DrawString("TT", headerFont, XBrushes.Black, new XPoint(1010, 65));
+                        gfx.DrawRectangle(XPens.Black, vtDiem, 44, rongDiem, rowHeight);
+
+                        // Vị trí bắt đầu vẽ các dòng dữ liệu
+                        double yPosition = 92;
+                        int khoangCachDOng = 18;
+                        List<NhaCungCapDTO> listKNCCXuatFile = NhaCungCapBUS.Instance.GetAllNhaCungCap();
+                        int stt = 1;
+
+                        foreach (var item in listKNCCXuatFile)
+                        {
+                            // Nếu vị trí y vượt quá chiều cao trang, thêm trang mới mà không vẽ lại tiêu đề
+                            if (yPosition > pageHeight - rowHeight)
+                            {
+                                page = document.AddPage();
+                                page.Width = XUnit.FromMillimeter(377);
+                                page.Height = XUnit.FromMillimeter(297); // Chiều cao tùy chỉnh (297 mm)
+                                gfx = XGraphics.FromPdfPage(page);
+                                yPosition = 30;  // Đặt lại vị trí y trên trang mới
+                            }
+
+                            double maxCellHeight = rowHeight;
+                            // Vẽ các ô dữ liệu và tính toán chiều cao của chúng dựa trên nội dung
+                            double cellHeight;
+
+                            // Xử lý từng ô dữ liệu với hàm `DrawStringMultiline`
+                            cellHeight = DrawStringMultiline(gfx, stt.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(10, yPosition), rongStt);
+                            maxCellHeight = Math.Max(maxCellHeight, cellHeight);
+
+                            cellHeight = DrawStringMultiline(gfx, item.MaNCC, new XFont("Verdana", 12), XBrushes.Black, new XPoint(40, yPosition), rongMakh);
+                            maxCellHeight = Math.Max(maxCellHeight, cellHeight);
+
+                            cellHeight = DrawStringMultiline(gfx, item.TenNCC, new XFont("Verdana", 12), XBrushes.Black, new XPoint(107, yPosition), rongHoTen);
+                            maxCellHeight = Math.Max(maxCellHeight, cellHeight) + 10;
+
+                            cellHeight = DrawStringMultiline(gfx, item.DiaChi, new XFont("Verdana", 12), XBrushes.Black, new XPoint(405, yPosition), rongNgaySinh);
+                            maxCellHeight = Math.Max(maxCellHeight, cellHeight);
+
+                            cellHeight = DrawStringMultiline(gfx, item.Email, new XFont("Verdana", 12), XBrushes.Black, new XPoint(690, yPosition), rongGt);
+                            maxCellHeight = Math.Max(maxCellHeight, cellHeight);
+
+                            cellHeight = DrawStringMultiline(gfx, item.SoDT, new XFont("Verdana", 12), XBrushes.Black, new XPoint(895, yPosition), rongSdt);
+                            maxCellHeight = Math.Max(maxCellHeight, cellHeight);
+
+                            string tt = "";
+                            if (item.TrangThai)
+                            {
+                                tt = "Còn hợp tác";
+                            }
+                            else
+                            {
+                                tt = "Hết hợp tác";
+                            }
+                            cellHeight = DrawStringMultiline(gfx, tt, new XFont("Verdana", 12), XBrushes.Black, new XPoint(985, yPosition), rongDiem);
+                            maxCellHeight = Math.Max(maxCellHeight, cellHeight);
+
+                            // Vẽ các đường viền ô với `maxCellHeight` đồng nhất cho tất cả các ô trong dòng
+                            gfx.DrawRectangle(XPens.Black, vtSTT, yPosition - khoangCachDOng, rongStt, maxCellHeight);
+                            gfx.DrawRectangle(XPens.Black, vtMakh, yPosition - khoangCachDOng, rongMakh, maxCellHeight);
+                            gfx.DrawRectangle(XPens.Black, vtHoTen, yPosition - khoangCachDOng, rongHoTen, maxCellHeight);
+                            gfx.DrawRectangle(XPens.Black, vtNgaySinh, yPosition - khoangCachDOng, rongNgaySinh, maxCellHeight);
+                            gfx.DrawRectangle(XPens.Black, vtGioiTinh, yPosition - khoangCachDOng, rongGt, maxCellHeight);
+                            gfx.DrawRectangle(XPens.Black, vtSDT, yPosition - khoangCachDOng, rongSdt, maxCellHeight);
+                            gfx.DrawRectangle(XPens.Black, vtDiem, yPosition - khoangCachDOng, rongDiem, maxCellHeight);
+
+                            // Cập nhật vị trí `yPosition` sau khi vẽ xong toàn bộ dòng
+                            yPosition += maxCellHeight; // Di chuyển `yPosition` xuống để chuẩn bị cho dòng kế tiếp
+                            stt++;
+                        }
+                        // Lưu tài liệu
+                        document.Save(filePath);
+                        if (File.Exists(filePath))
+                        {
+                            MessageBox.Show($"Xuất File {filePath} thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xuất file thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-
-                    double maxCellHeight = rowHeight;
-                    // Vẽ các ô dữ liệu và tính toán chiều cao của chúng dựa trên nội dung
-                    double cellHeight;
-
-                    // Xử lý từng ô dữ liệu với hàm `DrawStringMultiline`
-                    cellHeight = DrawStringMultiline(gfx, stt.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(10, yPosition), rongStt);
-                    maxCellHeight = Math.Max(maxCellHeight, cellHeight);
-
-                    cellHeight = DrawStringMultiline(gfx, item.MaNCC, new XFont("Verdana", 12), XBrushes.Black, new XPoint(40, yPosition), rongMakh);
-                    maxCellHeight = Math.Max(maxCellHeight, cellHeight);
-
-                    cellHeight = DrawStringMultiline(gfx, item.TenNCC, new XFont("Verdana", 12), XBrushes.Black, new XPoint(107, yPosition), rongHoTen);
-                    maxCellHeight = Math.Max(maxCellHeight, cellHeight) + 10;
-
-                    cellHeight = DrawStringMultiline(gfx, item.DiaChi, new XFont("Verdana", 12), XBrushes.Black, new XPoint(405, yPosition), rongNgaySinh);
-                    maxCellHeight = Math.Max(maxCellHeight, cellHeight);
-
-                    cellHeight = DrawStringMultiline(gfx, item.Email, new XFont("Verdana", 12), XBrushes.Black, new XPoint(690, yPosition), rongGt);
-                    maxCellHeight = Math.Max(maxCellHeight, cellHeight);
-
-                    cellHeight = DrawStringMultiline(gfx, item.SoDT, new XFont("Verdana", 12), XBrushes.Black, new XPoint(895, yPosition), rongSdt);
-                    maxCellHeight = Math.Max(maxCellHeight, cellHeight);
-
-                    string tt = "";
-                    if (item.TrangThai)
-                    {
-                        tt = "Còn hợp tác";
-                    }
-                    else
-                    {
-                        tt = "Hết hợp tác";
-                    }
-                    cellHeight = DrawStringMultiline(gfx, tt, new XFont("Verdana", 12), XBrushes.Black, new XPoint(985, yPosition), rongDiem);
-                    maxCellHeight = Math.Max(maxCellHeight, cellHeight);
-
-                    // Vẽ các đường viền ô với `maxCellHeight` đồng nhất cho tất cả các ô trong dòng
-                    gfx.DrawRectangle(XPens.Black, vtSTT, yPosition - khoangCachDOng, rongStt, maxCellHeight);
-                    gfx.DrawRectangle(XPens.Black, vtMakh, yPosition - khoangCachDOng, rongMakh, maxCellHeight);
-                    gfx.DrawRectangle(XPens.Black, vtHoTen, yPosition - khoangCachDOng, rongHoTen, maxCellHeight );
-                    gfx.DrawRectangle(XPens.Black, vtNgaySinh, yPosition - khoangCachDOng, rongNgaySinh, maxCellHeight);
-                    gfx.DrawRectangle(XPens.Black, vtGioiTinh, yPosition - khoangCachDOng, rongGt, maxCellHeight );
-                    gfx.DrawRectangle(XPens.Black, vtSDT, yPosition - khoangCachDOng, rongSdt, maxCellHeight );
-                    gfx.DrawRectangle(XPens.Black, vtDiem, yPosition - khoangCachDOng, rongDiem, maxCellHeight);
-
-                    // Cập nhật vị trí `yPosition` sau khi vẽ xong toàn bộ dòng
-                    yPosition += maxCellHeight; // Di chuyển `yPosition` xuống để chuẩn bị cho dòng kế tiếp
-                    stt++;
-                }
-                // Lưu tài liệu
-                document.Save(filePath);
-                if (File.Exists(filePath))
-                {
-                    MessageBox.Show($"Xuất File {filePath} thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Xuất file thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        //string GetUniqueFilePath(string filePath)
+        //{
+        //    int counter = 1;
+        //    string directory = Path.GetDirectoryName(filePath);
+        //    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
+        //    string extension = Path.GetExtension(filePath);
+
+        //    while (File.Exists(filePath))
+        //    {
+        //        // Thêm số thứ tự vào tên file
+        //        filePath = Path.Combine(directory, $"{fileNameWithoutExtension}{counter}{extension}");
+        //        counter++;
+        //    }
+
+        //    return filePath;
+        //}
+
+        private void btn_XuatExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Bạn chắc chắn muốn xuất File Excel?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+
+                    saveFileDialog.Title = "Lưu File Excel";
+                    saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+                    saveFileDialog.FileName = "XuatNccExcel.xlsx"; // Tên file mặc định
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filepath = saveFileDialog.FileName;
+
+                        List<NhaCungCapDTO> nhaCungCapList = NhaCungCapBUS.Instance.GetAllNhaCungCap();
+
+                        // Tạo file Excel
+                        using (ExcelPackage excelPackage = new ExcelPackage())
+                        {
+                            // Tạo worksheet
+                            ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+                            // Thêm dữ liệu mẫu vào sheet
+                            worksheet.Cells[1, 1].Value = "STT";
+                            worksheet.Cells[1, 2].Value = "Mã NCC";
+                            worksheet.Cells[1, 3].Value = "Tên nhà cung cấp";
+                            worksheet.Cells[1, 4].Value = "Địa chỉ";
+                            worksheet.Cells[1, 5].Value = "Số điện thoại";
+                            worksheet.Cells[1, 6].Value = "Email";
+                            worksheet.Cells[1, 7].Value = "Trạng thái";
+
+                            // Duyệt danh sách khách hàng và thêm vào Excel
+                            int stt = 1;
+                            int rowIndex = 2;
+                            foreach (var ncc in nhaCungCapList)
+                            {
+                                worksheet.Cells[rowIndex, 1].Value = stt;
+                                worksheet.Cells[rowIndex, 2].Value = ncc.MaNCC;
+                                worksheet.Cells[rowIndex, 3].Value = ncc.TenNCC;
+                                worksheet.Cells[rowIndex, 4].Value = ncc.DiaChi;
+                                worksheet.Cells[rowIndex, 5].Value = ncc.SoDT;
+                                worksheet.Cells[rowIndex, 6].Value = ncc.Email;
+
+                                string trangthai = "";
+                                if (ncc.TrangThai == true)
+                                {
+                                    trangthai = "Còn hợp tác";
+                                }
+                                else
+                                {
+                                    trangthai = "Hết hợp tác";
+                                }
+                                worksheet.Cells[rowIndex, 7].Value = trangthai;
+
+                                rowIndex++;
+                                stt++;
+                            }
+
+                            // Tự động điều chỉnh độ rộng cột
+                            worksheet.Cells.AutoFitColumns();
+
+                            // Lưu file
+                            FileInfo fileInfo = new FileInfo(filepath);
+                            excelPackage.SaveAs(fileInfo);
+
+                            // Hiển thị thông báo
+                            MessageBox.Show($"Xuất file Excel thành công!\nĐường dẫn: {filepath}", "Thông báo");
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

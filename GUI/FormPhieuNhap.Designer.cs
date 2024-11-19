@@ -30,6 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            btn_xuatExcel = new Button();
             btn_xuatPN = new Button();
             tb_maPhieu = new TextBox();
             tb_ngayLap = new TextBox();
@@ -165,6 +166,8 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btn_xuatExcel);
+            tabPage1.Controls.Add(btn_xuatPN);
             tabPage1.Controls.Add(tb_maPhieu);
             tabPage1.Controls.Add(tb_ngayLap);
             tabPage1.Controls.Add(tb_nguoiLap);
@@ -187,6 +190,17 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Xem phiếu nhập";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btn_xuatExcel
+            // 
+            btn_xuatExcel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_xuatExcel.Location = new Point(8, 765);
+            btn_xuatExcel.Name = "btn_xuatExcel";
+            btn_xuatExcel.Size = new Size(119, 40);
+            btn_xuatExcel.TabIndex = 59;
+            btn_xuatExcel.Text = "Xuất Excel";
+            btn_xuatExcel.UseVisualStyleBackColor = true;
+            btn_xuatExcel.Click += btn_xuatExcel_Click;
             // 
             // btn_xuatPN
             // 
@@ -278,6 +292,7 @@
             groupBox4.Controls.Add(tb_giaBan);
             groupBox4.Controls.Add(tb_LoSx);
             groupBox4.Controls.Add(lv_CTPN);
+            groupBox4.Controls.Add(label24);
             groupBox4.Controls.Add(tb_sl);
             groupBox4.Controls.Add(tb_giaNhap);
             groupBox4.Controls.Add(tb_Nsx);
@@ -285,7 +300,6 @@
             groupBox4.Controls.Add(label27);
             groupBox4.Controls.Add(label26);
             groupBox4.Controls.Add(label25);
-            groupBox4.Controls.Add(label24);
             groupBox4.Controls.Add(label23);
             groupBox4.Controls.Add(label22);
             groupBox4.Controls.Add(label21);
@@ -467,7 +481,7 @@
             // 
             label24.AutoSize = true;
             label24.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label24.Location = new Point(429, 49);
+            label24.Location = new Point(375, 40);
             label24.Name = "label24";
             label24.Size = new Size(62, 23);
             label24.TabIndex = 65;
@@ -516,12 +530,11 @@
             // btn_xuatDS
             // 
             btn_xuatDS.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_xuatDS.Location = new Point(206, 1020);
-            btn_xuatDS.Margin = new Padding(3, 4, 3, 4);
+            btn_xuatDS.Location = new Point(158, 765);
             btn_xuatDS.Name = "btn_xuatDS";
-            btn_xuatDS.Size = new Size(171, 40);
+            btn_xuatDS.Size = new Size(119, 40);
             btn_xuatDS.TabIndex = 48;
-            btn_xuatDS.Text = "Xuất danh sách";
+            btn_xuatDS.Text = "Xuất PDF";
             btn_xuatDS.UseVisualStyleBackColor = true;
             btn_xuatDS.Click += btn_xuatDS_Click;
             // 
@@ -551,12 +564,12 @@
             // 
             // clNguoiNhap
             // 
-            clNguoiNhap.Text = "Ngày nhập";
+            clNguoiNhap.Text = "Ngày lập";
             clNguoiNhap.Width = 120;
             // 
             // clNCC
             // 
-            clNCC.Text = "Người nhập";
+            clNCC.Text = "Người lập";
             clNCC.Width = 110;
             // 
             // clTong
@@ -1434,5 +1447,6 @@
         private Label erorr_nsx;
         private ColumnHeader columnHeader3;
         private Button pnbtn_edit;
+        private Button btn_xuatExcel;
     }
 }
