@@ -405,125 +405,122 @@ namespace GUI
             if (result1 == DialogResult.Yes)
             {
                 // Đường dẫn cơ bản cho file PDF
-                string baseFilePath = @"D:\dataCSharp\FilePdfKH\XuatKhPdf.pdf";
-                string filePath = baseFilePath;
-
-                // Kiểm tra và tạo tên file mới nếu đã tồn tại
-                int counter = 1;
-                while (File.Exists(filePath))
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    filePath = Path.Combine(
-                        Path.GetDirectoryName(baseFilePath),
-                        $"{Path.GetFileNameWithoutExtension(baseFilePath)}_{counter}.pdf"
-                    );
-                    counter++;
-                }
+                    saveFileDialog.Title = "Lưu file PDF";
+                    saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                    saveFileDialog.FileName = "XuatKhachHangPdf.pdf";
 
-                // Tạo tài liệu PDF
-                PdfDocument document = new PdfDocument();
-                document.Info.Title = "Created with PDFsharp";
-
-                // Tạo trang đầu tiên
-                PdfPage page = document.AddPage();
-                XGraphics gfx = XGraphics.FromPdfPage(page);
-
-                double rowHeight = 30;      // Chiều cao mỗi dòng
-                double pageHeight = page.Height.Point;  // Chiều cao tối đa của trang PDF
-
-                int rongStt = 40;
-                int rongMakh = 54;
-                int rongHoTen = 190;
-                int rongNgaySinh = 100;
-                int rongGt = 50;
-                int rongSdt = 110;
-                int rongDiem = 50;
-
-                int vtSTT = 0;
-                int vtMakh = vtSTT + rongStt;
-                int vtHoTen = vtMakh + rongMakh;
-                int vtNgaySinh = vtHoTen + rongHoTen;
-                int vtGioiTinh = vtNgaySinh + rongNgaySinh;
-                int vtSDT = vtGioiTinh + rongGt;
-                int vtDiem = vtSDT + rongSdt;
-
-                // Vẽ tiêu đề trang và tiêu đề bảng trên trang đầu tiên
-                XFont titleFont = new XFont("Verdana", 22);
-                gfx.DrawString("CHI TIẾT SẢN PHẨM", titleFont, XBrushes.Black, new XPoint(200, 30));
-
-                XFont headerFont = new XFont("Verdana", 12);
-                gfx.DrawString("STT", headerFont, XBrushes.Black, new XPoint(5, 65));
-                gfx.DrawRectangle(XPens.Black, vtSTT, 44, rongStt, rowHeight);
-                gfx.DrawString("MaKH", headerFont, XBrushes.Black, new XPoint(50, 65));
-                gfx.DrawRectangle(XPens.Black, vtMakh, 44, rongMakh, rowHeight);
-                gfx.DrawString("Họ tên", headerFont, XBrushes.Black, new XPoint(102, 65));
-                gfx.DrawRectangle(XPens.Black, vtHoTen, 44, rongHoTen, rowHeight);
-                gfx.DrawString("Ngày sinh", headerFont, XBrushes.Black, new XPoint(305, 65));
-                gfx.DrawRectangle(XPens.Black, vtNgaySinh, 44, rongNgaySinh, rowHeight);
-                gfx.DrawString("GT", headerFont, XBrushes.Black, new XPoint(395, 65));
-                gfx.DrawRectangle(XPens.Black, vtGioiTinh, 44, rongGt, rowHeight);
-                gfx.DrawString("SĐT", headerFont, XBrushes.Black, new XPoint(475, 65));
-                gfx.DrawRectangle(XPens.Black, vtSDT, 44, rongSdt, rowHeight);
-                gfx.DrawString("Điểm", headerFont, XBrushes.Black, new XPoint(555, 65));
-                gfx.DrawRectangle(XPens.Black, vtDiem, 44, rongDiem, rowHeight);
-
-                // Vị trí bắt đầu vẽ các dòng dữ liệu
-                int yPosition = 92;
-                int khoangCachDOng = 18;
-                List<KhachHangDTO> listKHXuatFile = KhachHangBUS.Instance.GetAllKhachHang();
-                int stt = 1;
-
-                foreach (var item in listKHXuatFile)
-                {
-                    // Nếu vị trí y vượt quá chiều cao trang, thêm trang mới mà không vẽ lại tiêu đề
-                    if (yPosition > pageHeight - rowHeight)
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        page = document.AddPage();
-                        gfx = XGraphics.FromPdfPage(page);
-                        yPosition = 30;  // Đặt lại vị trí y trên trang mới
-                    }
-                    // Vẽ dữ liệu của mỗi dòng
-                    gfx.DrawString(stt.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(10, yPosition));
-                    gfx.DrawRectangle(XPens.Black, vtSTT, yPosition - khoangCachDOng, rongStt, rowHeight);
-                    gfx.DrawString(item.MaKH.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(59, yPosition));
-                    gfx.DrawRectangle(XPens.Black, vtMakh, yPosition - khoangCachDOng, rongMakh, rowHeight);
-                    gfx.DrawString(item.HoTen, new XFont("Verdana", 12), XBrushes.Black, new XPoint(102, yPosition));
-                    gfx.DrawRectangle(XPens.Black, vtHoTen, yPosition - khoangCachDOng, rongHoTen, rowHeight);
-                    gfx.DrawString(item.NgaySinh.ToString("dd/MM/yyyy"), new XFont("Verdana", 12), XBrushes.Black, new XPoint(295, yPosition));
-                    gfx.DrawRectangle(XPens.Black, vtNgaySinh, yPosition - khoangCachDOng, rongNgaySinh, rowHeight);
-                    gfx.DrawString(item.GioiTinh, new XFont("Verdana", 12), XBrushes.Black, new XPoint(395, yPosition));
-                    gfx.DrawRectangle(XPens.Black, vtGioiTinh, yPosition - khoangCachDOng, rongGt, rowHeight);
-                    gfx.DrawString(item.SoDT, new XFont("Verdana", 12), XBrushes.Black, new XPoint(450, yPosition));
-                    gfx.DrawRectangle(XPens.Black, vtSDT, yPosition - khoangCachDOng, rongSdt, rowHeight);
-                    if (item.Diem < 10)
-                    {
-                        gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(568, yPosition));
-                    }
-                    else if (item.Diem < 100 && item.Diem >= 10)
-                    {
-                        gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(564, yPosition));
-                    }
-                    else if (item.Diem >= 1000)
-                    {
-                        gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(556, yPosition));
-                    }
-                    else
-                    {
-                        gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(560, yPosition));
-                    }
-                    gfx.DrawRectangle(XPens.Black, vtDiem, yPosition - khoangCachDOng, rongDiem, rowHeight);
+                        string filePath = saveFileDialog.FileName;
+                        // Tạo tài liệu PDF
+                        PdfDocument document = new PdfDocument();
+                        document.Info.Title = "Created with PDFsharp";
 
-                    yPosition += 30;  // Di chuyển xuống dòng tiếp theo
-                    stt++;
-                }
-                // Lưu tài liệu
-                document.Save(filePath);
-                if (File.Exists(filePath))
-                {
-                    MessageBox.Show($"Xuất File {filePath} thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Xuất file thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // Tạo trang đầu tiên
+                        PdfPage page = document.AddPage();
+                        XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                        double rowHeight = 30;      // Chiều cao mỗi dòng
+                        double pageHeight = page.Height.Point;  // Chiều cao tối đa của trang PDF
+
+                        int rongStt = 40;
+                        int rongMakh = 54;
+                        int rongHoTen = 190;
+                        int rongNgaySinh = 100;
+                        int rongGt = 50;
+                        int rongSdt = 110;
+                        int rongDiem = 50;
+
+                        int vtSTT = 0;
+                        int vtMakh = vtSTT + rongStt;
+                        int vtHoTen = vtMakh + rongMakh;
+                        int vtNgaySinh = vtHoTen + rongHoTen;
+                        int vtGioiTinh = vtNgaySinh + rongNgaySinh;
+                        int vtSDT = vtGioiTinh + rongGt;
+                        int vtDiem = vtSDT + rongSdt;
+
+                        // Vẽ tiêu đề trang và tiêu đề bảng trên trang đầu tiên
+                        XFont titleFont = new XFont("Verdana", 22);
+                        gfx.DrawString("DANH SÁCH KHÁCH HÀNG", titleFont, XBrushes.Black, new XPoint(200, 30));
+
+                        XFont headerFont = new XFont("Verdana", 12);
+                        gfx.DrawString("STT", headerFont, XBrushes.Black, new XPoint(5, 65));
+                        gfx.DrawRectangle(XPens.Black, vtSTT, 44, rongStt, rowHeight);
+                        gfx.DrawString("MaKH", headerFont, XBrushes.Black, new XPoint(50, 65));
+                        gfx.DrawRectangle(XPens.Black, vtMakh, 44, rongMakh, rowHeight);
+                        gfx.DrawString("Họ tên", headerFont, XBrushes.Black, new XPoint(102, 65));
+                        gfx.DrawRectangle(XPens.Black, vtHoTen, 44, rongHoTen, rowHeight);
+                        gfx.DrawString("Ngày sinh", headerFont, XBrushes.Black, new XPoint(305, 65));
+                        gfx.DrawRectangle(XPens.Black, vtNgaySinh, 44, rongNgaySinh, rowHeight);
+                        gfx.DrawString("GT", headerFont, XBrushes.Black, new XPoint(395, 65));
+                        gfx.DrawRectangle(XPens.Black, vtGioiTinh, 44, rongGt, rowHeight);
+                        gfx.DrawString("SĐT", headerFont, XBrushes.Black, new XPoint(475, 65));
+                        gfx.DrawRectangle(XPens.Black, vtSDT, 44, rongSdt, rowHeight);
+                        gfx.DrawString("Điểm", headerFont, XBrushes.Black, new XPoint(555, 65));
+                        gfx.DrawRectangle(XPens.Black, vtDiem, 44, rongDiem, rowHeight);
+
+                        // Vị trí bắt đầu vẽ các dòng dữ liệu
+                        int yPosition = 92;
+                        int khoangCachDOng = 18;
+                        List<KhachHangDTO> listKHXuatFile = KhachHangBUS.Instance.GetAllKhachHang();
+                        int stt = 1;
+
+                        foreach (var item in listKHXuatFile)
+                        {
+                            // Nếu vị trí y vượt quá chiều cao trang, thêm trang mới mà không vẽ lại tiêu đề
+                            if (yPosition > pageHeight - rowHeight)
+                            {
+                                page = document.AddPage();
+                                gfx = XGraphics.FromPdfPage(page);
+                                yPosition = 30;  // Đặt lại vị trí y trên trang mới
+                            }
+                            // Vẽ dữ liệu của mỗi dòng
+                            gfx.DrawString(stt.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(10, yPosition));
+                            gfx.DrawRectangle(XPens.Black, vtSTT, yPosition - khoangCachDOng, rongStt, rowHeight);
+                            gfx.DrawString(item.MaKH.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(59, yPosition));
+                            gfx.DrawRectangle(XPens.Black, vtMakh, yPosition - khoangCachDOng, rongMakh, rowHeight);
+                            gfx.DrawString(item.HoTen, new XFont("Verdana", 12), XBrushes.Black, new XPoint(102, yPosition));
+                            gfx.DrawRectangle(XPens.Black, vtHoTen, yPosition - khoangCachDOng, rongHoTen, rowHeight);
+                            gfx.DrawString(item.NgaySinh.ToString("dd/MM/yyyy"), new XFont("Verdana", 12), XBrushes.Black, new XPoint(295, yPosition));
+                            gfx.DrawRectangle(XPens.Black, vtNgaySinh, yPosition - khoangCachDOng, rongNgaySinh, rowHeight);
+                            gfx.DrawString(item.GioiTinh, new XFont("Verdana", 12), XBrushes.Black, new XPoint(395, yPosition));
+                            gfx.DrawRectangle(XPens.Black, vtGioiTinh, yPosition - khoangCachDOng, rongGt, rowHeight);
+                            gfx.DrawString(item.SoDT, new XFont("Verdana", 12), XBrushes.Black, new XPoint(450, yPosition));
+                            gfx.DrawRectangle(XPens.Black, vtSDT, yPosition - khoangCachDOng, rongSdt, rowHeight);
+                            if (item.Diem < 10)
+                            {
+                                gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(568, yPosition));
+                            }
+                            else if (item.Diem < 100 && item.Diem >= 10)
+                            {
+                                gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(564, yPosition));
+                            }
+                            else if (item.Diem >= 1000)
+                            {
+                                gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(556, yPosition));
+                            }
+                            else
+                            {
+                                gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(560, yPosition));
+                            }
+                            gfx.DrawRectangle(XPens.Black, vtDiem, yPosition - khoangCachDOng, rongDiem, rowHeight);
+
+                            yPosition += 30;  // Di chuyển xuống dòng tiếp theo
+                            stt++;
+                        }
+                        // Lưu tài liệu
+                        document.Save(filePath);
+                        if (File.Exists(filePath))
+                        {
+                            MessageBox.Show($"Xuất File {filePath} thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xuất file thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
         }
@@ -551,50 +548,59 @@ namespace GUI
             DialogResult result1 = MessageBox.Show("Bạn chắc chắn muốn xuất File Excel?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result1 == DialogResult.Yes)
             {
-                string initialFilePath = @"D:\dataCSharp\Xuat_Excel_KH\XuatKhExcel.xlsx";
 
-                // Gọi hàm để lấy đường dẫn file không trùng
-                string uniqueFilePath = GetUniqueFilePath(initialFilePath);
-
-                List<KhachHangDTO> arrKH = KhachHangBUS.Instance.GetAllKhachHang();
-
-                // Tạo file Excel
-                using (ExcelPackage excelPackage = new ExcelPackage())
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    // Tạo worksheet
-                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
 
-                    // Thêm dữ liệu mẫu vào sheet
-                    worksheet.Cells[1, 1].Value = "Mã KH";
-                    worksheet.Cells[1, 2].Value = "Họ tên";
-                    worksheet.Cells[1, 3].Value = "Ngày sinh";
-                    worksheet.Cells[1, 4].Value = "Giới tính";
-                    worksheet.Cells[1, 5].Value = "Số điện thoại";
-                    worksheet.Cells[1, 6].Value = "Điểm";
-
-                    // Duyệt danh sách khách hàng và thêm vào Excel
-                    int rowIndex = 2;
-                    foreach (var kh in arrKH)
+                    saveFileDialog.Title = "Lưu File Excel";
+                    saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+                    saveFileDialog.FileName = "XuatKHExcel.xlsx"; // Tên file mặc định
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        worksheet.Cells[rowIndex, 1].Value = kh.MaKH;          
-                        worksheet.Cells[rowIndex, 2].Value = kh.HoTen;      
-                        worksheet.Cells[rowIndex, 3].Value = kh.NgaySinh;     
-                        worksheet.Cells[rowIndex, 4].Value = kh.GioiTinh;     
-                        worksheet.Cells[rowIndex, 5].Value = kh.SoDT;     
-                        worksheet.Cells[rowIndex, 6].Value = kh.Diem;     
+                        string initialFilePath = saveFileDialog.FileName;
 
-                        rowIndex++;
+                        List<KhachHangDTO> arrKH = KhachHangBUS.Instance.GetAllKhachHang();
+
+                        // Tạo file Excel
+                        using (ExcelPackage excelPackage = new ExcelPackage())
+                        {
+                            // Tạo worksheet
+                            ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+                            // Thêm dữ liệu mẫu vào sheet
+                            worksheet.Cells[1, 1].Value = "Mã KH";
+                            worksheet.Cells[1, 2].Value = "Họ tên";
+                            worksheet.Cells[1, 3].Value = "Ngày sinh";
+                            worksheet.Cells[1, 4].Value = "Giới tính";
+                            worksheet.Cells[1, 5].Value = "Số điện thoại";
+                            worksheet.Cells[1, 6].Value = "Điểm";
+
+                            // Duyệt danh sách khách hàng và thêm vào Excel
+                            int rowIndex = 2;
+                            foreach (var kh in arrKH)
+                            {
+                                worksheet.Cells[rowIndex, 1].Value = kh.MaKH;
+                                worksheet.Cells[rowIndex, 2].Value = kh.HoTen;
+                                worksheet.Cells[rowIndex, 3].Value = kh.NgaySinh;
+                                worksheet.Cells[rowIndex, 4].Value = kh.GioiTinh;
+                                worksheet.Cells[rowIndex, 5].Value = kh.SoDT;
+                                worksheet.Cells[rowIndex, 6].Value = kh.Diem;
+
+                                rowIndex++;
+                            }
+
+                            // Tự động điều chỉnh độ rộng cột
+                            worksheet.Cells.AutoFitColumns();
+
+                            // Lưu file
+                            FileInfo fileInfo = new FileInfo(initialFilePath);
+                            excelPackage.SaveAs(fileInfo);
+
+                            // Hiển thị thông báo
+                            MessageBox.Show($"Xuất file Excel thành công!\nĐường dẫn: {initialFilePath}", "Thông báo");
+                        }
                     }
-
-                    // Tự động điều chỉnh độ rộng cột
-                    worksheet.Cells.AutoFitColumns();
-
-                    // Lưu file
-                    FileInfo fileInfo = new FileInfo(uniqueFilePath);
-                    excelPackage.SaveAs(fileInfo);
-
-                    // Hiển thị thông báo
-                    MessageBox.Show($"Xuất file Excel thành công!\nĐường dẫn: {uniqueFilePath}", "Thông báo");
                 }
             }
         }

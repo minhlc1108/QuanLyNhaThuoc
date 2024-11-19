@@ -49,9 +49,9 @@ namespace BUS
             return NhaCungCapDAO.Instance.GetNhaCungCapByTrangThai(trangthai);
         }
 
-        public List<NhaCungCapDTO> FindNhaCungCap(string param,string value)
+        public List<NhaCungCapDTO> FindNhaCungCap(string param,string value, bool? trangthai)
         {
-            return NhaCungCapDAO.Instance.FindNhaCungCap(param, value);
+            return NhaCungCapDAO.Instance.FindNhaCungCap(param, value, trangthai);
         }
 
         public bool InsertNhaCungCap(string maNCC, string tenNCC, string diaChi, string soDT, string email, bool trangThai)

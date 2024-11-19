@@ -29,9 +29,9 @@ namespace BUS
             return DuocSiDAO.Instance.GetAllDuocSi();
         }
 
-        public List<DuocSiDTO> FindDuocSi(string param, string value)
+        public List<DuocSiDTO> FindDuocSi(string param, string value, bool? trangthai)
         {
-            return DuocSiDAO.Instance.FindDuocSi(param, value);
+            return DuocSiDAO.Instance.FindDuocSi(param, value, trangthai);
         }
 
         public List<DuocSiDTO> GetDuocSiByTrangThai(bool trangthai)
