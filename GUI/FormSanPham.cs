@@ -398,6 +398,7 @@ namespace GUI
             }
             else
             {
+                LoadSPData();
                 // Tách từ khóa dựa trên loại tìm kiếm
                 if (isOrSearch)
                 {
