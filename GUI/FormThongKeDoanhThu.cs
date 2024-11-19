@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Cmp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,8 @@ namespace GUI
 
         private void FormThongKeDoanhThu_Load(object sender, EventArgs e)
         {
-
+            dateBatDau.MaxDate = DateTime.Now;
+            dateKetThuc.MaxDate = DateTime.Now;
         }
 
         private void tblThongTin_SelectedIndexChanged(object sender, EventArgs e)
@@ -34,7 +36,13 @@ namespace GUI
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(dateBatDau.Text + " - " + dateKetThuc.Text);
+            DateTime dateBD = dateBatDau.Value.Date;
+            DateTime dateKT = dateKetThuc.Value.Date;
+            if ( dateBD > dateKT)
+            {
+                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày két thúc", "Lỗi",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

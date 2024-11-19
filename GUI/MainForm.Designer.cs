@@ -74,9 +74,8 @@
             panelMenu.Controls.Add(panel2);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
-            panelMenu.Margin = new Padding(3, 2, 3, 2);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(192, 677);
+            panelMenu.Size = new Size(219, 903);
             panelMenu.TabIndex = 0;
             // 
             // btnDangXuat
@@ -90,11 +89,10 @@
             btnDangXuat.IconColor = Color.Gainsboro;
             btnDangXuat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDangXuat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDangXuat.Location = new Point(0, 632);
-            btnDangXuat.Margin = new Padding(3, 2, 3, 2);
+            btnDangXuat.Location = new Point(0, 843);
             btnDangXuat.Name = "btnDangXuat";
-            btnDangXuat.Padding = new Padding(9, 0, 0, 0);
-            btnDangXuat.Size = new Size(192, 45);
+            btnDangXuat.Padding = new Padding(10, 0, 0, 0);
+            btnDangXuat.Size = new Size(219, 60);
             btnDangXuat.TabIndex = 11;
             btnDangXuat.Text = "Đăng xuất";
             btnDangXuat.TextAlign = ContentAlignment.MiddleLeft;
@@ -112,11 +110,10 @@
             btnThongKe.IconColor = Color.Gainsboro;
             btnThongKe.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnThongKe.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThongKe.Location = new Point(0, 499);
-            btnThongKe.Margin = new Padding(3, 2, 3, 2);
+            btnThongKe.Location = new Point(0, 665);
             btnThongKe.Name = "btnThongKe";
-            btnThongKe.Padding = new Padding(9, 0, 0, 0);
-            btnThongKe.Size = new Size(192, 45);
+            btnThongKe.Padding = new Padding(10, 0, 0, 0);
+            btnThongKe.Size = new Size(219, 60);
             btnThongKe.TabIndex = 10;
             btnThongKe.Text = "Thống kê";
             btnThongKe.TextAlign = ContentAlignment.MiddleLeft;
@@ -135,11 +132,10 @@
             btnNhaCungCap.IconColor = Color.Gainsboro;
             btnNhaCungCap.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnNhaCungCap.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNhaCungCap.Location = new Point(0, 454);
-            btnNhaCungCap.Margin = new Padding(3, 2, 3, 2);
+            btnNhaCungCap.Location = new Point(0, 605);
             btnNhaCungCap.Name = "btnNhaCungCap";
-            btnNhaCungCap.Padding = new Padding(9, 0, 0, 0);
-            btnNhaCungCap.Size = new Size(192, 45);
+            btnNhaCungCap.Padding = new Padding(10, 0, 0, 0);
+            btnNhaCungCap.Size = new Size(219, 60);
             btnNhaCungCap.TabIndex = 9;
             btnNhaCungCap.Text = "Nhà cung cấp";
             btnNhaCungCap.TextAlign = ContentAlignment.MiddleLeft;
@@ -158,11 +154,10 @@
             btnNhaSanXuat.IconColor = Color.Gainsboro;
             btnNhaSanXuat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnNhaSanXuat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNhaSanXuat.Location = new Point(0, 409);
-            btnNhaSanXuat.Margin = new Padding(3, 2, 3, 2);
+            btnNhaSanXuat.Location = new Point(0, 545);
             btnNhaSanXuat.Name = "btnNhaSanXuat";
-            btnNhaSanXuat.Padding = new Padding(9, 0, 0, 0);
-            btnNhaSanXuat.Size = new Size(192, 45);
+            btnNhaSanXuat.Padding = new Padding(10, 0, 0, 0);
+            btnNhaSanXuat.Size = new Size(219, 60);
             btnNhaSanXuat.TabIndex = 12;
             btnNhaSanXuat.Text = "Nhà sản xuất";
             btnNhaSanXuat.TextAlign = ContentAlignment.MiddleLeft;
@@ -181,11 +176,10 @@
             btnKhachHang.IconColor = Color.Gainsboro;
             btnKhachHang.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnKhachHang.ImageAlign = ContentAlignment.MiddleLeft;
-            btnKhachHang.Location = new Point(0, 364);
-            btnKhachHang.Margin = new Padding(3, 2, 3, 2);
+            btnKhachHang.Location = new Point(0, 485);
             btnKhachHang.Name = "btnKhachHang";
-            btnKhachHang.Padding = new Padding(9, 0, 0, 0);
-            btnKhachHang.Size = new Size(192, 45);
+            btnKhachHang.Padding = new Padding(10, 0, 0, 0);
+            btnKhachHang.Size = new Size(219, 60);
             btnKhachHang.TabIndex = 7;
             btnKhachHang.Text = "Khách hàng";
             btnKhachHang.TextAlign = ContentAlignment.MiddleLeft;
@@ -204,11 +198,10 @@
             btnDuocSi.IconColor = Color.Gainsboro;
             btnDuocSi.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDuocSi.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDuocSi.Location = new Point(0, 319);
-            btnDuocSi.Margin = new Padding(3, 2, 3, 2);
+            btnDuocSi.Location = new Point(0, 425);
             btnDuocSi.Name = "btnDuocSi";
-            btnDuocSi.Padding = new Padding(9, 0, 0, 0);
-            btnDuocSi.Size = new Size(192, 45);
+            btnDuocSi.Padding = new Padding(10, 0, 0, 0);
+            btnDuocSi.Size = new Size(219, 60);
             btnDuocSi.TabIndex = 6;
             btnDuocSi.Text = "Dược sĩ";
             btnDuocSi.TextAlign = ContentAlignment.MiddleLeft;
@@ -227,11 +220,10 @@
             btnTieuHuy.IconColor = Color.Gainsboro;
             btnTieuHuy.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnTieuHuy.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTieuHuy.Location = new Point(0, 274);
-            btnTieuHuy.Margin = new Padding(3, 2, 3, 2);
+            btnTieuHuy.Location = new Point(0, 365);
             btnTieuHuy.Name = "btnTieuHuy";
-            btnTieuHuy.Padding = new Padding(9, 0, 0, 0);
-            btnTieuHuy.Size = new Size(192, 45);
+            btnTieuHuy.Padding = new Padding(10, 0, 0, 0);
+            btnTieuHuy.Size = new Size(219, 60);
             btnTieuHuy.TabIndex = 14;
             btnTieuHuy.Text = "Tiêu hủy";
             btnTieuHuy.TextAlign = ContentAlignment.MiddleLeft;
@@ -250,11 +242,10 @@
             btnPhieuNhap.IconColor = Color.Gainsboro;
             btnPhieuNhap.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnPhieuNhap.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPhieuNhap.Location = new Point(0, 229);
-            btnPhieuNhap.Margin = new Padding(3, 2, 3, 2);
+            btnPhieuNhap.Location = new Point(0, 305);
             btnPhieuNhap.Name = "btnPhieuNhap";
-            btnPhieuNhap.Padding = new Padding(9, 0, 0, 0);
-            btnPhieuNhap.Size = new Size(192, 45);
+            btnPhieuNhap.Padding = new Padding(10, 0, 0, 0);
+            btnPhieuNhap.Size = new Size(219, 60);
             btnPhieuNhap.TabIndex = 5;
             btnPhieuNhap.Text = "Phiếu nhập";
             btnPhieuNhap.TextAlign = ContentAlignment.MiddleLeft;
@@ -273,11 +264,10 @@
             btnHoaDon.IconColor = Color.Gainsboro;
             btnHoaDon.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnHoaDon.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHoaDon.Location = new Point(0, 184);
-            btnHoaDon.Margin = new Padding(3, 2, 3, 2);
+            btnHoaDon.Location = new Point(0, 245);
             btnHoaDon.Name = "btnHoaDon";
-            btnHoaDon.Padding = new Padding(9, 0, 0, 0);
-            btnHoaDon.Size = new Size(192, 45);
+            btnHoaDon.Padding = new Padding(10, 0, 0, 0);
+            btnHoaDon.Size = new Size(219, 60);
             btnHoaDon.TabIndex = 4;
             btnHoaDon.Text = "Hóa đơn";
             btnHoaDon.TextAlign = ContentAlignment.MiddleLeft;
@@ -296,11 +286,10 @@
             btnLoaiSanPham.IconColor = Color.Gainsboro;
             btnLoaiSanPham.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnLoaiSanPham.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLoaiSanPham.Location = new Point(0, 139);
-            btnLoaiSanPham.Margin = new Padding(3, 2, 3, 2);
+            btnLoaiSanPham.Location = new Point(0, 185);
             btnLoaiSanPham.Name = "btnLoaiSanPham";
-            btnLoaiSanPham.Padding = new Padding(9, 0, 0, 0);
-            btnLoaiSanPham.Size = new Size(192, 45);
+            btnLoaiSanPham.Padding = new Padding(10, 0, 0, 0);
+            btnLoaiSanPham.Size = new Size(219, 60);
             btnLoaiSanPham.TabIndex = 13;
             btnLoaiSanPham.Text = "Loại sản phẩm";
             btnLoaiSanPham.TextAlign = ContentAlignment.MiddleLeft;
@@ -320,11 +309,10 @@
             btnSanPham.IconColor = Color.Gainsboro;
             btnSanPham.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSanPham.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSanPham.Location = new Point(0, 94);
-            btnSanPham.Margin = new Padding(3, 2, 3, 2);
+            btnSanPham.Location = new Point(0, 125);
             btnSanPham.Name = "btnSanPham";
-            btnSanPham.Padding = new Padding(9, 0, 0, 0);
-            btnSanPham.Size = new Size(192, 45);
+            btnSanPham.Padding = new Padding(10, 0, 0, 0);
+            btnSanPham.Size = new Size(219, 60);
             btnSanPham.TabIndex = 3;
             btnSanPham.Text = "Sản phẩm";
             btnSanPham.TextAlign = ContentAlignment.MiddleLeft;
@@ -339,9 +327,8 @@
             panel2.Controls.Add(pictureBox1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(192, 94);
+            panel2.Size = new Size(219, 125);
             panel2.TabIndex = 2;
             // 
             // label1
@@ -349,9 +336,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label1.ForeColor = Color.Gainsboro;
-            label1.Location = new Point(4, 59);
+            label1.Location = new Point(5, 79);
             label1.Name = "label1";
-            label1.Size = new Size(167, 20);
+            label1.Size = new Size(213, 25);
             label1.TabIndex = 1;
             label1.Text = "QUẢN LÝ NHÀ THUỐC";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -359,20 +346,18 @@
             // pictureBox2
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
-            pictureBox2.Location = new Point(65, 9);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Location = new Point(74, 12);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(56, 48);
+            pictureBox2.Size = new Size(64, 64);
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
             pictureBox1.InitialImage = null;
-            pictureBox1.Location = new Point(2, 2);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(2, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(192, 90);
+            pictureBox1.Size = new Size(219, 120);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -382,10 +367,9 @@
             panel3.Controls.Add(iconUser);
             panel3.Controls.Add(labelTenDS);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(192, 0);
-            panel3.Margin = new Padding(3, 2, 3, 2);
+            panel3.Location = new Point(219, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1105, 33);
+            panel3.Size = new Size(1263, 44);
             panel3.TabIndex = 1;
             // 
             // iconUser
@@ -396,11 +380,10 @@
             iconUser.IconChar = FontAwesome.Sharp.IconChar.UserCircle;
             iconUser.IconColor = Color.Gainsboro;
             iconUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconUser.IconSize = 33;
-            iconUser.Location = new Point(974, 0);
-            iconUser.Margin = new Padding(3, 2, 3, 2);
+            iconUser.IconSize = 40;
+            iconUser.Location = new Point(1103, 0);
             iconUser.Name = "iconUser";
-            iconUser.Size = new Size(35, 33);
+            iconUser.Size = new Size(40, 44);
             iconUser.SizeMode = PictureBoxSizeMode.CenterImage;
             iconUser.TabIndex = 3;
             iconUser.TabStop = false;
@@ -412,33 +395,31 @@
             labelTenDS.Dock = DockStyle.Right;
             labelTenDS.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTenDS.ForeColor = Color.Gainsboro;
-            labelTenDS.Location = new Point(1009, 0);
+            labelTenDS.Location = new Point(1143, 0);
             labelTenDS.Name = "labelTenDS";
-            labelTenDS.Padding = new Padding(0, 4, 0, 4);
-            labelTenDS.Size = new Size(96, 29);
+            labelTenDS.Padding = new Padding(0, 5, 0, 5);
+            labelTenDS.Size = new Size(120, 38);
             labelTenDS.TabIndex = 2;
             labelTenDS.Text = "Tên dược sĩ";
             // 
             // panelDesktop
             // 
             panelDesktop.Dock = DockStyle.Fill;
-            panelDesktop.Location = new Point(192, 33);
-            panelDesktop.Margin = new Padding(3, 2, 3, 2);
+            panelDesktop.Location = new Point(219, 44);
             panelDesktop.Name = "panelDesktop";
-            panelDesktop.Size = new Size(1105, 644);
+            panelDesktop.Size = new Size(1263, 859);
             panelDesktop.TabIndex = 2;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1297, 677);
+            ClientSize = new Size(1482, 903);
             Controls.Add(panelDesktop);
             Controls.Add(panel3);
             Controls.Add(panelMenu);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             ImeMode = ImeMode.On;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainForm";

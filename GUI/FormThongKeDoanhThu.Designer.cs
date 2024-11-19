@@ -48,7 +48,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(444, 16);
+            label1.Location = new Point(490, 25);
             label1.Name = "label1";
             label1.Size = new Size(284, 38);
             label1.TabIndex = 0;
@@ -60,7 +60,7 @@
             // 
             dateBatDau.Font = new Font("Segoe UI", 12F);
             dateBatDau.Format = DateTimePickerFormat.Short;
-            dateBatDau.Location = new Point(355, 95);
+            dateBatDau.Location = new Point(403, 90);
             dateBatDau.Name = "dateBatDau";
             dateBatDau.Size = new Size(149, 34);
             dateBatDau.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(214, 95);
+            label2.Location = new Point(262, 90);
             label2.Name = "label2";
             label2.Padding = new Padding(0, 3, 0, 3);
             label2.Size = new Size(135, 34);
@@ -80,7 +80,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(642, 95);
+            label3.Location = new Point(687, 90);
             label3.Name = "label3";
             label3.Padding = new Padding(0, 3, 0, 3);
             label3.Size = new Size(138, 34);
@@ -91,7 +91,7 @@
             // 
             dateKetThuc.Font = new Font("Segoe UI", 12F);
             dateKetThuc.Format = DateTimePickerFormat.Short;
-            dateKetThuc.Location = new Point(783, 95);
+            dateKetThuc.Location = new Point(831, 90);
             dateKetThuc.Name = "dateKetThuc";
             dateKetThuc.Size = new Size(149, 34);
             dateKetThuc.TabIndex = 3;
@@ -99,7 +99,7 @@
             // btnThongKe
             // 
             btnThongKe.Font = new Font("Segoe UI", 12F);
-            btnThongKe.Location = new Point(512, 164);
+            btnThongKe.Location = new Point(562, 152);
             btnThongKe.Name = "btnThongKe";
             btnThongKe.Size = new Size(129, 55);
             btnThongKe.TabIndex = 5;
@@ -109,9 +109,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Location = new Point(31, 270);
+            groupBox1.Location = new Point(12, 219);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(522, 480);
+            groupBox1.Size = new Size(568, 582);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Biểu đồ";
@@ -119,9 +119,9 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(tblThongTin);
-            groupBox2.Location = new Point(586, 270);
+            groupBox2.Location = new Point(586, 219);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(522, 480);
+            groupBox2.Size = new Size(646, 582);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Bảng thông tin";
@@ -131,7 +131,7 @@
             tblThongTin.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             tblThongTin.Location = new Point(25, 38);
             tblThongTin.Name = "tblThongTin";
-            tblThongTin.Size = new Size(477, 420);
+            tblThongTin.Size = new Size(601, 522);
             tblThongTin.TabIndex = 0;
             tblThongTin.UseCompatibleStateImageBehavior = false;
             tblThongTin.View = View.Details;
@@ -161,7 +161,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1145, 762);
+            ClientSize = new Size(1244, 813);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(btnThongKe);
