@@ -1,6 +1,8 @@
 ﻿using BUS;
 using DTO;
 using ExcelDataReader;
+using OfficeOpenXml.Style;
+using OfficeOpenXml;
 using Org.BouncyCastle.Asn1.Pkcs;
 using PdfSharp;
 using PdfSharp.Drawing;
@@ -472,7 +474,7 @@ namespace GUI
                 PdfDocument document = new PdfDocument();
                 document.Info.Title = "Created with PDFsharp";
 
-            // Tạo trang đầu tiên
+                // Tạo trang đầu tiên
                 PdfPage page = document.AddPage();
                 page.Width = XUnit.FromMillimeter(377); // Chiều rộng tùy chỉnh (Ví dụ: 420 mm tương đương với A3)
                 page.Height = XUnit.FromMillimeter(297); // Chiều cao tùy chỉnh (297 mm)
@@ -528,10 +530,10 @@ namespace GUI
                     // Nếu vị trí y vượt quá chiều cao trang, thêm trang mới mà không vẽ lại tiêu đề
                     if (yPosition > pageHeight - rowHeight)
                     {
-                         page = document.AddPage();
+                        page = document.AddPage();
                         page.Width = XUnit.FromMillimeter(377);
                         page.Height = XUnit.FromMillimeter(297); // Chiều cao tùy chỉnh (297 mm)
-                         gfx = XGraphics.FromPdfPage(page);
+                        gfx = XGraphics.FromPdfPage(page);
                         yPosition = 30;  // Đặt lại vị trí y trên trang mới
                     }
 
@@ -573,10 +575,10 @@ namespace GUI
                     // Vẽ các đường viền ô với `maxCellHeight` đồng nhất cho tất cả các ô trong dòng
                     gfx.DrawRectangle(XPens.Black, vtSTT, yPosition - khoangCachDOng, rongStt, maxCellHeight);
                     gfx.DrawRectangle(XPens.Black, vtMakh, yPosition - khoangCachDOng, rongMakh, maxCellHeight);
-                    gfx.DrawRectangle(XPens.Black, vtHoTen, yPosition - khoangCachDOng, rongHoTen, maxCellHeight );
+                    gfx.DrawRectangle(XPens.Black, vtHoTen, yPosition - khoangCachDOng, rongHoTen, maxCellHeight);
                     gfx.DrawRectangle(XPens.Black, vtNgaySinh, yPosition - khoangCachDOng, rongNgaySinh, maxCellHeight);
-                    gfx.DrawRectangle(XPens.Black, vtGioiTinh, yPosition - khoangCachDOng, rongGt, maxCellHeight );
-                    gfx.DrawRectangle(XPens.Black, vtSDT, yPosition - khoangCachDOng, rongSdt, maxCellHeight );
+                    gfx.DrawRectangle(XPens.Black, vtGioiTinh, yPosition - khoangCachDOng, rongGt, maxCellHeight);
+                    gfx.DrawRectangle(XPens.Black, vtSDT, yPosition - khoangCachDOng, rongSdt, maxCellHeight);
                     gfx.DrawRectangle(XPens.Black, vtDiem, yPosition - khoangCachDOng, rongDiem, maxCellHeight);
 
                     // Cập nhật vị trí `yPosition` sau khi vẽ xong toàn bộ dòng
@@ -594,6 +596,91 @@ namespace GUI
                     MessageBox.Show("Xuất file thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        string GetUniqueFilePath(string filePath)
+        {
+            int counter = 1;
+            string directory = Path.GetDirectoryName(filePath);
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
+            string extension = Path.GetExtension(filePath);
+
+            while (File.Exists(filePath))
+            {
+                // Thêm số thứ tự vào tên file
+                filePath = Path.Combine(directory, $"{fileNameWithoutExtension}{counter}{extension}");
+                counter++;
+            }
+
+            return filePath;
+        }
+
+        private void btn_XuatExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Bạn chắc chắn muốn xuất File Excel?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                string initialFilePath = @"D:\dataCSharp\Xuat_Excel_NCC\XuatNccExcel.xlsx";
+
+                // Gọi hàm để lấy đường dẫn file không trùng
+                string uniqueFilePath = GetUniqueFilePath(initialFilePath);
+
+                List<NhaCungCapDTO> nhaCungCapList = NhaCungCapBUS.Instance.GetAllNhaCungCap();
+
+                // Tạo file Excel
+                using (ExcelPackage excelPackage = new ExcelPackage())
+                {
+                    // Tạo worksheet
+                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+                    // Thêm dữ liệu mẫu vào sheet
+                    worksheet.Cells[1, 1].Value = "STT";
+                    worksheet.Cells[1, 2].Value = "Mã NCC";
+                    worksheet.Cells[1, 3].Value = "Tên nhà cung cấp";
+                    worksheet.Cells[1, 4].Value = "Địa chỉ";
+                    worksheet.Cells[1, 5].Value = "Số điện thoại";
+                    worksheet.Cells[1, 6].Value = "Email";
+                    worksheet.Cells[1, 7].Value = "Trạng thái";
+
+                    // Duyệt danh sách khách hàng và thêm vào Excel
+                    int stt = 1;
+                    int rowIndex = 2;
+                    foreach (var ncc in nhaCungCapList)
+                    {
+                        worksheet.Cells[rowIndex, 1].Value = stt;
+                        worksheet.Cells[rowIndex, 2].Value = ncc.MaNCC;
+                        worksheet.Cells[rowIndex, 3].Value = ncc.TenNCC;
+                        worksheet.Cells[rowIndex, 4].Value = ncc.DiaChi;
+                        worksheet.Cells[rowIndex, 5].Value = ncc.SoDT;
+                        worksheet.Cells[rowIndex, 6].Value = ncc.Email;
+
+                        string trangthai = "";
+                        if(ncc.TrangThai == true)
+                        {
+                            trangthai = "Còn hợp tác";
+                        }
+                        else
+                        {
+                            trangthai = "Hết hợp tác";
+                        }
+                        worksheet.Cells[rowIndex, 7].Value = trangthai;
+
+                        rowIndex++;
+                        stt++;
+                    }
+
+                    // Tự động điều chỉnh độ rộng cột
+                    worksheet.Cells.AutoFitColumns();
+
+                    // Lưu file
+                    FileInfo fileInfo = new FileInfo(uniqueFilePath);
+                    excelPackage.SaveAs(fileInfo);
+
+                    // Hiển thị thông báo
+                    MessageBox.Show($"Xuất file Excel thành công!\nĐường dẫn: {uniqueFilePath}", "Thông báo");
+                }
+            }
+
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +15,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Windows.Media;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
+using OfficeOpenXml.Style;
+using OfficeOpenXml;
+using System.Drawing;
 
 namespace GUI
 {
@@ -214,7 +216,8 @@ namespace GUI
                                         if (check)
                                         {
                                             continue;
-                                        }else
+                                        }
+                                        else
                                         {
                                             string lastMaDS = DuocSiBUS.Instance.GetLastMaDS();
                                             string prefix = lastMaDS.Substring(0, 2);
@@ -224,7 +227,7 @@ namespace GUI
 
                                             string newMaDS = prefix + nextNumber.ToString("D4");
 
-                                            if(DuocSiBUS.Instance.InsertDuocSi(newMaDS, hoTen, soDT, email, true))
+                                            if (DuocSiBUS.Instance.InsertDuocSi(newMaDS, hoTen, soDT, email, true))
                                             {
                                                 if (TaiKhoanBUS.Instance.InsertTaiKhoan(newMaDS, newMaDS, "123456", 0))
                                                 {
@@ -238,9 +241,10 @@ namespace GUI
                             if (isHeaderValid == false)
                             {
                                 MessageBox.Show("File excel không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }else
+                            }
+                            else
                             {
-                                if(num == 0)
+                                if (num == 0)
                                 {
                                     MessageBox.Show($"Đã nhập File {Path.GetFileName(filePath)} này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     LoadDuocSiData();
@@ -530,6 +534,87 @@ namespace GUI
                 lv_qlduocsi.Items.Add(item);
 
                 stt++;
+            }
+        }
+
+        string GetUniqueFilePath(string filePath)
+        {
+            int counter = 1;
+            string directory = Path.GetDirectoryName(filePath);
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
+            string extension = Path.GetExtension(filePath);
+
+            while (File.Exists(filePath))
+            {
+                // Thêm số thứ tự vào tên file
+                filePath = Path.Combine(directory, $"{fileNameWithoutExtension}{counter}{extension}");
+                counter++;
+            }
+
+            return filePath;
+        }
+
+        private void btn_xuatExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Bạn chắc chắn muốn xuất File Excel?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                string initialFilePath = @"D:\dataCSharp\Xuat_Excel_DS\XuatDSExcel.xlsx";
+
+                // Gọi hàm để lấy đường dẫn file không trùng
+                string uniqueFilePath = GetUniqueFilePath(initialFilePath);
+
+                List<DuocSiDTO> duocSiList = DuocSiBUS.Instance.GetAllDuocSi();
+
+                // Tạo file Excel
+                using (ExcelPackage excelPackage = new ExcelPackage())
+                {
+                    // Tạo worksheet
+                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+                    // Thêm dữ liệu mẫu vào sheet
+                    worksheet.Cells[1, 1].Value = "STT";
+                    worksheet.Cells[1, 2].Value = "Mã DS";
+                    worksheet.Cells[1, 3].Value = "Họ tên";
+                    worksheet.Cells[1, 4].Value = "Số điện thoại";
+                    worksheet.Cells[1, 5].Value = "Email";
+                    worksheet.Cells[1, 6].Value = "Trạng thái";
+
+                    // Duyệt danh sách khách hàng và thêm vào Excel
+                    int stt = 1;
+                    int rowIndex = 2;
+                    foreach (var ds in duocSiList)
+                    {
+                        worksheet.Cells[rowIndex, 1].Value = stt;
+                        worksheet.Cells[rowIndex, 2].Value = ds.MaDS;
+                        worksheet.Cells[rowIndex, 3].Value = ds.HoTen;
+                        worksheet.Cells[rowIndex, 4].Value = ds.SDT;
+                        worksheet.Cells[rowIndex, 5].Value = ds.Email;
+
+                        string trangthai = "";
+                        if(ds.TrangThai == "True")
+                        {
+                            trangthai = "Còn làm";
+                        }else
+                        {
+                            trangthai = "Nghỉ làm";
+                        }
+                        worksheet.Cells[rowIndex, 6].Value = trangthai;
+
+                        rowIndex++;
+                        stt++;
+                    }
+
+                    // Tự động điều chỉnh độ rộng cột
+                    worksheet.Cells.AutoFitColumns();
+
+                    // Lưu file
+                    FileInfo fileInfo = new FileInfo(uniqueFilePath);
+                    excelPackage.SaveAs(fileInfo);
+
+                    // Hiển thị thông báo
+                    MessageBox.Show($"Xuất file Excel thành công!\nĐường dẫn: {uniqueFilePath}", "Thông báo");
+                }
             }
         }
     }

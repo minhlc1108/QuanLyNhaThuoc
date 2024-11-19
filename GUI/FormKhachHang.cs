@@ -12,6 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System.IO;
+using System.Drawing;
 
 namespace GUI
 {
@@ -378,11 +382,12 @@ namespace GUI
                             }
                             else
                             {
-                                if(num == 0)
+                                if (num == 0)
                                 {
                                     MessageBox.Show($"Đã nhập File {Path.GetFileName(filePath)} này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     loadDataKH();
-                                }else
+                                }
+                                else
                                 {
                                     MessageBox.Show($"Thêm thành công {num} khác hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     loadDataKH();
@@ -415,7 +420,7 @@ namespace GUI
                 }
 
                 // Tạo tài liệu PDF
-                 PdfDocument document = new PdfDocument();
+                PdfDocument document = new PdfDocument();
                 document.Info.Title = "Created with PDFsharp";
 
                 // Tạo trang đầu tiên
@@ -425,11 +430,11 @@ namespace GUI
                 double rowHeight = 30;      // Chiều cao mỗi dòng
                 double pageHeight = page.Height.Point;  // Chiều cao tối đa của trang PDF
 
-                int rongStt = 40;   
-                int rongMakh = 54;   
-                int rongHoTen = 190;   
-                int rongNgaySinh = 100;   
-                int rongGt = 50;   
+                int rongStt = 40;
+                int rongMakh = 54;
+                int rongHoTen = 190;
+                int rongNgaySinh = 100;
+                int rongGt = 50;
                 int rongSdt = 110;
                 int rongDiem = 50;
 
@@ -489,16 +494,17 @@ namespace GUI
                     gfx.DrawRectangle(XPens.Black, vtGioiTinh, yPosition - khoangCachDOng, rongGt, rowHeight);
                     gfx.DrawString(item.SoDT, new XFont("Verdana", 12), XBrushes.Black, new XPoint(450, yPosition));
                     gfx.DrawRectangle(XPens.Black, vtSDT, yPosition - khoangCachDOng, rongSdt, rowHeight);
-                    if(item.Diem < 10)
-                    { 
-                        gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(568, yPosition)); 
-                    } else if(item.Diem < 100 && item.Diem >= 10)
+                    if (item.Diem < 10)
+                    {
+                        gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(568, yPosition));
+                    }
+                    else if (item.Diem < 100 && item.Diem >= 10)
                     {
                         gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(564, yPosition));
                     }
                     else if (item.Diem >= 1000)
                     {
-                    gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(556, yPosition));
+                        gfx.DrawString(item.Diem.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(556, yPosition));
                     }
                     else
                     {
@@ -518,6 +524,77 @@ namespace GUI
                 else
                 {
                     MessageBox.Show("Xuất file thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        string GetUniqueFilePath(string filePath)
+        {
+            int counter = 1;
+            string directory = Path.GetDirectoryName(filePath);
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
+            string extension = Path.GetExtension(filePath);
+
+            while (File.Exists(filePath))
+            {
+                // Thêm số thứ tự vào tên file
+                filePath = Path.Combine(directory, $"{fileNameWithoutExtension}{counter}{extension}");
+                counter++;
+            }
+
+            return filePath;
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Bạn chắc chắn muốn xuất File Excel?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                string initialFilePath = @"D:\dataCSharp\Xuat_Excel_KH\XuatKhExcel.xlsx";
+
+                // Gọi hàm để lấy đường dẫn file không trùng
+                string uniqueFilePath = GetUniqueFilePath(initialFilePath);
+
+                List<KhachHangDTO> arrKH = KhachHangBUS.Instance.GetAllKhachHang();
+
+                // Tạo file Excel
+                using (ExcelPackage excelPackage = new ExcelPackage())
+                {
+                    // Tạo worksheet
+                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+                    // Thêm dữ liệu mẫu vào sheet
+                    worksheet.Cells[1, 1].Value = "Mã KH";
+                    worksheet.Cells[1, 2].Value = "Họ tên";
+                    worksheet.Cells[1, 3].Value = "Ngày sinh";
+                    worksheet.Cells[1, 4].Value = "Giới tính";
+                    worksheet.Cells[1, 5].Value = "Số điện thoại";
+                    worksheet.Cells[1, 6].Value = "Điểm";
+
+                    // Duyệt danh sách khách hàng và thêm vào Excel
+                    int rowIndex = 2;
+                    foreach (var kh in arrKH)
+                    {
+                        worksheet.Cells[rowIndex, 1].Value = kh.MaKH;          
+                        worksheet.Cells[rowIndex, 2].Value = kh.HoTen;      
+                        worksheet.Cells[rowIndex, 3].Value = kh.NgaySinh;     
+                        worksheet.Cells[rowIndex, 4].Value = kh.GioiTinh;     
+                        worksheet.Cells[rowIndex, 5].Value = kh.SoDT;     
+                        worksheet.Cells[rowIndex, 6].Value = kh.Diem;     
+
+                        rowIndex++;
+                    }
+
+                    // Tự động điều chỉnh độ rộng cột
+                    worksheet.Cells.AutoFitColumns();
+
+                    // Lưu file
+                    FileInfo fileInfo = new FileInfo(uniqueFilePath);
+                    excelPackage.SaveAs(fileInfo);
+
+                    // Hiển thị thông báo
+                    MessageBox.Show($"Xuất file Excel thành công!\nĐường dẫn: {uniqueFilePath}", "Thông báo");
                 }
             }
         }

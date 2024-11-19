@@ -1,5 +1,6 @@
 ﻿using BUS;
 using DTO;
+using OfficeOpenXml;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
@@ -140,7 +141,7 @@ namespace GUI
                     counter++;
                 }
 
-                    // Tạo tài liệu PDF
+                // Tạo tài liệu PDF
                 PdfDocument document = new PdfDocument();
                 document.Info.Title = "Created with PDFsharp";
 
@@ -221,7 +222,7 @@ namespace GUI
                                 {
                                     if (sp.MaSP == ctsp.MaSP)
                                     {
-                                    // Xử lý từng ô dữ liệu với hàm `DrawStringMultiline`
+                                        // Xử lý từng ô dữ liệu với hàm `DrawStringMultiline`
                                         DrawStringMultiline(gfx, stt.ToString(), new XFont("Verdana", 11), XBrushes.Black, new XPoint(25, yPosition), rongStt);
                                         DrawStringMultiline(gfx, sp.MaSP, new XFont("Verdana", 11), XBrushes.Black, new XPoint(55, yPosition), rongMakh);
                                         DrawStringMultiline(gfx, sp.TenSP, new XFont("Verdana", 11), XBrushes.Black, new XPoint(120, yPosition), 340);

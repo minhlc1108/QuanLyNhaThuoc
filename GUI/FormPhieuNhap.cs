@@ -1,6 +1,8 @@
 ﻿using BUS;
 using DTO;
 using ExcelDataReader;
+using OfficeOpenXml;
+using Org.BouncyCastle.Asn1.Pkcs;
 using Org.BouncyCastle.Pqc.Crypto.Lms;
 using Org.BouncyCastle.Utilities;
 using PdfSharp.Drawing;
@@ -1134,6 +1136,80 @@ namespace GUI
                             }
                         }
                     }
+                }
+            }
+        }
+
+        string GetUniqueFilePath(string filePath)
+        {
+            int counter = 1;
+            string directory = Path.GetDirectoryName(filePath);
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
+            string extension = Path.GetExtension(filePath);
+
+            while (File.Exists(filePath))
+            {
+                // Thêm số thứ tự vào tên file
+                filePath = Path.Combine(directory, $"{fileNameWithoutExtension}{counter}{extension}");
+                counter++;
+            }
+
+            return filePath;
+        }
+
+        private void btn_xuatExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Bạn chắc chắn muốn xuất File Excel?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                string initialFilePath = @"D:\dataCSharp\Xuat_Excel_PhieuNhap\XuatPnExcel.xlsx";
+
+                // Gọi hàm để lấy đường dẫn file không trùng
+                string uniqueFilePath = GetUniqueFilePath(initialFilePath);
+
+                List<PhieuNhapDTO> listPN = PhieuNhapBUS.Instance.GetAllPhieuNhap();
+
+                // Tạo file Excel
+                using (ExcelPackage excelPackage = new ExcelPackage())
+                {
+                    // Tạo worksheet
+                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+                    // Thêm dữ liệu mẫu vào sheet
+                    worksheet.Cells[1, 1].Value = "STT";
+                    worksheet.Cells[1, 2].Value = "Mã PN";
+                    worksheet.Cells[1, 3].Value = "Ngày nhập";
+                    worksheet.Cells[1, 4].Value = "Người nhập";
+                    worksheet.Cells[1, 5].Value = "Nhà cung cấp";
+                    worksheet.Cells[1, 6].Value = "Tổng tiền";
+
+                    // Duyệt danh sách khách hàng và thêm vào Excel
+                    int stt = 1;
+                    int rowIndex = 2;
+                    foreach (var pn in listPN)
+                    {
+                        worksheet.Cells[rowIndex, 1].Value = stt;
+                        worksheet.Cells[rowIndex, 2].Value = pn.MaPN;
+                        worksheet.Cells[rowIndex, 3].Value = pn.NgayLap;
+                        string nguoiLap = DuocSiBUS.Instance.getHoTenDuocSi(pn.NguoiLap);
+                        worksheet.Cells[rowIndex, 4].Value = nguoiLap;
+                        string nhaCungCap = NhaCungCapBUS.Instance.getTenNcc(pn.NhaCungCap);
+                        worksheet.Cells[rowIndex, 5].Value = nhaCungCap;
+                        worksheet.Cells[rowIndex, 6].Value = pn.TongTien;
+
+                        rowIndex++; ;
+                        stt++; ;
+                    }
+
+                    // Tự động điều chỉnh độ rộng cột
+                    worksheet.Cells.AutoFitColumns();
+
+                    // Lưu file
+                    FileInfo fileInfo = new FileInfo(uniqueFilePath);
+                    excelPackage.SaveAs(fileInfo);
+
+                    // Hiển thị thông báo
+                    MessageBox.Show($"Xuất file Excel thành công!\nĐường dẫn: {uniqueFilePath}", "Thông báo");
                 }
             }
         }

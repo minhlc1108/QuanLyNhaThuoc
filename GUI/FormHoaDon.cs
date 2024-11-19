@@ -1,5 +1,7 @@
 ﻿using BUS;
 using DTO;
+using OfficeOpenXml;
+using Org.BouncyCastle.Asn1.Pkcs;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
@@ -798,7 +800,7 @@ namespace GUI
                     gfx.DrawRectangle(XPens.Black, vtGioiTinh, yPosition - khoangCachDOng, rongGt, rowHeight);
                     gfx.DrawString(item.ToaThuoc, new XFont("Verdana", 12), XBrushes.Black, new XPoint(585, yPosition));
                     gfx.DrawRectangle(XPens.Black, vtSDT, yPosition - khoangCachDOng, rongSdt, rowHeight);
-                    if(item.DiemTichLuy < 10)
+                    if (item.DiemTichLuy < 10)
                     {
                         gfx.DrawString(item.DiemTichLuy.ToString(), new XFont("Verdana", 12), XBrushes.Black, new XPoint(772, yPosition));
                     }
@@ -822,6 +824,84 @@ namespace GUI
                 else
                 {
                     MessageBox.Show("Xuất file thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        string GetUniqueFilePath(string filePath)
+        {
+            int counter = 1;
+            string directory = Path.GetDirectoryName(filePath);
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
+            string extension = Path.GetExtension(filePath);
+
+            while (File.Exists(filePath))
+            {
+                // Thêm số thứ tự vào tên file
+                filePath = Path.Combine(directory, $"{fileNameWithoutExtension}{counter}{extension}");
+                counter++;
+            }
+
+            return filePath;
+        }
+
+
+        private void btn_xuatExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Bạn chắc chắn muốn xuất File Excel?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                string initialFilePath = @"D:\dataCSharp\Xuat_Excel_HoaDon\XuatHdExcel.xlsx";
+
+                // Gọi hàm để lấy đường dẫn file không trùng
+                string uniqueFilePath = GetUniqueFilePath(initialFilePath);
+
+                List<HoaDonDTO> listHoaDon = HoaDonBUS.Instance.GetAllHoaDon();
+
+                // Tạo file Excel
+                using (ExcelPackage excelPackage = new ExcelPackage())
+                {
+                    // Tạo worksheet
+                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+                    // Thêm dữ liệu mẫu vào sheet
+                    worksheet.Cells[1, 1].Value = "STT";
+                    worksheet.Cells[1, 2].Value = "Mã HĐ";
+                    worksheet.Cells[1, 3].Value = "Người lập";
+                    worksheet.Cells[1, 4].Value = "Ngày lập";
+                    worksheet.Cells[1, 5].Value = "Khách hàng";
+                    worksheet.Cells[1, 6].Value = "Toa thuốc";
+                    worksheet.Cells[1, 7].Value = "Điểm";
+                    worksheet.Cells[1, 8].Value = "Tổng tiền";
+
+                    // Duyệt danh sách khách hàng và thêm vào Excel
+                    int stt = 1;
+                    int rowIndex = 2;
+                    foreach (var hd in listHoaDon)
+                    {
+                        worksheet.Cells[rowIndex, 1].Value = stt;
+                        worksheet.Cells[rowIndex, 2].Value = hd.MaHD;
+                        string hoTenNguoiLap = DuocSiBUS.Instance.getHoTenDuocSi(hd.NguoiLap);
+                        worksheet.Cells[rowIndex, 3].Value = hoTenNguoiLap;
+                        worksheet.Cells[rowIndex, 4].Value = hd.NgayLap;
+                        KhachHangDTO khachHang = KhachHangBUS.Instance.GetKhachHangByMaKH(hd.KhachHangID);
+                        worksheet.Cells[rowIndex, 5].Value = khachHang.HoTen;
+                        worksheet.Cells[rowIndex, 6].Value = hd.ToaThuoc;
+                        worksheet.Cells[rowIndex, 7].Value = hd.DiemTichLuy;
+                        worksheet.Cells[rowIndex, 8].Value = hd.TongTien;
+
+                        rowIndex++; ;
+                        stt++; ;
+                    }
+
+                    // Tự động điều chỉnh độ rộng cột
+                    worksheet.Cells.AutoFitColumns();
+
+                    // Lưu file
+                    FileInfo fileInfo = new FileInfo(uniqueFilePath);
+                    excelPackage.SaveAs(fileInfo);
+
+                    // Hiển thị thông báo
+                    MessageBox.Show($"Xuất file Excel thành công!\nĐường dẫn: {uniqueFilePath}", "Thông báo");
                 }
             }
         }

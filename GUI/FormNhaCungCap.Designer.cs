@@ -48,7 +48,7 @@
             btn_import = new Button();
             btn_opLock = new Button();
             btn_lock = new Button();
-            btn_export = new Button();
+            btn_exportPdf = new Button();
             btn_clear = new Button();
             btn_edit = new Button();
             btn_add = new Button();
@@ -64,6 +64,7 @@
             clEmail = new ColumnHeader();
             clTrangThai = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
+            btn_XuatExcel = new Button();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -230,11 +231,12 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btn_XuatExcel);
             groupBox3.Controls.Add(btn_del);
             groupBox3.Controls.Add(btn_import);
             groupBox3.Controls.Add(btn_opLock);
             groupBox3.Controls.Add(btn_lock);
-            groupBox3.Controls.Add(btn_export);
+            groupBox3.Controls.Add(btn_exportPdf);
             groupBox3.Controls.Add(btn_clear);
             groupBox3.Controls.Add(btn_edit);
             groupBox3.Controls.Add(btn_add);
@@ -249,7 +251,7 @@
             // btn_del
             // 
             btn_del.Enabled = false;
-            btn_del.Location = new Point(262, 126);
+            btn_del.Location = new Point(262, 122);
             btn_del.Name = "btn_del";
             btn_del.Size = new Size(104, 40);
             btn_del.TabIndex = 8;
@@ -259,9 +261,9 @@
             // 
             // btn_import
             // 
-            btn_import.Location = new Point(53, 195);
+            btn_import.Location = new Point(20, 186);
             btn_import.Name = "btn_import";
-            btn_import.Size = new Size(133, 40);
+            btn_import.Size = new Size(149, 40);
             btn_import.TabIndex = 6;
             btn_import.Text = "Nhập Excel";
             btn_import.UseVisualStyleBackColor = true;
@@ -270,7 +272,7 @@
             // btn_opLock
             // 
             btn_opLock.Enabled = false;
-            btn_opLock.Location = new Point(136, 126);
+            btn_opLock.Location = new Point(136, 122);
             btn_opLock.Name = "btn_opLock";
             btn_opLock.Size = new Size(100, 40);
             btn_opLock.TabIndex = 4;
@@ -281,7 +283,7 @@
             // btn_lock
             // 
             btn_lock.Enabled = false;
-            btn_lock.Location = new Point(20, 127);
+            btn_lock.Location = new Point(20, 122);
             btn_lock.Name = "btn_lock";
             btn_lock.Size = new Size(91, 40);
             btn_lock.TabIndex = 3;
@@ -289,15 +291,15 @@
             btn_lock.UseVisualStyleBackColor = true;
             btn_lock.Click += btn_lock_Click;
             // 
-            // btn_export
+            // btn_exportPdf
             // 
-            btn_export.Location = new Point(208, 195);
-            btn_export.Name = "btn_export";
-            btn_export.Size = new Size(130, 40);
-            btn_export.TabIndex = 7;
-            btn_export.Text = "Xuất";
-            btn_export.UseVisualStyleBackColor = true;
-            btn_export.Click += btn_export_Click;
+            btn_exportPdf.Location = new Point(112, 244);
+            btn_exportPdf.Name = "btn_exportPdf";
+            btn_exportPdf.Size = new Size(147, 40);
+            btn_exportPdf.TabIndex = 7;
+            btn_exportPdf.Text = "Xuất PDF";
+            btn_exportPdf.UseVisualStyleBackColor = true;
+            btn_exportPdf.Click += btn_export_Click;
             // 
             // btn_clear
             // 
@@ -428,6 +430,16 @@
             columnHeader1.Text = "Trạng thái";
             columnHeader1.Width = 116;
             // 
+            // btn_XuatExcel
+            // 
+            btn_XuatExcel.Location = new Point(205, 186);
+            btn_XuatExcel.Name = "btn_XuatExcel";
+            btn_XuatExcel.Size = new Size(161, 40);
+            btn_XuatExcel.TabIndex = 9;
+            btn_XuatExcel.Text = "Xuất Excel";
+            btn_XuatExcel.UseVisualStyleBackColor = true;
+            btn_XuatExcel.Click += btn_XuatExcel_Click;
+            // 
             // FormNhaCungCap
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -470,7 +482,7 @@
         private Button btn_clear;
         private Button btn_edit;
         private Button btn_add;
-        private Button btn_export;
+        private Button btn_exportPdf;
         private ComboBox cbb_ttFind;
         private TextBox tb_find;
         private ComboBox cbb_find;
@@ -486,5 +498,6 @@
         private Label erorr_sdt;
         private Label erorr_email;
         private Button btn_del;
+        private Button btn_XuatExcel;
     }
 }
