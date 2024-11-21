@@ -477,7 +477,7 @@ namespace GUI
                 }
                 else if (paramCbbFind == "Email")
                 {
-                    param = "hoten";
+                    param = "email";
                 }
 
                 bool? trangthai = null;

@@ -58,12 +58,14 @@
             // 
             // dateBatDau
             // 
+            dateBatDau.CustomFormat = "MM/yyyy";
             dateBatDau.Font = new Font("Segoe UI", 12F);
-            dateBatDau.Format = DateTimePickerFormat.Short;
+            dateBatDau.Format = DateTimePickerFormat.Custom;
             dateBatDau.Location = new Point(403, 90);
             dateBatDau.Name = "dateBatDau";
             dateBatDau.Size = new Size(149, 34);
             dateBatDau.TabIndex = 1;
+            dateBatDau.ShowUpDown = true;
             // 
             // label2
             // 
@@ -89,12 +91,14 @@
             // 
             // dateKetThuc
             // 
+            dateKetThuc.CustomFormat = "MM/yyyy";
             dateKetThuc.Font = new Font("Segoe UI", 12F);
-            dateKetThuc.Format = DateTimePickerFormat.Short;
+            dateKetThuc.Format = DateTimePickerFormat.Custom;
             dateKetThuc.Location = new Point(831, 90);
             dateKetThuc.Name = "dateKetThuc";
             dateKetThuc.Size = new Size(149, 34);
             dateKetThuc.TabIndex = 3;
+            dateKetThuc.ShowUpDown = true;
             // 
             // btnThongKe
             // 

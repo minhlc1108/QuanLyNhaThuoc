@@ -27,6 +27,10 @@ namespace GUI
         {
             dateBatDau.MaxDate = DateTime.Now;
             dateKetThuc.MaxDate = DateTime.Now;
+            dateBatDau.Value = new DateTime(DateTime.Now.Year, 1, 1);
+            dateKetThuc.Value = dateKetThuc.MaxDate;
+
+
         }
 
         private void tblThongTin_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,12 +40,14 @@ namespace GUI
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            DateTime dateBD = dateBatDau.Value.Date;
-            DateTime dateKT = dateKetThuc.Value.Date;
+            DateTime dateBD = dateBatDau.Value;
+            DateTime dateKT = dateKetThuc.Value;
             if ( dateBD > dateKT)
             {
-                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày két thúc", "Lỗi",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc", "Lỗi",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            MessageBox.Show(dateBD.ToString() + " - " + dateKetThuc.ToString() );
 
         }
     }
