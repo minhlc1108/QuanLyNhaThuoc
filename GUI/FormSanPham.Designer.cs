@@ -46,7 +46,7 @@
             clTrangThai = new ColumnHeader();
             btnKhoaSanPham = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            btnXuatDanhSach = new Button();
+            btnXuatDanhSachExcel = new Button();
             button1 = new Button();
             button3 = new Button();
             groupBox1 = new GroupBox();
@@ -208,24 +208,25 @@
             btnKhoaSanPham.UseVisualStyleBackColor = true;
             btnKhoaSanPham.Click += btnKhoaSanPham_Click;
             // 
-            // btnXuatDanhSach
+            // btnXuatDanhSachExcel
             // 
-            btnXuatDanhSach.Location = new Point(259, 49);
-            btnXuatDanhSach.Name = "btnXuatDanhSach";
-            btnXuatDanhSach.Size = new Size(151, 38);
-            btnXuatDanhSach.TabIndex = 25;
-            btnXuatDanhSach.Text = "Xuất Excel";
-            btnXuatDanhSach.UseVisualStyleBackColor = true;
-            btnXuatDanhSach.Click += btnXuatDanhSach_Click;
+            btnXuatDanhSachExcel.Location = new Point(259, 49);
+            btnXuatDanhSachExcel.Name = "btnXuatDanhSachExcel";
+            btnXuatDanhSachExcel.Size = new Size(151, 38);
+            btnXuatDanhSachExcel.TabIndex = 25;
+            btnXuatDanhSachExcel.Text = "Xuất Excel";
+            btnXuatDanhSachExcel.UseVisualStyleBackColor = true;
+            btnXuatDanhSachExcel.Click += btnXuatDanhSach_Click;
             // 
             // button1
             // 
             button1.Location = new Point(44, 49);
             button1.Name = "button1";
-            button1.Size = new Size(151, 36);
+            button1.Size = new Size(151, 38);
             button1.TabIndex = 32;
             button1.Text = "Xuất PDF";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button3
             // 
@@ -235,6 +236,7 @@
             button3.TabIndex = 34;
             button3.Text = "Nhập Excel";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // groupBox1
             // 
@@ -450,7 +452,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(btnXuatDanhSach);
+            groupBox3.Controls.Add(btnXuatDanhSachExcel);
             groupBox3.Controls.Add(button1);
             groupBox3.Controls.Add(button3);
             groupBox3.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -502,7 +504,7 @@
         private ColumnHeader clTrangThai;
         private Button btnKhoaSanPham;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Button btnXuatDanhSach;
+        private Button btnXuatDanhSachExcel;
         private ColumnHeader clKeToa;
         private ColumnHeader clSoLuong;
         private Button button1;
