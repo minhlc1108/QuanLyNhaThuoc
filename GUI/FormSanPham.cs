@@ -18,6 +18,7 @@ using OfficeOpenXml;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using ExcelDataReader;
 
 namespace GUI
 {
@@ -794,73 +795,85 @@ namespace GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            // Hiển thị hộp thoại chọn file Excel
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            int sum = 0;
+            OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                openFileDialog.Title = "Chọn file Excel để nhập";
-                openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+                Filter = "Excel Files|*.xls;*.xlsx",
+                Title = "Select an Excel File"
+            };
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+
+                DialogResult result1 = MessageBox.Show($"Bạn chắc chắn muốn nhập File: '{Path.GetFileName(filePath)}'?",
+                                                       "Xác nhận",
+                                                       MessageBoxButtons.YesNo,
+                                                       MessageBoxIcon.Question);
+                if (result1 == DialogResult.Yes)
                 {
-                    string filePath = openFileDialog.FileName;
-
-                    // Đọc dữ liệu từ Excel và nhập vào database
-                    ImportDataFromExcel(filePath);
-                }
-            }
-            btnResetSanPham_Click(sender, e);
-
-        }
-        private void ImportDataFromExcel(string filePath)
-        {
-                List<SanPhamDTO> products = new List<SanPhamDTO>();
-                List<SanPhamDTO> sanPhamBanDau = SanPhamBUS.Instance.GetAllProducts();
-                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial; // Hoặc Commercial nếu bạn có giấy phép thương mại
-                using (var package = new ExcelPackage(new FileInfo(filePath)))
-                {
-                    var worksheet = package.Workbook.Worksheets[0]; // Lấy sheet đầu tiên
-                    int rowCount = worksheet.Dimension.Rows;
-
-                    // Đọc từng dòng dữ liệu trong Excel
-                    for (int row = 2; row <= rowCount; row++) // Bắt đầu từ dòng 2 vì dòng đầu tiên là tiêu đề
+                    // Đọc dữ liệu từ tệp Excel
+                    using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
                     {
-                        var product = new SanPhamDTO
+                        // Đặt cấu hình cho ExcelDataReader
+                        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                        using (var reader = ExcelReaderFactory.CreateReader(stream))
                         {
-                            MaSP = worksheet.Cells[row, 1].Text,
-                            TenSP = worksheet.Cells[row, 2].Text,
-                            LoaiSP = worksheet.Cells[row, 3].Text.Trim(),
-                            NhaSanXuat = worksheet.Cells[row, 4].Text.ToUpper().Trim(),
-                            QuyCach = worksheet.Cells[row, 5].Text,
-                            XuatXu = worksheet.Cells[row, 6].Text,
-                            CanKeToa = worksheet.Cells[row, 7].Text.ToLower() == "cần kê toa",
-                            TrangThai = worksheet.Cells[row, 9].Text.ToLower() == "đang bán"
-                        };
+                            // Đọc dữ liệu thành DataSet
+                            var result = reader.AsDataSet();
 
-                        products.Add(product);
-                    }
-                }
+                            // Giả sử dữ liệu nằm trong bảng đầu tiên (Sheet1)
+                            DataTable dataTable = result.Tables[0];
 
-                // Loại bỏ các sản phẩm đã tồn tại trong cơ sở dữ liệu
-                for (int i = products.Count - 1; i >= 0; i--)
-                {
-                    foreach (SanPhamDTO spBanDau in sanPhamBanDau)
-                    {
-                        if (products[i].MaSP == spBanDau.MaSP)
-                        {
-                            products.RemoveAt(i); // Xóa phần tử tại vị trí i
-                            break; // Thoát vòng lặp nội bộ sau khi xóa
+                            HashSet<string> existingProducts = new HashSet<string>();
+                            // Lấy danh sách sản phẩm đã tồn tại trong cơ sở dữ liệu
+                            List<SanPhamDTO> products = SanPhamBUS.Instance.GetAllProducts();
+
+                            // Lưu tất cả mã sản phẩm đã có vào HashSet
+                            foreach (var sp in products)
+                            {
+                                existingProducts.Add(sp.MaSP);
+                            }
+
+                            // Bỏ qua dòng đầu tiên (header)
+                            foreach (DataRow row in dataTable.Rows.Cast<DataRow>().Skip(1))
+                            {
+                                string maSP = row[0].ToString();
+                                string tenSP = row[1].ToString();
+                                string loaiSP = row[2].ToString();
+                                string nhaSX = row[3].ToString();
+                                string QuyCach = row[4].ToString();
+                                string XuatXu = row[5].ToString();
+                                string KeToa = row[6].ToString();
+                                string TrangThai = row[8].ToString();
+                                bool checkKeToa = KeToa.Trim().ToLower() == "cần kê toa";
+                                bool checkTrangThai = TrangThai.Trim().ToLower() == "đang bán";
+
+                                // Kiểm tra mã sản phẩm có trùng không
+                                if (!existingProducts.Contains(maSP))
+                                {
+                                    // Nếu không trùng, thực hiện thêm sản phẩm
+                                    SanPhamBUS.Instance.InsertProduct(maSP, tenSP, loaiSP, nhaSX, QuyCach, XuatXu, checkKeToa, checkTrangThai);
+
+                                    // Thêm mã sản phẩm mới vào danh sách kiểm tra
+                                    existingProducts.Add(maSP);
+                                    sum++;
+                                }
+                                btnResetSanPham_Click(sender, e);
+                            }
+                            if (sum == 0) {
+                                MessageBox.Show($"Lỗi dữ liệu , không có sản phẩm nào được thêm");
+
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Đã thêm thành công {sum} sản phẩm");
+                            }
+
                         }
                     }
                 }
-                // Gọi hàm Insert vào SQL
-
-                foreach (SanPhamDTO sp in products)
-                {
-                    SanPhamBUS.Instance.InsertProduct(sp.MaSP, sp.TenSP, sp.LoaiSP.Trim(), sp.NhaSanXuat, sp.QuyCach, sp.XuatXu, sp.CanKeToa, sp.TrangThai);
-                }
-                MessageBox.Show("Dữ liệu đã được nhập vào cơ sở dữ liệu thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+            }
         }
-       
     }
 }

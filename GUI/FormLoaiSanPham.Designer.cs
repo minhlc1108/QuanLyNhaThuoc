@@ -65,7 +65,7 @@ namespace GUI
             // 
             txtLoaiSanPham.Location = new Point(166, 239);
             txtLoaiSanPham.Name = "txtLoaiSanPham";
-            txtLoaiSanPham.Size = new Size(283, 23);
+            txtLoaiSanPham.Size = new Size(258, 23);
             txtLoaiSanPham.TabIndex = 22;
             // 
             // label5
@@ -145,6 +145,7 @@ namespace GUI
             btnXuatLSP.TabIndex = 33;
             btnXuatLSP.Text = "XUẤT DANH SÁCH";
             btnXuatLSP.UseVisualStyleBackColor = true;
+            btnXuatLSP.Click += btnXuatLSP_Click;
             // 
             // lsvLoaiSanPham
             // 
@@ -210,7 +211,7 @@ namespace GUI
             // 
             txtMaLoaiSP.Location = new Point(166, 173);
             txtMaLoaiSP.Name = "txtMaLoaiSP";
-            txtMaLoaiSP.Size = new Size(283, 23);
+            txtMaLoaiSP.Size = new Size(258, 23);
             txtMaLoaiSP.TabIndex = 36;
             txtMaLoaiSP.TextChanged += txtMaLoaiSP_TextChanged;
             // 
