@@ -132,7 +132,7 @@ namespace DAO
         {
             List<SanPhamDTO>listSPbyMaLoai=new List<SanPhamDTO>();
             int dem = 0;
-            string query = "SELECT * FROM sanpham WHERE loaisp = @LoaiSP ";
+            string query = "SELECT * FROM sanpham WHERE loaisp = @maloai ";
             object[] parameters =
                 {
                 maloai
@@ -153,6 +153,28 @@ namespace DAO
                 }
             }
             return dem;
+        }
+        public bool getTrangThaiByMaLSP(string maloai) {
+            List<SanPhamDTO> listSPbyMaLoai = new List<SanPhamDTO>();
+            int dem = 0;
+            string query = "SELECT * FROM loaisanpham WHERE maloai = @maloai ";
+            object[] parameters =
+                {
+                maloai
+                };
+            bool checkTrangthai = true; 
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+
+            foreach (DataRow row in data.Rows)
+            {
+                LoaiSanPhamDTO loaiSP = new LoaiSanPhamDTO
+                {
+
+                    TrangThai = Convert.ToBoolean(row["trangthai"].ToString())
+                };
+                checkTrangthai = loaiSP.TrangThai;
+            }
+            return checkTrangthai; 
         }
 
     }

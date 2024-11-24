@@ -101,9 +101,9 @@ namespace GUI
             // 
             btnXoaLSP.Location = new Point(54, 380);
             btnXoaLSP.Name = "btnXoaLSP";
-            btnXoaLSP.Size = new Size(110, 26);
+            btnXoaLSP.Size = new Size(128, 26);
             btnXoaLSP.TabIndex = 28;
-            btnXoaLSP.Text = "KHÓA ";
+            btnXoaLSP.Text = "KHÓA / MỞ KHÓA";
             btnXoaLSP.UseVisualStyleBackColor = true;
             btnXoaLSP.Click += btnXoaLSP_Click;
             // 
@@ -131,7 +131,7 @@ namespace GUI
             // 
             btnThemLSP.Location = new Point(54, 321);
             btnThemLSP.Name = "btnThemLSP";
-            btnThemLSP.Size = new Size(110, 26);
+            btnThemLSP.Size = new Size(128, 26);
             btnThemLSP.TabIndex = 25;
             btnThemLSP.Text = "THÊM";
             btnThemLSP.UseVisualStyleBackColor = true;

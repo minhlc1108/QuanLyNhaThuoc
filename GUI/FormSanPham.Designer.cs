@@ -109,7 +109,7 @@
             // 
             btnThemSanPham.Location = new Point(36, 28);
             btnThemSanPham.Name = "btnThemSanPham";
-            btnThemSanPham.Size = new Size(133, 28);
+            btnThemSanPham.Size = new Size(146, 28);
             btnThemSanPham.TabIndex = 20;
             btnThemSanPham.Text = "THÊM";
             btnThemSanPham.UseVisualStyleBackColor = true;
@@ -117,9 +117,9 @@
             // 
             // btnResetSanPham
             // 
-            btnResetSanPham.Location = new Point(258, 28);
+            btnResetSanPham.Location = new Point(230, 28);
             btnResetSanPham.Name = "btnResetSanPham";
-            btnResetSanPham.Size = new Size(121, 28);
+            btnResetSanPham.Size = new Size(149, 28);
             btnResetSanPham.TabIndex = 21;
             btnResetSanPham.Text = "LÀM MỚI";
             btnResetSanPham.UseVisualStyleBackColor = true;
@@ -129,7 +129,7 @@
             // 
             btnUpdateSanPham.Location = new Point(36, 73);
             btnUpdateSanPham.Name = "btnUpdateSanPham";
-            btnUpdateSanPham.Size = new Size(133, 28);
+            btnUpdateSanPham.Size = new Size(146, 28);
             btnUpdateSanPham.TabIndex = 22;
             btnUpdateSanPham.Text = "LƯU CHỈNH SỬA";
             btnUpdateSanPham.UseVisualStyleBackColor = true;
@@ -200,11 +200,11 @@
             // 
             // btnKhoaSanPham
             // 
-            btnKhoaSanPham.Location = new Point(258, 74);
+            btnKhoaSanPham.Location = new Point(230, 74);
             btnKhoaSanPham.Name = "btnKhoaSanPham";
-            btnKhoaSanPham.Size = new Size(121, 28);
+            btnKhoaSanPham.Size = new Size(149, 28);
             btnKhoaSanPham.TabIndex = 24;
-            btnKhoaSanPham.Text = "KHÓA";
+            btnKhoaSanPham.Text = "KHÓA / MỞ KHÓA";
             btnKhoaSanPham.UseVisualStyleBackColor = true;
             btnKhoaSanPham.Click += btnKhoaSanPham_Click;
             // 

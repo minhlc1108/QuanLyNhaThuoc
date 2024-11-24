@@ -219,14 +219,7 @@ namespace GUI
                 txtDieuTriBenh.Text = dieuTriString;
                 btnThemSanPham.Enabled = false;
                 btnUpdateSanPham.Enabled = true;
-                if (item.SubItems[8].Text.Trim() == "Nghỉ Bán")
-                {
-                    btnKhoaSanPham.Enabled = false;
-                }
-                else
-                {
-                    btnKhoaSanPham.Enabled = true;
-                }
+                btnKhoaSanPham.Enabled = true;
                 cbbLoaiSanPham.Enabled = false;
                 cbbNhaSX.Enabled = false;
             }
@@ -283,7 +276,7 @@ namespace GUI
             {
                 keToa = false;
             }
-            DialogResult result = MessageBox.Show("Bạn muốn thay đổi khóa sản phẩm này", "Xác nhận thay đổi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Bạn muốn thay đổi sản phẩm này", "Xác nhận thay đổi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             SanPhamDTO sp = SanPhamBUS.Instance.GetSPByMaSP(txtMaSanPham.Text);
             // get thành phần by mã
             List<ThanhPhanDTO> listThanhPhanByMa = ThanhPhanBUS.Instance.GetALLThanhPhanByMa(txtMaSanPham.Text.Trim());
@@ -303,12 +296,21 @@ namespace GUI
                 check = false;
 
             }
-            if (result == DialogResult.Yes && check)
+            if (result == DialogResult.Yes && check && sp.TrangThai)
             {
                 bool successUpTT = SanPhamBUS.Instance.UpdateTrangThaiSanPham(maSP, false);
                 if (successUpTT)
                 {
-                    MessageBox.Show("Cập nhật trạng thái thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Khóa sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadSPData();
+                }
+            }
+            else
+            {
+                bool successUpTT = SanPhamBUS.Instance.UpdateTrangThaiSanPham(maSP, true);
+                if (successUpTT)
+                {
+                    MessageBox.Show("Mở khóa sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadSPData();
                 }
             }

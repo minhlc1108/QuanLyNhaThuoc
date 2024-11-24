@@ -32,7 +32,6 @@ namespace GUI
         private void LoadLoaiSPData()
         {
             List<LoaiSanPhamDTO> loaiSanPhamList = LoaiSanPhamBUS.Instance.GetAllLoaiSanPham();
-            List<TaiKhoanDTO> taiKhoanList = TaiKhoanBUS.Instance.GetAllTaiKhoan();
 
             lsvLoaiSanPham.Items.Clear();
 
@@ -116,24 +115,39 @@ namespace GUI
         {
             string maLoaiSP = txtMaLoaiSP.Text;
             string tenLoaiSP = txtLoaiSanPham.Text;
-            DialogResult result = MessageBox.Show($"Bạn muốn khóa  loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận khóa loại sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            if (LoaiSanPhamBUS.Instance.getTrangThaiByMaLSP(maLoaiSP))
             {
-                int checkSP = LoaiSanPhamBUS.Instance.checkSanPham(maLoaiSP);
-                if (checkSP > 0)
-                {
-                    MessageBox.Show("Khóa loại sản phẩm thất bại,vui lòng khóa các sản phẩm lên quan trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    reset();
-                }
-                else
-                {
-                    bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP, false);
-                    MessageBox.Show("Khóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    reset();
-                }
+                DialogResult result = MessageBox.Show($"Bạn muốn khóa  loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận khóa loại sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                if (result == DialogResult.Yes)
+                {
+                    int checkSP = LoaiSanPhamBUS.Instance.checkSanPham(maLoaiSP);
+                    if (checkSP > 0)
+                    {
+                        MessageBox.Show("Khóa loại sản phẩm thất bại,vui lòng khóa các sản phẩm lên quan trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        reset();
+                    }
+                    else
+                    {
+                        bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP, false);
+                        MessageBox.Show("Khóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        reset();
+                    }
+
+                }
             }
+            else
+            {
+                DialogResult result = MessageBox.Show($"Bạn muốn mở khóa loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận khóa loại sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                        bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP, true);
+                        MessageBox.Show("Mở khóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        reset();
+                }
+            }
+           
         }
 
         private void lsvLoaiSanPham_SelectedIndexChanged(object sender, EventArgs e)
