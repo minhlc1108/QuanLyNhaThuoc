@@ -1,5 +1,7 @@
 ﻿using BUS;
 using DTO;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +32,6 @@ namespace GUI
         private void LoadLoaiSPData()
         {
             List<LoaiSanPhamDTO> loaiSanPhamList = LoaiSanPhamBUS.Instance.GetAllLoaiSanPham();
-            List<TaiKhoanDTO> taiKhoanList = TaiKhoanBUS.Instance.GetAllTaiKhoan();
 
             lsvLoaiSanPham.Items.Clear();
 
@@ -114,24 +115,39 @@ namespace GUI
         {
             string maLoaiSP = txtMaLoaiSP.Text;
             string tenLoaiSP = txtLoaiSanPham.Text;
-            DialogResult result = MessageBox.Show($"Bạn muốn khóa  loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận khóa loại sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            if (LoaiSanPhamBUS.Instance.getTrangThaiByMaLSP(maLoaiSP))
             {
-                int checkSP = LoaiSanPhamBUS.Instance.checkSanPham(maLoaiSP);
-                if (checkSP > 0)
-                {
-                    MessageBox.Show("Khóa loại sản phẩm thất bại,vui lòng khóa các sản phẩm lên quan trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    reset();
-                }
-                else
-                {
-                    bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP, false);
-                    MessageBox.Show("Khóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    reset();
-                }
+                DialogResult result = MessageBox.Show($"Bạn muốn khóa  loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận khóa loại sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                if (result == DialogResult.Yes)
+                {
+                    int checkSP = LoaiSanPhamBUS.Instance.checkSanPham(maLoaiSP);
+                    if (checkSP > 0)
+                    {
+                        MessageBox.Show("Khóa loại sản phẩm thất bại,vui lòng khóa các sản phẩm lên quan trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        reset();
+                    }
+                    else
+                    {
+                        bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP, false);
+                        MessageBox.Show("Khóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        reset();
+                    }
+
+                }
             }
+            else
+            {
+                DialogResult result = MessageBox.Show($"Bạn muốn mở khóa loại sản phẩm sĩ có Tên Sản Phẩm = {tenLoaiSP}?", "Xác nhận khóa loại sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                        bool successDelDuocSi = LoaiSanPhamBUS.Instance.UpdateTrangThaiLoaiSanPham(maLoaiSP, true);
+                        MessageBox.Show("Mở khóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        reset();
+                }
+            }
+           
         }
 
         private void lsvLoaiSanPham_SelectedIndexChanged(object sender, EventArgs e)
@@ -211,30 +227,227 @@ namespace GUI
             {
                 btnResetLSP_Click(sender, e);
             }
+            string searchText = txtTimKiem.Text.Trim().ToLower();
+
+            // Xác định loại tìm kiếm dựa trên ký tự phân tách
+            bool isOrSearch = searchText.Contains(",");
+            bool isAndSearch = searchText.Contains("+");
+
+            if (isOrSearch && isAndSearch)
+            {
+                MessageBox.Show("Cú pháp tìm kiếm không hợp lệ. Vui lòng chỉ sử dụng ',' hoặc '+'.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
             else
             {
-                foreach (ListViewItem item in lsvLoaiSanPham.Items)
+                LoadLoaiSPData();
+                // Tách từ khóa dựa trên loại tìm kiếm
+                if (isOrSearch)
                 {
-                    bool isMatch = false;
+                    string[] keywords = txtTimKiem.Text.Trim().ToLower().Split(',');
+                    PerformOrSearch(keywords);
+                }
+                else if (isAndSearch)
+                {
+                    string[] keywords = txtTimKiem.Text.Trim().ToLower().Split('+');
+                    PerformAndSearch(keywords);
+                }
+                else
+                {
+                    searchBinhThuong();
+                }
+            }
+
+        }
+        private void searchBinhThuong()
+        {
+            foreach (ListViewItem item in lsvLoaiSanPham.Items)
+            {
+                bool isMatch = false;
+                foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+                {
+                    if (subItem.Text.ToLower().Contains(txtTimKiem.Text.Trim().ToLower()))
+                    {
+                        isMatch = true;
+                        break;
+                    }
+                }
+
+                if (isMatch)
+                    listTimKiem.Add((ListViewItem)item.Clone()); // Lưu item khớp vào danh sách tạm
+            }
+
+            lsvLoaiSanPham.Items.Clear();
+            lsvLoaiSanPham.Items.AddRange(listTimKiem.ToArray());
+            listTimKiem.Clear();
+
+
+        }
+        private void PerformOrSearch(string[] keywords)
+        {
+            foreach (ListViewItem item in lsvLoaiSanPham.Items)
+            {
+                bool anyKeywordMatch = false;
+
+                foreach (string keyword in keywords)
+                {
                     foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
                     {
-                        if (subItem.Text.ToLower().Contains(txtTimKiem.Text.Trim().ToLower()))
+                        if (subItem.Text.ToLower().Contains(keyword.Trim()))
                         {
-                            isMatch = true;
+                            anyKeywordMatch = true;
                             break;
                         }
                     }
 
-                    if (isMatch)
-                        listTimKiem.Add((ListViewItem)item.Clone()); // Lưu item khớp vào danh sách tạm
+                    if (anyKeywordMatch) break;
                 }
 
-                lsvLoaiSanPham.Items.Clear();
-                lsvLoaiSanPham.Items.AddRange(listTimKiem.ToArray());
-                listTimKiem.Clear();
+                if (anyKeywordMatch)
+                {
+                    listTimKiem.Add((ListViewItem)item.Clone());
+                }
+            }
 
+            // Hiển thị kết quả
+            lsvLoaiSanPham.Items.Clear();
+            lsvLoaiSanPham.Items.AddRange(listTimKiem.ToArray());
+            listTimKiem.Clear();
+        }
+
+        private void PerformAndSearch(string[] keywords)
+        {
+            foreach (ListViewItem item in lsvLoaiSanPham.Items)
+            {
+                bool allKeywordsMatch = true;
+
+                foreach (string keyword in keywords)
+                {
+                    bool keywordFound = false;
+
+                    foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+                    {
+                        if (subItem.Text.ToLower().Contains(keyword.Trim()))
+                        {
+                            keywordFound = true;
+                            break;
+                        }
+                    }
+
+                    if (!keywordFound)
+                    {
+                        allKeywordsMatch = false;
+                        break;
+                    }
+                }
+
+                if (allKeywordsMatch)
+                {
+                    listTimKiem.Add((ListViewItem)item.Clone());
+                }
+            }
+
+            // Hiển thị kết quả
+            lsvLoaiSanPham.Items.Clear();
+            lsvLoaiSanPham.Items.AddRange(listTimKiem.ToArray());
+            listTimKiem.Clear();
+        }
+
+
+        private void btnXuatLSP_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Bạn chắc chắn muốn xuất File PDF?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Title = "Lưu file PDF";
+                    saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                    saveFileDialog.FileName = "DanhSachLoaiSanPham.pdf";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = saveFileDialog.FileName;
+                        PdfDocument document = new PdfDocument();
+                        document.Info.Title = "Danh sách Loại Sản Phẩm";
+
+                        PdfPage page = document.AddPage();
+                        page.Orientation = PdfSharp.PageOrientation.Landscape;
+                        page.Size = PdfSharp.PageSize.A4;
+                        XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                        double rowHeight = 25; // Chiều cao cơ bản cho mỗi dòng
+                        double startY = 100;   // Vị trí bắt đầu của bảng
+                        double currentY = startY;
+
+                        int colSTT = 50;
+                        int colMaLoai = 100;
+                        int colTen = 200;
+                        int colTrangThai = 100;
+                        int totalWidth = colSTT + colMaLoai + colTen + colTrangThai;
+
+                        double startX = (page.Width.Point - totalWidth) / 2;
+
+                        XFont titleFont = new XFont("Verdana", 16);
+                        XFont headerFont = new XFont("Verdana", 10);
+                        XFont rowFont = new XFont("Verdana", 10);
+
+                        // Vẽ tiêu đề
+                        gfx.DrawString("DANH SÁCH LOẠI SẢN PHẨM", titleFont, XBrushes.Black, new XRect(0, 50, page.Width, 30), XStringFormats.TopCenter);
+
+                        // Vẽ tiêu đề cột
+                        gfx.DrawRectangle(XPens.Black, startX, currentY, totalWidth, rowHeight);
+                        gfx.DrawString("STT", headerFont, XBrushes.Black, new XRect(startX, currentY, colSTT, rowHeight), XStringFormats.Center);
+                        gfx.DrawString("Mã Loại", headerFont, XBrushes.Black, new XRect(startX + colSTT, currentY, colMaLoai, rowHeight), XStringFormats.Center);
+                        gfx.DrawString("Tên", headerFont, XBrushes.Black, new XRect(startX + colSTT + colMaLoai, currentY, colTen, rowHeight), XStringFormats.Center);
+                        gfx.DrawString("Trạng Thái", headerFont, XBrushes.Black, new XRect(startX + colSTT + colMaLoai + colTen, currentY, colTrangThai, rowHeight), XStringFormats.Center);
+
+                        currentY += rowHeight;
+
+                        // Lấy danh sách loại sản phẩm
+                        List<LoaiSanPhamDTO> listLoaiSanPham = LoaiSanPhamBUS.Instance.GetAllLoaiSanPham();
+                        int stt = 1;
+
+                        foreach (var item in listLoaiSanPham)
+                        {
+                            // Nếu vị trí vượt chiều cao trang, tạo trang mới
+                            if (currentY + rowHeight > page.Height.Point - 50)
+                            {
+                                page = document.AddPage();
+                                page.Orientation = PdfSharp.PageOrientation.Landscape;
+                                page.Size = PdfSharp.PageSize.A4;
+                                gfx = XGraphics.FromPdfPage(page);
+                                currentY = startY;
+
+                                // Vẽ lại tiêu đề bảng khi tạo trang mới
+                                gfx.DrawRectangle(XPens.Black, startX, currentY, totalWidth, rowHeight);
+                                gfx.DrawString("STT", headerFont, XBrushes.Black, new XRect(startX, currentY, colSTT, rowHeight), XStringFormats.Center);
+                                gfx.DrawString("Mã Loại", headerFont, XBrushes.Black, new XRect(startX + colSTT, currentY, colMaLoai, rowHeight), XStringFormats.Center);
+                                gfx.DrawString("Tên", headerFont, XBrushes.Black, new XRect(startX + colSTT + colMaLoai, currentY, colTen, rowHeight), XStringFormats.Center);
+                                gfx.DrawString("Trạng Thái", headerFont, XBrushes.Black, new XRect(startX + colSTT + colMaLoai + colTen, currentY, colTrangThai, rowHeight), XStringFormats.Center);
+
+                                currentY += rowHeight;
+                            }
+
+                            // Vẽ dòng dữ liệu
+                            gfx.DrawRectangle(XPens.Black, startX, currentY, totalWidth, rowHeight);
+                            gfx.DrawString(stt.ToString(), rowFont, XBrushes.Black, new XRect(startX, currentY, colSTT, rowHeight), XStringFormats.Center);
+                            gfx.DrawString(item.MaLoai, rowFont, XBrushes.Black, new XRect(startX + colSTT, currentY, colMaLoai, rowHeight), XStringFormats.Center);
+                            gfx.DrawString(item.TenLoai, rowFont, XBrushes.Black, new XRect(startX + colSTT + colMaLoai, currentY, colTen, rowHeight), XStringFormats.Center);
+                            gfx.DrawString(item.TrangThai ? "Đang Bán" : "Nghỉ Bán", rowFont, XBrushes.Black, new XRect(startX + colSTT + colMaLoai + colTen, currentY, colTrangThai, rowHeight), XStringFormats.Center);
+
+                            currentY += rowHeight;
+                            stt++;
+                        }
+
+                        document.Save(filePath);
+                        MessageBox.Show($"Xuất file PDF thành công: {filePath}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
 
         }
+
+        
     }
 }

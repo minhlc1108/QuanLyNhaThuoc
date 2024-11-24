@@ -29,14 +29,14 @@ namespace BUS
             return LoaiSanPhamDAO.Instance.GetAllLoaiSanPham();
         }
 
-        
+
 
         public List<LoaiSanPhamDTO> GetLoaiSanPhamByTrangThai(bool trangthai)
         {
             return LoaiSanPhamDAO.Instance.GetLoaiSanPhamByTrangThai(trangthai);
         }
 
-        
+
 
         public bool InsertLoaiSanPham(string maloai, string tenloai, bool trangthai)
         {
@@ -61,5 +61,9 @@ namespace BUS
         {
             return LoaiSanPhamDAO.Instance.checkSanPham(maloai);
         }
+        public bool getTrangThaiByMaLSP(string maloai)
+        {
+            return LoaiSanPhamDAO.Instance.getTrangThaiByMaLSP(maloai);
+        }
     }
-}
+    }
