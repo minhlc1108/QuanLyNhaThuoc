@@ -19,6 +19,7 @@ namespace GUI
         }
 
         // Load dữ liệu lên ListView
+        // Thay đổi trong LoadData() - khi hiển thị dữ liệu trong ListView
         private void LoadData()
         {
             lv_qlncc.Items.Clear();
@@ -28,16 +29,18 @@ namespace GUI
             {
                 ListViewItem item = new ListViewItem(nsx.MaNSX);
                 item.SubItems.Add(nsx.TenNSX);
-                item.SubItems.Add(nsx.TrangThai ? "Yes" : "No");
+                item.SubItems.Add(nsx.TrangThai ? "Hoạt động" : "Không hoạt động");  // Thay đổi hiển thị trạng thái
                 lv_qlncc.Items.Add(item);
             }
         }
 
+
+        // Thêm nhà sản xuất mới
         // Thêm nhà sản xuất mới
         private void AddNhaSanXuat()
         {
             string tenNSX = textBoxtennsx.Text;
-            bool trangThai = Yesbtn.Checked;
+            bool trangThai = Yesbtn.Checked;  // Nếu Yesbtn.Checked thì là Hoạt động, ngược lại là Không hoạt động
 
             if (NhaSanXuatBUS.Instance.InsertNewNhaSanXuat(tenNSX, trangThai))
             {
@@ -52,12 +55,13 @@ namespace GUI
             }
         }
 
+
         // Cập nhật tên nhà sản xuất
         private void UpdateNhaSanXuat()
         {
             string maNSX = textBoxMANSX.Text;
             string tenNSX = textBoxtennsx.Text;
-            bool trangThai = Yesbtn.Checked;
+            bool trangThai = Yesbtn.Checked; // Cập nhật trạng thái (Hoạt động/Không hoạt động)
 
             // Cập nhật tên nhà sản xuất
             if (NhaSanXuatBUS.Instance.UpdateTenNhaSanXuat(maNSX, tenNSX))
@@ -82,7 +86,6 @@ namespace GUI
             LoadData(); // Tải lại dữ liệu sau khi cập nhật
         }
 
-
         // Xóa nhà sản xuất
         private void DeleteNhaSanXuat()
         {
@@ -100,6 +103,7 @@ namespace GUI
         }
 
         // Sự kiện chọn item trong ListView
+        // Sự kiện chọn item trong ListView
         private void lv_qlncc_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lv_qlncc.SelectedItems.Count > 0)
@@ -107,10 +111,11 @@ namespace GUI
                 ListViewItem item = lv_qlncc.SelectedItems[0];
                 textBoxMANSX.Text = item.SubItems[0].Text;
                 textBoxtennsx.Text = item.SubItems[1].Text;
-                Yesbtn.Checked = item.SubItems[2].Text == "Yes";
-                Nobtn.Checked = item.SubItems[2].Text == "No";
+                Yesbtn.Checked = item.SubItems[2].Text == "Hoạt động";  // Thay đổi điều kiện so sánh
+                Nobtn.Checked = item.SubItems[2].Text == "Không hoạt động";  // Thay đổi điều kiện so sánh
             }
         }
+
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {

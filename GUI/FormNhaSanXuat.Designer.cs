@@ -125,10 +125,10 @@
             Yesbtn.Location = new Point(469, 163);
             Yesbtn.Margin = new Padding(3, 2, 3, 2);
             Yesbtn.Name = "Yesbtn";
-            Yesbtn.Size = new Size(42, 19);
+            Yesbtn.Size = new Size(82, 19);
             Yesbtn.TabIndex = 45;
             Yesbtn.TabStop = true;
-            Yesbtn.Text = "Yes";
+            Yesbtn.Text = "Hoạt động";
             Yesbtn.UseVisualStyleBackColor = true;
             Yesbtn.CheckedChanged += Yes_CheckedChanged;
             // 
@@ -138,10 +138,10 @@
             Nobtn.Location = new Point(594, 163);
             Nobtn.Margin = new Padding(3, 2, 3, 2);
             Nobtn.Name = "Nobtn";
-            Nobtn.Size = new Size(41, 19);
+            Nobtn.Size = new Size(118, 19);
             Nobtn.TabIndex = 46;
             Nobtn.TabStop = true;
-            Nobtn.Text = "No";
+            Nobtn.Text = "Không hoạt động";
             Nobtn.UseVisualStyleBackColor = true;
             // 
             // textBoxMANSX
