@@ -60,7 +60,27 @@ namespace DAO
             }
             return -1; // Return -1 if not found or error
         }
+        public TieuHuyDTO GetTieuHuyByMaCT(int maCT)
+        {
+            // Write your SQL query to fetch data from database using maCT
+            string query = "SELECT * FROM TieuHuy WHERE MaCT = @MaCT";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { maCT });
 
+            if (data.Rows.Count > 0)
+            {
+                DataRow row = data.Rows[0];
+                TieuHuyDTO tieuHuy = new TieuHuyDTO
+                {
+                    MaCT = Convert.ToInt32(row["mact"]),
+                    NgayTieuHuy = Convert.ToDateTime(row["ngaytieuhuy"]),
+                    NguoiLap = row["nguoilap"].ToString(),
+                    LyDo = row["lydo"].ToString(),
+                    ThietHai = Convert.ToDecimal(row["thiethai"])
+                };
+                return tieuHuy;
+            }
+            return null;
+        }
         public DataTable GetListTieuHuy()
         {
             string query = "SELECT * FROM TieuHuy";

@@ -20,6 +20,11 @@ namespace BUS
         {
             return TieuHuyDAO.Instance.GetListTieuHuy();
         }
+        public static TieuHuyDTO GetTieuHuyByMaCT(int maCT)
+        {
+            // Assuming there's a data layer (DAO) that retrieves TieuHuy by MaCT
+            return TieuHuyDAO.Instance.GetTieuHuyByMaCT(maCT);
+        }
 
         public bool AddTieuHuy(TieuHuyDTO tieuHuy)
         {
