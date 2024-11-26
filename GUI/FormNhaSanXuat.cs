@@ -76,7 +76,7 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Cập nhật trạng thái nhà sản xuất thất bại!");
+                MessageBox.Show("Không thể thay đổi trạng thái vì nhà sản xuất này đang có liên kết với dữ liệu khác.");
             }
 
             LoadData(); // Tải lại dữ liệu sau khi cập nhật
@@ -134,6 +134,11 @@ namespace GUI
         }
 
         private void lsvThemHoaDon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormNhaSanXuat_Load(object sender, EventArgs e)
         {
 
         }

@@ -1,6 +1,9 @@
 ﻿using DTO;
+using MongoDB.Driver.Core.Configuration;
+using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DAO
 {
@@ -41,6 +44,18 @@ namespace DAO
 
             return nhaSanXuatList;
         }
+        public bool IsNSXLinkedToOtherTables(string maNSX)
+        {
+            // Kiểm tra nhà sản xuất có đang bị liên kết với bảng `sanpham` không
+            string query = "SELECT COUNT(*) FROM sanpham WHERE nhasanxuat = @maNSX";
+
+            // Sử dụng DataProvider để thực thi truy vấn
+            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { maNSX });
+
+            // Nếu có liên kết (count > 0), trả về true
+            return Convert.ToInt32(result) > 0;
+        }
+
 
         // Thêm nhà sản xuất
         public bool InsertNhaSanXuat(string maNSX, string tenNSX, bool trangThai)
@@ -51,6 +66,25 @@ namespace DAO
 
             return result > 0;
         }
+        public NhaSanXuatDTO GetNhaSanXuatByMaNSX(string maNSX)
+        {
+            string query = "SELECT * FROM nhasanxuat WHERE mansx = @maNSX";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { maNSX });
+
+            if (data.Rows.Count > 0)
+            {
+                DataRow row = data.Rows[0];
+                return new NhaSanXuatDTO
+                {
+                    MaNSX = row["mansx"].ToString(),
+                    TenNSX = row["tennsx"].ToString(),
+                    TrangThai = Convert.ToBoolean(row["trangthai"])
+                };
+            }
+
+            return null;
+        }
+
 
         public string GenerateMaNhaSanXuat()
         {

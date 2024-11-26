@@ -212,8 +212,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "FormNhaSanXuat";
             Text = " n";
-            //panel1.ResumeLayout(false);
-            //panel1.PerformLayout();
+            Load += FormNhaSanXuat_Load;
             ResumeLayout(false);
             PerformLayout();
         }
