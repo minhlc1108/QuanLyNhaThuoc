@@ -25,6 +25,7 @@ namespace GUI
     {
         private string paramCbbFind;
         private List<ListViewItem> listTimKiem = new List<ListViewItem>();
+        private FormPhanQuyen formPhanQuyen;
         public FormDuocSi()
         {
             InitializeComponent();
@@ -58,15 +59,18 @@ namespace GUI
                 {
                     btn_lock.Enabled = true;
                     btn_opLock.Enabled = false;
+                    btnPhanQuyen.Enabled = true;
                 }
                 else
                 {
                     btn_lock.Enabled = false;
                     btn_opLock.Enabled = true;
+                    btnPhanQuyen.Enabled = false;
                 }
                 // xử lý label & button
                 btn_add.Enabled = false;
                 btn_edit.Enabled = true;
+                btnPhanQuyen.Enabled = true;
             }
         }
 
@@ -492,9 +496,9 @@ namespace GUI
                 }
                 else if (cbb_findTT.Text == "Tất cả")
                 {
-                    trangthai = null;  
+                    trangthai = null;
                 }
-                
+
                 duocSiListFind = DuocSiBUS.Instance.FindDuocSi(param, dataFind, trangthai);
             }
 
@@ -637,6 +641,19 @@ namespace GUI
                     }
                 }
             }
+        }
+
+        private void btnPhanQuyen_Click(object sender, EventArgs e)
+        {
+            if (formPhanQuyen != null)
+            {
+                formPhanQuyen.Close();
+            }
+            string mads = tb_ma.Text;
+            int quyen = TaiKhoanBUS.Instance.getQuyen(mads);
+            formPhanQuyen = new FormPhanQuyen(quyen, mads);
+            formPhanQuyen.StartPosition = FormStartPosition.CenterScreen;
+            formPhanQuyen.Show();
         }
     }
 }

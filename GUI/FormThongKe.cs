@@ -62,13 +62,6 @@ namespace GUI
             activateButton(sender);
             openForm(new FormThongKeDoanhThu());
         }
-
-        private void btnSanPhamNhap_Click(object sender, EventArgs e)
-        {
-            activateButton(sender);
-            openForm(new FormThongKeSPNhap());
-        }
-
         private void btnSanPhamBan_Click(object sender, EventArgs e)
         {
             activateButton(sender);
@@ -78,7 +71,7 @@ namespace GUI
         private void btnNhaCungCap_Click(object sender, EventArgs e)
         {
             activateButton(sender);
-            openForm(new FormThongKeNhaCC());
+            openForm(new FormThongKeTonKho());
         }
 
         private void FormThongKe_Load(object sender, EventArgs e)

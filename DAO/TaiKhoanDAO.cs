@@ -1,4 +1,5 @@
 ﻿using DTO;
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -57,6 +58,70 @@ namespace DAO
                 quyen
             };
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+            return result > 0;
+        }
+
+
+        public int getQuyen(string value)
+        {
+            string query = "SELECT quyen FROM taikhoan WHERE matk = @Value ";
+
+            object[] parameters = { value };
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+
+            int quyen = 0;
+
+            if (data.Rows.Count > 0)
+            {
+                quyen = Convert.ToInt32(data.Rows[0]["quyen"]);
+            }
+
+            return quyen;
+        }
+
+        public bool UpdateQuyen(string matk, int value)
+        {
+            string sql = @"UPDATE taikhoan SET quyen = @value WHERE matk = @matk ";
+            object[] parameters =
+         {
+                value,
+                matk
+            };
+
+            int result = DataProvider.Instance.ExecuteNonQuery(sql, parameters);
+            return result > 0;
+        }
+
+        public string GetPassword(string value)
+        {
+            string query = "SELECT password FROM taikhoan WHERE matk = @Value ";
+
+            object[] parameters = { value };
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+
+            string password = "";
+
+            if (data.Rows.Count > 0)
+            {
+                password = data.Rows[0]["password"].ToString();
+            }
+
+            return password;
+        }
+
+        public bool UpdatePassword(string matk, string password)
+        {
+
+            string sql = @"UPDATE taikhoan SET password = @password WHERE matk = @matk ";
+            object[] parameters =
+         {
+                password,
+                matk
+            };
+
+            int result = DataProvider.Instance.ExecuteNonQuery(sql, parameters);
             return result > 0;
         }
     }

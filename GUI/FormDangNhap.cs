@@ -64,7 +64,8 @@ namespace GUI
                 if(checkTrangThai)
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MainForm mainForm = new MainForm(mads);
+                    int quyen = TaiKhoanBUS.Instance.getQuyen(mads);
+                    MainForm mainForm = new MainForm(mads,quyen);
                     mainForm.Show();
                     this.Hide();
                 }

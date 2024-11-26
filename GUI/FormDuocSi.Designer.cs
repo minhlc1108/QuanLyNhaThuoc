@@ -63,6 +63,7 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             label2 = new Label();
+            btnPhanQuyen = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -73,7 +74,7 @@
             label1.Location = new Point(475, 9);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(177, 25);
+            label1.Size = new Size(212, 31);
             label1.TabIndex = 2;
             label1.Text = "QUẢN LÝ DƯỢC SĨ";
             // 
@@ -105,7 +106,7 @@
             erorr_email.ForeColor = Color.Red;
             erorr_email.Location = new Point(96, 300);
             erorr_email.Name = "erorr_email";
-            erorr_email.Size = new Size(0, 15);
+            erorr_email.Size = new Size(0, 20);
             erorr_email.TabIndex = 34;
             // 
             // erorr_sdt
@@ -199,6 +200,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnPhanQuyen);
             groupBox2.Controls.Add(btn_xuatExcel);
             groupBox2.Controls.Add(btn_xuatPDF);
             groupBox2.Controls.Add(btn_nhapExcel);
@@ -210,7 +212,7 @@
             groupBox2.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(12, 467);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(386, 267);
+            groupBox2.Size = new Size(386, 311);
             groupBox2.TabIndex = 13;
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
@@ -398,6 +400,17 @@
             label2.TabIndex = 49;
             label2.Text = "Tìm kiếm :";
             // 
+            // btnPhanQuyen
+            // 
+            btnPhanQuyen.Enabled = false;
+            btnPhanQuyen.Location = new Point(128, 253);
+            btnPhanQuyen.Name = "btnPhanQuyen";
+            btnPhanQuyen.Size = new Size(128, 40);
+            btnPhanQuyen.TabIndex = 9;
+            btnPhanQuyen.Text = "Phân quyền";
+            btnPhanQuyen.UseVisualStyleBackColor = true;
+            btnPhanQuyen.Click += btnPhanQuyen_Click;
+            // 
             // FormDuocSi
             // 
             AutoScaleDimensions = new SizeF(14F, 31F);
@@ -462,5 +475,6 @@
         private Label label2;
         private Button btn_xuatExcel;
         private Label label3;
+        private Button btnPhanQuyen;
     }
 }

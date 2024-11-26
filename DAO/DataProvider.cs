@@ -38,6 +38,7 @@ namespace DAO
                     if (parameters != null)
                     {
                         string[] listParams = query.Split(' ');
+                        Console.WriteLine(listParams.ToString());
                         int i = 0;
                         foreach (string param in listParams)
                         {

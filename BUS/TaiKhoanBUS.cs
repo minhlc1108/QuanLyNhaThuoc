@@ -33,5 +33,26 @@ namespace BUS
         {
             return TaiKhoanDAO.Instance.InsertTaiKhoan(matk, username, password, quyen);
         }
+
+        public int getQuyen(string matk)
+        {
+            return TaiKhoanDAO.Instance.getQuyen(matk);
+        }
+
+        public bool UpdateQuyen(string matk, int quyen)
+        {
+            return TaiKhoanDAO.Instance.UpdateQuyen(matk, quyen);
+        }
+
+        public string GetPassword(string matk)
+        {
+            return TaiKhoanDAO.Instance.GetPassword(matk);
+        }
+
+        public bool UpdatePassword(string matk, string matkhau)
+        {
+            return TaiKhoanDAO.Instance.UpdatePassword(matk, matkhau);
+
+        }
     }
 }

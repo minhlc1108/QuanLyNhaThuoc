@@ -28,44 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBox1 = new ComboBox();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            cbbLoc = new ComboBox();
             label3 = new Label();
             label2 = new Label();
-            label4 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            label5 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            label6 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
             groupBox2 = new GroupBox();
-            listView1 = new ListView();
+            chartLSP = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            groupBox1 = new GroupBox();
+            chartSP = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            btnThongKe = new Button();
+            groupBox3 = new GroupBox();
+            tblThongtin = new ListView();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
-            groupBox1 = new GroupBox();
-            button1 = new Button();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartLSP).BeginInit();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartSP).BeginInit();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
-            // comboBox1
+            // cbbLoc
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(380, 62);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(611, 28);
-            comboBox1.TabIndex = 6;
+            cbbLoc.FormattingEnabled = true;
+            cbbLoc.Items.AddRange(new object[] { "Tất cả", "Bán chạy top 1", "Bán chạy top 2", "Bán chạy top 3", "Bán chạy top 4", "Bán chạy top 5" });
+            cbbLoc.Location = new Point(380, 62);
+            cbbLoc.Name = "cbbLoc";
+            cbbLoc.Size = new Size(611, 28);
+            cbbLoc.TabIndex = 6;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(271, 62);
+            label3.Location = new Point(313, 62);
             label3.Name = "label3";
-            label3.Size = new Size(103, 28);
+            label3.Size = new Size(46, 28);
             label3.TabIndex = 5;
-            label3.Text = "Sản phẩm:";
+            label3.Text = "Lọc:";
             // 
             // label2
             // 
@@ -78,187 +85,150 @@
             label2.Text = "Thống kê sản phẩm bán";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(701, 116);
-            label4.Name = "label4";
-            label4.Padding = new Padding(0, 3, 0, 3);
-            label4.Size = new Size(138, 34);
-            label4.TabIndex = 13;
-            label4.Text = "Ngày kết thúc:";
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Font = new Font("Segoe UI", 12F);
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(842, 116);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(149, 34);
-            dateTimePicker2.TabIndex = 12;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(273, 116);
-            label5.Name = "label5";
-            label5.Padding = new Padding(0, 3, 0, 3);
-            label5.Size = new Size(135, 34);
-            label5.TabIndex = 11;
-            label5.Text = "Ngày bắt đầu:";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Font = new Font("Segoe UI", 12F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(414, 116);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(149, 34);
-            dateTimePicker1.TabIndex = 10;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(786, 190);
-            label6.Name = "label6";
-            label6.Size = new Size(15, 20);
-            label6.TabIndex = 19;
-            label6.Text = "-";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(816, 187);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(184, 27);
-            textBox2.TabIndex = 18;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(590, 187);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(190, 27);
-            textBox1.TabIndex = 17;
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(414, 187);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(117, 24);
-            radioButton2.TabIndex = 16;
-            radioButton2.Text = "Theo giá bán";
-            radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Checked = true;
-            radioButton1.Location = new Point(271, 185);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(125, 24);
-            radioButton1.TabIndex = 15;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Theo số lượng";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(listView1);
-            groupBox2.Location = new Point(584, 288);
+            groupBox2.Controls.Add(chartLSP);
+            groupBox2.Location = new Point(584, 394);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(639, 513);
+            groupBox2.Size = new Size(639, 407);
             groupBox2.TabIndex = 21;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Bảng thông tin";
+            groupBox2.Text = "Biểu đồ tỉ lệ bán theo loại";
             // 
-            // listView1
+            // chartLSP
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listView1.Location = new Point(25, 38);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(595, 469);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Thời gian";
-            columnHeader1.Width = 210;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Chi tiết";
-            columnHeader2.Width = 210;
+            chartArea1.Name = "ChartArea1";
+            chartLSP.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartLSP.Legends.Add(legend1);
+            chartLSP.Location = new Point(25, 26);
+            chartLSP.Name = "chartLSP";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "SoLuong";
+            chartLSP.Series.Add(series1);
+            chartLSP.Size = new Size(593, 375);
+            chartLSP.TabIndex = 1;
+            chartLSP.Text = "chartLSP";
             // 
             // groupBox1
             // 
-            groupBox1.Location = new Point(12, 288);
+            groupBox1.Controls.Add(chartSP);
+            groupBox1.Location = new Point(12, 394);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(550, 513);
+            groupBox1.Size = new Size(550, 407);
             groupBox1.TabIndex = 20;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Biểu đồ";
+            groupBox1.Text = "Biểu đồ tỉ lệ bán theo sản phẩm";
             // 
-            // button1
+            // chartSP
             // 
-            button1.Font = new Font("Segoe UI", 12F);
-            button1.Location = new Point(526, 241);
-            button1.Name = "button1";
-            button1.Size = new Size(129, 41);
-            button1.TabIndex = 22;
-            button1.Text = "Thống kê";
-            button1.UseVisualStyleBackColor = true;
+            chartArea2.Name = "ChartArea1";
+            chartSP.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartSP.Legends.Add(legend2);
+            chartSP.Location = new Point(6, 26);
+            chartSP.Name = "chartSP";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "SoLuong";
+            chartSP.Series.Add(series2);
+            chartSP.Size = new Size(511, 375);
+            chartSP.TabIndex = 0;
+            chartSP.Text = "chartSP";
+            // 
+            // btnThongKe
+            // 
+            btnThongKe.Font = new Font("Segoe UI", 12F);
+            btnThongKe.Location = new Point(1024, 56);
+            btnThongKe.Name = "btnThongKe";
+            btnThongKe.Size = new Size(129, 41);
+            btnThongKe.TabIndex = 22;
+            btnThongKe.Text = "Thống kê";
+            btnThongKe.UseVisualStyleBackColor = true;
+            btnThongKe.Click += btnThongKe_Click;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(tblThongtin);
+            groupBox3.Location = new Point(18, 112);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(1205, 276);
+            groupBox3.TabIndex = 22;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Bảng thông tin";
+            // 
+            // tblThongtin
+            // 
+            tblThongtin.Columns.AddRange(new ColumnHeader[] { columnHeader3, columnHeader4, columnHeader1, columnHeader2 });
+            tblThongtin.Location = new Point(6, 26);
+            tblThongtin.Name = "tblThongtin";
+            tblThongtin.Size = new Size(1151, 244);
+            tblThongtin.TabIndex = 0;
+            tblThongtin.UseCompatibleStateImageBehavior = false;
+            tblThongtin.View = View.Details;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Mã loại";
+            columnHeader3.Width = 120;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Mã sản phẩm";
+            columnHeader4.Width = 150;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Tên sản phẩm";
+            columnHeader1.Width = 750;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Số lượng";
+            columnHeader2.Width = 120;
             // 
             // FormThongKeSPBan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1244, 813);
-            Controls.Add(button1);
+            Controls.Add(groupBox3);
+            Controls.Add(btnThongKe);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(label6);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
-            Controls.Add(label4);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(label5);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(comboBox1);
+            Controls.Add(cbbLoc);
             Controls.Add(label3);
             Controls.Add(label2);
             Name = "FormThongKeSPBan";
             Text = "FormThongKeSPBan";
+            Load += FormThongKeSPBan_Load;
             groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartLSP).EndInit();
+            groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartSP).EndInit();
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox cbbLoc;
         private Label label3;
         private Label label2;
-        private Label label4;
-        private DateTimePicker dateTimePicker2;
-        private Label label5;
-        private DateTimePicker dateTimePicker1;
-        private Label label6;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
         private GroupBox groupBox2;
-        private ListView listView1;
+        private GroupBox groupBox1;
+        private Button btnThongKe;
+        private GroupBox groupBox3;
+        private ListView tblThongtin;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
-        private GroupBox groupBox1;
-        private Button button1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartLSP;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSP;
     }
 }

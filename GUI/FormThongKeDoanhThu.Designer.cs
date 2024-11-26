@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             label1 = new Label();
             dateBatDau = new DateTimePicker();
             label2 = new Label();
@@ -35,12 +39,15 @@
             dateKetThuc = new DateTimePicker();
             btnThongKe = new Button();
             groupBox1 = new GroupBox();
+            chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             groupBox2 = new GroupBox();
             tblThongTin = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartDoanhThu).BeginInit();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,18 +61,16 @@
             label1.TabIndex = 0;
             label1.Text = "Thống kê doanh thu";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Click += label1_Click;
             // 
             // dateBatDau
             // 
-            dateBatDau.CustomFormat = "MM/yyyy";
+            dateBatDau.CustomFormat = "dd/MM/yyyy";
             dateBatDau.Font = new Font("Segoe UI", 12F);
             dateBatDau.Format = DateTimePickerFormat.Custom;
             dateBatDau.Location = new Point(403, 90);
             dateBatDau.Name = "dateBatDau";
             dateBatDau.Size = new Size(149, 34);
             dateBatDau.TabIndex = 1;
-            dateBatDau.ShowUpDown = true;
             // 
             // label2
             // 
@@ -91,14 +96,13 @@
             // 
             // dateKetThuc
             // 
-            dateKetThuc.CustomFormat = "MM/yyyy";
+            dateKetThuc.CustomFormat = "dd/MM/yyyy";
             dateKetThuc.Font = new Font("Segoe UI", 12F);
             dateKetThuc.Format = DateTimePickerFormat.Custom;
             dateKetThuc.Location = new Point(831, 90);
             dateKetThuc.Name = "dateKetThuc";
             dateKetThuc.Size = new Size(149, 34);
             dateKetThuc.TabIndex = 3;
-            dateKetThuc.ShowUpDown = true;
             // 
             // btnThongKe
             // 
@@ -113,12 +117,34 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(chartDoanhThu);
             groupBox1.Location = new Point(12, 219);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(568, 582);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Biểu đồ";
+            // 
+            // chartDoanhThu
+            // 
+            chartArea1.Name = "ChartArea1";
+            chartDoanhThu.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartDoanhThu.Legends.Add(legend1);
+            chartDoanhThu.Location = new Point(15, 38);
+            chartDoanhThu.Name = "chartDoanhThu";
+            chartDoanhThu.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "DoanhThu";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "ChiPhi";
+            chartDoanhThu.Series.Add(series1);
+            chartDoanhThu.Series.Add(series2);
+            chartDoanhThu.Size = new Size(536, 522);
+            chartDoanhThu.TabIndex = 0;
+            chartDoanhThu.Text = "chart1";
             // 
             // groupBox2
             // 
@@ -139,27 +165,26 @@
             tblThongTin.TabIndex = 0;
             tblThongTin.UseCompatibleStateImageBehavior = false;
             tblThongTin.View = View.Details;
-            tblThongTin.SelectedIndexChanged += tblThongTin_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
             columnHeader1.Text = "Thời gian";
-            columnHeader1.Width = 110;
+            columnHeader1.Width = 150;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "Doanh thu";
-            columnHeader2.Width = 110;
+            columnHeader2.Width = 150;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Chi phí";
-            columnHeader3.Width = 110;
+            columnHeader3.Width = 150;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Chênh lệch";
-            columnHeader4.Width = 110;
+            columnHeader4.Width = 150;
             // 
             // FormThongKeDoanhThu
             // 
@@ -177,6 +202,8 @@
             Name = "FormThongKeDoanhThu";
             Text = "FormThongKeDoanhThu";
             Load += FormThongKeDoanhThu_Load;
+            groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartDoanhThu).EndInit();
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -201,5 +228,6 @@
         private DateTimePicker dateKetThuc;
         private Button btnThongKe;
         private ListView tblThongTin;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
     }
 }

@@ -31,7 +31,6 @@
             panelMenu = new Panel();
             btnNhaCungCap = new Button();
             btnSanPhamBan = new Button();
-            btnSanPhamNhap = new Button();
             btnDoanhThu = new Button();
             panelThongKe = new Panel();
             panelMenu.SuspendLayout();
@@ -42,7 +41,6 @@
             panelMenu.BackColor = Color.PaleTurquoise;
             panelMenu.Controls.Add(btnNhaCungCap);
             panelMenu.Controls.Add(btnSanPhamBan);
-            panelMenu.Controls.Add(btnSanPhamNhap);
             panelMenu.Controls.Add(btnDoanhThu);
             panelMenu.Dock = DockStyle.Top;
             panelMenu.ForeColor = Color.Black;
@@ -56,11 +54,11 @@
             btnNhaCungCap.Dock = DockStyle.Left;
             btnNhaCungCap.FlatAppearance.BorderSize = 0;
             btnNhaCungCap.FlatStyle = FlatStyle.Flat;
-            btnNhaCungCap.Location = new Point(342, 0);
+            btnNhaCungCap.Location = new Point(216, 0);
             btnNhaCungCap.Name = "btnNhaCungCap";
             btnNhaCungCap.Size = new Size(130, 50);
             btnNhaCungCap.TabIndex = 3;
-            btnNhaCungCap.Text = "Nhà cung cấp";
+            btnNhaCungCap.Text = "Tồn kho";
             btnNhaCungCap.UseVisualStyleBackColor = true;
             btnNhaCungCap.Click += btnNhaCungCap_Click;
             // 
@@ -69,26 +67,13 @@
             btnSanPhamBan.Dock = DockStyle.Left;
             btnSanPhamBan.FlatAppearance.BorderSize = 0;
             btnSanPhamBan.FlatStyle = FlatStyle.Flat;
-            btnSanPhamBan.Location = new Point(220, 0);
+            btnSanPhamBan.Location = new Point(94, 0);
             btnSanPhamBan.Name = "btnSanPhamBan";
             btnSanPhamBan.Size = new Size(122, 50);
             btnSanPhamBan.TabIndex = 2;
             btnSanPhamBan.Text = "Sản phẩm bán";
             btnSanPhamBan.UseVisualStyleBackColor = true;
             btnSanPhamBan.Click += btnSanPhamBan_Click;
-            // 
-            // btnSanPhamNhap
-            // 
-            btnSanPhamNhap.Dock = DockStyle.Left;
-            btnSanPhamNhap.FlatAppearance.BorderSize = 0;
-            btnSanPhamNhap.FlatStyle = FlatStyle.Flat;
-            btnSanPhamNhap.Location = new Point(94, 0);
-            btnSanPhamNhap.Name = "btnSanPhamNhap";
-            btnSanPhamNhap.Size = new Size(126, 50);
-            btnSanPhamNhap.TabIndex = 1;
-            btnSanPhamNhap.Text = "Sản phẩm nhập";
-            btnSanPhamNhap.UseVisualStyleBackColor = true;
-            btnSanPhamNhap.Click += btnSanPhamNhap_Click;
             // 
             // btnDoanhThu
             // 
@@ -130,7 +115,6 @@
         private Button btnDoanhThu;
         private Button btnNhaCungCap;
         private Button btnSanPhamBan;
-        private Button btnSanPhamNhap;
         private Panel panelThongKe;
     }
 }

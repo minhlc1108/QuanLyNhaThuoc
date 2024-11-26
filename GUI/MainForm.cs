@@ -16,13 +16,15 @@ namespace GUI
     public partial class MainForm : Form
     {
         string madsDangNhap = "";
+        int quyends = 0;
         private IconButton currentButton;
         private Form currentForm;
         private Form accountForm;
-        public MainForm(string mads)
+        public MainForm(string mads, int quyen)
         {
             InitializeComponent();
             madsDangNhap = mads;
+            quyends = quyen;
             loadDataDangNhap();
         }
 
@@ -94,7 +96,7 @@ namespace GUI
                 accountForm.Close();
             }
 
-            accountForm = new FormThongTinTK();
+            accountForm = new FormThongTinTK(madsDangNhap);
             accountForm.StartPosition = FormStartPosition.CenterScreen;
             accountForm.Show();
         }
@@ -140,14 +142,24 @@ namespace GUI
             openForm(new FormThongKe());
         }
 
+        private void SetChucNangTheoPhanQuyen(int quyen)
+        {
+            int index = 0;
+            int count = panelMenu.Controls.Count;
+            for (int i = count - 2; i > 0  ; i--)
+            {
+                //MessageBox.Show(panelMenu.Controls[i].ToString());
+                bool isChecked = (quyen & (1 << index++)) != 0; // Kiểm tra bit
+                panelMenu.Controls[i].Visible =isChecked; // Thiết lập trạng thái
+            }
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // test db
-            //MessageBox.Show(SanPhamBUS.Instance.GetAllProducts().ToArray().Length.ToString());
+            SetChucNangTheoPhanQuyen(quyends);
             if (panelMenu.Controls.Count > 0)
             {
                 int count = panelMenu.Controls.Count;
-                for (int i = count - 1; i >= 0; i--)
+                for (int i = count - 2; i > 0; i--)
                 {
                     if (panelMenu.Controls[i] is IconButton button && button.Visible)
                     {
@@ -166,7 +178,7 @@ namespace GUI
             {
                 FormDangNhap formDN = new FormDangNhap();
                 formDN.Show();
-                this.Close();
+                this.Hide();
             }
         }
     }

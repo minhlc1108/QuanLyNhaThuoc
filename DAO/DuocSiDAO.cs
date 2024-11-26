@@ -1,4 +1,5 @@
 ﻿using DTO;
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -28,7 +29,7 @@ namespace DAO
         public List<DuocSiDTO> GetAllDuocSi()
         {
             List<DuocSiDTO> duocSiList = new List<DuocSiDTO>();
-            string query = "SELECT * FROM duocsi"; 
+            string query = "SELECT * FROM duocsi";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow row in data.Rows)
@@ -82,11 +83,11 @@ namespace DAO
         }
 
 
-        public string getHoTenDuocSi( string value)
+        public string getHoTenDuocSi(string value)
         {
             string query = "SELECT hoten FROM duocsi WHERE mads = @Value ";
 
-            object[] parameters = {value};
+            object[] parameters = { value };
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
 
