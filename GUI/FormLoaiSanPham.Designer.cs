@@ -65,7 +65,7 @@ namespace GUI
             // 
             txtLoaiSanPham.Location = new Point(166, 239);
             txtLoaiSanPham.Name = "txtLoaiSanPham";
-            txtLoaiSanPham.Size = new Size(283, 23);
+            txtLoaiSanPham.Size = new Size(258, 23);
             txtLoaiSanPham.TabIndex = 22;
             // 
             // label5
@@ -101,9 +101,9 @@ namespace GUI
             // 
             btnXoaLSP.Location = new Point(54, 380);
             btnXoaLSP.Name = "btnXoaLSP";
-            btnXoaLSP.Size = new Size(110, 26);
+            btnXoaLSP.Size = new Size(128, 26);
             btnXoaLSP.TabIndex = 28;
-            btnXoaLSP.Text = "KHÓA ";
+            btnXoaLSP.Text = "KHÓA / MỞ KHÓA";
             btnXoaLSP.UseVisualStyleBackColor = true;
             btnXoaLSP.Click += btnXoaLSP_Click;
             // 
@@ -131,7 +131,7 @@ namespace GUI
             // 
             btnThemLSP.Location = new Point(54, 321);
             btnThemLSP.Name = "btnThemLSP";
-            btnThemLSP.Size = new Size(110, 26);
+            btnThemLSP.Size = new Size(128, 26);
             btnThemLSP.TabIndex = 25;
             btnThemLSP.Text = "THÊM";
             btnThemLSP.UseVisualStyleBackColor = true;
@@ -145,6 +145,7 @@ namespace GUI
             btnXuatLSP.TabIndex = 33;
             btnXuatLSP.Text = "XUẤT DANH SÁCH";
             btnXuatLSP.UseVisualStyleBackColor = true;
+            btnXuatLSP.Click += btnXuatLSP_Click;
             // 
             // lsvLoaiSanPham
             // 
@@ -210,7 +211,7 @@ namespace GUI
             // 
             txtMaLoaiSP.Location = new Point(166, 173);
             txtMaLoaiSP.Name = "txtMaLoaiSP";
-            txtMaLoaiSP.Size = new Size(283, 23);
+            txtMaLoaiSP.Size = new Size(258, 23);
             txtMaLoaiSP.TabIndex = 36;
             txtMaLoaiSP.TextChanged += txtMaLoaiSP_TextChanged;
             // 
