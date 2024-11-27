@@ -149,29 +149,33 @@ namespace GUI
 
         private void buttonedit_Click(object sender, EventArgs e)
         {
-            //if (lv_DSHoaDon.SelectedItems.Count > 0)
-            //{
-            //    ListViewItem selectedItem = lv_DSHoaDon.SelectedItems[0];
-            //    int maCT = int.Parse(selectedItem.Text); // Get the MaCT value
 
-            //    // Fetch and populate the details of the selected TieuHuy
-            //    TieuHuyDTO tieuHuy = TieuHuyBUS.Instance.GetTieuHuyByMaCT(maCT);
-
-            //    richTextBox1.Text = tieuHuy.LyDo;
-            //    textBox1.Text = tieuHuy.ThietHai.ToString();
-
-            //    // Load batch details
-            //    comboBoxLoSX.Enabled = true;
-            //    comboBoxLoSX.SelectedItem = tieuHuy.MaCT.ToString(); // Select the batch (LoSX) by MaCT
-
-            //    buttonadd.Enabled = false;
-            //    buttonedit.Enabled = true;
-            //    buttondelete.Enabled = true;
-            //}
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
-            // Your logic here
+            DateTime startDate = dateTimePickerStart.Value.Date;  // Lấy ngày bắt đầu (bỏ qua giờ phút giây)
+            DateTime endDate = dateTimePickerEnd.Value.Date;      // Lấy ngày kết thúc (bỏ qua giờ phút giây)
+
+            // Thêm 1 ngày vào endDate để bao gồm cả ngày cuối cùng
+            endDate = endDate.AddDays(1).AddSeconds(-1);  // Thêm 1 ngày và trừ 1 giây
+
+            // Lấy dữ liệu từ cơ sở dữ liệu
+            DataTable result = DataProvider.GetTieuHuyInDateRange(startDate, endDate);
+
+
+            // Hiển thị kết quả lên bảng (ListView hoặc DataGridView)
+            lv_DSHoaDon.Items.Clear();  // Xóa các mục hiện tại
+
+            foreach (DataRow row in result.Rows)
+            {
+                ListViewItem item = new ListViewItem(row["mact"].ToString());
+                item.SubItems.Add(row["ngaytieuhuy"].ToString());
+                item.SubItems.Add(row["nguoilap"].ToString());
+                item.SubItems.Add(row["lydo"].ToString());
+                item.SubItems.Add(row["thiethai"].ToString());
+
+                lv_DSHoaDon.Items.Add(item);
+            }
         }
 
         private void buttondelete_Click(object sender, EventArgs e)
@@ -205,6 +209,79 @@ namespace GUI
                 richTextBox1.Text = selectedItem.SubItems[3].Text;
                 textBox1.Text = selectedItem.SubItems[4].Text;
             }
+
+            //if (lv_DSHoaDon.SelectedItems.Count > 0)
+            //{
+            //    // Lấy thông tin của mục đã chọn
+            //    ListViewItem selectedItem = lv_DSHoaDon.SelectedItems[0];
+
+            //    // Lấy MaCT từ mục đã chọn (giả sử MaCT được lưu trong cột đầu tiên)
+            //    int maCT = Convert.ToInt32(selectedItem.SubItems[0].Text);  // Cột 0 chứa MaCT
+
+            //    // Lấy Lý Do từ mục đã chọn (giả sử Lý Do nằm ở cột 2)
+            //    string lyDo = selectedItem.SubItems[2].Text;  // Cột 2 chứa Lý Do
+
+            //    // Hiển thị Lý Do lên một textbox để người dùng có thể chỉnh sửa
+            //    richTextBox1.Text = lyDo;  // txtLyDo là textbox hiển thị Lý Do
+            //}
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra nếu người dùng đã chọn mục trong bảng
+            if (lv_DSHoaDon.SelectedItems.Count > 0)
+            {
+                // Lấy MaCT từ mục đã chọn trong lv_DSHoaDon
+                ListViewItem selectedItem = lv_DSHoaDon.SelectedItems[0];
+                int maCT = Convert.ToInt32(selectedItem.SubItems[0].Text); // Cột 0 chứa MaCT
+
+                // Lấy Lý Do từ TextBox (người dùng nhập vào)
+                string lyDo = richTextBox1.Text;  // txtLyDo là TextBox hiển thị Lý Do
+
+                // Cập nhật Lý Do vào cơ sở dữ liệu
+                bool isUpdated = TieuHuyBUS.Instance.UpdateLyDo(maCT, lyDo);
+
+                // Thông báo kết quả
+                if (isUpdated)
+                {
+                    MessageBox.Show("Cập nhật Lý Do thành công!");
+                    // Cập nhật lại trong ListView
+                    selectedItem.SubItems[3].Text = lyDo; // Cập nhật Lý Do trong ListView
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật Lý Do thất bại!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mục để sửa!");
+            }
+        }
+
+        private void comboBoxNguoiLap_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

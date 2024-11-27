@@ -49,6 +49,10 @@ namespace BUS
         {
             return TieuHuyDAO.Instance.GetTieuHuyByDateRange(startDate, endDate);
         }
-
+        public bool UpdateLyDo(int maCT, string lyDo)
+        {
+            // Gọi DAO để thực hiện cập nhật Lý Do vào cơ sở dữ liệu
+            return TieuHuyDAO.Instance.UpdateLyDo(maCT, lyDo);
+        }
     }
 }
