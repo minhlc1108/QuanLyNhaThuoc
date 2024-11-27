@@ -80,18 +80,19 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(385, 9);
+            label2.Location = new Point(440, 12);
             label2.Name = "label2";
-            label2.Size = new Size(201, 25);
+            label2.Size = new Size(254, 32);
             label2.TabIndex = 1;
             label2.Text = "QUẢN LÝ SẢN PHẨM";
             label2.Click += label2_Click;
             // 
             // btnTimKiem
             // 
-            btnTimKiem.Location = new Point(985, 48);
+            btnTimKiem.Location = new Point(1126, 64);
+            btnTimKiem.Margin = new Padding(3, 4, 3, 4);
             btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new Size(128, 26);
+            btnTimKiem.Size = new Size(146, 35);
             btnTimKiem.TabIndex = 3;
             btnTimKiem.Text = "TÌM";
             btnTimKiem.UseVisualStyleBackColor = true;
@@ -99,17 +100,19 @@
             // 
             // txtTimKiem
             // 
-            txtTimKiem.Location = new Point(452, 48);
+            txtTimKiem.Location = new Point(517, 64);
+            txtTimKiem.Margin = new Padding(3, 4, 3, 4);
             txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.Size = new Size(510, 23);
+            txtTimKiem.Size = new Size(582, 27);
             txtTimKiem.TabIndex = 4;
             txtTimKiem.TextChanged += textBox1_TextChanged;
             // 
             // btnThemSanPham
             // 
-            btnThemSanPham.Location = new Point(36, 28);
+            btnThemSanPham.Location = new Point(41, 37);
+            btnThemSanPham.Margin = new Padding(3, 4, 3, 4);
             btnThemSanPham.Name = "btnThemSanPham";
-            btnThemSanPham.Size = new Size(146, 28);
+            btnThemSanPham.Size = new Size(167, 37);
             btnThemSanPham.TabIndex = 20;
             btnThemSanPham.Text = "THÊM";
             btnThemSanPham.UseVisualStyleBackColor = true;
@@ -117,9 +120,10 @@
             // 
             // btnResetSanPham
             // 
-            btnResetSanPham.Location = new Point(230, 28);
+            btnResetSanPham.Location = new Point(263, 37);
+            btnResetSanPham.Margin = new Padding(3, 4, 3, 4);
             btnResetSanPham.Name = "btnResetSanPham";
-            btnResetSanPham.Size = new Size(149, 28);
+            btnResetSanPham.Size = new Size(170, 37);
             btnResetSanPham.TabIndex = 21;
             btnResetSanPham.Text = "LÀM MỚI";
             btnResetSanPham.UseVisualStyleBackColor = true;
@@ -127,9 +131,10 @@
             // 
             // btnUpdateSanPham
             // 
-            btnUpdateSanPham.Location = new Point(36, 73);
+            btnUpdateSanPham.Location = new Point(41, 97);
+            btnUpdateSanPham.Margin = new Padding(3, 4, 3, 4);
             btnUpdateSanPham.Name = "btnUpdateSanPham";
-            btnUpdateSanPham.Size = new Size(146, 28);
+            btnUpdateSanPham.Size = new Size(167, 37);
             btnUpdateSanPham.TabIndex = 22;
             btnUpdateSanPham.Text = "LƯU CHỈNH SỬA";
             btnUpdateSanPham.UseVisualStyleBackColor = true;
@@ -139,9 +144,10 @@
             // 
             lsvSanPham.Columns.AddRange(new ColumnHeader[] { clMaSP, clTenSP, clLoaiSP, clNhaSX, clQuyCach, clXuatXu, clKeToa, clSoLuong, clTrangThai });
             lsvSanPham.FullRowSelect = true;
-            lsvSanPham.Location = new Point(452, 87);
+            lsvSanPham.Location = new Point(517, 116);
+            lsvSanPham.Margin = new Padding(3, 4, 3, 4);
             lsvSanPham.Name = "lsvSanPham";
-            lsvSanPham.Size = new Size(661, 399);
+            lsvSanPham.Size = new Size(755, 531);
             lsvSanPham.TabIndex = 23;
             lsvSanPham.UseCompatibleStateImageBehavior = false;
             lsvSanPham.View = View.Details;
@@ -200,9 +206,10 @@
             // 
             // btnKhoaSanPham
             // 
-            btnKhoaSanPham.Location = new Point(230, 74);
+            btnKhoaSanPham.Location = new Point(263, 99);
+            btnKhoaSanPham.Margin = new Padding(3, 4, 3, 4);
             btnKhoaSanPham.Name = "btnKhoaSanPham";
-            btnKhoaSanPham.Size = new Size(149, 28);
+            btnKhoaSanPham.Size = new Size(170, 37);
             btnKhoaSanPham.TabIndex = 24;
             btnKhoaSanPham.Text = "KHÓA / MỞ KHÓA";
             btnKhoaSanPham.UseVisualStyleBackColor = true;
@@ -210,9 +217,10 @@
             // 
             // btnXuatDanhSachExcel
             // 
-            btnXuatDanhSachExcel.Location = new Point(259, 49);
+            btnXuatDanhSachExcel.Location = new Point(296, 65);
+            btnXuatDanhSachExcel.Margin = new Padding(3, 4, 3, 4);
             btnXuatDanhSachExcel.Name = "btnXuatDanhSachExcel";
-            btnXuatDanhSachExcel.Size = new Size(151, 38);
+            btnXuatDanhSachExcel.Size = new Size(173, 51);
             btnXuatDanhSachExcel.TabIndex = 25;
             btnXuatDanhSachExcel.Text = "Xuất Excel";
             btnXuatDanhSachExcel.UseVisualStyleBackColor = true;
@@ -220,9 +228,10 @@
             // 
             // button1
             // 
-            button1.Location = new Point(44, 49);
+            button1.Location = new Point(50, 65);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(151, 38);
+            button1.Size = new Size(173, 51);
             button1.TabIndex = 32;
             button1.Text = "Xuất PDF";
             button1.UseVisualStyleBackColor = true;
@@ -230,9 +239,10 @@
             // 
             // button3
             // 
-            button3.Location = new Point(472, 47);
+            button3.Location = new Point(539, 63);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(151, 38);
+            button3.Size = new Size(173, 51);
             button3.TabIndex = 34;
             button3.Text = "Nhập Excel";
             button3.UseVisualStyleBackColor = true;
@@ -260,9 +270,11 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(erorr_email);
             groupBox1.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(12, 37);
+            groupBox1.Location = new Point(14, 49);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(421, 464);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(481, 619);
             groupBox1.TabIndex = 35;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sản phẩm";
@@ -270,18 +282,19 @@
             // 
             // txtMaSanPham
             // 
-            txtMaSanPham.Location = new Point(144, 38);
+            txtMaSanPham.Location = new Point(165, 51);
+            txtMaSanPham.Margin = new Padding(3, 4, 3, 4);
             txtMaSanPham.Name = "txtMaSanPham";
-            txtMaSanPham.Size = new Size(267, 29);
+            txtMaSanPham.Size = new Size(305, 34);
             txtMaSanPham.TabIndex = 52;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(10, 41);
+            label12.Location = new Point(11, 55);
             label12.Name = "label12";
-            label12.Size = new Size(115, 21);
+            label12.Size = new Size(148, 28);
             label12.TabIndex = 51;
             label12.Text = "Mã Sản Phẩm :";
             // 
@@ -289,79 +302,87 @@
             // 
             cbbKeToa.FormattingEnabled = true;
             cbbKeToa.Items.AddRange(new object[] { "Cần Kê Toa", "Không Cần Kê Toa" });
-            cbbKeToa.Location = new Point(142, 332);
+            cbbKeToa.Location = new Point(162, 443);
+            cbbKeToa.Margin = new Padding(3, 4, 3, 4);
             cbbKeToa.Name = "cbbKeToa";
-            cbbKeToa.Size = new Size(269, 29);
+            cbbKeToa.Size = new Size(307, 36);
             cbbKeToa.TabIndex = 50;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(10, 332);
+            label11.Location = new Point(11, 443);
             label11.Name = "label11";
-            label11.Size = new Size(66, 21);
+            label11.Size = new Size(83, 28);
             label11.TabIndex = 49;
             label11.Text = "Kê Toa :";
             // 
             // cbbNhaSX
             // 
             cbbNhaSX.FormattingEnabled = true;
-            cbbNhaSX.Location = new Point(142, 188);
+            cbbNhaSX.Location = new Point(162, 251);
+            cbbNhaSX.Margin = new Padding(3, 4, 3, 4);
             cbbNhaSX.Name = "cbbNhaSX";
-            cbbNhaSX.Size = new Size(269, 29);
+            cbbNhaSX.Size = new Size(307, 36);
             cbbNhaSX.TabIndex = 48;
             // 
             // cbbLoaiSanPham
             // 
             cbbLoaiSanPham.FormattingEnabled = true;
-            cbbLoaiSanPham.Location = new Point(143, 134);
+            cbbLoaiSanPham.Location = new Point(163, 179);
+            cbbLoaiSanPham.Margin = new Padding(3, 4, 3, 4);
             cbbLoaiSanPham.Name = "cbbLoaiSanPham";
-            cbbLoaiSanPham.Size = new Size(268, 29);
+            cbbLoaiSanPham.Size = new Size(306, 36);
             cbbLoaiSanPham.TabIndex = 47;
             // 
             // txtQuyCach
             // 
-            txtQuyCach.Location = new Point(142, 284);
+            txtQuyCach.Location = new Point(162, 379);
+            txtQuyCach.Margin = new Padding(3, 4, 3, 4);
             txtQuyCach.Name = "txtQuyCach";
-            txtQuyCach.Size = new Size(269, 29);
+            txtQuyCach.Size = new Size(307, 34);
             txtQuyCach.TabIndex = 46;
             // 
             // txtXuatXu
             // 
-            txtXuatXu.Location = new Point(142, 238);
+            txtXuatXu.Location = new Point(162, 317);
+            txtXuatXu.Margin = new Padding(3, 4, 3, 4);
             txtXuatXu.Name = "txtXuatXu";
-            txtXuatXu.Size = new Size(269, 29);
+            txtXuatXu.Size = new Size(307, 34);
             txtXuatXu.TabIndex = 45;
             // 
             // txtThanhPhan
             // 
-            txtThanhPhan.Location = new Point(142, 378);
+            txtThanhPhan.Location = new Point(162, 504);
+            txtThanhPhan.Margin = new Padding(3, 4, 3, 4);
             txtThanhPhan.Name = "txtThanhPhan";
-            txtThanhPhan.Size = new Size(269, 29);
+            txtThanhPhan.Size = new Size(307, 34);
             txtThanhPhan.TabIndex = 44;
             // 
             // txtDieuTriBenh
             // 
-            txtDieuTriBenh.Location = new Point(142, 420);
+            txtDieuTriBenh.Location = new Point(162, 560);
+            txtDieuTriBenh.Margin = new Padding(3, 4, 3, 4);
             txtDieuTriBenh.Name = "txtDieuTriBenh";
-            txtDieuTriBenh.Size = new Size(269, 29);
+            txtDieuTriBenh.Size = new Size(307, 34);
             txtDieuTriBenh.TabIndex = 43;
             // 
             // txtTenSanPham
             // 
-            txtTenSanPham.Location = new Point(144, 85);
+            txtTenSanPham.Location = new Point(165, 113);
+            txtTenSanPham.Margin = new Padding(3, 4, 3, 4);
             txtTenSanPham.Name = "txtTenSanPham";
-            txtTenSanPham.Size = new Size(267, 29);
+            txtTenSanPham.Size = new Size(305, 34);
             txtTenSanPham.TabIndex = 42;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(10, 420);
+            label10.Location = new Point(11, 560);
             label10.Name = "label10";
-            label10.Size = new Size(112, 21);
+            label10.Size = new Size(143, 28);
             label10.TabIndex = 41;
             label10.Text = "Điều trị bệnh :";
             // 
@@ -369,9 +390,9 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(10, 378);
+            label9.Location = new Point(11, 504);
             label9.Name = "label9";
-            label9.Size = new Size(102, 21);
+            label9.Size = new Size(132, 28);
             label9.TabIndex = 40;
             label9.Text = "Thành phần :";
             // 
@@ -379,9 +400,9 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(10, 284);
+            label8.Location = new Point(11, 379);
             label8.Name = "label8";
-            label8.Size = new Size(84, 21);
+            label8.Size = new Size(106, 28);
             label8.TabIndex = 39;
             label8.Text = "Quy cách :";
             // 
@@ -389,9 +410,9 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(10, 238);
+            label7.Location = new Point(11, 317);
             label7.Name = "label7";
-            label7.Size = new Size(73, 21);
+            label7.Size = new Size(92, 28);
             label7.TabIndex = 38;
             label7.Text = "Xuất xứ :";
             // 
@@ -399,9 +420,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(6, 188);
+            label6.Location = new Point(7, 251);
             label6.Name = "label6";
-            label6.Size = new Size(110, 21);
+            label6.Size = new Size(142, 28);
             label6.TabIndex = 37;
             label6.Text = "Nhà sản xuất :";
             // 
@@ -409,9 +430,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(6, 137);
+            label5.Location = new Point(7, 183);
             label5.Name = "label5";
-            label5.Size = new Size(121, 21);
+            label5.Size = new Size(155, 28);
             label5.TabIndex = 36;
             label5.Text = "Loại sản phẩm :";
             // 
@@ -419,9 +440,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(6, 88);
+            label4.Location = new Point(7, 117);
             label4.Name = "label4";
-            label4.Size = new Size(116, 21);
+            label4.Size = new Size(150, 28);
             label4.TabIndex = 35;
             label4.Text = "Tên sản phẩm :";
             // 
@@ -430,9 +451,9 @@
             erorr_email.AutoSize = true;
             erorr_email.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             erorr_email.ForeColor = Color.Red;
-            erorr_email.Location = new Point(98, 314);
+            erorr_email.Location = new Point(112, 419);
             erorr_email.Name = "erorr_email";
-            erorr_email.Size = new Size(0, 15);
+            erorr_email.Size = new Size(0, 20);
             erorr_email.TabIndex = 34;
             // 
             // groupBox2
@@ -442,9 +463,11 @@
             groupBox2.Controls.Add(btnUpdateSanPham);
             groupBox2.Controls.Add(btnKhoaSanPham);
             groupBox2.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(12, 507);
+            groupBox2.Location = new Point(14, 676);
+            groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(421, 121);
+            groupBox2.Padding = new Padding(3, 4, 3, 4);
+            groupBox2.Size = new Size(481, 161);
             groupBox2.TabIndex = 36;
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
@@ -456,18 +479,20 @@
             groupBox3.Controls.Add(button1);
             groupBox3.Controls.Add(button3);
             groupBox3.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox3.Location = new Point(452, 507);
+            groupBox3.Location = new Point(517, 676);
+            groupBox3.Margin = new Padding(3, 4, 3, 4);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(662, 121);
+            groupBox3.Padding = new Padding(3, 4, 3, 4);
+            groupBox3.Size = new Size(757, 161);
             groupBox3.TabIndex = 37;
             groupBox3.TabStop = false;
             groupBox3.Text = "Chức năng khác";
             // 
             // FormSanPham
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1114, 681);
+            ClientSize = new Size(1273, 908);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -475,7 +500,6 @@
             Controls.Add(txtTimKiem);
             Controls.Add(btnTimKiem);
             Controls.Add(label2);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FormSanPham";
             Text = "FormSanPham";
             Load += FormSanPham_Load;

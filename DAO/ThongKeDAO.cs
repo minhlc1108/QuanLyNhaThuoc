@@ -50,14 +50,13 @@ namespace DAO
             string sql;
             if(loaisp == null)
             {
-                sql = @"SELECT mact,sanpham.masp, sanpham.loaisp, losx, sanpham.tensp, chitietsanpham.hansd, chitietsanpham.soLuong FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp AND sanpham.trangthai = 1 ORDER BY mact";
+                sql = @"SELECT mact,sanpham.masp, sanpham.loaisp, losx, sanpham.tensp, chitietsanpham.hansd, chitietsanpham.soLuong, sanpham.trangthai FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp ORDER BY mact ";
                 return DataProvider.Instance.ExecuteQuery(sql);
             }
             else
             {
-                sql = @"SELECT mact,sanpham.masp, sanpham.loaisp, losx, sanpham.tensp, chitietsanpham.hansd, chitietsanpham.soLuong FROM chitietsanpham,sanpham 
+                sql = @"SELECT mact,sanpham.masp, sanpham.loaisp, losx, sanpham.tensp, chitietsanpham.hansd, chitietsanpham.soLuong, sanpham.trangthai FROM chitietsanpham,sanpham 
                         WHERE chitietsanpham.masp = sanpham.masp
-                               AND sanpham.trangthai = 1
                                AND sanpham.loaisp = @loaisp ORDER BY mact";
                 return DataProvider.Instance.ExecuteQuery(sql, new object[] { loaisp });
             }
@@ -68,12 +67,12 @@ namespace DAO
             string sql;
             if (loaisp == null)
             {
-                sql = @"SELECT SUM(chitietsanpham.soluong) as soluong,sanpham.masp FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp AND sanpham.trangthai = 1 GROUP BY sanpham.masp";
+                sql = @"SELECT SUM(chitietsanpham.soluong) as soluong,sanpham.masp FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp GROUP BY sanpham.masp";
                 return DataProvider.Instance.ExecuteQuery(sql);
             }
             else
             {
-                sql = @"SELECT SUM(chitietsanpham.soluong) as soluong,sanpham.masp FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp AND sanpham.trangthai = 1
+                sql = @"SELECT SUM(chitietsanpham.soluong) as soluong,sanpham.masp FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp
                                AND sanpham.loaisp = @loaisp GROUP BY sanpham.masp";
                 return DataProvider.Instance.ExecuteQuery(sql, new object[] { loaisp });
             }
@@ -84,12 +83,12 @@ namespace DAO
             string sql;
             if (loaisp == null)
             {
-                sql = @"SELECT SUM(chitietsanpham.soluong) as soluong,sanpham.masp, sanpham.tensp FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp AND sanpham.trangthai = 1 and soLuong < 30 GROUP BY sanpham.masp";
+                sql = @"SELECT SUM(chitietsanpham.soluong) as soluong,sanpham.masp, sanpham.tensp FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp AND sanpham.trangthai = 1 AND soLuong < 30 GROUP BY sanpham.masp";
                 return DataProvider.Instance.ExecuteQuery(sql);
             }
             else
             {
-                sql = @"SELECT SUM(chitietsanpham.soluong) as soluong,sanpham.masp, sanpham.tensp FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp AND sanpham.trangthai = 1 and soLuong < 30 AND sanpham.loaisp = @loaisp GROUP BY sanpham.masp";
+                sql = @"SELECT SUM(chitietsanpham.soluong) as soluong,sanpham.masp, sanpham.tensp FROM chitietsanpham,sanpham WHERE chitietsanpham.masp = sanpham.masp AND sanpham.trangthai = 1 AND soLuong < 30 AND sanpham.loaisp = @loaisp GROUP BY sanpham.masp";
                 return DataProvider.Instance.ExecuteQuery(sql, new object[] { loaisp });
             }
         }
@@ -112,9 +111,8 @@ namespace DAO
                                 sanpham 
                             ON 
                             chitietsanpham.masp = sanpham.masp 
-                        WHERE 
-                        sanpham.trangthai = 1 
-                     AND chitietsanpham.hansd < DATE_ADD(CURRENT_DATE, INTERVAL 30 DAY);";
+                        WHERE sanpham.trangthai = 1 AND
+                      chitietsanpham.hansd < DATE_ADD(CURRENT_DATE, INTERVAL 30 DAY);";
                 return DataProvider.Instance.ExecuteQuery(sql);
             }
             else
@@ -132,8 +130,8 @@ namespace DAO
                                 sanpham 
                             ON 
                             chitietsanpham.masp = sanpham.masp 
-                        WHERE 
-                        sanpham.trangthai = 1 AND sanpham.loaisp = @loaisp 
+                        WHERE sanpham.trangthai = 1 AND
+                      sanpham.loaisp = @loaisp 
                      AND chitietsanpham.hansd < DATE_ADD(CURRENT_DATE, INTERVAL 30 DAY);";
                 return DataProvider.Instance.ExecuteQuery(sql, new object[] { loaisp });
             }

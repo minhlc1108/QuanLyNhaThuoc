@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             btnThongKe = new Button();
             groupBox2 = new GroupBox();
             tblThongTin = new ListView();
@@ -62,6 +62,7 @@
             columnHeader15 = new ColumnHeader();
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
+            columnHeader18 = new ColumnHeader();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartTonKho).BeginInit();
@@ -94,7 +95,7 @@
             // 
             // tblThongTin
             // 
-            tblThongTin.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader7, columnHeader5, columnHeader6 });
+            tblThongTin.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader7, columnHeader5, columnHeader6, columnHeader18 });
             tblThongTin.Location = new Point(6, 26);
             tblThongTin.Name = "tblThongTin";
             tblThongTin.Size = new Size(1183, 256);
@@ -120,12 +121,12 @@
             // columnHeader4
             // 
             columnHeader4.Text = "Lô sản xuất";
-            columnHeader4.Width = 150;
+            columnHeader4.Width = 120;
             // 
             // columnHeader7
             // 
             columnHeader7.Text = "Tên sản phẩm";
-            columnHeader7.Width = 420;
+            columnHeader7.Width = 380;
             // 
             // columnHeader5
             // 
@@ -149,16 +150,16 @@
             // 
             // chartTonKho
             // 
-            chartArea2.Name = "ChartArea1";
-            chartTonKho.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chartTonKho.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            chartTonKho.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartTonKho.Legends.Add(legend1);
             chartTonKho.Location = new Point(6, 26);
             chartTonKho.Name = "chartTonKho";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "SoLuong";
-            chartTonKho.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "SoLuong";
+            chartTonKho.Series.Add(series1);
             chartTonKho.Size = new Size(512, 359);
             chartTonKho.TabIndex = 0;
             chartTonKho.Text = "chart";
@@ -304,6 +305,11 @@
             columnHeader17.Text = "Trạng thái";
             columnHeader17.Width = 120;
             // 
+            // columnHeader18
+            // 
+            columnHeader18.Text = "Trạng thái";
+            columnHeader18.Width = 120;
+            // 
             // FormThongKeTonKho
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -372,5 +378,6 @@
         private ColumnHeader columnHeader15;
         private ColumnHeader columnHeader16;
         private ColumnHeader columnHeader17;
+        private ColumnHeader columnHeader18;
     }
 }

@@ -61,10 +61,20 @@ namespace GUI
             foreach (DataRow row in data.Rows)
             {
                 ListViewItem item = new ListViewItem(row[0].ToString());
-                for (int i = 1; i < data.Columns.Count; i++)
+                for (int i = 1; i < data.Columns.Count - 1; i++)
                 {
                     item.SubItems.Add(row[i].ToString());
                 }
+
+                if(Convert.ToBoolean(row["trangthai"].ToString()))
+                {
+                    item.SubItems.Add("Đang bán");
+                }
+                else
+                {
+                    item.SubItems.Add("Nghỉ bán");
+                }
+
                 tblThongTin.Items.Add(item);
             }
             LoadDataTableHetHang(dataHetHang);
