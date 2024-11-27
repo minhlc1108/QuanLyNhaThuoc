@@ -283,7 +283,6 @@ namespace GUI
                 {
                     ctspAdd = new ChiTietSanPhamDTO(mact, masp, loSX, DateTime.Now, DateTime.Now, 0, 0);
                     cthdAdd = new ChiTietHoaDonDTO("", mact, donGia, numSl);
-
                     tempCtsp.Add(ctspAdd);
                     tempCthd.Add(cthdAdd);
                     tb_sl.Text = "";
@@ -389,6 +388,10 @@ namespace GUI
         {
             tb_sl.Text = "";
             cbb_sp.SelectedIndex = 0;
+            string itemCbbMasp = cbb_sp.Text;
+            string[] stringMasp = itemCbbMasp.Split('-');
+            string masp = stringMasp[0].Trim();
+            loadDataCbbLosx(masp);
             sttDelEdit = 0;
 
             btn_add.Enabled = true;
@@ -430,7 +433,7 @@ namespace GUI
                 string loSX = cbb_lsx.Text;
 
                 string strNumber = tb_donGia.Text;
-                strNumber = strNumber.Replace(".", "");
+                strNumber = strNumber.Replace(",", "");
                 int donGia = int.Parse(strNumber);
 
                 string itemCbbMaKH = cbb_khach.Text;
