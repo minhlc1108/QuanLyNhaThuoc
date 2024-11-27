@@ -96,9 +96,9 @@
             lv_qlncc.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lv_qlncc.FullRowSelect = true;
             lv_qlncc.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
-            lv_qlncc.Location = new Point(157, 202);
+            lv_qlncc.Location = new Point(140, 199);
             lv_qlncc.Name = "lv_qlncc";
-            lv_qlncc.Size = new Size(824, 269);
+            lv_qlncc.Size = new Size(967, 451);
             lv_qlncc.TabIndex = 44;
             lv_qlncc.UseCompatibleStateImageBehavior = false;
             lv_qlncc.View = View.Details;
@@ -150,7 +150,7 @@
             textBoxMANSX.Margin = new Padding(3, 2, 3, 2);
             textBoxMANSX.Name = "textBoxMANSX";
             textBoxMANSX.ReadOnly = true;
-            textBoxMANSX.Size = new Size(248, 23);
+            textBoxMANSX.Size = new Size(523, 23);
             textBoxMANSX.TabIndex = 47;
             textBoxMANSX.TextChanged += textBox1_TextChanged;
             // 
@@ -159,12 +159,12 @@
             textBoxtennsx.Location = new Point(469, 119);
             textBoxtennsx.Margin = new Padding(3, 2, 3, 2);
             textBoxtennsx.Name = "textBoxtennsx";
-            textBoxtennsx.Size = new Size(248, 23);
+            textBoxtennsx.Size = new Size(523, 23);
             textBoxtennsx.TabIndex = 48;
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(678, 495);
+            buttonAdd.Location = new Point(662, 697);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(75, 23);
             buttonAdd.TabIndex = 49;
@@ -174,7 +174,7 @@
             // 
             // buttonEdit
             // 
-            buttonEdit.Location = new Point(790, 495);
+            buttonEdit.Location = new Point(785, 697);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(75, 23);
             buttonEdit.TabIndex = 50;
@@ -184,7 +184,7 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(906, 495);
+            buttonDelete.Location = new Point(906, 697);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(75, 23);
             buttonDelete.TabIndex = 51;
@@ -196,7 +196,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1088, 648);
+            ClientSize = new Size(1244, 861);
             Controls.Add(buttonDelete);
             Controls.Add(buttonEdit);
             Controls.Add(buttonAdd);

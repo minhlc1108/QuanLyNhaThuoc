@@ -124,7 +124,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(456, 7);
+            label9.Location = new Point(637, 7);
             label9.Name = "label9";
             label9.Size = new Size(209, 30);
             label9.TabIndex = 8;
@@ -141,7 +141,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(729, 41);
+            button1.Location = new Point(1001, 40);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(82, 22);
@@ -152,19 +152,19 @@
             // 
             // dateTimePickerStart
             // 
-            dateTimePickerStart.Location = new Point(430, 43);
+            dateTimePickerStart.Location = new Point(488, 40);
             dateTimePickerStart.Margin = new Padding(3, 2, 3, 2);
             dateTimePickerStart.Name = "dateTimePickerStart";
-            dateTimePickerStart.Size = new Size(134, 23);
+            dateTimePickerStart.Size = new Size(222, 23);
             dateTimePickerStart.TabIndex = 11;
             dateTimePickerStart.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // dateTimePickerEnd
             // 
-            dateTimePickerEnd.Location = new Point(581, 43);
+            dateTimePickerEnd.Location = new Point(736, 40);
             dateTimePickerEnd.Margin = new Padding(3, 2, 3, 2);
             dateTimePickerEnd.Name = "dateTimePickerEnd";
-            dateTimePickerEnd.Size = new Size(140, 23);
+            dateTimePickerEnd.Size = new Size(217, 23);
             dateTimePickerEnd.TabIndex = 12;
             dateTimePickerEnd.ValueChanged += dateTimePicker2_ValueChanged;
             // 
@@ -173,7 +173,7 @@
             richTextBox1.Location = new Point(5, 194);
             richTextBox1.Margin = new Padding(3, 2, 3, 2);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(315, 68);
+            richTextBox1.Size = new Size(436, 202);
             richTextBox1.TabIndex = 13;
             richTextBox1.Text = "";
             // 
@@ -187,9 +187,9 @@
             lv_DSHoaDon.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
             lv_DSHoaDon.FullRowSelect = true;
             lv_DSHoaDon.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
-            lv_DSHoaDon.Location = new Point(350, 83);
+            lv_DSHoaDon.Location = new Point(488, 83);
             lv_DSHoaDon.Name = "lv_DSHoaDon";
-            lv_DSHoaDon.Size = new Size(715, 493);
+            lv_DSHoaDon.Size = new Size(704, 649);
             lv_DSHoaDon.TabIndex = 35;
             lv_DSHoaDon.UseCompatibleStateImageBehavior = false;
             lv_DSHoaDon.View = View.Details;
@@ -233,7 +233,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(12, 269);
+            label11.Location = new Point(19, 414);
             label11.Name = "label11";
             label11.Size = new Size(53, 15);
             label11.TabIndex = 37;
@@ -242,15 +242,16 @@
             // textBox1
             // 
             textBox1.Enabled = false;
-            textBox1.Location = new Point(124, 266);
+            textBox1.Location = new Point(109, 414);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(165, 23);
+            textBox1.Size = new Size(332, 23);
             textBox1.TabIndex = 38;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // buttonadd
             // 
-            buttonadd.Location = new Point(15, 368);
+            buttonadd.Location = new Point(51, 525);
             buttonadd.Margin = new Padding(3, 2, 3, 2);
             buttonadd.Name = "buttonadd";
             buttonadd.Size = new Size(82, 22);
@@ -277,7 +278,7 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(334, 311);
+            groupBox1.Size = new Size(459, 463);
             groupBox1.TabIndex = 41;
             groupBox1.TabStop = false;
             groupBox1.Text = "Sản phẩm tiêu hủy";
@@ -289,7 +290,7 @@
             comboBoxNguoiLap.Location = new Point(124, 116);
             comboBoxNguoiLap.Margin = new Padding(3, 2, 3, 2);
             comboBoxNguoiLap.Name = "comboBoxNguoiLap";
-            comboBoxNguoiLap.Size = new Size(165, 23);
+            comboBoxNguoiLap.Size = new Size(317, 23);
             comboBoxNguoiLap.TabIndex = 22;
             comboBoxNguoiLap.SelectedIndexChanged += comboBoxNguoiLap_SelectedIndexChanged;
             // 
@@ -299,7 +300,7 @@
             comboBoxLoSX.Location = new Point(124, 54);
             comboBoxLoSX.Margin = new Padding(3, 2, 3, 2);
             comboBoxLoSX.Name = "comboBoxLoSX";
-            comboBoxLoSX.Size = new Size(165, 23);
+            comboBoxLoSX.Size = new Size(317, 23);
             comboBoxLoSX.TabIndex = 21;
             // 
             // comboBoxSanPham
@@ -308,7 +309,7 @@
             comboBoxSanPham.Location = new Point(124, 20);
             comboBoxSanPham.Margin = new Padding(3, 2, 3, 2);
             comboBoxSanPham.Name = "comboBoxSanPham";
-            comboBoxSanPham.Size = new Size(165, 23);
+            comboBoxSanPham.Size = new Size(317, 23);
             comboBoxSanPham.TabIndex = 20;
             comboBoxSanPham.SelectedIndexChanged += comboBoxSanPham_SelectedIndexChanged;
             // 
@@ -317,13 +318,13 @@
             dateTimePicker3.Location = new Point(124, 87);
             dateTimePicker3.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(165, 23);
+            dateTimePicker3.Size = new Size(317, 23);
             dateTimePicker3.TabIndex = 18;
             dateTimePicker3.ValueChanged += dateTimePicker3_ValueChanged;
             // 
             // buttondelete
             // 
-            buttondelete.Location = new Point(217, 370);
+            buttondelete.Location = new Point(274, 525);
             buttondelete.Margin = new Padding(3, 2, 3, 2);
             buttondelete.Name = "buttondelete";
             buttondelete.Size = new Size(82, 22);
@@ -334,7 +335,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(116, 370);
+            button2.Location = new Point(171, 525);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 42;
@@ -346,7 +347,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1088, 648);
+            ClientSize = new Size(1244, 861);
             Controls.Add(button2);
             Controls.Add(groupBox1);
             Controls.Add(buttondelete);
