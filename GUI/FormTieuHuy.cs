@@ -1,9 +1,11 @@
 ﻿using BUS;
 using DAO;
 using DTO;
+using Google.Protobuf;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace GUI
@@ -200,7 +202,8 @@ namespace GUI
 
                 // Populate the fields with the selected data
                 comboBoxSanPham.SelectedValue = int.Parse(selectedItem.SubItems[0].Text);
-                dateTimePicker3.Value = DateTime.Parse(selectedItem.SubItems[1].Text);
+                dateTimePicker3.Value = DateTime.ParseExact(selectedItem.SubItems[1].Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
                 comboBoxNguoiLap.SelectedValue = selectedItem.SubItems[2].Text;
                 richTextBox1.Text = selectedItem.SubItems[3].Text;
                 textBox1.Text = selectedItem.SubItems[4].Text;
