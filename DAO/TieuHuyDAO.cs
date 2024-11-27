@@ -27,11 +27,18 @@ namespace DAO
 
         public bool UpdateTieuHuy(TieuHuyDTO tieuHuy)
         {
-            string query = "UPDATE TieuHuy SET ngaytieuhuy = @ngayTieuHuy , nguoilap = @nguoiLap , lydo = @lyDo , thiethai = @thietHai WHERE mact = @maCT";
+            string query = "UPDATE TieuHuy SET ngaytieuhuy = @ngayTieuHuy, nguoilap = @nguoiLap, lydo = @lyDo, thiethai = @thietHai WHERE mact = @maCT";
+
+            // Các tham số cần truyền vào cho câu truy vấn
             object[] parameters = { tieuHuy.NgayTieuHuy, tieuHuy.NguoiLap, tieuHuy.LyDo, tieuHuy.ThietHai, tieuHuy.MaCT };
+
+            // Thực thi câu lệnh SQL với tham số đã truyền
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
+
+            // Trả về true nếu câu lệnh thành công (số lượng bản ghi bị ảnh hưởng > 0), false nếu không
             return result > 0;
         }
+
 
 
         public bool DeleteTieuHuy(int maCT)
@@ -81,6 +88,14 @@ namespace DAO
             }
             return null;
         }
+        public DataTable SearchTieuHuyByDate(DateTime startDate, DateTime endDate)
+        {
+            string query = @"SELECT * FROM tieuhuy
+                         WHERE NgayTieuHuy BETWEEN @startDate AND @endDate";
+
+            object[] parameters = new object[] { startDate, endDate };
+            return DataProvider.Instance.ExecuteQuery(query, parameters);
+        }
         public DataTable GetListTieuHuy()
         {
             string query = "SELECT * FROM TieuHuy";
@@ -98,6 +113,14 @@ namespace DAO
 
             object[] parameters = { startDate, endDate };
             return DataProvider.Instance.ExecuteQuery(query, parameters);
+        }
+        public bool UpdateLyDo(int maCT, string lyDo)
+        {
+            // SQL update query
+            string query = "UPDATE TieuHuy SET lyDo = @lyDo WHERE maCT = @maCT";
+
+            // Thực hiện câu lệnh SQL với các tham số
+            return DataProvider.Instance.ExecuteNonQuery(query, new object[] { lyDo, maCT }) > 0;
         }
 
     }

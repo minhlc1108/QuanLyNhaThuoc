@@ -98,7 +98,7 @@
             lv_qlncc.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
             lv_qlncc.Location = new Point(157, 202);
             lv_qlncc.Name = "lv_qlncc";
-            lv_qlncc.Size = new Size(824, 175);
+            lv_qlncc.Size = new Size(824, 269);
             lv_qlncc.TabIndex = 44;
             lv_qlncc.UseCompatibleStateImageBehavior = false;
             lv_qlncc.View = View.Details;
@@ -164,7 +164,7 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(684, 427);
+            buttonAdd.Location = new Point(678, 495);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(75, 23);
             buttonAdd.TabIndex = 49;
@@ -174,7 +174,7 @@
             // 
             // buttonEdit
             // 
-            buttonEdit.Location = new Point(791, 427);
+            buttonEdit.Location = new Point(790, 495);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(75, 23);
             buttonEdit.TabIndex = 50;
@@ -184,7 +184,7 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(906, 427);
+            buttonDelete.Location = new Point(906, 495);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(75, 23);
             buttonDelete.TabIndex = 51;
@@ -196,7 +196,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1154, 535);
+            ClientSize = new Size(1088, 648);
             Controls.Add(buttonDelete);
             Controls.Add(buttonEdit);
             Controls.Add(buttonAdd);

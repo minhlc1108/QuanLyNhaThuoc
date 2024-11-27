@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,6 +58,7 @@ namespace DAO
             }
             return data;
         }
+     
 
         //INSERT, UPDATE, DELETE
         public int ExecuteNonQuery(string query, object[] parameters = null)
@@ -125,6 +127,17 @@ namespace DAO
                            "WHERE ct.mact = @maCT";
             object result = ExecuteScalar(query, new object[] { maCT });
             return result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+        }
+        public static DataTable GetTieuHuyInDateRange(DateTime startDate, DateTime endDate)
+        {
+            // Chuẩn bị câu lệnh SQL để lấy dữ liệu trong khoảng thời gian
+            string query = "SELECT * FROM TieuHuy WHERE ngaytieuhuy BETWEEN @StartDate AND @EndDate";
+
+            // Convert các tham số ngày vào định dạng chuẩn của SQL
+            object[] parameters = new object[] { startDate, endDate };
+
+            // Thực hiện truy vấn và trả về kết quả
+            return Instance.ExecuteQuery(query, parameters);
         }
 
 

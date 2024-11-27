@@ -40,8 +40,8 @@
             label9 = new Label();
             label10 = new Label();
             button1 = new Button();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
+            dateTimePickerStart = new DateTimePicker();
+            dateTimePickerEnd = new DateTimePicker();
             richTextBox1 = new RichTextBox();
             fileSystemWatcher1 = new FileSystemWatcher();
             lv_DSHoaDon = new ListView();
@@ -54,13 +54,13 @@
             label11 = new Label();
             textBox1 = new TextBox();
             buttonadd = new Button();
-            buttondelete = new Button();
             groupBox1 = new GroupBox();
             comboBoxNguoiLap = new ComboBox();
             comboBoxLoSX = new ComboBox();
             comboBoxSanPham = new ComboBox();
             dateTimePicker3 = new DateTimePicker();
-            buttonedit = new Button();
+            buttondelete = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -150,21 +150,23 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
-            // dateTimePicker1
+            // dateTimePickerStart
             // 
-            dateTimePicker1.Location = new Point(430, 43);
-            dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(134, 23);
-            dateTimePicker1.TabIndex = 11;
+            dateTimePickerStart.Location = new Point(430, 43);
+            dateTimePickerStart.Margin = new Padding(3, 2, 3, 2);
+            dateTimePickerStart.Name = "dateTimePickerStart";
+            dateTimePickerStart.Size = new Size(134, 23);
+            dateTimePickerStart.TabIndex = 11;
+            dateTimePickerStart.ValueChanged += dateTimePicker1_ValueChanged;
             // 
-            // dateTimePicker2
+            // dateTimePickerEnd
             // 
-            dateTimePicker2.Location = new Point(581, 43);
-            dateTimePicker2.Margin = new Padding(3, 2, 3, 2);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(140, 23);
-            dateTimePicker2.TabIndex = 12;
+            dateTimePickerEnd.Location = new Point(581, 43);
+            dateTimePickerEnd.Margin = new Padding(3, 2, 3, 2);
+            dateTimePickerEnd.Name = "dateTimePickerEnd";
+            dateTimePickerEnd.Size = new Size(140, 23);
+            dateTimePickerEnd.TabIndex = 12;
+            dateTimePickerEnd.ValueChanged += dateTimePicker2_ValueChanged;
             // 
             // richTextBox1
             // 
@@ -187,7 +189,7 @@
             lv_DSHoaDon.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
             lv_DSHoaDon.Location = new Point(350, 83);
             lv_DSHoaDon.Name = "lv_DSHoaDon";
-            lv_DSHoaDon.Size = new Size(462, 309);
+            lv_DSHoaDon.Size = new Size(715, 493);
             lv_DSHoaDon.TabIndex = 35;
             lv_DSHoaDon.UseCompatibleStateImageBehavior = false;
             lv_DSHoaDon.View = View.Details;
@@ -226,6 +228,7 @@
             label4.Size = new Size(57, 15);
             label4.TabIndex = 36;
             label4.Text = "Thời gian";
+            label4.Click += label4_Click;
             // 
             // label11
             // 
@@ -238,6 +241,7 @@
             // 
             // textBox1
             // 
+            textBox1.Enabled = false;
             textBox1.Location = new Point(124, 266);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
@@ -251,20 +255,9 @@
             buttonadd.Name = "buttonadd";
             buttonadd.Size = new Size(82, 22);
             buttonadd.TabIndex = 39;
-            buttonadd.Text = "Lưu";
+            buttonadd.Text = "Thêm";
             buttonadd.UseVisualStyleBackColor = true;
             buttonadd.Click += buttonadd_Click;
-            // 
-            // buttondelete
-            // 
-            buttondelete.Location = new Point(217, 370);
-            buttondelete.Margin = new Padding(3, 2, 3, 2);
-            buttondelete.Name = "buttondelete";
-            buttondelete.Size = new Size(82, 22);
-            buttondelete.TabIndex = 40;
-            buttondelete.Text = "Xóa";
-            buttondelete.UseVisualStyleBackColor = true;
-            buttondelete.Click += buttondelete_Click;
             // 
             // groupBox1
             // 
@@ -291,12 +284,14 @@
             // 
             // comboBoxNguoiLap
             // 
+            comboBoxNguoiLap.Enabled = false;
             comboBoxNguoiLap.FormattingEnabled = true;
             comboBoxNguoiLap.Location = new Point(124, 116);
             comboBoxNguoiLap.Margin = new Padding(3, 2, 3, 2);
             comboBoxNguoiLap.Name = "comboBoxNguoiLap";
             comboBoxNguoiLap.Size = new Size(165, 23);
             comboBoxNguoiLap.TabIndex = 22;
+            comboBoxNguoiLap.SelectedIndexChanged += comboBoxNguoiLap_SelectedIndexChanged;
             // 
             // comboBoxLoSX
             // 
@@ -324,31 +319,42 @@
             dateTimePicker3.Name = "dateTimePicker3";
             dateTimePicker3.Size = new Size(165, 23);
             dateTimePicker3.TabIndex = 18;
+            dateTimePicker3.ValueChanged += dateTimePicker3_ValueChanged;
             // 
-            // buttonedit
+            // buttondelete
             // 
-            buttonedit.Location = new Point(117, 370);
-            buttonedit.Margin = new Padding(3, 2, 3, 2);
-            buttonedit.Name = "buttonedit";
-            buttonedit.Size = new Size(82, 22);
-            buttonedit.TabIndex = 42;
-            buttonedit.Text = "Sửa";
-            buttonedit.UseVisualStyleBackColor = true;
-            buttonedit.Click += buttonedit_Click;
+            buttondelete.Location = new Point(217, 370);
+            buttondelete.Margin = new Padding(3, 2, 3, 2);
+            buttondelete.Name = "buttondelete";
+            buttondelete.Size = new Size(82, 22);
+            buttondelete.TabIndex = 40;
+            buttondelete.Text = "Xóa";
+            buttondelete.UseVisualStyleBackColor = true;
+            buttondelete.Click += buttondelete_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(116, 370);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 42;
+            button2.Text = "Sửa";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // FormTieuHuy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(822, 401);
-            Controls.Add(buttonedit);
+            ClientSize = new Size(1088, 648);
+            Controls.Add(button2);
             Controls.Add(groupBox1);
             Controls.Add(buttondelete);
             Controls.Add(buttonadd);
             Controls.Add(label4);
             Controls.Add(lv_DSHoaDon);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dateTimePickerEnd);
+            Controls.Add(dateTimePickerStart);
             Controls.Add(button1);
             Controls.Add(label10);
             Controls.Add(label9);
@@ -375,11 +381,10 @@
         private Label label9;
         private Label label10;
         private Button button1;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimePickerStart;
+        private DateTimePicker dateTimePickerEnd;
         private RichTextBox richTextBox1;
         private FileSystemWatcher fileSystemWatcher1;
-        private Button buttondelete;
         private Button buttonadd;
         private TextBox textBox1;
         private Label label11;
@@ -392,9 +397,10 @@
         private ColumnHeader columnHeader5;
         private GroupBox groupBox1;
         private DateTimePicker dateTimePicker3;
-        private Button buttonedit;
         private ComboBox comboBoxLoSX;
         private ComboBox comboBoxSanPham;
         private ComboBox comboBoxNguoiLap;
+        private Button buttondelete;
+        private Button button2;
     }
 }
